@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 프로덕트 디자이너 일자리 전망 리서치</title>
+  <style>
+    :root {
+      --bg: #0f0f13;
+      --surface: #16161d;
+      --surface2: #1e1e28;
+      --border: #2a2a38;
+      --accent: #7c6ef7;
+      --accent2: #56cfb2;
+      --accent3: #f7a24b;
+      --warn: #f76b6b;
+      --text: #e8e8f0;
+      --text-muted: #888899;
+      --text-dim: #555568;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Pretendard', 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.7;
+      padding: 0 0 80px;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #1a1430 0%, #0f1f2e 50%, #111520 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 72px 40px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(124,110,247,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(124,110,247,0.15);
+      border: 1px solid rgba(124,110,247,0.35);
+      color: #a99ef9;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 540px;
+      margin: 0 auto 32px;
+    }
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .hero-meta-item {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+    .hero-meta-item strong { color: var(--text-muted); }
+
+    /* Layout */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* Section titles */
+    .section {
+      margin-top: 60px;
+    }
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .section-label .num {
+      width: 28px; height: 28px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-label h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* Stat cards */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--card-color, var(--accent));
+      border-radius: 14px 14px 0 0;
+    }
+    .stat-card .label {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .stat-card .value {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--card-color, var(--accent));
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-card .desc {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Insight cards */
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .insight-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .insight-card .icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .insight-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .insight-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* Horizontal bar chart */
+    .bar-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 28px 20px;
+    }
+    .bar-section h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--text-muted);
+    }
+    .bar-item {
+      margin-bottom: 16px;
+    }
+    .bar-item:last-child { margin-bottom: 0; }
+    .bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    .bar-label .name { color: var(--text); font-weight: 500; }
+    .bar-label .pct { color: var(--text-muted); font-weight: 700; }
+    .bar-track {
+      height: 8px;
+      background: var(--surface2);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: var(--bar-color, var(--accent));
+      transition: width 0.6s ease;
+    }
+
+    /* Two column */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 700px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    /* Salary table */
+    .salary-table {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .salary-table table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .salary-table thead th {
+      background: var(--surface2);
+      padding: 14px 20px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .salary-table tbody td {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    .salary-table tbody tr:last-child td { border-bottom: none; }
+    .salary-table tbody tr:hover { background: var(--surface2); }
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .badge-green { background: rgba(86,207,178,0.15); color: var(--accent2); }
+    .badge-yellow { background: rgba(247,162,75,0.15); color: var(--accent3); }
+    .badge-red { background: rgba(247,107,107,0.15); color: var(--warn); }
+    .badge-purple { background: rgba(124,110,247,0.15); color: var(--accent); }
+
+    /* Risk section */
+    .risk-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 700px) { .risk-grid { grid-template-columns: 1fr; } }
+    .risk-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+    }
+    .risk-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .risk-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .risk-card ul li {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding-left: 16px;
+      position: relative;
+    }
+    .risk-card ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--text-dim);
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px; top: 6px; bottom: 6px;
+      width: 2px;
+      background: var(--border);
+    }
+    .tl-item {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-dot {
+      position: absolute;
+      left: -28px;
+      top: 5px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg);
+    }
+    .tl-item h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .tl-item p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Skills pill list */
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .pill {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .pill.hot {
+      background: rgba(124,110,247,0.12);
+      border-color: rgba(124,110,247,0.3);
+      color: #a99ef9;
+    }
+
+    /* Skill level comparison cards */
+    .skill-level-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .slc-header {
+      padding: 18px 20px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .slc-header .slc-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .slc-header .slc-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .slc-section-label {
+      padding: 12px 20px 4px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-dim);
+    }
+    .skill-item {
+      padding: 10px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .skill-item:last-child { border-bottom: none; }
+    .skill-item .sname {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+    .skill-item .sdesc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+    .skill-item .stag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 10px;
+      margin-top: 4px;
+      letter-spacing: 0.05em;
+    }
+    .stag-must { background: rgba(247,107,107,0.15); color: #f09090; }
+    .stag-plus { background: rgba(86,207,178,0.12); color: var(--accent2); }
+    .stag-new  { background: rgba(124,110,247,0.15); color: #a99ef9; }
+
+    /* Portfolio checklist */
+    .port-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .port-checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .port-checklist li:last-child { border-bottom: none; padding-bottom: 0; }
+    .port-checklist .pc-icon {
+      font-size: 15px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .port-checklist strong { color: var(--text); }
+
+    /* Recruiter tip box */
+    .recruiter-tip {
+      background: var(--surface2);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .recruiter-tip:last-child { margin-bottom: 0; }
+    .recruiter-tip .rt-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .recruiter-tip p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Decision matrix */
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .decision-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .decision-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--decision-color, var(--accent));
+    }
+    .decision-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .decision-card .decision-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--decision-color, var(--accent));
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 3px 8px;
+      margin-bottom: 12px;
+    }
+    .decision-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 10px;
+    }
+    .decision-card p:last-child { margin-bottom: 0; }
+    .evidence-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px;
+    }
+    .evidence-list li {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .evidence-list strong { color: var(--text); }
+
+    /* Summary box */
+    .summary-box {
+      background: linear-gradient(135deg, rgba(124,110,247,0.08) 0%, rgba(86,207,178,0.05) 100%);
+      border: 1px solid rgba(124,110,247,0.25);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .summary-box h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+    .summary-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .summary-box ul li {
+      font-size: 14px;
+      color: var(--text-muted);
+      padding-left: 20px;
+      position: relative;
+    }
+    .summary-box ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Sources */
+    .sources {
+      margin-top: 60px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .sources h4 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+    .sources-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .sources-list a {
+      font-size: 13px;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .sources-list a:hover { color: var(--accent); }
+
+    /* Inline citation links */
+    .src-link {
+      display: inline-block;
+      font-size: 10px;
+      color: var(--text-dim);
+      text-decoration: none;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-left: 4px;
+      white-space: nowrap;
+      vertical-align: middle;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .src-link:hover {
+      color: var(--accent);
+      border-color: rgba(124,110,247,0.45);
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 48px 0 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero { padding: 48px 20px 40px; }
+      .container { padding: 0 16px; }
+      .stat-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-tag">리서치 보고서 · 2026</div>
+  <h1>2026 <span>프로덕트 디자이너</span><br>일자리 전망</h1>
+  <p>글로벌 채용 데이터, 연봉 현황, AI 영향 분석, 요구 역량을 바탕으로 한 종합 직업 전망 리포트</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><strong>발행일</strong> &nbsp;2026년 5월 25일</div>
+    <div class="hero-meta-item"><strong>출처</strong> &nbsp;Figma, BLS, NN/g, UX Design Institute 외</div>
+    <div class="hero-meta-item"><strong>지역</strong> &nbsp;글로벌 · 미국 · 한국</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 1. 핵심 지표 -->
+  <div class="section">
+    <div class="section-label">
+      <div class="num">1</div>
+      <h2>핵심 시장 지표</h2>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card" style="--card-color: #7c6ef7;">
+        <div class="label">미국 활성 채용 공고</div>
+        <div class="value">98,465</div>
+        <div class="desc">현재 미국 내 프로덕트 디자이너 오픈 포지션 수 <a class="src-link" href="https://www.zippia.com/product-designer-jobs/trends/" target="_blank">↗ Zippia</a></div>
+      </div>
+      <div class="stat-card" style="--card-color: #56cfb2;">
+        <div class="label">2030년까지 직업 성장률</div>
+        <div class="value">+15%</div>
+        <div class="desc">전체 직종 평균(5%)의 3배 수준 성장 전망 <a class="src-link" href="https://www.bls.gov/ooh/computer-and-information-technology/web-developers.htm" target="_blank">↗ BLS</a></div>
+      </div>
+      <div class="stat-card" style="--card-color: #f7a24b;">
+        <div class="label">수요 증가 응답 조직</div>
+        <div class="value">82%</div>
+        <div class="desc">디자인 수요가 증가 또는 유지됐다고 답한 조직 비율 <a class="src-link" href="https://www.figma.com/blog/why-demand-for-designers-is-on-the-rise/" target="_blank">↗ Figma Survey 2026</a></div>
+      </div>
+      <div class="stat-card" style="--card-color: #a99ef9;">
+        <div class="label">미국 평균 연봉</div>
+        <div class="value">$102K</div>
+        <div class="desc">미국 프로덕트 디자이너 평균 연봉 (범위 $89K~$149K) <a class="src-link" href="https://www.uxdesigninstitute.com/blog/ux-designer-salaries-in-the-us-2026/" target="_blank">↗ UX Design Institute</a></div>
+      </div>
+      <div class="stat-card" style="--card-color: #f76b6b;">
+        <div class="label">AI 역량 필수 요구율</div>
+        <div class="value">73%</div>
+        <div class="desc">AI 도구 능숙도를 채용 필수 조건으로 명시한 기업 비율 <a class="src-link" href="https://www.figma.com/blog/why-demand-for-designers-is-on-the-rise/" target="_blank">↗ Figma Survey 2026</a></div>
+      </div>
+      <div class="stat-card" style="--card-color: #56cfb2;">
+        <div class="label">시니어 수요 비율</div>
+        <div class="value">56%</div>
+        <div class="desc">시니어 디자이너 채용 수요가 증가한다고 답한 채용 담당자 비율 <a class="src-link" href="https://www.figma.com/blog/why-demand-for-designers-is-on-the-rise/" target="_blank">↗ Figma Survey 2026</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 시장 개요 -->
+  <div class="section">
+    <div class="section-label">
+      <div class="num">2</div>
+      <h2>시장 현황 및 채용 트렌드</h2>
+    </div>
+    <div class="insight-grid">
+      <div class="insight-card">
+        <span class="icon">⚡</span>
+        <h3>2026년 새 레이오프 물결 — AI 투자 재원 조달</h3>
+        <p>2026년 들어 레이오프가 재가속됐습니다. 5월 25일 기준 <strong style="color:var(--warn);">약 143,000명</strong>(339개사)이 감원됐고<a class="src-link" href="https://layoffs.fyi/" target="_blank">↗ Layoffs.fyi</a>, 연간 전망치는 370,000명<a class="src-link" href="https://www.trueup.io/layoffs" target="_blank">↗ TrueUp</a>. Q1만으로도 81,700명으로 2023년 초 이후 최고치입니다. 주목할 점은 Meta(8,000명, 5월 20일)·Microsoft(8,750명) 등 빅테크가 <em>AI 인프라 투자 재원 마련</em>을 명시적 이유로 밝히고 있다는 것입니다<a class="src-link" href="https://www.cnbc.com/2026/04/24/20k-job-cuts-at-meta-microsoft-raise-concern-of-ai-labor-crisis-.html" target="_blank">↗ CNBC</a>. Meta·Amazon·Microsoft·Google의 2026년 AI capex 합계는 $725B으로 전년 대비 75% 증가<a class="src-link" href="https://invezz.com/news/2026/05/04/is-big-techs-725b-ai-splurge-being-funded-by-mass-layoffs/" target="_blank">↗ Invezz</a>. 직접 해고보다 채용 동결로 헤드카운트를 줄이는 패턴도 확산 중입니다(Meta, 6,000개 공석 미충원).</p>
+      </div>
+      <div class="insight-card">
+        <span class="icon">🎯</span>
+        <h3>시니어 인재에 집중된 수요</h3>
+        <p>채용 담당자의 56%가 시니어 디자이너 수요 증가를 보고한 반면, 주니어 포지션 수요 증가는 25%에 그쳤습니다<a class="src-link" href="https://www.figma.com/blog/why-demand-for-designers-is-on-the-rise/" target="_blank">↗ Figma Survey 2026</a>. 조직이 대형 팀보다는 소규모 고역량 팀 구조를 선호하면서, 전략적 판단력과 기술적 깊이를 갖춘 시니어 인재 경쟁이 심화되고 있습니다.</p>
+      </div>
+      <div class="insight-card">
+        <span class="icon">🤝</span>
+        <h3>크로스펑셔널 협업 능력 부상</h3>
+        <p>Nielsen Norman Group의 2026 State of UX 리포트는 크로스펑셔널 협업 — PM, 엔지니어, 데이터 분석가와의 긴밀한 파트너십 — 을 디자이너의 핵심 차별화 역량으로 명시했습니다<a class="src-link" href="https://www.nngroup.com/articles/state-of-ux-2026/" target="_blank">↗ NNg 2026</a>. 이제 협업 경험은 선택이 아닌 기본 요건입니다.</p>
+      </div>
+      <div class="insight-card">
+        <span class="icon">🌏</span>
+        <h3>하이브리드 근무 표준화</h3>
+        <p>많은 테크 기업들이 하이브리드 모델로 전환하면서, 완전 원격 포지션은 줄어들고 있습니다. 반면 글로벌 채용 기회는 확대되어, 한국 시장에서도 해외 원격 포지션 접근성이 높아지고 있습니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. AI의 영향 -->
+  <div class="section">
+    <div class="section-label">
+      <div class="num">3</div>
+      <h2>AI가 프로덕트 디자이너 직업에 미치는 영향</h2>
+    </div>
+
+    <div class="two-col" style="margin-bottom: 16px;">
+      <div class="bar-section">
+        <h3>AI 도입 후 디자이너 체감 변화 <a class="src-link" style="margin-left:4px;" href="https://www.figma.com/blog/state-of-the-designer-2026/" target="_blank">↗ Figma State of the Designer 2026</a></h3>
+        <div class="bar-item">
+          <div class="bar-label"><span class="name">더 나은 디자인 결과물 창출</span><span class="pct">91%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:91%; --bar-color: #7c6ef7;"></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label"><span class="name">업무 속도 향상</span><span class="pct">89%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:89%; --bar-color: #56cfb2;"></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label"><span class="name">AI 도구 필수 역량 인식 (채용자)</span><span class="pct">73%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:73%; --bar-color: #f7a24b;"></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label"><span class="name">AI 제품 디자인 역량 필수 인식</span><span class="pct">79%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:79%; --bar-color: #a99ef9;"></div></div>
+        </div>
+      </div>
+
+      <div class="bar-section">
+        <h3>AI 관련 채용 공고에서 가장 많이 요구되는 역량 <a class="src-link" style="margin-left:4px;" href="https://designlab.com/blog/ai-in-ux-product-design-trends-2026" target="_blank">↗ Designlab 2026</a></h3>
+        <div class="bar-item">
+          <div class="bar-label"><span class="name">디자인 (UX/Product)</span><span class="pct">1위</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:95%; --bar-color: #7c6ef7;"></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label"><span class="name">프로그래밍</span><span class="pct">2위</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:72%; --bar-color: #56cfb2;"></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label"><span class="name">클라우드 인프라</span><span class="pct">3위</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:55%; --bar-color: #f7a24b;"></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-label"><span class="name">데이터 사이언스</span><span class="pct">4위</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:42%; --bar-color: #f76b6b;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="risk-grid">
+      <div class="risk-card" style="border-color: rgba(247,107,107,0.3);">
+        <h3><span style="color: var(--warn);">⚠</span> &nbsp;AI로 대체 위험이 높은 영역</h3>
+        <ul>
+          <li>단순 와이어프레임 및 목업 제작</li>
+          <li>에셋 export 및 스펙 문서화</li>
+          <li>반복적인 UI 컴포넌트 생성</li>
+          <li>기본 리서치 데이터 수집 및 정리</li>
+          <li>아이콘 및 일러스트레이션 제작</li>
+        </ul>
+      </div>
+      <div class="risk-card" style="border-color: rgba(86,207,178,0.3);">
+        <h3><span style="color: var(--accent2);">✓</span> &nbsp;AI 시대에 더 가치 있어지는 역량</h3>
+        <ul>
+          <li>사용자 공감 및 인사이트 발굴</li>
+          <li>전략적 문제 정의와 프레이밍</li>
+          <li>AI 산출물의 품질 판단 및 큐레이션</li>
+          <li>디자인 시스템 설계 및 거버넌스</li>
+          <li>경영진 스테이크홀더 커뮤니케이션</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px;">
+      <p style="font-size: 14px; color: var(--text-muted); line-height: 1.8;">
+        <strong style="color: var(--text);">핵심 메시지:</strong> AI는 프로덕트 디자이너를 대체하는 것이 아니라 <em style="color: var(--accent);">'분류'</em>하고 있습니다. 픽셀 조작 속도가 유일한 강점인 디자이너는 위협을 받고 있지만, 공감 능력, 전략적 판단력, 명확한 문제 정의를 갖춘 디자이너는 2년 전보다 훨씬 더 가치 있어졌습니다. AI 관련 채용 공고에서 디자인 역량은 프로그래밍, 클라우드, 데이터 사이언스를 합친 것보다 더 많이 요구됩니다.
+      </p>
+    </div>
+  </div>
+
+  <!-- 4. 연봉 현황 -->
+  <div class="section">
+    <div class="section-label">
+      <div class="num">4</div>
+      <h2>연봉 현황 — 글로벌 & 한국</h2>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <p style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px;">🇺🇸 미국 연봉 (USD)</p>
+        <div class="salary-table">
+          <table>
+            <thead>
+              <tr><th>직급</th><th>연봉 범위</th><th>상태</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Junior (0-2년)</td><td>$65K – $85K</td><td><span class="badge badge-yellow">경쟁 심화</span></td></tr>
+              <tr><td>Mid (2-5년)</td><td>$85K – $115K</td><td><span class="badge badge-green">안정</span></td></tr>
+              <tr><td>Senior (5-8년)</td><td>$115K – $150K</td><td><span class="badge badge-green">수요 높음</span></td></tr>
+              <tr><td>Staff/Principal</td><td>$150K – $200K+</td><td><span class="badge badge-purple">희소 고가치</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <p style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px;">🇰🇷 한국 연봉 (만원/년)</p>
+        <div class="salary-table">
+          <table>
+            <thead>
+              <tr><th>직급</th><th>연봉 범위</th><th>회사 규모</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>신입 (0-2년)</td><td>3,200 – 3,800만</td><td>일반 기업</td></tr>
+              <tr><td>주니어 (2-4년)</td><td>3,800 – 5,000만</td><td>스타트업</td></tr>
+              <tr><td>미드 (4-6년)</td><td>5,000 – 7,000만</td><td>유니콘/대기업</td></tr>
+              <tr><td>시니어 (6년+)</td><td>8,000 – 1억 4천만</td><td>서울 대형사</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 14px; padding: 16px 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; font-size: 13px; color: var(--text-muted);">
+      <strong style="color: var(--text);">참고 <a class="src-link" href="https://www.levels.fyi/t/product-designer/locations/seoul-kor" target="_blank">↗ levels.fyi Seoul</a>:</strong> levels.fyi 기준 서울 프로덕트 디자이너 전체 중앙값은 약 ₩82,266,524 (~$59,600 USD)입니다. 구글코리아·삼성 등 대형 글로벌사 재직 시니어의 경우 $145K–$166K+ 사례가 보고되나 표본 수가 적어 대표값으로 보기 어렵습니다. 국내 IT 기업(카카오·네이버 등) 시니어 기준은 ₩8,000만–₩1억 4,000만 <a class="src-link" href="https://prime-career.com/article/10449" target="_blank">↗ 프라임 커리어</a>입니다.
+    </div>
+  </div>
+
+  <!-- 5. 주요 도시별 채용 현황 -->
+  <div class="section">
+    <div class="section-label">
+      <div class="num">5</div>
+      <h2>미국 주요 도시별 프로덕트 디자이너 채용 현황</h2>
+    </div>
+
+    <p style="font-size:13px; color:var(--text-dim); margin-bottom:20px;">
+      As of May 2026 · <a class="src-link" style="margin-left:0;" href="https://builtin.com/salaries/design/product-designer" target="_blank">↗ Built In</a> <a class="src-link" href="https://www.glassdoor.com/Salaries/product-designer-salary-SRCH_KO0,16.htm" target="_blank">↗ Glassdoor</a> <a class="src-link" href="https://www.ziprecruiter.com/Salaries/Product-Designer-Salary" target="_blank">↗ ZipRecruiter</a> <a class="src-link" href="https://wellfound.com/role/r/product-designer" target="_blank">↗ Wellfound</a> <a class="src-link" href="https://www.levels.fyi/t/product-designer" target="_blank">↗ levels.fyi</a> <a class="src-link" href="https://www.salary.com/research/salary/benchmark/product-designer-salary" target="_blank">↗ Salary.com</a> 종합
+    </p>
+
+    <!-- City salary overview bar chart -->
+    <div class="bar-section" style="margin-bottom:16px;">
+      <h3>도시별 프로덕트 디자이너 평균 연봉 (USD, 전 직급 합산)</h3>
+      <div class="bar-item">
+        <div class="bar-label"><span class="name">San Francisco / Bay Area, CA</span><span class="pct">$150K–$197K</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:99%;--bar-color:#7c6ef7;"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span class="name">New York City, NY</span><span class="pct">$130K–$150K</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:78%;--bar-color:#56cfb2;"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span class="name">Seattle, WA</span><span class="pct">$138K–$172K</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:86%;--bar-color:#a99ef9;"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span class="name">Boston, MA</span><span class="pct">$94K–$173K</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:70%;--bar-color:#56cfb2;"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span class="name">Los Angeles, CA</span><span class="pct">~$114K</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:60%;--bar-color:#f7a24b;"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span class="name">Denver, CO</span><span class="pct">~$103K</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:54%;--bar-color:#f7a24b;"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span class="name">Chicago, IL</span><span class="pct">~$102K</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:52%;--bar-color:#f7a24b;"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span class="name">Austin, TX</span><span class="pct">~$110K</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:57%;--bar-color:#f7a24b;"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span class="name">Remote (US-based)</span><span class="pct">~$145K</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:74%;--bar-color:#888899;"></div></div>
+      </div>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:12px;">Sources: <a class="src-link" style="margin-left:0;" href="https://builtin.com/salaries/design/product-designer" target="_blank">↗ Built In</a> <a class="src-link" href="https://www.ziprecruiter.com/Salaries/Product-Designer-Salary" target="_blank">↗ ZipRecruiter</a> <a class="src-link" href="https://www.glassdoor.com/Salaries/product-designer-salary-SRCH_KO0,16.htm" target="_blank">↗ Glassdoor</a> <a class="src-link" href="https://wellfound.com/role/r/product-designer" target="_blank">↗ Wellfound</a> 2026. 범위는 Junior~Senior 포함 전 직급 집계.</p>
+    </div>
+
+    <!-- City deep-dive table -->
+    <div class="salary-table" style="margin-bottom:16px;">
+      <table>
+        <thead>
+          <tr>
+            <th>City</th>
+            <th>Junior (0–2y)</th>
+            <th>Mid (2–5y)</th>
+            <th>Senior (5y+)</th>
+            <th>주요 고용 산업</th>
+            <th>시장 특성</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>San Francisco<br>/ Bay Area, CA</strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">국가 대비 +35~40%</span>
+            </td>
+            <td>$85K–$110K</td>
+            <td>$120K–$155K</td>
+            <td>$155K–$215K+</td>
+            <td style="font-size:12px;">AI/ML · SaaS · Consumer Tech · VC-backed Startups</td>
+            <td><span class="badge badge-red">경쟁 극심</span><br><span style="font-size:11px;color:var(--text-muted);">채용 공고 감소, 높은 생계비. 시니어 이상 필요</span></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>New York City, NY</strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">국가 대비 +15~20%</span>
+            </td>
+            <td>$62K–$84K</td>
+            <td>$105K–$130K</td>
+            <td>$165K–$216K</td>
+            <td style="font-size:12px;">Fintech · Media · Healthcare · E-commerce · Adtech</td>
+            <td><span class="badge badge-yellow">활발</span><br><span style="font-size:11px;color:var(--text-muted);">글로벌 #2 핀테크 허브. Google NYC avg $336K total comp</span></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Seattle, WA</strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">국가 대비 +18%</span>
+            </td>
+            <td>$81K–$95K</td>
+            <td>$122K–$140K</td>
+            <td>$152K–$190K</td>
+            <td style="font-size:12px;">Cloud/AWS · Enterprise SaaS · Gaming · E-commerce</td>
+            <td><span class="badge badge-red">레이오프 타격</span><br><span style="font-size:11px;color:var(--text-muted);">Amazon+Microsoft 거점. 2026년 16,590명 감원 #1 도시. AWS AI 포지션만 증가세</span></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Boston, MA</strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">국가 대비 +10~15%</span>
+            </td>
+            <td>$84K–$131K</td>
+            <td>$94K–$145K</td>
+            <td>$118K–$173K</td>
+            <td style="font-size:12px;">HealthTech · BioTech · EdTech · Financial Services</td>
+            <td><span class="badge badge-green">성장세</span><br><span style="font-size:11px;color:var(--text-muted);">의료·생명과학 UX 수요 증가. MIT·Harvard 연계 스타트업 생태계</span></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Los Angeles, CA</strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">국가 평균 근접</span>
+            </td>
+            <td>$72K–$90K</td>
+            <td>$95K–$125K</td>
+            <td>$125K–$160K</td>
+            <td style="font-size:12px;">Entertainment · Streaming · Gaming · Creator Economy</td>
+            <td><span class="badge badge-yellow">안정</span><br><span style="font-size:11px;color:var(--text-muted);">엔터테인먼트·미디어 UX 특화. Netflix, Hulu, Riot Games 거점</span></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Austin, TX</strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">국가 평균 근접</span>
+            </td>
+            <td>$68K–$85K</td>
+            <td>$88K–$115K</td>
+            <td>$115K–$145K</td>
+            <td style="font-size:12px;">SaaS · Semiconductors · Government Tech</td>
+            <td><span class="badge badge-red">Oracle 타격</span><br><span style="font-size:11px;color:var(--text-muted);">Oracle 20K–30K 감원 직격. 그러나 Dell·AMD·Tesla 거점으로 복구 가능성</span></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Chicago, IL</strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">국가 평균 -5%</span>
+            </td>
+            <td>$65K–$82K</td>
+            <td>$88K–$112K</td>
+            <td>$112K–$145K</td>
+            <td style="font-size:12px;">Fintech · Insurance · B2B SaaS · Retail Tech</td>
+            <td><span class="badge badge-yellow">안정</span><br><span style="font-size:11px;color:var(--text-muted);">스타트업 생태계 중소형. 생계비 낮아 실질 구매력은 NYC 수준에 근접</span></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Denver, CO</strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">국가 평균 근접</span>
+            </td>
+            <td>$65K–$82K</td>
+            <td>$88K–$112K</td>
+            <td>$112K–$140K</td>
+            <td style="font-size:12px;">HealthTech · Gov/Defense · SaaS · Outdoor/Retail</td>
+            <td><span class="badge badge-green">신흥 허브</span><br><span style="font-size:11px;color:var(--text-muted);">SF에서 이주한 테크 인력 집중. 생계비 대비 연봉 효율 상위권</span></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Remote (US)</strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">위치 독립</span>
+            </td>
+            <td>$70K–$90K</td>
+            <td>$105K–$135K</td>
+            <td>$135K–$175K</td>
+            <td style="font-size:12px;">Remote-first SaaS · Open Source · Distributed Teams</td>
+            <td><span class="badge badge-yellow">감소세</span><br><span style="font-size:11px;color:var(--text-muted);">원격 공고 2021년 대비 ~30% 감소. Meta·Amazon·Google RTO 의무화 확산</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- City spotlight cards: NYC & SF -->
+    <div class="two-col" style="margin-bottom:16px;">
+
+      <!-- NYC deep dive -->
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:14px; overflow:hidden;">
+        <div style="padding:18px 20px 14px; border-bottom:1px solid var(--border); background:var(--surface2);">
+          <div style="font-size:15px; font-weight:700; margin-bottom:4px;">🗽 New York City — 심층 분석</div>
+          <div style="font-size:12px; color:var(--text-muted);">글로벌 핀테크 #2 허브 · 2026년 가장 다양한 도메인 채용</div>
+        </div>
+        <div style="padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
+          <div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-bottom:6px;">직급별 연봉 (Glassdoor / levels.fyi 2026)</div>
+            <div style="font-size:13px; color:var(--text-muted); line-height:1.7;">
+              Junior &nbsp;&nbsp;→ &nbsp;<strong style="color:var(--text);">$62K–$84K</strong>&nbsp; (avg $62K, ZipRecruiter)<br>
+              Mid &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ &nbsp;<strong style="color:var(--text);">$105K–$130K</strong>&nbsp; (1–4년 avg $104K, PayScale)<br>
+              Senior &nbsp;→ &nbsp;<strong style="color:var(--text);">$165K–$216K</strong>&nbsp; (avg $216K, Glassdoor)<br>
+              Top 10% → &nbsp;<strong style="color:var(--accent);">$366K+</strong>&nbsp; (Glassdoor 90th pct)<br>
+              Google NYC → &nbsp;<strong style="color:var(--accent);">avg $336K</strong>&nbsp; total comp (levels.fyi)
+            </div>
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-bottom:6px;">핵심 고용 섹터</div>
+            <div class="pill-list">
+              <span class="pill hot">Fintech</span>
+              <span class="pill hot">AI/ML Startups</span>
+              <span class="pill">Media &amp; Adtech</span>
+              <span class="pill">Healthcare</span>
+              <span class="pill">E-commerce</span>
+              <span class="pill">Consulting</span>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-bottom:6px;">2026년 적극 채용 중인 NYC 기업 유형</div>
+            <div style="font-size:13px; color:var(--text-muted); line-height:1.7;">
+              Bloomberg · Goldman Sachs · JPMorgan (핀테크 UX)<br>
+              NYC 핀테크 스타트업 30개사 이상 적극 채용 (Brex, Lili 등)<br>
+              Condé Nast · NBCUniversal (미디어)<br>
+              Google NYC · Meta NYC (빅테크 오피스)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SF deep dive -->
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:14px; overflow:hidden;">
+        <div style="padding:18px 20px 14px; border-bottom:1px solid var(--border); background:var(--surface2);">
+          <div style="font-size:15px; font-weight:700; margin-bottom:4px;">🌉 San Francisco / Bay Area — 심층 분석</div>
+          <div style="font-size:12px; color:var(--text-muted);">AI 시대 최전선 · 높은 연봉, 높은 경쟁, 높은 생계비</div>
+        </div>
+        <div style="padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
+          <div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-bottom:6px;">직급별 연봉 (Built In / Wellfound 2026)</div>
+            <div style="font-size:13px; color:var(--text-muted); line-height:1.7;">
+              Junior &nbsp;&nbsp;→ &nbsp;<strong style="color:var(--text);">$85K–$110K</strong><br>
+              Mid &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ &nbsp;<strong style="color:var(--text);">$120K–$155K</strong><br>
+              Senior &nbsp;→ &nbsp;<strong style="color:var(--text);">$155K–$215K</strong><br>
+              Startup avg → &nbsp;<strong style="color:var(--accent);">$131K</strong>&nbsp; (Wellfound)<br>
+              SF overall avg → &nbsp;<strong style="color:var(--accent);">~$197K</strong>&nbsp; (Salary.com)
+            </div>
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-bottom:6px;">핵심 고용 섹터</div>
+            <div class="pill-list">
+              <span class="pill hot">AI / LLM</span>
+              <span class="pill hot">Consumer SaaS</span>
+              <span class="pill">Developer Tools</span>
+              <span class="pill">Crypto / Web3</span>
+              <span class="pill">Biotech</span>
+              <span class="pill">Mobility</span>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-bottom:6px;">2026년 SF 시장 경고 신호</div>
+            <div style="font-size:13px; color:var(--text-muted); line-height:1.7;">
+              오피스 공실률 <strong style="color:var(--accent3);">~30.4%</strong> (Q1 2026, CBRE)<a class="src-link" href="https://www.cbre.com/insights/figures/san-francisco-office-figures-q1-2026" target="_blank">↗ CBRE Q1 2026</a><br>
+              Meta·Salesforce·Block 본사 인력 대규모 감축<br>
+              주니어 공고 수 전국 평균 대비 더 빠르게 감소<br>
+              AI 스타트업 시니어·Staff 포지션만 증가세 유지
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cost of living adjusted -->
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:24px;">
+      <p style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); margin-bottom:16px;">실구매력 기준 연봉 비교 — $120K를 받는다면?</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px; margin-bottom:16px;">
+        <div style="background:var(--surface2); border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:12px; color:var(--text-dim); margin-bottom:4px;">San Francisco</div>
+          <div style="font-size:22px; font-weight:800; color:var(--warn);">$120K</div>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">생계비 최고<br>실구매력 기준</div>
+        </div>
+        <div style="background:var(--surface2); border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:12px; color:var(--text-dim); margin-bottom:4px;">New York City</div>
+          <div style="font-size:22px; font-weight:800; color:var(--accent3);">$115K</div>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">SF와 유사한<br>구매력</div>
+        </div>
+        <div style="background:var(--surface2); border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:12px; color:var(--text-dim); margin-bottom:4px;">Seattle</div>
+          <div style="font-size:22px; font-weight:800; color:var(--accent3);">$130K</div>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">SF $120K보다<br>실구매력 +8%</div>
+        </div>
+        <div style="background:var(--surface2); border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:12px; color:var(--text-dim); margin-bottom:4px;">Austin</div>
+          <div style="font-size:22px; font-weight:800; color:var(--accent2);">$155K</div>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">SF $120K보다<br>실구매력 +29%</div>
+        </div>
+        <div style="background:var(--surface2); border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:12px; color:var(--text-dim); margin-bottom:4px;">Chicago</div>
+          <div style="font-size:22px; font-weight:800; color:var(--accent2);">$158K</div>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">SF $120K보다<br>실구매력 +32%</div>
+        </div>
+        <div style="background:var(--surface2); border-radius:10px; padding:14px; text-align:center;">
+          <div style="font-size:12px; color:var(--text-dim); margin-bottom:4px;">Denver</div>
+          <div style="font-size:22px; font-weight:800; color:var(--accent2);">$160K</div>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">SF $120K보다<br>실구매력 +33%</div>
+        </div>
+      </div>
+      <div class="recruiter-tip" style="margin-bottom:0;">
+        <div class="rt-label">Geographic Arbitrage</div>
+        <p>Remote-first 기업(GitLab, Zapier, Automattic)은 위치에 관계없이 동일 보상을 제공. Remote-optional 기업(Google, Meta, Stripe)은 거주지 기반 생계비 배율을 적용. SF 급여를 받으며 Austin·Denver·Chicago에 거주하면 연간 실질 $12K–$18K의 추가 절감 효과(통근비·식비·의류비 제거 포함).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. 주니어~미드레벨 역량 심층 분석 -->
+  <div class="section">
+    <div class="section-label">
+      <div class="num">6</div>
+      <h2>주니어~미드레벨 요구 역량 심층 분석</h2>
+    </div>
+
+    <p style="font-size: 13px; color: var(--text-dim); margin-bottom: 20px;">
+      LinkedIn 채용 공고 분석 · CareerFoundry · UXfolio · Her UX Path · Smashing Magazine · UX Playbook (2026) 기반
+    </p>
+
+    <!-- Junior vs Mid comparison -->
+    <div class="two-col" style="margin-bottom: 16px; align-items: start;">
+
+      <!-- Junior Card -->
+      <div class="skill-level-card">
+        <div class="slc-header">
+          <div class="slc-title">주니어 (Junior) &nbsp;<span class="badge badge-red">경쟁 극심</span></div>
+          <div class="slc-sub">경력 0~2년 · 미국 기준 $65K–$85K · 국내 3,200~4,500만원</div>
+        </div>
+
+        <div class="slc-section-label">핵심 툴 & 기술</div>
+        <div class="skill-item">
+          <div class="sname">Figma 완숙도</div>
+          <div class="sdesc">와이어프레임 → 하이파이 목업 → 인터랙티브 프로토타입까지 단독 수행. Auto-layout, 컴포넌트, 변수(Variables) 이해 필수.</div>
+          <span class="stag stag-must">MUST</span>
+        </div>
+        <div class="skill-item">
+          <div class="sname">AI 도구 워크플로우 통합</div>
+          <div class="sdesc">Figma AI, Claude, v0 등을 실무에 통합한 경험. 채용 담당자의 78%가 포트폴리오에서 AI 활용 여부를 평가. 단순 사용이 아닌 워크플로우 개선에 기여했음을 증명해야 함.</div>
+          <span class="stag stag-new">2026 NEW</span>
+        </div>
+        <div class="skill-item">
+          <div class="sname">HTML / CSS 기초</div>
+          <div class="sdesc">직접 코딩하지 않더라도 기초 이해는 엔지니어와의 협업 품질을 높이는 결정적 차별화 요소. LinkedIn JD 분석에서 "구현 가능성 인식" 요구가 증가 중.</div>
+          <span class="stag stag-plus">차별화</span>
+        </div>
+
+        <div class="slc-section-label">UX 프로세스</div>
+        <div class="skill-item">
+          <div class="sname">유저 리서치 기초</div>
+          <div class="sdesc">1:1 인터뷰 진행, 설문 설계, 사용성 테스트 실행. 단순 참여가 아닌 계획~분석까지 수행한 경험이 JD에 명시되는 비율이 늘고 있음.</div>
+          <span class="stag stag-must">MUST</span>
+        </div>
+        <div class="skill-item">
+          <div class="sname">페르소나 & 저니맵</div>
+          <div class="sdesc">리서치 결과를 구조화된 결과물로 전환하는 능력. 데이터 없이 임의로 만든 페르소나는 오히려 감점 요인.</div>
+          <span class="stag stag-must">MUST</span>
+        </div>
+        <div class="skill-item">
+          <div class="sname">WCAG 2.2 접근성</div>
+          <div class="sdesc">색상 대비, 키보드 내비게이션, 스크린 리더 호환성. 2026년 LinkedIn JD에서 접근성 명시 비율이 전년 대비 40% 증가.</div>
+          <span class="stag stag-must">MUST</span>
+        </div>
+
+        <div class="slc-section-label">소프트 스킬 & 전략</div>
+        <div class="skill-item">
+          <div class="sname">도메인 집중 전략</div>
+          <div class="sdesc">제너럴리스트 주니어는 채용이 가장 어렵다. 핀테크, 헬스케어, AI SaaS 등 1개 버티컬에 집중한 포트폴리오가 합격률을 높임 (UX Playbook 2026).</div>
+          <span class="stag stag-plus">강력 권장</span>
+        </div>
+        <div class="skill-item">
+          <div class="sname">피드백 수용 & 빠른 이터레이션</div>
+          <div class="sdesc">채용 인터뷰에서 "피드백을 받고 어떻게 디자인을 바꿨는가"를 묻는 빈도 증가. 케이스 스터디에 수정 과정을 명시하는 것이 유리.</div>
+          <span class="stag stag-must">MUST</span>
+        </div>
+      </div>
+
+      <!-- Mid-Level Card -->
+      <div class="skill-level-card">
+        <div class="slc-header">
+          <div class="slc-title">미드레벨 (Mid-Level) &nbsp;<span class="badge badge-yellow">경쟁적</span></div>
+          <div class="slc-sub">경력 2~5년 · 미국 기준 $85K–$115K · 국내 4,500~7,000만원</div>
+        </div>
+
+        <div class="slc-section-label">고급 기술 역량</div>
+        <div class="skill-item">
+          <div class="sname">디자인 시스템 구축 & 운영</div>
+          <div class="sdesc">컴포넌트 라이브러리 설계, 디자인 토큰 관리, 팀 전반의 일관성 유지. 단순 사용자가 아닌 기여자 또는 메인테이너 경험이 요구됨. 소규모 팀 구조 선호 트렌드로 수요 급증.</div>
+          <span class="stag stag-must">MUST</span>
+        </div>
+        <div class="skill-item">
+          <div class="sname">AI 제품 경험 설계</div>
+          <div class="sdesc">AI 기능의 설명 가능성(Explainability), 사용자 신뢰 패턴, 불확실성 상태 처리 등 AI 특유의 UX 문제 해결 경험. "AI UX"를 명시한 JD가 2025 대비 2배 이상 증가.</div>
+          <span class="stag stag-new">2026 NEW</span>
+        </div>
+        <div class="skill-item">
+          <div class="sname">엔지니어 핸드오프 최적화</div>
+          <div class="sdesc">Figma Dev Mode 활용, 애니메이션 스펙 문서화, 엣지 케이스 명세. 개발 일정을 단축시킨 경험을 수치로 제시할 수 있으면 강점.</div>
+          <span class="stag stag-must">MUST</span>
+        </div>
+
+        <div class="slc-section-label">리서치 & 데이터</div>
+        <div class="skill-item">
+          <div class="sname">유저 리서치 주도</div>
+          <div class="sdesc">리서치 플랜 수립, 모집·진행·분석·인사이트 도출 전 과정 주도. 리서치 결과를 제품 로드맵에 반영한 사례가 있어야 함.</div>
+          <span class="stag stag-must">MUST</span>
+        </div>
+        <div class="skill-item">
+          <div class="sname">임팩트 지표 정의 & 측정</div>
+          <div class="sdesc">전환율, NPS, 태스크 완료율, 이탈율 등 지표를 직접 정의하고 측정한 경험. "디자인이 비즈니스에 어떻게 기여했는가"를 수치로 증명하는 능력이 미드→시니어 전환의 핵심.</div>
+          <span class="stag stag-must">MUST</span>
+        </div>
+        <div class="skill-item">
+          <div class="sname">A/B 테스트 설계</div>
+          <div class="sdesc">가설 수립, 테스트 설계, 결과 해석. PM·데이터 팀과 협업한 실험 경험. Amplitude, Mixpanel 등 분석 툴의 기초 이해 필요.</div>
+          <span class="stag stag-plus">차별화</span>
+        </div>
+
+        <div class="slc-section-label">리더십 & 협업</div>
+        <div class="skill-item">
+          <div class="sname">크로스펑셔널 협업 주도</div>
+          <div class="sdesc">PM, 엔지니어, 데이터 분석가, 마케팅과의 협업을 단순 참여가 아닌 주도한 경험. 채용 담당자 90%가 최우선 역량으로 평가 (Figma 서베이).</div>
+          <span class="stag stag-must">MUST</span>
+        </div>
+        <div class="skill-item">
+          <div class="sname">도메인 심화 전문성</div>
+          <div class="sdesc">B2B SaaS, 커머스, 금융 등 특정 도메인에서 2년 이상 축적된 패턴 이해. 조직이 팀 규모를 줄이면서 "이미 아는 사람"에 대한 수요가 증가.</div>
+          <span class="stag stag-plus">강력 권장</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portfolio Requirements -->
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin-bottom: 16px;">
+      <p style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 18px;">포트폴리오 합격 기준 (채용 담당자 피드백 기반)</p>
+      <ul class="port-checklist">
+        <li>
+          <span class="pc-icon">📁</span>
+          <span><strong>3~5개 케이스 스터디만</strong> — 많을수록 불리. "가장 약한 프로젝트로 평가받는다." 신입은 3개로도 충분. 실무 경험이 없으면 사이드 프로젝트·리디자인도 유효.</span>
+        </li>
+        <li>
+          <span class="pc-icon">🔄</span>
+          <span><strong>프로세스 + 시각 품질 모두 필요</strong> — "프로세스만 강조하면 된다"는 구식 조언. 2026년 채용자는 아름다운 결과물과 탄탄한 스토리 둘 다 요구. 하나만 있으면 탈락.</span>
+        </li>
+        <li>
+          <span class="pc-icon">📊</span>
+          <span><strong>임팩트 지표 필수 제시</strong> — "전환율 18% 향상", "사용성 테스트 태스크 완료율 71%→92%". 수치 없는 케이스 스터디는 미드레벨 이상에서 감점 요인. (UXfolio 2026)</span>
+        </li>
+        <li>
+          <span class="pc-icon">🤖</span>
+          <span><strong>AI 활용 방식 명시</strong> — 리서치 합성, 아이디에이션, 프로토타이핑 중 어디에 AI를 썼는지 구체적으로 서술. 78% 채용 담당자가 포트폴리오에서 AI 역량을 적극 평가.</span>
+        </li>
+        <li>
+          <span class="pc-icon">⏱️</span>
+          <span><strong>3분 안에 포지셔닝이 읽혀야</strong> — 78%의 채용자가 AI 스크리닝을 사용. 이름·직함·핵심 강점이 첫 화면에서 명확해야 함. 포트폴리오 웹사이트 없으면 검토 제외 사례 증가.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Recruiter insights -->
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin-bottom: 16px;">
+      <p style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 16px;">채용 담당자가 실제로 보는 것 (UX Playbook · Muzli 2026)</p>
+      <div class="recruiter-tip">
+        <div class="rt-label">처음 5초</div>
+        <p>이름과 "Product Designer" 직함이 페이지 타이틀과 메타 설명에 있는가. 첫 스크롤 없이 보이는 영역에 포지셔닝·케이스 스터디 진입점이 있는가. 레이아웃 일관성이 UX 성숙도의 첫 신호.</p>
+      </div>
+      <div class="recruiter-tip">
+        <div class="rt-label">케이스 스터디 진입 후 30초</div>
+        <p>문제 정의 → 리서치 → 솔루션 → 결과 아크가 명확한가. "왜 이 결정을 내렸는가"에 대한 설명이 있는가. 수정 과정(iteration)이 드러나는가. 빠른 스캔이 가능한 시각 구조인가.</p>
+      </div>
+      <div class="recruiter-tip">
+        <div class="rt-label">주니어 vs 미드레벨을 가르는 기준</div>
+        <p>주니어: "이 디자인을 만들 수 있는가." 미드레벨: "이 디자인이 비즈니스 문제를 어떻게 해결했는가, 그 결과는 무엇인가." 지표 없이 "팀과 협업해서 좋은 디자인을 만들었다"는 표현은 주니어 포지셔닝으로 읽힘.</p>
+      </div>
+    </div>
+
+    <!-- Tools by level -->
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px;">
+      <p style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 16px;">직급별 도구 숙련도 우선순위</p>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div>
+          <p style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px;">주니어 필수</p>
+          <div class="pill-list">
+            <span class="pill hot">Figma (Auto-layout, 컴포넌트)</span>
+            <span class="pill hot">Figma AI</span>
+            <span class="pill">Maze / Useberry (사용성 테스트)</span>
+            <span class="pill">Miro / FigJam</span>
+            <span class="pill">Notion</span>
+            <span class="pill hot">Claude / ChatGPT (리서치 합성)</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px;">미드레벨 추가 요구</p>
+          <div class="pill-list">
+            <span class="pill hot">Figma Variables / Dev Mode</span>
+            <span class="pill hot">v0 / Figma Make</span>
+            <span class="pill">Amplitude / Mixpanel</span>
+            <span class="pill">Protopie (고급 인터랙션)</span>
+            <span class="pill">Framer</span>
+            <span class="pill">Lottie / Rive</span>
+          </div>
+        </div>
+      </div>
+      <p style="font-size: 12px; color: var(--text-dim); margin-top: 14px;"><span style="background: rgba(124,110,247,0.15); border: 1px solid rgba(124,110,247,0.3); color: #a99ef9; padding: 2px 8px; border-radius: 10px; font-size: 11px;">강조</span> 표시 = 2026년 채용 JD에서 급증 중인 요구사항</p>
+    </div>
+  </div>
+
+  <!-- 7. 직급별 전망 -->
+  <div class="section">
+    <div class="section-label">
+      <div class="num">7</div>
+      <h2>직급별 취업 난이도 전망</h2>
+    </div>
+    <div class="salary-table">
+      <table>
+        <thead>
+          <tr><th>직급</th><th>취업 난이도</th><th>핵심 차별화 요소</th><th>전망</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>신입/주니어</strong><br><span style="font-size: 12px; color: var(--text-muted);">0-2년</span></td>
+            <td><span class="badge badge-red">매우 치열</span></td>
+            <td>AI 도구 능숙도, 강력한 포트폴리오, 사이드 프로젝트</td>
+            <td style="color: var(--warn);">진입 장벽 높음, 공급 과잉</td>
+          </tr>
+          <tr>
+            <td><strong>미드레벨</strong><br><span style="font-size: 12px; color: var(--text-muted);">2-5년</span></td>
+            <td><span class="badge badge-yellow">경쟁적</span></td>
+            <td>제품 임팩트 수치화, 디자인 시스템 경험, 도메인 전문성</td>
+            <td style="color: var(--accent3);">꾸준한 수요, 안정적</td>
+          </tr>
+          <tr>
+            <td><strong>시니어</strong><br><span style="font-size: 12px; color: var(--text-muted);">5-8년</span></td>
+            <td><span class="badge badge-green">수요 우위</span></td>
+            <td>전략적 사고, 조직 영향력, AI 제품 리드 경험</td>
+            <td style="color: var(--accent2);">채용 수요 지속 증가</td>
+          </tr>
+          <tr>
+            <td><strong>Staff/Principal</strong><br><span style="font-size: 12px; color: var(--text-muted);">8년+</span></td>
+            <td><span class="badge badge-purple">희소 고가치</span></td>
+            <td>조직 변화 주도, C-suite 커뮤니케이션, 사업 전략 연계</td>
+            <td style="color: var(--accent);">파격적 처우, 포지션 희소</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 8. 주요 트렌드 타임라인 -->
+  <div class="section">
+    <div class="section-label">
+      <div class="num">8</div>
+      <h2>프로덕트 디자인의 변화 흐름</h2>
+    </div>
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 28px 28px 28px 40px;">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot" style="background: #f76b6b;"></div>
+          <h4>2022~2023 — 대규모 레이오프 & 채용 빙하기</h4>
+          <p>빅테크 중심의 대규모 구조조정. 주니어~미드 디자이너 공급 과잉 심화. 포트폴리오 요구 수준이 극적으로 상승.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background: #f7a24b;"></div>
+          <h4>2024 — AI 도구 대중화 & 시장 재편</h4>
+          <p>Figma AI, v0, GPT-4V 등 AI 설계 도구가 실무에 진입. 채용 JD에 AI 역량 요구가 처음으로 명시되기 시작. 단순 업무 자동화 가속.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background: #f7a24b;"></div>
+          <h4>2025 — 시장 안정화, 주니어 회복 지연</h4>
+          <p>시니어·제너럴리스트 포지션 먼저 회복. 주니어는 공급 과잉 지속. AI 도구 역량이 JD에 본격 명시되기 시작. 도메인 전문성 없는 제너럴리스트 주니어가 가장 채용 어려운 프로필로 고착.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background: #f76b6b;"></div>
+          <h4>2026년 1~5월 — 2차 레이오프 물결 (AI 투자 재원 조달)</h4>
+          <p><strong>5월 25일 기준 약 143,000명(339개사) 감원</strong>, 하루 평균 993명. Q1 81,700명으로 2023년 초 이후 최고 분기치. Meta 8,000명(5월 20일)·Microsoft 8,750명 명시적으로 "AI 투자 재원 마련" 언급. 빅4(Meta·Amazon·Microsoft·Google) AI capex $725B으로 전년比 +75%. AI 연계 감원이 전체의 20.4%로 급증(2025년 8% 미만 → 2026년). 직접 해고보다 <em>채용 동결(Hiring Freeze)</em>로 헤드카운트 축소하는 패턴 확산. AI 비중점 제품·디자인팀 타격 집중.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background: #7c6ef7;"></div>
+          <h4>2026년 하반기 예상 — AI 네이티브 역할 분화</h4>
+          <p>Figma Agent 베타(2026년 5월) 등 AI 도구 고도화 지속. AI 관련 채용 공고에서 디자인이 프로그래밍·데이터 사이언스 합산 대비 수요 1위. AI 트레이너·프롬프트 엔지니어·AI UX 스페셜리스트 신규 포지션 확대 예상.</p>
+        </div>
+        <div class="tl-item" style="margin-bottom: 0;">
+          <div class="tl-dot" style="background: #56cfb2;"></div>
+          <h4>2027~2030 — 성장 국면 진입 예상</h4>
+          <p>BLS 기준 2034년까지 7% 이상 성장 전망. 프로덕트 디자이너 직종은 15% 성장 예측. AI-인간 협업 최적화 능력이 핵심 차별화 요소로 고착화.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. 빅테크 기업별 레이오프 현황 -->
+  <div class="section">
+    <div class="section-label">
+      <div class="num">9</div>
+      <h2>빅테크·테크 기업별 2026 레이오프 현황</h2>
+    </div>
+
+    <p style="font-size: 13px; color: var(--text-dim); margin-bottom: 20px;">
+      As of May 25, 2026 · Sources: Layoffs.fyi · TrueUp · TechCrunch · CNBC · Computerworld · Crunchbase
+    </p>
+
+    <!-- Summary stats row -->
+    <div class="stat-grid" style="margin-bottom: 16px;">
+      <div class="stat-card" style="--card-color: #f76b6b;">
+        <div class="label">2026 YTD 총 감원</div>
+        <div class="value">142,985</div>
+        <div class="desc">339개사 · 하루 평균 993명 <a class="src-link" href="https://layoffs.fyi/" target="_blank">↗ Layoffs.fyi</a> <a class="src-link" href="https://www.trueup.io/layoffs" target="_blank">↗ TrueUp</a></div>
+      </div>
+      <div class="stat-card" style="--card-color: #f7a24b;">
+        <div class="label">Q1 2026 감원 수</div>
+        <div class="value">81,700</div>
+        <div class="desc">2023년 초 이후 최고 분기치 <a class="src-link" href="https://www.trueup.io/layoffs" target="_blank">↗ TrueUp</a></div>
+      </div>
+      <div class="stat-card" style="--card-color: #f76b6b;">
+        <div class="label">AI 연계 명시 감원 비율</div>
+        <div class="value">20.4%</div>
+        <div class="desc">2025년 8% 미만 → 2.5배 급증 <a class="src-link" href="https://www.techspot.com/news/112493-tech-layoffs-pass-100000-2026-tracker-points-ai.html" target="_blank">↗ TechSpot</a></div>
+      </div>
+      <div class="stat-card" style="--card-color: #a99ef9;">
+        <div class="label">빅4 AI capex 합계</div>
+        <div class="value">$725B</div>
+        <div class="desc">Meta·Amazon·Microsoft·Google 2026년 전년比 +75% <a class="src-link" href="https://invezz.com/news/2026/05/04/is-big-techs-725b-ai-splurge-being-funded-by-mass-layoffs/" target="_blank">↗ Invezz</a></div>
+      </div>
+    </div>
+
+    <!-- Company table -->
+    <div class="salary-table" style="margin-bottom: 16px;">
+      <table>
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Cuts (2026 YTD)</th>
+            <th>Timing</th>
+            <th>Teams Most Affected</th>
+            <th>Primary US Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Oracle</strong> <a class="src-link" href="https://www.kore1.com/oracle-layoffs-2026/" target="_blank">↗</a></td>
+            <td><span style="color:var(--warn);font-weight:700;">20,000–30,000</span><br><span style="font-size:11px;color:var(--text-muted);">~18% of workforce; 10K+ confirmed Apr 1</span></td>
+            <td>Mar–Apr 2026</td>
+            <td>Across all non-AI divisions; funding AI data-center expansion. Largest single employer event of 2026.</td>
+            <td>Austin, TX<br>Santa Clara, CA</td>
+          </tr>
+          <tr>
+            <td><strong>Amazon</strong> <a class="src-link" href="https://www.computerworld.com/article/3816579/tech-layoffs-this-year-a-timeline.html" target="_blank">↗</a></td>
+            <td><span style="color:var(--warn);font-weight:700;">~16,000</span><br><span style="font-size:11px;color:var(--text-muted);">Largest cumulative volume in 2026</span></td>
+            <td>Jan–May 2026</td>
+            <td>Devices, retail, logistics. AWS AI investment continues. Non-AWS roles bear most cuts.</td>
+            <td>Seattle, WA<br>New York, NY</td>
+          </tr>
+          <tr>
+            <td><strong>Meta</strong> <a class="src-link" href="https://www.cnbc.com/2026/04/24/20k-job-cuts-at-meta-microsoft-raise-concern-of-ai-labor-crisis-.html" target="_blank">↗</a></td>
+            <td><span style="color:var(--warn);font-weight:700;">8,000 direct</span><br><span style="font-size:11px;color:var(--text-muted);">+ 6,000 open roles unfilled</span></td>
+            <td>May 20, 2026</td>
+            <td>Reality Labs, non-AI product &amp; design teams, marketing. Memo explicitly cited "offsetting AI investment."</td>
+            <td>Menlo Park, CA<br>Seattle, WA</td>
+          </tr>
+          <tr>
+            <td><strong>Microsoft</strong> <a class="src-link" href="https://www.cnbc.com/2026/04/24/20k-job-cuts-at-meta-microsoft-raise-concern-of-ai-labor-crisis-.html" target="_blank">↗</a></td>
+            <td><span style="color:var(--warn);font-weight:700;">~9,000</span><br><span style="font-size:11px;color:var(--text-muted);">&lt;4% of global workforce</span></td>
+            <td>Apr 23, 2026</td>
+            <td>First voluntary buyout program in company's 51-year history. Duplicate roles eliminated amid AI restructuring.</td>
+            <td>Redmond, WA<br>New York, NY</td>
+          </tr>
+          <tr>
+            <td><strong>Block (Jack Dorsey)</strong> <a class="src-link" href="https://news.crunchbase.com/startups/tech-layoffs/" target="_blank">↗</a></td>
+            <td><span style="color:var(--warn);font-weight:700;">~4,000</span><br><span style="font-size:11px;color:var(--text-muted);">~40% of total workforce</span></td>
+            <td>Mar 2026</td>
+            <td>Across Cash App, Square, and Tidal units. CEO announced via internal memo tied to AI-first restructuring.</td>
+            <td>San Francisco, CA</td>
+          </tr>
+          <tr>
+            <td><strong>Cisco</strong> <a class="src-link" href="https://news.crunchbase.com/startups/tech-layoffs/" target="_blank">↗</a></td>
+            <td><span style="color:var(--accent3);font-weight:700;">~4,000</span><br><span style="font-size:11px;color:var(--text-muted);">~5% of global staff</span></td>
+            <td>Q1 2026</td>
+            <td>Networking and enterprise sales teams. Restructuring toward AI-driven security and cloud products.</td>
+            <td>San Jose, CA<br>Milpitas, CA</td>
+          </tr>
+          <tr>
+            <td><strong>Intuit</strong> <a class="src-link" href="https://www.computerworld.com/article/3816579/tech-layoffs-this-year-a-timeline.html" target="_blank">↗</a></td>
+            <td><span style="color:var(--accent3);font-weight:700;">~3,000</span><br><span style="font-size:11px;color:var(--text-muted);">17% of workforce</span></td>
+            <td>May 20–22, 2026</td>
+            <td>Broad workforce reduction. CEO cited AI transformation as reason; simultaneously signed deals with Anthropic and OpenAI.</td>
+            <td>Mountain View, CA</td>
+          </tr>
+          <tr>
+            <td><strong>LinkedIn</strong> <a class="src-link" href="https://www.computerworld.com/article/3816579/tech-layoffs-this-year-a-timeline.html" target="_blank">↗</a></td>
+            <td><span style="color:var(--accent3);font-weight:700;">~875</span><br><span style="font-size:11px;color:var(--text-muted);">~5% of staff</span></td>
+            <td>May 22, 2026</td>
+            <td>~⅔ of cuts were software engineering staff or managers. Design/PM roles affected at lower proportions.</td>
+            <td>Mountain View, CA</td>
+          </tr>
+          <tr>
+            <td><strong>Salesforce</strong> <a class="src-link" href="https://news.crunchbase.com/startups/tech-layoffs/" target="_blank">↗</a></td>
+            <td><span style="color:var(--accent3);font-weight:700;">~1,000</span></td>
+            <td>May 2026</td>
+            <td>Marketing, product management, data analytics, Agentforce AI unit.</td>
+            <td>San Francisco, CA</td>
+          </tr>
+          <tr>
+            <td><strong>Snap</strong> <a class="src-link" href="https://news.crunchbase.com/startups/tech-layoffs/" target="_blank">↗</a></td>
+            <td><span style="color:var(--accent3);font-weight:700;">~1,000</span></td>
+            <td>H1 2026</td>
+            <td>Product and engineering. Company announced estimated $500M annualized savings by H2 2026.</td>
+            <td>Santa Monica, CA</td>
+          </tr>
+          <tr>
+            <td><strong>Alphabet (Google)</strong> <a class="src-link" href="https://news.crunchbase.com/startups/tech-layoffs/" target="_blank">↗</a></td>
+            <td><span style="color:var(--accent2);font-weight:700;">~1,500</span><br><span style="font-size:11px;color:var(--text-muted);">Ongoing rolling cuts</span></td>
+            <td>Jan–May 2026</td>
+            <td>Repeated small non-AI team reductions rather than single large event. Cloud/AI hiring continues in parallel.</td>
+            <td>Mountain View, CA<br>New York, NY</td>
+          </tr>
+          <tr>
+            <td><strong>Adobe</strong> <a class="src-link" href="https://news.crunchbase.com/startups/tech-layoffs/" target="_blank">↗</a></td>
+            <td><span style="color:var(--accent2);font-weight:700;">~100</span></td>
+            <td>H1 2026</td>
+            <td>Sales-focused roles. Core design tools (Figma deal collapsed 2023; Firefly AI investment ongoing).</td>
+            <td>San Jose, CA</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Key driver callout -->
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; margin-bottom: 16px;">
+      <p style="font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 10px;">The Common Thread</p>
+      <p style="font-size: 13px; color: var(--text-muted); line-height: 1.8;">
+        The Big 4 (Meta, Amazon, Microsoft, Google) have collectively committed <strong style="color:var(--accent);">$725B in capex for 2026</strong> — a 75% YoY jump — almost entirely earmarked for AI data centers, chips, and infrastructure. Non-AI headcount reductions are directly funding this shift. Companies are also leaning on <em>hiring freezes</em> (Meta left 6,000 roles unfilled) more than direct layoffs. Product and design teams <strong>outside AI-focus areas</strong> are disproportionately affected. AI-explicitly-linked layoffs hit 20.4% of all 2026 cuts — up from under 8% in 2025.
+      </p>
+    </div>
+
+    <!-- Regional breakdown -->
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px;">
+      <p style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 18px;">US Regional Impact — Where the Cuts Land</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px;">
+        <div style="background:var(--surface2); border-radius:10px; padding:16px; border-left: 3px solid var(--warn);">
+          <div style="font-size:13px; font-weight:700; margin-bottom:6px;">Seattle, WA</div>
+          <div style="font-size:12px; color:var(--text-muted); line-height:1.65;"><strong style="color:var(--warn);">16,590 employees affected</strong> — the hardest-hit US city. Amazon + Microsoft headquarters. Office sublease availability up 22% YoY. AWS AI roles growing, but product/design roles outside cloud are shrinking.</div>
+        </div>
+        <div style="background:var(--surface2); border-radius:10px; padding:16px; border-left: 3px solid var(--accent3);">
+          <div style="font-size:13px; font-weight:700; margin-bottom:6px;">San Francisco / Bay Area</div>
+          <div style="font-size:12px; color:var(--text-muted); line-height:1.65;"><strong style="color:var(--accent3);">9,395 layoffs</strong> in SF proper. Office vacancy rate was <strong>~30.4% in Q1 2026</strong> <a class="src-link" href="https://www.cbre.com/insights/figures/san-francisco-office-figures-q1-2026" target="_blank">↗ CBRE Q1 2026</a>. Meta, Google, Salesforce, Adobe, Block all headquartered here.</div>
+        </div>
+        <div style="background:var(--surface2); border-radius:10px; padding:16px; border-left: 3px solid var(--accent3);">
+          <div style="font-size:13px; font-weight:700; margin-bottom:6px;">Austin, TX</div>
+          <div style="font-size:12px; color:var(--text-muted); line-height:1.65;">Oracle's 20K–30K cuts make this the <strong>largest single-city layoff event of 2026</strong>. Cities that boomed during 2020–2022 tech migration have been hardest hit as companies right-size post-pandemic headcount.</div>
+        </div>
+        <div style="background:var(--surface2); border-radius:10px; padding:16px; border-left: 3px solid var(--accent3);">
+          <div style="font-size:13px; font-weight:700; margin-bottom:6px;">Mountain View, CA</div>
+          <div style="font-size:12px; color:var(--text-muted); line-height:1.65;">LinkedIn (~875) + Intuit (~3,000) both cut in the same week. Google's Mountain View campus continues smaller rolling reductions. Emerging as a concentration point for mid-2026 cuts.</div>
+        </div>
+        <div style="background:var(--surface2); border-radius:10px; padding:16px; border-left: 3px solid var(--accent2);">
+          <div style="font-size:13px; font-weight:700; margin-bottom:6px;">Menlo Park, CA</div>
+          <div style="font-size:12px; color:var(--text-muted); line-height:1.65;"><strong>1,500 direct reductions</strong> at Meta HQ. Reality Labs — which employs ~15,000 globally — bearing disproportionate cuts as Meta pivots AR/VR spend toward LLM infrastructure.</div>
+        </div>
+        <div style="background:var(--surface2); border-radius:10px; padding:16px; border-left: 3px solid var(--accent2);">
+          <div style="font-size:13px; font-weight:700; margin-bottom:6px;">Remote / Distributed Roles</div>
+          <div style="font-size:12px; color:var(--text-muted); line-height:1.65;">Remote product design postings down ~30% from 2021 peak. Return-to-office mandates at Meta, Amazon, Google accelerating the trend. Designers relocating to lower-cost cities (Atlanta, Denver, Austin) find more competitive local job markets.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. 석사 지원자를 위한 학교 & 학과 가이드 -->
+  <div class="section">
+    <div class="section-label">
+      <div class="num">10</div>
+      <h2>석사 지원자를 위한 학교 & 학과 가이드 (미국)</h2>
+    </div>
+
+    <div style="padding: 14px 18px; background: rgba(124,110,247,0.07); border: 1px solid rgba(124,110,247,0.2); border-radius: 10px; font-size: 13px; color: var(--text-muted); margin-bottom: 22px; line-height: 1.7;">
+      <strong style="color:var(--text);">현실 체크:</strong> Entry-level 채용 공고의 <strong>9% 미만</strong>이 석사를 필수 조건으로 명시합니다. 그러나 빅테크 preferred school 네트워크, 리서치 방법론 깊이, 시니어·리드 패스트트랙 효과는 실질적입니다. 졸업 후 첫 연봉은 학사 대비 평균 <strong>20~35% 높게</strong> 시작합니다 (PayScale 2026).
+    </div>
+
+    <!-- Program comparison table -->
+    <div class="salary-table" style="margin-bottom: 20px;">
+      <table>
+        <thead>
+          <tr>
+            <th>School</th>
+            <th>Program / Degree</th>
+            <th>Tuition (Total)</th>
+            <th>Strengths & Notes</th>
+            <th>Notable Employers</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong><a href="https://hcii.cmu.edu/academics/mhci" target="_blank" style="color:var(--text);text-decoration:none;">Carnegie Mellon University ↗</a></strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">Pittsburgh, PA</span><br>
+              <span class="badge badge-purple" style="margin-top:4px; display:inline-block;">World's First HCI Master's</span>
+            </td>
+            <td>
+              <strong>MHCI</strong> – Master of Human-Computer Interaction<br>
+              <strong>MDes</strong> – Design for Interactions<br>
+              <span style="font-size:11px;color:var(--text-muted);">STEM-designated · 3 semesters (12 months)</span>
+            </td>
+            <td style="white-space:nowrap;">
+              <strong style="color:var(--text);">~$86,250</strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">$28,750/semester × 3<br>(tuition only, 2024–25)</span>
+            </td>
+            <td style="font-size:12px; line-height:1.6;">
+              Industry-sponsored capstone projects with Google, Apple, IBM. Program acceptance rate historically ~10–15%. Graduates report median starting salary <strong>$110K–$135K</strong> in US tech. Best all-around reputation for UX Research + Interaction Design.
+            </td>
+            <td style="font-size:12px;">Google · Apple · Microsoft · Amazon · Meta · IDEO · Bain</td>
+          </tr>
+          <tr>
+            <td>
+              <strong><a href="https://hci.stanford.edu/" target="_blank" style="color:var(--text);text-decoration:none;">Stanford University ↗</a></strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">Stanford, CA</span><br>
+              <span class="badge badge-green" style="margin-top:4px; display:inline-block;">Silicon Valley Network</span>
+            </td>
+            <td>
+              <strong>MS HCI</strong> (via CS or Symbolic Systems)<br>
+              <strong>d.school MDes</strong> – Design Thinking<br>
+              <span style="font-size:11px;color:var(--text-muted);">1–2 years depending on track</span>
+            </td>
+            <td style="white-space:nowrap;">
+              <strong style="color:var(--text);">~$65K–$80K</strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">Per year (varies by unit)</span>
+            </td>
+            <td style="font-size:12px; line-height:1.6;">
+              Birthplace of design thinking methodology. <strong>97% placement within 6 months</strong>; average starting salary exceeds <strong>$150K</strong> for tech roles. Strongest recruiting pipeline to Bay Area companies. d.school alumni network spans every major tech company.
+            </td>
+            <td style="font-size:12px;">Apple · Google · Meta · Microsoft · NVIDIA · Airbnb · Stripe</td>
+          </tr>
+          <tr>
+            <td>
+              <strong><a href="https://catalog.gatech.edu/programs/human-computer-interaction-ms/" target="_blank" style="color:var(--text);text-decoration:none;">Georgia Institute of Technology ↗</a></strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">Atlanta, GA</span><br>
+              <span class="badge badge-green" style="margin-top:4px; display:inline-block;">Best ROI in Top Tier</span>
+            </td>
+            <td>
+              <strong>MS-HCI</strong> – Human-Computer Interaction<br>
+              <span style="font-size:11px;color:var(--text-muted);">Public university · 2 years on-campus; online option available</span>
+            </td>
+            <td style="white-space:nowrap;">
+              <strong style="color:var(--text);">~$14K–$30K</strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">In-state/out-of-state total</span>
+            </td>
+            <td style="font-size:12px; line-height:1.6;">
+              Best cost-to-outcome ratio among top HCI programs. Career outcomes report shows placements at NASA, Boeing, Disney alongside FAANG. Strong defense / aerospace connections unique among HCI programs. Median starting salary ~<strong>$95K–$115K</strong>.
+            </td>
+            <td style="font-size:12px;">Google · Apple · Amazon · Meta · Microsoft · NASA · Boeing · Disney · IBM</td>
+          </tr>
+          <tr>
+            <td>
+              <strong><a href="https://www.si.umich.edu/programs/master-science-information" target="_blank" style="color:var(--text);text-decoration:none;">University of Michigan ↗</a></strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">Ann Arbor, MI</span><br>
+              <span class="badge badge-yellow" style="margin-top:4px; display:inline-block;">Research Depth</span>
+            </td>
+            <td>
+              <strong>MSI</strong> – Master of Science in Information<br>
+              UX Research &amp; Design pathway<br>
+              <span style="font-size:11px;color:var(--text-muted);">School of Information · 2 years</span>
+            </td>
+            <td style="white-space:nowrap;">
+              <strong style="color:var(--text);">~$30K–$52K</strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">In-state/out-of-state total</span>
+            </td>
+            <td style="font-size:12px; line-height:1.6;">
+              <strong>95% overall job satisfaction</strong> among 2025 MSI graduates (U-M UMSI report). Strongest UX research methodology curriculum. Finance (Goldman Sachs, JPMorgan), automotive (Ford, GM), and healthcare verticals well represented. Median starting salary ~<strong>$92K</strong>.
+            </td>
+            <td style="font-size:12px;">Google · Amazon · Microsoft · Meta · Goldman Sachs · JPMorgan · Ford</td>
+          </tr>
+          <tr>
+            <td>
+              <strong><a href="https://www.newschool.edu/parsons/design-technology-mfa/" target="_blank" style="color:var(--text);text-decoration:none;">Parsons School of Design ↗</a></strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">New York, NY</span><br>
+              <span class="badge badge-yellow" style="margin-top:4px; display:inline-block;">Visual + NYC Network</span>
+            </td>
+            <td>
+              <strong>MFA</strong> – Design &amp; Technology<br>
+              <strong>MPS</strong> – Communication Design (Digital Product)<br>
+              <span style="font-size:11px;color:var(--text-muted);">MPS = accelerated 1-year option</span>
+            </td>
+            <td style="white-space:nowrap;">
+              <strong style="color:var(--text);">~$55K–$70K</strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">Per year</span>
+            </td>
+            <td style="font-size:12px; line-height:1.6;">
+              Best studio-based visual quality among all programs. NYC finance, fashion, and media industry pipelines (Goldman Sachs, McKinsey, Nike, Condé Nast). Strong for candidates targeting East Coast roles or consumer brand work.
+            </td>
+            <td style="font-size:12px;">Google · Microsoft · McKinsey · Capital One · Goldman Sachs · Nike · American Express</td>
+          </tr>
+          <tr>
+            <td>
+              <strong><a href="https://www.risd.edu/academics/digital-plus-media/" target="_blank" style="color:var(--text);text-decoration:none;">Rhode Island School of Design (RISD) ↗</a></strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">Providence, RI</span><br>
+              <span class="badge badge-yellow" style="margin-top:4px; display:inline-block;">Craft / Hardware</span>
+            </td>
+            <td>
+              <strong>MFA</strong> – Industrial Design<br>
+              <strong>MFA</strong> – Digital + Media<br>
+              <span style="font-size:11px;color:var(--text-muted);">2 years · highly selective</span>
+            </td>
+            <td style="white-space:nowrap;">
+              <strong style="color:var(--text);">~$60K–$66K</strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">Per year</span>
+            </td>
+            <td style="font-size:12px; line-height:1.6;">
+              Apple's hardware design team is the most well-known RISD recruiting pipeline. Physical product, materials, and craft emphasis. Best fit for candidates targeting hardware product roles (consumer electronics, wearables). IDEO and Frog Design also recruit heavily.
+            </td>
+            <td style="font-size:12px;">Apple · Google · Meta · IDEO · Frog Design · Nike</td>
+          </tr>
+          <tr>
+            <td>
+              <strong><a href="https://interactiondesign.sva.edu/" target="_blank" style="color:var(--text);text-decoration:none;">School of Visual Arts (SVA) ↗</a></strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">New York, NY</span><br>
+              <span class="badge badge-yellow" style="margin-top:4px; display:inline-block;">NYC IxD Specialist</span>
+            </td>
+            <td>
+              <strong>MFA</strong> – Interaction Design (IxD)<br>
+              <span style="font-size:11px;color:var(--text-muted);">2 years · 60 credits · studio-based</span>
+            </td>
+            <td style="white-space:nowrap;">
+              <strong style="color:var(--text);">~$123,380</strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">$61,690/yr × 2<br>(tuition only, 2026–27)</span>
+            </td>
+            <td style="font-size:12px; line-height:1.6;">
+              미국 내 IxD 전문 MFA 중 포용적 디자인(Inclusive Design) 커리큘럼이 가장 체계적인 프로그램. 현직 프로덕트 디자이너·UX 리더가 강사진 다수 구성. NYC 핀테크·미디어·빅테크 네트워크 접근 강점. 공식 연봉 데이터 미공개 — NYC 시장 특성상 졸업 후 $90K–$110K 수준 추정.
+            </td>
+            <td style="font-size:12px;">Google · Meta · Apple · Spotify · Goldman Sachs · The New York Times · Adobe</td>
+          </tr>
+          <tr>
+            <td>
+              <strong><a href="https://www.scad.edu/academics/programs/user-experience-design" target="_blank" style="color:var(--text);text-decoration:none;">SCAD (Savannah College of Art and Design) ↗</a></strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">Savannah, GA / Atlanta, GA</span><br>
+              <span class="badge badge-yellow" style="margin-top:4px; display:inline-block;">Industry Pipeline</span>
+            </td>
+            <td>
+              <strong>MFA</strong> – UX Design<br>
+              <strong>MFA</strong> – Service Design<br>
+              <span style="font-size:11px;color:var(--text-muted);">Online or on-campus options</span>
+            </td>
+            <td style="white-space:nowrap;">
+              <strong style="color:var(--text);">~$36K–$42K</strong><br>
+              <span style="font-size:11px;color:var(--text-muted);">Per year</span>
+            </td>
+            <td style="font-size:12px; line-height:1.6;">
+              Strong direct recruiting relationships with Google, IBM, Adobe, and Lenovo. Online MFA option makes this accessible for working professionals. Less research-focused than CMU/GT but strong for studio-to-industry pipeline. Median starting salary ~<strong>$75K–$90K</strong>.
+            </td>
+            <td style="font-size:12px;">Google · IBM · Amazon · Microsoft · Adobe · Lenovo · JPMorgan Chase</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Salary outcomes bar chart -->
+    <div class="bar-section" style="margin-bottom: 16px;">
+      <h3>Median Starting Salary After Graduation — US Product Design / HCI Master's</h3>
+      <div class="bar-item">
+        <div class="bar-label"><span class="name">Stanford (HCI / d.school)</span><span class="pct">$150K+</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:99%; --bar-color:#7c6ef7;"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span class="name">CMU MHCI</span><span class="pct">$110K–$135K</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:82%; --bar-color:#56cfb2;"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span class="name">Georgia Tech MS-HCI</span><span class="pct">$95K–$115K</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:68%; --bar-color:#f7a24b;"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span class="name">University of Michigan MSI</span><span class="pct">~$92K</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:60%; --bar-color:#a99ef9;"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span class="name">SCAD MFA UX</span><span class="pct">$75K–$90K</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:48%; --bar-color:#f76b6b;"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span class="name">SVA MFA IxD (NYC 시장 추정)</span><span class="pct">~$90K–$110K*</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:62%; --bar-color:#888899;"></div></div>
+      </div>
+      <p style="font-size:11px; color:var(--text-dim); margin-top:8px;">* SVA IxD는 공식 취업 성과 보고서 미발행. 수치는 NYC 인터랙션 디자인 시장 기준 추정값.</p>
+      <p style="font-size:11px; color:var(--text-dim); margin-top:12px;">Sources: <a class="src-link" style="margin-left:0;" href="https://www.payscale.com/research/US/Job=Product_Designer/Salary" target="_blank">↗ PayScale 2026</a> · Program placement reports · <a class="src-link" href="https://www.glassdoor.com/Salaries/product-designer-salary-SRCH_KO0,16.htm" target="_blank">↗ Glassdoor</a>. Ranges reflect US tech-industry roles; non-tech / nonprofit significantly lower.</p>
+    </div>
+
+    <!-- Strategy tips -->
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px;">
+      <p style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 14px;">Program Selection Strategy</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px;">
+        <div class="recruiter-tip" style="margin-bottom:0;">
+          <div class="rt-label">Best ROI: Georgia Tech</div>
+          <p>Comparable placement outcomes to CMU and Stanford at a fraction of the cost. Out-of-state total tuition is ~$30K vs. ~$86K at CMU. Best choice for candidates with strong GPA and work samples who don't need brand prestige to break in.</p>
+        </div>
+        <div class="recruiter-tip" style="margin-bottom:0;">
+          <div class="rt-label">Bay Area &amp; Big Tech: CMU or Stanford</div>
+          <p>CMU MHCI's industry capstone gives real project experience with FAANG sponsors. Stanford's network is unmatched for Silicon Valley recruiting. Both are highly competitive — acceptance rates estimated at 10–15% (CMU) and under 10% (Stanford HCI).</p>
+        </div>
+        <div class="recruiter-tip" style="margin-bottom:0;">
+          <div class="rt-label">Research Path: U Michigan MSI</div>
+          <p>Strongest UX Research methodology curriculum of any program. 95% job satisfaction rate. Best for candidates targeting UX Research roles (vs. Product Design roles) at large companies or think-tank adjacent organizations.</p>
+        </div>
+        <div class="recruiter-tip" style="margin-bottom:0;">
+          <div class="rt-label">Portfolio &gt; School Name</div>
+          <p>Most hiring managers look at the portfolio before the degree. A strong portfolio from Georgia Tech or SCAD will outperform a weak one from CMU or Stanford. Invest in 3–5 high-quality case studies with impact metrics regardless of program choice.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. 개인 의사결정: 삼성 잔류 vs SVA 유학 vs NIW -->
+  <div class="section">
+    <div class="section-label">
+      <div class="num">11</div>
+      <h2>개인 의사결정 — 삼성 잔류 vs SVA 유학 vs NIW</h2>
+    </div>
+
+    <div style="padding: 16px 20px; background: rgba(86,207,178,0.07); border: 1px solid rgba(86,207,178,0.22); border-radius: 12px; font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 20px;">
+      <strong style="color:var(--text);">업데이트된 결론:</strong> 대한민국 국비유학생 신분으로 <strong style="color:var(--accent2);">$100K 장학금</strong>을 확보한 경우, SVA는 더 이상 단순한 고비용 유학이 아니라 <strong style="color:var(--accent2);">미국 현지 진입·STEM OPT·NYC 네트워크를 낮은 순비용으로 확보하는 강한 선택지</strong>가 됩니다. 다만 NIW 자체는 학위보다 증거의 질이 중요하므로, SVA 진학 시에도 2년 동안 특허·어워드·제품 임팩트·AI/접근성 UX 포지셔닝을 의도적으로 만들어야 합니다. <a class="src-link" href="https://niied.go.kr/web/niied/contents/niied_gov_sponsored" target="_blank">↗ NIIED 국비유학생</a>
+    </div>
+
+    <div class="decision-grid" style="margin-bottom: 20px;">
+      <div class="decision-card" style="--decision-color: var(--accent2);">
+        <span class="decision-tag">Strong Option</span>
+        <h3>삼성전자 잔류 + 24개월 실적 축적</h3>
+        <p>현금흐름을 유지하면서 특허, 글로벌 제품 출시, 디자인 어워드, AI/디바이스 UX 임팩트 지표를 쌓는 경로입니다. NIW는 학위보다 <em>증거의 질</em>이 중요하므로, 대기업 제품 영향력은 강한 원재료가 됩니다.</p>
+        <p><strong style="color:var(--text);">적합 조건:</strong> 삼성 내부에서 특허·어워드·제품 성과를 만들 여지가 크고, 미국 진입 시점을 2~3년 늦춰도 괜찮을 때.</p>
+      </div>
+      <div class="decision-card" style="--decision-color: var(--accent2);">
+        <span class="decision-tag">Now Viable</span>
+        <h3>국비유학생 + SVA MFA 진학</h3>
+        <p>SVA MFA Interaction Design은 NYC 네트워크와 현지 체류 기회를 제공합니다. SVA의 STEM CIP 문서 기준 MFA Interaction Design과 Products of Design은 CIP 30.3101 Human Computer Interaction으로 STEM OPT eligible입니다<a class="src-link" href="https://assets.sva.edu/download/stem-major-cip-code-letter-updated-2.13.2024-1707837559.pdf" target="_blank">↗ SVA STEM CIP</a>.</p>
+        <p><strong style="color:var(--text);">핵심 변화:</strong> $100K 장학금이면 SVA의 2년 학비 약 $123K 중 대부분을 상쇄합니다. 추가 대출 5천만 원은 주로 잔여 학비·NYC 생활비·정착비 리스크로 봐야 하며, 무장학 SVA 대비 기대값이 크게 좋아집니다.</p>
+      </div>
+      <div class="decision-card" style="--decision-color: var(--warn);">
+        <span class="decision-tag">High Uncertainty</span>
+        <h3>지금 바로 EB-2 NIW 진행</h3>
+        <p>NIW는 고용주 스폰서 없이 self-petition이 가능하지만, USCIS는 proposed endeavor의 national importance, 지원자의 실행 역량, labor certification 면제의 타당성을 봅니다<a class="src-link" href="https://www.uscis.gov/working-in-the-united-states/permanent-workers/employment-based-immigration-second-preference-eb-2" target="_blank">↗ USCIS EB-2 NIW</a>.</p>
+        <p><strong style="color:var(--text);">판단:</strong> 특허·수상·제품 임팩트·추천서가 이미 강하면 변호사 프리스크리닝은 가능하나, 증거가 약하면 2~3년 축적 후 진행하는 편이 낫습니다.</p>
+      </div>
+    </div>
+
+    <div class="salary-table" style="margin-bottom: 20px;">
+      <table>
+        <thead>
+          <tr>
+            <th>선택지</th>
+            <th>얻는 것</th>
+            <th>주요 리스크</th>
+            <th>현재 판단</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>삼성 잔류 2~3년</strong></td>
+            <td>연봉 유지, 대기업 제품 임팩트, 특허/어워드/추천서 축적</td>
+            <td>미국 현지 네트워크 진입 지연</td>
+            <td><span class="badge badge-green">공동 1순위</span></td>
+          </tr>
+          <tr>
+            <td><strong>국비유학생 + SVA 즉시 진학</strong></td>
+            <td>$100K 장학금, NYC 네트워크, F-1 체류, OPT + STEM OPT 가능성<a class="src-link" href="https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-extension-for-stem-students-stem-opt" target="_blank">↗ USCIS STEM OPT</a></td>
+            <td>추가 대출 5천만 원, NYC 생활비, 졸업 후 취업/비자 불확실성</td>
+            <td><span class="badge badge-green">공동 1순위</span></td>
+          </tr>
+          <tr>
+            <td><strong>지금 NIW</strong></td>
+            <td>성공 시 고용주 의존도 감소, 장기 체류 안정성</td>
+            <td>증거 부족 시 RFE/거절 가능성, 변호사 비용</td>
+            <td><span class="badge badge-red">프리스크리닝만</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; margin-bottom: 16px;">
+      <p style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 14px;">Revised Cost Logic</p>
+      <div class="decision-grid" style="margin-bottom:18px;">
+        <div class="recruiter-tip" style="margin-bottom:0;">
+          <div class="rt-label">SVA 장학금 반영</div>
+          <p>SVA IxD 2년 학비가 약 $123K인 상황에서 $100K 장학금을 확보하면, 학비 순부담은 약 $23K 수준으로 낮아집니다. 대출 5천만 원은 학비보다 생활비·보험·비상자금·정착비 성격이 커집니다.</p>
+        </div>
+        <div class="recruiter-tip" style="margin-bottom:0;">
+          <div class="rt-label">결정 기준 변화</div>
+          <p>무장학 SVA라면 삼성 잔류가 우세하지만, $100K 장학금 확보 후에는 “미국 진입 시점을 앞당길 가치가 있는가”가 핵심 질문입니다. 목표가 미국 취업이라면 SVA 선택의 방어력이 크게 올라갑니다.</p>
+        </div>
+      </div>
+      <p style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 14px;">NIW 가능성을 높이는 증거 포트폴리오</p>
+      <ul class="evidence-list">
+        <li><strong>특허:</strong> 본인 이름의 출원/등록 특허, 실제 제품 적용 여부, 사용자·매출·효율 개선 증거</li>
+        <li><strong>어워드:</strong> iF, Red Dot, IDEA, CES Innovation Award 등 국제적으로 설명 가능한 수상</li>
+        <li><strong>제품 임팩트:</strong> 글로벌 출시 제품, MAU/전환율/리텐션/접근성 개선 같은 정량 지표</li>
+        <li><strong>국익 연결성:</strong> AI UX, 접근성, 헬스케어, 보안/프라이버시, 반도체·디바이스 UX처럼 미국 산업과 연결되는 주제</li>
+        <li><strong>외부 인정:</strong> 컨퍼런스 발표, 언론 보도, 심사위원, 멘토링, 사내외 전문가 추천서</li>
+        <li><strong>계획서:</strong> 미국에서 어떤 문제를 해결할지 설명하는 proposed endeavor와 실행 로드맵</li>
+      </ul>
+    </div>
+
+    <div class="recruiter-tip" style="margin-bottom:0;">
+      <div class="rt-label">Action Plan</div>
+      <p>$100K 장학금이 확정된 상태라면 SVA 진학은 충분히 합리적인 선택입니다. 다만 “학위 취득” 자체가 목표가 아니라, 2년 안에 미국 취업과 NIW 둘 다에 쓸 수 있는 증거를 만드는 것이 핵심입니다. SVA에 간다면 첫 학기부터 특허 가능 프로젝트, 국제 어워드 출품, AI/접근성/헬스케어/디바이스 UX 중 하나의 thesis positioning, NYC 현업 네트워크를 동시에 설계해야 합니다. 삼성에 남는다면 같은 24개월 동안 특허 2~3건, 글로벌 제품 케이스 스터디 2개, 국제 어워드 1~2개를 목표로 두는 것이 좋습니다.</p>
+    </div>
+  </div>
+
+  <!-- 12. 종합 전략 -->
+  <div class="section">
+    <div class="section-label">
+      <div class="num">12</div>
+      <h2>종합 전략 제언</h2>
+    </div>
+    <div class="summary-box">
+      <h3>2026년 프로덕트 디자이너가 취해야 할 액션</h3>
+      <ul>
+        <li>AI 도구(Figma AI, Claude, v0 등)를 매일 실무에 통합하고, 이를 포트폴리오에 명시적으로 드러내세요. 채용 담당자의 73%가 이를 필수로 봅니다.</li>
+        <li>포트폴리오에 "예쁜 화면"이 아닌 <strong>비즈니스 임팩트 지표</strong>(전환율 +X%, 이탈율 -Y%)를 중심으로 케이스 스터디를 작성하세요.</li>
+        <li>주니어라면 특정 버티컬(핀테크, 헬스케어, AI 서비스 등)에서 도메인 전문성을 쌓아 차별화하세요.</li>
+        <li>시니어라면 조직 내 AI 워크플로우 도입을 주도하는 역할로 포지셔닝하면, 수요 우위 시장에서 더욱 경쟁력이 높아집니다.</li>
+        <li>디자인 시스템 경험을 갖추세요. 소규모 고효율 팀 구조 선호 트렌드로 인해 시스템 사고 능력이 미드~시니어 레벨 채용의 결정적 기준이 됩니다.</li>
+        <li>공감, 전략적 사고, 스테이크홀더 설득력 등 <strong>AI가 대체하기 어려운 인간적 역량</strong>을 지속적으로 개발하세요. 이것이 장기적 직업 안정성의 핵심입니다.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="divider"></div>
+
+  <!-- Sources -->
+  <div class="sources">
+    <h4>출처 및 참고 자료</h4>
+    <div class="sources-list">
+      <a href="https://www.figma.com/blog/why-demand-for-designers-is-on-the-rise/" target="_blank">Figma Blog — Why Demand for Designers Is on the Rise</a>
+      <a href="https://www.nngroup.com/articles/state-of-ux-2026/" target="_blank">Nielsen Norman Group — State of UX 2026: Design Deeper to Differentiate</a>
+      <a href="https://www.uxdesigninstitute.com/blog/the-ux-job-market-in-2026-2/" target="_blank">UX Design Institute — The UX Job Market in 2026: The Most In-Demand Skills & Roles</a>
+      <a href="https://www.zippia.com/product-designer-jobs/trends/" target="_blank">Zippia — Product Designer Job Outlook And Growth In The US [2026]</a>
+      <a href="https://medium.com/design-bootcamp/will-the-2026-product-design-job-market-be-bullish-940bd8100aab" target="_blank">Medium / Bootcamp — Will the 2026 Product Design Job Market Be Bullish?</a>
+      <a href="https://designlab.com/blog/ai-in-ux-product-design-trends-2026" target="_blank">Designlab — The State of AI in UX & Product Design: 2026</a>
+      <a href="https://gozade.com/blog/is-ai-replacing-product-designers-the-fate-of-design-jobs-in-2026" target="_blank">Gozade — Is AI Replacing Product Designers? The Fate of Design Jobs in 2026</a>
+      <a href="https://www.bls.gov/ooh/computer-and-information-technology/web-developers.htm" target="_blank">U.S. Bureau of Labor Statistics — Web Developers and Digital Designers Outlook</a>
+      <a href="https://www.uxdesigninstitute.com/blog/ux-designer-salaries-in-the-us-2026/" target="_blank">UX Design Institute — UX Designer Salaries in the US: Updated for 2026</a>
+      <a href="https://www.levels.fyi/ko-kr/t/product-designer/locations/seoul-kor" target="_blank">levels.fyi — 서울 프로덕트 디자이너 연봉</a>
+      <a href="https://prime-career.com/article/10449" target="_blank">프라임 커리어 — 프로덕트 디자이너 연봉 2025 현실 수치</a>
+      <a href="https://blog.logrocket.com/ux-design/figma-ai-2026-quick-overview/" target="_blank">LogRocket — Figma AI in 2026: Everything it can do — and what it still can't</a>
+      <a href="https://www.lennysnewsletter.com/p/state-of-the-product-job-market-in-ee9" target="_blank">Lenny's Newsletter — State of the product job market in early 2026</a>
+      <a href="https://layoffs.fyi/" target="_blank">Layoffs.fyi — Tech and Startup Layoff Tracker (2026 실시간)</a>
+      <a href="https://www.trueup.io/layoffs" target="_blank">TrueUp — Layoffs Tracker: All Tech and Startup Layoffs</a>
+      <a href="https://www.techspot.com/news/112493-tech-layoffs-pass-100000-2026-tracker-points-ai.html" target="_blank">TechSpot — Tech layoffs pass 100,000 in 2026 as industry cuts jobs to fund AI</a>
+      <a href="https://www.cnbc.com/2026/04/24/20k-job-cuts-at-meta-microsoft-raise-concern-of-ai-labor-crisis-.html" target="_blank">CNBC — 20,000 job cuts at Meta, Microsoft raise concern of AI-driven labor crisis</a>
+      <a href="https://news.crunchbase.com/startups/tech-layoffs/" target="_blank">Crunchbase — Tech Layoffs: US Companies With Job Cuts In 2024, 2025 and 2026</a>
+      <a href="https://www.computerworld.com/article/3816579/tech-layoffs-this-year-a-timeline.html" target="_blank">Computerworld — Tech layoffs 2026: A timeline</a>
+      <a href="https://invezz.com/news/2026/05/04/is-big-techs-725b-ai-splurge-being-funded-by-mass-layoffs/" target="_blank">Invezz — Big Tech layoffs 2026: Amazon, Meta, Microsoft and the AI trade-off</a>
+      <a href="https://www.kore1.com/oracle-layoffs-2026/" target="_blank">Kore1 — Oracle Layoffs 2026: 30,000 Cuts</a>
+      <a href="https://www.animationcareerreview.com/articles/top-25-graduate-uxuihci-schools-and-colleges-us-2025-rankings" target="_blank">Animation Career Review — Top 25 Graduate UX/UI/HCI Schools in the U.S. 2025</a>
+      <a href="https://uxcel.com/blog/best-ux-design-schools" target="_blank">Uxcel — 9 Best UX Design Schools in 2026</a>
+      <a href="https://www.designwhine.com/ux-design-education-in-south-korea/" target="_blank">DesignWhine — UX Design Education in South Korea: Top Graduate Programs</a>
+      <a href="https://edurank.org/cs/ux-ui/kr/" target="_blank">EduRank — Best UX/UI Design Schools in South Korea 2026</a>
+      <a href="https://blog.thegradcafe.com/best-ux-design-graduate-programs/" target="_blank">The GradCafe — Top 10 Best UX Design Graduate Programs in 2026</a>
+      <a href="https://www.smashingmagazine.com/2026/01/ux-product-designer-career-paths/" target="_blank">Smashing Magazine — UX And Product Designer's Career Paths In 2026</a>
+      <a href="https://www.heruxpath.com/blog/how-to-land-a-junior-ux-designer-job-in-2025-the-complete-guide-rt86t" target="_blank">Her UX Path — How to Land a Junior UX Designer Job in 2026: The Complete Guide</a>
+      <a href="https://blog.uxfol.io/ux-portfolio-playbook/" target="_blank">UXfolio — UX Portfolio Playbook: What Recruiters Actually Look For in 2026</a>
+      <a href="https://uxplaybook.org/articles/6-ux-portfolio-rules-get-hired-2026" target="_blank">UX Playbook — 6 UX Portfolio Rules That Actually Get You Hired in 2026</a>
+      <a href="https://muz.li/blog/how-to-build-a-ux-portfolio-that-actually-gets-you-hired-2026/" target="_blank">Muzli — How to Build a UX Portfolio That Actually Gets You Hired (2026)</a>
+      <a href="https://careerfoundry.com/en/blog/product-design/junior-product-designer/" target="_blank">CareerFoundry — The Ultimate Junior Product Designer Career Guide</a>
+      <a href="https://coursecareers.com/blog-posts/core-skills-for-junior-ui-ux-designer" target="_blank">CourseCareers — Core Skills Every Junior UI/UX Designer Needs to Get Hired</a>
+      <a href="https://www.figma.com/blog/state-of-the-designer-2026/" target="_blank">Figma — State of the Designer 2026 (91% 디자인 개선, 89% 속도 향상)</a>
+      <a href="https://builtin.com/salaries/design/product-designer" target="_blank">Built In — Product Designer Salaries by City (US)</a>
+      <a href="https://wellfound.com/role/r/product-designer" target="_blank">Wellfound — Product Designer Salaries at Startups</a>
+      <a href="https://www.salary.com/research/salary/benchmark/product-designer-salary" target="_blank">Salary.com — Product Designer Salary Benchmark</a>
+      <a href="https://www.cbre.com/insights/figures/san-francisco-office-figures-q1-2026" target="_blank">CBRE — San Francisco Office Market Statistics Q1 2026</a>
+      <a href="https://niied.go.kr/web/niied/contents/niied_gov_sponsored" target="_blank">국립국제교육원 — 국비유학생 선발·파견 사업</a>
+      <a href="https://interactiondesign.sva.edu/" target="_blank">SVA — MFA Interaction Design (IxD) Program</a>
+      <a href="https://sva.edu/admissions/financial-resources/tuition-and-fees" target="_blank">SVA — Tuition and Fees 2026–27</a>
+      <a href="https://assets.sva.edu/download/stem-major-cip-code-letter-updated-2.13.2024-1707837559.pdf" target="_blank">SVA International Student Office — STEM Major CIP Code Letter</a>
+      <a href="https://www.uscis.gov/working-in-the-united-states/permanent-workers/employment-based-immigration-second-preference-eb-2" target="_blank">USCIS — Employment-Based Immigration: Second Preference EB-2 / NIW</a>
+      <a href="https://www.uscis.gov/policy-manual/volume-6-part-f-chapter-5" target="_blank">USCIS Policy Manual — Advanced Degree, Exceptional Ability, and NIW</a>
+      <a href="https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-extension-for-stem-students-stem-opt" target="_blank">USCIS — STEM OPT Extension for F-1 Students</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
