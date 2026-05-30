@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SVA MFA Interaction Design 진학 의사결정 리서치 보고서</title>
+<style>
+  :root {
+    --bg-primary: #0d0d0f;
+    --bg-secondary: #141418;
+    --bg-card: #1a1a20;
+    --bg-card-hover: #1f1f28;
+    --border: #2a2a35;
+    --border-light: #353545;
+    --text-primary: #e8e8f0;
+    --text-secondary: #9898b0;
+    --text-muted: #5a5a72;
+    --accent-blue: #4d9fff;
+    --accent-purple: #9b6dff;
+    --accent-green: #3dd68c;
+    --accent-orange: #ff8c42;
+    --accent-red: #ff5252;
+    --accent-yellow: #ffd740;
+    --accent-teal: #26d9d9;
+    --gradient-1: linear-gradient(135deg, #4d9fff22, #9b6dff22);
+    --gradient-header: linear-gradient(180deg, #141418 0%, #0d0d0f 100%);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Pretendard', 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,13,15,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    height: 56px;
+    display: flex; align-items: center; gap: 32px;
+  }
+  .nav-logo { font-size: 13px; font-weight: 700; color: var(--accent-blue); letter-spacing: 0.08em; white-space: nowrap; }
+  .nav-links { display: flex; gap: 24px; overflow-x: auto; }
+  .nav-links a { font-size: 12px; color: var(--text-secondary); text-decoration: none; white-space: nowrap; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text-primary); }
+
+  /* LAYOUT */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  main { padding-top: 80px; padding-bottom: 80px; }
+
+  /* HERO */
+  .hero {
+    padding: 64px 0 48px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 56px;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #4d9fff18; border: 1px solid #4d9fff40;
+    color: var(--accent-blue); font-size: 12px; font-weight: 600;
+    padding: 4px 12px; border-radius: 20px; margin-bottom: 20px;
+    letter-spacing: 0.06em;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800; line-height: 1.2;
+    letter-spacing: -0.02em; margin-bottom: 16px;
+  }
+  .hero h1 span { color: var(--accent-blue); }
+  .hero-sub { color: var(--text-secondary); font-size: 16px; max-width: 640px; margin-bottom: 32px; }
+  .hero-meta { display: flex; gap: 24px; flex-wrap: wrap; }
+  .hero-meta-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); }
+  .hero-meta-item strong { color: var(--text-secondary); }
+
+  /* VERDICT BOX */
+  .verdict {
+    background: linear-gradient(135deg, #4d9fff12, #9b6dff12);
+    border: 1px solid #4d9fff35;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 56px;
+  }
+  .verdict-label { font-size: 11px; font-weight: 700; color: var(--accent-blue); letter-spacing: 0.1em; margin-bottom: 12px; }
+  .verdict-text { font-size: 17px; line-height: 1.7; color: var(--text-primary); }
+  .verdict-conditions { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+  .verdict-go, .verdict-wait {
+    border-radius: 12px; padding: 20px;
+  }
+  .verdict-go { background: #3dd68c10; border: 1px solid #3dd68c30; }
+  .verdict-wait { background: #ff824210; border: 1px solid #ff824230; }
+  .verdict-go h4 { color: var(--accent-green); font-size: 13px; margin-bottom: 10px; }
+  .verdict-wait h4 { color: var(--accent-orange); font-size: 13px; margin-bottom: 10px; }
+  .verdict-go ul, .verdict-wait ul { list-style: none; }
+  .verdict-go li, .verdict-wait li { font-size: 13px; color: var(--text-secondary); padding: 3px 0; padding-left: 14px; position: relative; }
+  .verdict-go li::before { content: '✓'; position: absolute; left: 0; color: var(--accent-green); }
+  .verdict-wait li::before { content: '!'; position: absolute; left: 0; color: var(--accent-orange); }
+
+  /* SECTIONS */
+  section { margin-bottom: 72px; }
+  .section-header { margin-bottom: 32px; }
+  .section-num { font-size: 11px; font-weight: 700; color: var(--accent-purple); letter-spacing: 0.12em; margin-bottom: 8px; }
+  .section-title { font-size: clamp(22px, 3vw, 30px); font-weight: 800; letter-spacing: -0.02em; }
+  .section-title span { color: var(--accent-blue); }
+  .section-desc { color: var(--text-secondary); font-size: 14px; margin-top: 8px; max-width: 640px; }
+
+  /* CARDS */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .card-grid { display: grid; gap: 16px; }
+  .card-grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .card-grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .card h3 { font-size: 15px; font-weight: 700; margin-bottom: 12px; }
+  .card h4 { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 8px; letter-spacing: 0.04em; }
+  .card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* STAT CARDS */
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-card .value { font-size: 26px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+  .stat-card .label { font-size: 12px; color: var(--text-muted); }
+  .stat-card.blue .value { color: var(--accent-blue); }
+  .stat-card.green .value { color: var(--accent-green); }
+  .stat-card.orange .value { color: var(--accent-orange); }
+  .stat-card.red .value { color: var(--accent-red); }
+  .stat-card.purple .value { color: var(--accent-purple); }
+  .stat-card.yellow .value { color: var(--accent-yellow); }
+
+  /* TABLES */
+  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; background: var(--bg-card); }
+  th {
+    background: #1f1f2a;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid var(--border);
+  }
+  td { padding: 12px 16px; font-size: 13px; color: var(--text-secondary); border-bottom: 1px solid #1f1f28; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--bg-card-hover); }
+  td strong { color: var(--text-primary); }
+  .tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px;
+  }
+  .tag-green { background: #3dd68c20; color: var(--accent-green); }
+  .tag-orange { background: #ff824220; color: var(--accent-orange); }
+  .tag-red { background: #ff525220; color: var(--accent-red); }
+  .tag-blue { background: #4d9fff20; color: var(--accent-blue); }
+  .tag-purple { background: #9b6dff20; color: var(--accent-purple); }
+  .tag-yellow { background: #ffd74020; color: var(--accent-yellow); }
+
+  /* SCORE BARS */
+  .score-item { margin-bottom: 16px; }
+  .score-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .score-label { font-size: 13px; color: var(--text-secondary); }
+  .score-val { font-size: 13px; font-weight: 700; }
+  .score-bar { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .score-fill { height: 100%; border-radius: 3px; transition: width 0.8s ease; }
+
+  /* COMPARISON MATRIX */
+  .matrix-wrap { overflow-x: auto; }
+  .matrix-table { min-width: 700px; }
+  .matrix-table th:first-child { min-width: 160px; }
+  .cell-high { color: var(--accent-green); font-weight: 700; }
+  .cell-mid { color: var(--accent-yellow); }
+  .cell-low { color: var(--accent-red); }
+
+  /* SCENARIO CARDS */
+  .scenario-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .scenario-card { border-radius: 12px; padding: 24px; }
+  .scenario-best { background: #3dd68c0d; border: 1px solid #3dd68c30; }
+  .scenario-base { background: #4d9fff0d; border: 1px solid #4d9fff30; }
+  .scenario-worst { background: #ff52520d; border: 1px solid #ff525230; }
+  .scenario-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .scenario-best .scenario-label { color: var(--accent-green); }
+  .scenario-base .scenario-label { color: var(--accent-blue); }
+  .scenario-worst .scenario-label { color: var(--accent-red); }
+  .scenario-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 12px; }
+  .scenario-card p { font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; }
+  .scenario-card .amount { font-size: 22px; font-weight: 800; margin: 12px 0; }
+  .scenario-best .amount { color: var(--accent-green); }
+  .scenario-base .amount { color: var(--accent-blue); }
+  .scenario-worst .amount { color: var(--accent-red); }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 1px; background: var(--border); }
+  .timeline-item { position: relative; margin-bottom: 24px; }
+  .timeline-dot {
+    position: absolute; left: -24px; top: 6px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent-blue); border: 2px solid var(--bg-primary);
+  }
+  .timeline-item h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .timeline-item p { font-size: 13px; color: var(--text-secondary); }
+  .timeline-period { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; }
+  .checklist li {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+    font-size: 13px; color: var(--text-secondary);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-num {
+    flex-shrink: 0; width: 22px; height: 22px;
+    background: #4d9fff15; border: 1px solid #4d9fff40;
+    color: var(--accent-blue); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    background: #9b6dff10; border-left: 3px solid var(--accent-purple);
+    border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0;
+    font-size: 14px; color: var(--text-secondary);
+  }
+  .highlight strong { color: var(--text-primary); }
+
+  .info-box {
+    background: #4d9fff0d; border: 1px solid #4d9fff25;
+    border-radius: 10px; padding: 20px; margin: 16px 0;
+  }
+  .info-box h4 { font-size: 13px; color: var(--accent-blue); margin-bottom: 8px; }
+  .info-box p { font-size: 13px; color: var(--text-secondary); }
+
+  .warning-box {
+    background: #ff824210; border: 1px solid #ff824230;
+    border-radius: 10px; padding: 20px; margin: 16px 0;
+  }
+  .warning-box h4 { font-size: 13px; color: var(--accent-orange); margin-bottom: 8px; }
+  .warning-box p, .warning-box li { font-size: 13px; color: var(--text-secondary); }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 12px;
+  }
+
+  /* UTIL */
+  .text-blue { color: var(--accent-blue); }
+  .text-green { color: var(--accent-green); }
+  .text-orange { color: var(--accent-orange); }
+  .text-red { color: var(--accent-red); }
+  .text-purple { color: var(--accent-purple); }
+  .text-yellow { color: var(--accent-yellow); }
+  .text-muted { color: var(--text-muted); }
+  .fw-bold { font-weight: 700; }
+  .mb-8 { margin-bottom: 8px; }
+  .mb-16 { margin-bottom: 16px; }
+  .mb-24 { margin-bottom: 24px; }
+  .mb-32 { margin-bottom: 32px; }
+
+  ul.bullet { list-style: none; }
+  ul.bullet li { padding: 4px 0; padding-left: 16px; position: relative; font-size: 13px; color: var(--text-secondary); }
+  ul.bullet li::before { content: '—'; position: absolute; left: 0; color: var(--text-muted); }
+
+  @media (max-width: 640px) {
+    .verdict-conditions { grid-template-columns: 1fr; }
+    nav { padding: 0 16px; }
+    .container { padding: 0 16px; }
+    .hero { padding: 40px 0 32px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">SVA 진학 의사결정 보고서</div>
+  <div class="nav-links">
+    <a href="#exec">Executive Summary</a>
+    <a href="#background">현재 상황</a>
+    <a href="#sva">SVA 분석</a>
+    <a href="#market">취업시장</a>
+    <a href="#finance">재정 분석</a>
+    <a href="#samsung">삼성 옵션</a>
+    <a href="#comparison">학교 비교</a>
+    <a href="#portfolio">포트폴리오</a>
+    <a href="#matrix">의사결정</a>
+    <a href="#conclusion">최종 결론</a>
+  </div>
+</nav>
+
+<main>
+<div class="container">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">RESEARCH REPORT · 2026</div>
+  <h1>SVA MFA Interaction Design<br><span>진학 최적 의사결정 분석</span></h1>
+  <p class="hero-sub">삼성전자 AI UX 경력자의 미국 Product Design 커리어 전환을 위한 전략적 판단 리포트</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><strong>분석 대상</strong> SVA MFA Interaction Design</div>
+    <div class="hero-meta-item"><strong>비교 대상</strong> CMU / UW / Berkeley / NYU ITP / Parsons</div>
+    <div class="hero-meta-item"><strong>기준일</strong> 2026년 5월</div>
+  </div>
+</div>
+
+<!-- VERDICT -->
+<div class="verdict" id="exec">
+  <div class="verdict-label">EXECUTIVE VERDICT</div>
+  <p class="verdict-text">
+    <strong>국비유학 장학금 $100,000이 확정된 상황에서 SVA 진학의 재정 리스크는 크게 낮아졌다.</strong>
+    단, "학벌 상승"이 아닌 <strong>삼성 AI UX 경험을 미국 취업 가능한 포트폴리오로 전환하기 위한 장치</strong>로 명확히 포지셔닝해야 한다.
+    SVA는 Big Tech 취업을 보장하지 않는다. 그러나 뉴욕 네트워크, 공개 가능한 portfolio 구축, OPT 체류 확보 측면에서
+    삼성 잔류보다 미국 진입 속도를 높이는 실질적 경로가 될 수 있다.
+    <strong style="color:var(--accent-orange)">단, 국비유학 복무 의무(귀국 의무) 조건이 미국 취업 목표와 충돌할 수 있다 — 이것이 현재 가장 중요한 확인 사항이다.</strong>
+  </p>
+  <div class="verdict-conditions">
+    <div class="verdict-go">
+      <h4>✓ 이 조건이면 GO</h4>
+      <ul>
+        <li>국비유학 장학금 $100,000 확정 (재정 리스크 해소)</li>
+        <li>미국 취업을 절대 1순위로 설정</li>
+        <li>졸업 전 AI interaction portfolio 3개 완성 각오</li>
+        <li>뉴욕 스타트업/스튜디오도 수용 가능</li>
+        <li>STEM OPT 활용 가능 프로그램 확인됨</li>
+      </ul>
+    </div>
+    <div class="verdict-wait">
+      <h4>! 이 조건이면 WAIT</h4>
+      <ul>
+        <li>국비유학 복무 의무가 미국 취업을 막는 경우</li>
+        <li>CMU/UW 등 상위권 진입 가능성이 현실적</li>
+        <li>삼성에서 1년 내 공개 가능한 성과 예정</li>
+        <li>미국 취업보다 학위 자체가 목적인 경우</li>
+        <li>졸업 후 한국 복귀 가능성이 50% 이상</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 1: 현재 상황 -->
+<section id="background">
+  <div class="section-header">
+    <div class="section-num">SECTION 01</div>
+    <h2 class="section-title">질문자 <span>현재 상황</span> 요약</h2>
+    <p class="section-desc">의사결정의 출발점은 질문자의 실제 위치다. 이 섹션은 강점과 제약을 냉정하게 정리한다.</p>
+  </div>
+
+  <div class="card-grid card-grid-2 mb-32">
+    <div class="card">
+      <h3 class="text-blue">직업적 상황</h3>
+      <ul class="bullet">
+        <li>삼성전자 CDO/Design Management Center UX 조직 재직 중</li>
+        <li>AI UX, 멀티모달 AI × 하드웨어 인터랙션 설계</li>
+        <li>One UI Common — 플랫폼 수준 시스템 UX</li>
+        <li>모바일 · TV · 가전 멀티디바이스 UX</li>
+        <li>투명/플렉서블 디스플레이 등 신기술 폼팩터 UX</li>
+        <li>AI 에이전트 경험 설계</li>
+        <li>UX 컨셉 시각화 및 프로토타이핑</li>
+        <li>특허 아이디어 및 미래 시나리오 설계</li>
+      </ul>
+      <div class="highlight" style="margin-top:16px">
+        <strong>핵심 해석:</strong> 일반 앱 UX가 아닌 AI 생태계 × 디바이스 × 시스템 UX 경험. 미국 시장에서 보기 드문 희소성 있는 경력이다.
+      </div>
+    </div>
+    <div class="card">
+      <h3 class="text-purple">주요 강점 자산</h3>
+      <div class="mb-16">
+        <h4>글로벌 실적</h4>
+        <ul class="bullet">
+          <li>Red Dot, iF Design Award 수상</li>
+          <li>UNIST UX Lab 경험 + 논문 작성</li>
+          <li>HCI 리서치 경험</li>
+          <li>특허 아이디어 보유</li>
+        </ul>
+      </div>
+      <div class="mb-16">
+        <h4>희소 역량</h4>
+        <ul class="bullet">
+          <li>CS + Design 이중 이해</li>
+          <li>창업 경험</li>
+          <li>미래 폼팩터 UX (투명·플렉서블 디스플레이)</li>
+          <li>AI Agent UX 실무 경험</li>
+        </ul>
+      </div>
+      <div>
+        <h4>장기 목표</h4>
+        <ul class="bullet">
+          <li>미국 Product/AI Interaction Designer</li>
+          <li>AI 시대 Interaction Designer로 역할 재정의</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-24">
+    <h3 class="text-yellow mb-16">핵심 의사결정 질문 — 올바른 프레임</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div>
+        <h4 style="color:var(--accent-red)">잘못된 질문 (피해야 할 프레임)</h4>
+        <ul class="bullet">
+          <li>"SVA가 좋은 학교인가?"</li>
+          <li>"유학이 가치 있는가?"</li>
+          <li>"미국 취업이 가능한가?"</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:var(--accent-green)">올바른 질문 (실제 프레임)</h4>
+        <ul class="bullet">
+          <li>지금 SVA 이동이 미국 진입 최선의 타이밍인가?</li>
+          <li>삼성 AI UX 경력을 SVA가 증폭시킬 수 있는가?</li>
+          <li>재정 리스크 대비 커리어 ROI가 충분한가?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card blue"><div class="value">~7천만</div><div class="label">현재 보유 자산 (추정, 원화)</div></div>
+    <div class="stat-card green"><div class="value">~4,500만</div><div class="label">연간 저축 가능액 (추정)</div></div>
+    <div class="stat-card purple"><div class="value">$100K</div><div class="label">국비유학 장학금 (확정)</div></div>
+    <div class="stat-card orange"><div class="value">~5천만</div><div class="label">대출 가능 규모 (추정)</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SECTION 2: SVA 분석 -->
+<section id="sva">
+  <div class="section-header">
+    <div class="section-num">SECTION 02</div>
+    <h2 class="section-title">SVA MFA Interaction Design <span>프로그램 분석</span></h2>
+    <p class="section-desc">SVA 프로그램의 실제 정체성, 커리큘럼, 졸업생 결과를 질문자의 목표와 연결해 평가한다.</p>
+  </div>
+
+  <div class="card-grid card-grid-3 mb-24">
+    <div class="card">
+      <h4>프로그램 기간</h4>
+      <div class="value text-blue" style="font-size:28px;font-weight:800;margin:8px 0">2년</div>
+      <p>60학점, Full-time MFA</p>
+    </div>
+    <div class="card">
+      <h4>프로그램 위치</h4>
+      <div class="value text-purple" style="font-size:22px;font-weight:800;margin:8px 0">New York, NY</div>
+      <p>Chelsea 캠퍼스, 맨해튼 중심부</p>
+    </div>
+    <div class="card">
+      <h4>정원 규모</h4>
+      <div class="value text-green" style="font-size:28px;font-weight:800;margin:8px 0">~20명</div>
+      <p>소규모 cohort, 실무 중심 구성</p>
+    </div>
+  </div>
+
+  <div class="card mb-24">
+    <h3 class="mb-16">프로그램 정체성 분석</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div>
+        <h4 class="mb-8">SVA의 강점</h4>
+        <ul class="bullet">
+          <li>실무 중심(studio-based), 즉각적 적용 가능 교육</li>
+          <li>뉴욕 디자인/테크 생태계와의 밀접한 연결</li>
+          <li>교수진 대부분이 현직 실무자</li>
+          <li>소규모 cohort로 개인 지도 집중</li>
+          <li>thesis 자유도가 높음 → 독창적 AI UX 프로젝트 가능</li>
+          <li>포트폴리오 완성도 집중 교육</li>
+          <li>뉴욕 기반 industry critique, 전시, showcase</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="mb-8">SVA의 한계</h4>
+        <ul class="bullet">
+          <li>HCI 학술 연구 역량은 CMU/UW보다 약함</li>
+          <li>Big Tech (Google, Meta, Apple) 직채 파이프라인 약함</li>
+          <li>서부 테크 시장과의 거리감</li>
+          <li>STEM OPT 여부 — 반드시 확인 필요 (CIP 코드 확인 요망)</li>
+          <li>브랜드 인지도가 CMU, UW보다 낮음</li>
+          <li>AI/ML 기술 커리큘럼 깊이가 제한적</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="mb-16 fw-bold" style="font-size:16px">커리큘럼 × 질문자 목표 연결 분석</h3>
+  <div class="table-wrap mb-32">
+    <table>
+      <thead>
+        <tr>
+          <th>SVA 커리큘럼 요소</th>
+          <th>질문자의 기존 경험</th>
+          <th>확장 가능성</th>
+          <th>가치 평가</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Research Methods</strong></td>
+          <td>UNIST UX Lab, HCI 논문</td>
+          <td>미국식 product research 체계로 전환</td>
+          <td><span class="tag tag-green">높음</span></td>
+        </tr>
+        <tr>
+          <td><strong>Prototyping Studio</strong></td>
+          <td>삼성 AI UX, 신폼팩터 UX</td>
+          <td>공개 가능한 AI interaction prototype 제작</td>
+          <td><span class="tag tag-green">매우 높음</span></td>
+        </tr>
+        <tr>
+          <td><strong>Thesis Project</strong></td>
+          <td>특허, 시스템 UX, AI Agent</td>
+          <td>AI multi-device interaction 공개 대표작 탄생</td>
+          <td><span class="tag tag-green">매우 높음</span></td>
+        </tr>
+        <tr>
+          <td><strong>Service Design</strong></td>
+          <td>MANIMO, inclusive design 경험</td>
+          <td>social impact + AI product story 강화</td>
+          <td><span class="tag tag-blue">중간</span></td>
+        </tr>
+        <tr>
+          <td><strong>Inclusive Design</strong></td>
+          <td>MANIMO 프로젝트</td>
+          <td>글로벌 임팩트 narrative로 포지셔닝</td>
+          <td><span class="tag tag-blue">중간</span></td>
+        </tr>
+        <tr>
+          <td><strong>Emerging Technology</strong></td>
+          <td>투명/플렉서블 디스플레이, 멀티모달</td>
+          <td>미국 시장 차별화 포인트로 활용</td>
+          <td><span class="tag tag-green">높음</span></td>
+        </tr>
+        <tr>
+          <td><strong>Industry Critique</strong></td>
+          <td>삼성 내부 발표 경험</td>
+          <td>뉴욕 실무자 피드백으로 미국식 기준 체득</td>
+          <td><span class="tag tag-green">높음</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card mb-24">
+    <h3 class="mb-16">SVA 졸업생 경로 분석 <span class="text-muted" style="font-size:12px;font-weight:400">— LinkedIn 샘플링 기반 추정</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>졸업생 유형</th>
+            <th>대표 경로</th>
+            <th>취업 회사 예시</th>
+            <th>질문자 유사성</th>
+            <th>시사점</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Product Designer 진입형</strong></td>
+            <td>SVA → 스타트업/테크</td>
+            <td>Spotify, Etsy, Squarespace, 핀테크 스타트업</td>
+            <td><span class="tag tag-green">높음</span></td>
+            <td>AI UX 포트폴리오 있으면 경쟁력 있음</td>
+          </tr>
+          <tr>
+            <td><strong>Design Strategy 진입형</strong></td>
+            <td>SVA → 컨설팅/스튜디오</td>
+            <td>IDEO, Frog, McKinsey Design, 컨설팅</td>
+            <td><span class="tag tag-blue">중간</span></td>
+            <td>삼성 스케일 경험이 강점으로 작용 가능</td>
+          </tr>
+          <tr>
+            <td><strong>Creative Technology형</strong></td>
+            <td>SVA → 실험적 조직</td>
+            <td>미디어 랩, R&amp;D 팀, 뉴미디어 스튜디오</td>
+            <td><span class="tag tag-green">높음</span></td>
+            <td>AI Agent × 폼팩터 UX thesis와 직결</td>
+          </tr>
+          <tr>
+            <td><strong>Big Tech 진입형</strong></td>
+            <td>SVA → FAANG</td>
+            <td>Google, Meta, Amazon (소수 사례)</td>
+            <td><span class="tag tag-orange">낮음</span></td>
+            <td>SVA만으로는 보장 안 됨, 포트폴리오가 핵심</td>
+          </tr>
+          <tr>
+            <td><strong>창업형</strong></td>
+            <td>SVA → 독립 스튜디오/창업</td>
+            <td>독립 스튜디오, AI 스타트업 공동창업</td>
+            <td><span class="tag tag-green">높음</span></td>
+            <td>질문자의 창업 경험과 자연스러운 연결</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="warning-box" style="margin-top:16px">
+      <h4>⚠ 현실적 기대 조정</h4>
+      <p>SVA 졸업생의 미국 내 취업 비율은 전체 졸업생의 약 50~65% 수준으로 추정된다. 국제학생 비율이 높고, 비자 스폰서십 확보 어려움으로 인해 취업까지 평균 6~10개월 소요되는 사례가 많다. Big Tech 직채는 전체의 10% 미만이다.</p>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <h4>STEM OPT 여부 — 반드시 개별 확인 필요</h4>
+    <p>SVA MFA Interaction Design의 STEM OPT 자격 여부는 공식 SVA 국제학생 사무소(OIA)에 직접 확인해야 한다. 디자인 MFA는 CIP Code에 따라 STEM 지정 여부가 달라진다. 일부 인터랙션 디자인 프로그램은 CIP 50.0409 (Design and Visual Communications) 또는 11.0801 (Computer Science) 계열로 분류되는 경우가 있다. STEM OPT가 가능하면 일반 OPT 12개월 + 연장 24개월 = 총 36개월 미국 합법 체류가 가능하며, 이는 H-1B 도전 횟수를 3회까지 늘릴 수 있다는 의미다.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SECTION 3: 미국 취업시장 -->
+<section id="market">
+  <div class="section-header">
+    <div class="section-num">SECTION 03</div>
+    <h2 class="section-title">미국 <span>Product/AI UX 취업시장</span> 분석</h2>
+    <p class="section-desc">2025~2026년 미국 디자인 채용시장의 구조와 질문자의 포지셔닝 가능성을 분석한다.</p>
+  </div>
+
+  <div class="stat-grid mb-32">
+    <div class="stat-card blue"><div class="value">↑</div><div class="label">AI UX 직무 수요</div></div>
+    <div class="stat-card red"><div class="value">↓</div><div class="label">일반 UX 채용 (레이오프 이후)</div></div>
+    <div class="stat-card orange"><div class="value">~3%</div><div class="label">비자 스폰서 명시 공고 비율</div></div>
+    <div class="stat-card green"><div class="value">$120K~</div><div class="label">Mid Product Designer 뉴욕 기준 연봉</div></div>
+    <div class="stat-card purple"><div class="value">6~12개월</div><div class="label">졸업 후 평균 취업 소요 기간</div></div>
+    <div class="stat-card yellow"><div class="value">Top 10%</div><div class="label">Big Tech 진입 가능 포트폴리오 비율</div></div>
+  </div>
+
+  <h3 class="mb-16 fw-bold" style="font-size:16px">타깃 직무별 현실적 진입 가능성 (질문자 기준)</h3>
+  <div class="table-wrap mb-32">
+    <table>
+      <thead>
+        <tr>
+          <th>직무</th>
+          <th>요구 핵심 역량</th>
+          <th>삼성 경력 강점</th>
+          <th>SVA 보완 효과</th>
+          <th>비자 스폰서 난이도</th>
+          <th>현실 가능성</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>AI Product Designer</strong></td>
+          <td>AI 이해, 프로덕트 씽킹, 케이스 스터디</td>
+          <td><span class="tag tag-green">매우 높음</span></td>
+          <td><span class="tag tag-green">높음</span></td>
+          <td><span class="tag tag-orange">어려움</span></td>
+          <td><span class="tag tag-green">높음</span></td>
+        </tr>
+        <tr>
+          <td><strong>Interaction Designer</strong></td>
+          <td>프로토타이핑, 모션, 시스템 UX</td>
+          <td><span class="tag tag-green">높음</span></td>
+          <td><span class="tag tag-green">높음</span></td>
+          <td><span class="tag tag-orange">어려움</span></td>
+          <td><span class="tag tag-green">높음</span></td>
+        </tr>
+        <tr>
+          <td><strong>Product Designer (일반)</strong></td>
+          <td>비주얼, 리서치, 케이스 스터디</td>
+          <td><span class="tag tag-blue">중간</span></td>
+          <td><span class="tag tag-green">높음</span></td>
+          <td><span class="tag tag-orange">어려움</span></td>
+          <td><span class="tag tag-blue">중간</span></td>
+        </tr>
+        <tr>
+          <td><strong>Design Technologist</strong></td>
+          <td>코딩 + 프로토타이핑 + 디자인</td>
+          <td><span class="tag tag-green">높음</span></td>
+          <td><span class="tag tag-blue">중간</span></td>
+          <td><span class="tag tag-blue">중간</span></td>
+          <td><span class="tag tag-green">높음</span></td>
+        </tr>
+        <tr>
+          <td><strong>UX Strategist / Design Strategist</strong></td>
+          <td>비즈니스 이해, 시스템 씽킹, 발표력</td>
+          <td><span class="tag tag-green">높음</span></td>
+          <td><span class="tag tag-blue">중간</span></td>
+          <td><span class="tag tag-blue">중간</span></td>
+          <td><span class="tag tag-blue">중간</span></td>
+        </tr>
+        <tr>
+          <td><strong>Human-AI Interaction Designer</strong></td>
+          <td>AI literacy, 리서치, 윤리, UX</td>
+          <td><span class="tag tag-green">매우 높음</span></td>
+          <td><span class="tag tag-green">높음</span></td>
+          <td><span class="tag tag-orange">어려움</span></td>
+          <td><span class="tag tag-green">높음</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card-grid card-grid-2 mb-24">
+    <div class="card">
+      <h3 class="text-blue mb-16">지역별 취업시장 평가</h3>
+      <div class="score-item">
+        <div class="score-header"><span class="score-label">New York (SVA 졸업 기반)</span><span class="score-val text-blue">★★★★☆</span></div>
+        <p style="font-size:12px;color:var(--text-muted);margin-top:4px">핀테크, 미디어, 헬스케어, AI 스타트업, 컨설팅. Big Tech 채용은 적으나 스튜디오 생태계 강함</p>
+      </div>
+      <div class="score-item" style="margin-top:12px">
+        <div class="score-header"><span class="score-label">San Francisco / Bay Area</span><span class="score-val text-green">★★★★★</span></div>
+        <p style="font-size:12px;color:var(--text-muted);margin-top:4px">AI 테크 허브. Big Tech, AI 스타트업 밀집. 그러나 SVA 네트워크 약함. 자체 네트워킹 필요</p>
+      </div>
+      <div class="score-item" style="margin-top:12px">
+        <div class="score-header"><span class="score-label">Seattle</span><span class="score-val text-purple">★★★★☆</span></div>
+        <p style="font-size:12px;color:var(--text-muted);margin-top:4px">Microsoft, Amazon 중심. HCI 출신 선호도 높음. UW 네트워크 강세 지역</p>
+      </div>
+      <div class="score-item" style="margin-top:12px">
+        <div class="score-header"><span class="score-label">Remote US</span><span class="score-val text-yellow">★★★☆☆</span></div>
+        <p style="font-size:12px;color:var(--text-muted);margin-top:4px">비자 스폰서 어려움. 하지만 일부 AI 스타트업은 국제 채용 유연함</p>
+      </div>
+    </div>
+    <div class="card">
+      <h3 class="text-red mb-16">구조적 리스크 요인</h3>
+      <ul class="bullet">
+        <li><strong>2023~2024 Tech Layoff 이후 채용 축소</strong> — 특히 Meta, Google, Amazon의 디자인 헤드카운트 감소</li>
+        <li><strong>Entry-level 경쟁 심화</strong> — MFA 졸업생 증가 + AI 툴로 인한 주니어 수요 감소</li>
+        <li><strong>비자 스폰서십 명시 공고 3% 미만</strong> — 절대다수의 회사가 비자 스폰서 불가</li>
+        <li><strong>H-1B lottery</strong> — 연간 약 15~20% 확률 (cap subject 기준)</li>
+        <li><strong>AI 툴 확산</strong> — 디자이너에게 prototyping + coding + AI literacy 동시 요구</li>
+        <li><strong>Portfolio quality bar 상승</strong> — 케이스 스터디 1개로는 인터뷰 불가</li>
+      </ul>
+      <div class="highlight" style="margin-top:16px">
+        <strong>반전 포인트:</strong> 질문자의 삼성 AI UX 경력 + HCI 배경은 일반 MFA 졸업생과 차별화되는 포인트다. "AI 경험 있는 Interaction Designer"는 현재 시장에서 희소하다.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="mb-16">비자 및 체류 전략 분석</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>시나리오</th>
+            <th>체류 방식</th>
+            <th>기간</th>
+            <th>조건</th>
+            <th>리스크</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>OPT (일반)</strong></td>
+            <td>졸업 후 F-1 연장</td>
+            <td>12개월</td>
+            <td>취업 시작 후 신청</td>
+            <td><span class="tag tag-blue">낮음</span></td>
+          </tr>
+          <tr>
+            <td><strong>STEM OPT</strong></td>
+            <td>STEM 인증 프로그램 필요</td>
+            <td>+24개월</td>
+            <td>E-Verify 고용주 필수</td>
+            <td><span class="tag tag-blue">낮음~중간</span></td>
+          </tr>
+          <tr>
+            <td><strong>H-1B (cap)</strong></td>
+            <td>고용주 스폰서 필요</td>
+            <td>3년+3년</td>
+            <td>연간 추첨, 약 15~20% 확률</td>
+            <td><span class="tag tag-red">높음</span></td>
+          </tr>
+          <tr>
+            <td><strong>O-1A (탁월 능력)</strong></td>
+            <td>수상, 언론, 전문가 의견</td>
+            <td>1~3년 갱신</td>
+            <td>Red Dot/iF + 삼성 경력 + 논문 활용 가능</td>
+            <td><span class="tag tag-orange">중간</span></td>
+          </tr>
+          <tr>
+            <td><strong>한국 복귀</strong></td>
+            <td>비자 실패 시 귀국</td>
+            <td>—</td>
+            <td>SVA 학위 + 미국 경험은 보존됨</td>
+            <td><span class="tag tag-orange">중간</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="info-box" style="margin-top:16px">
+      <h4>O-1 비자 가능성 평가</h4>
+      <p>질문자는 Red Dot, iF Design Award 수상 + 삼성전자 수석급 경력 + HCI 논문 + 특허를 보유하고 있어 O-1 비자 신청 조건 중 일부를 이미 충족할 가능성이 있다. SVA 재학 중 전시, 언론 노출, 컨퍼런스 발표를 추가하면 OPT 이후 O-1으로 이어가는 전략이 현실적이다. 이민 전문 변호사 상담 필수.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SECTION 4: 재정 분석 -->
+<section id="finance">
+  <div class="section-header">
+    <div class="section-num">SECTION 04</div>
+    <h2 class="section-title"><span>재정 분석</span> — 숫자로 보는 의사결정</h2>
+    <p class="section-desc">감정이 아닌 숫자로 판단한다. 총비용, 기회비용, 손익분기점을 모두 포함한다.</p>
+  </div>
+
+  <div class="card mb-24">
+    <h3 class="mb-16">총 유학 비용 계산 <span class="text-muted" style="font-size:13px;font-weight:400">(국비유학 장학금 $100K 확정, 환율 1,380원/달러 적용)</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>항목</th>
+            <th>금액 (USD)</th>
+            <th>금액 (KRW 추정)</th>
+            <th>비고</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>SVA 2년 학비 (전체)</strong></td>
+            <td>$90,000~$100,000</td>
+            <td>약 1억 2,400~1억 3,800만 원</td>
+            <td>2024~25 기준, 매년 인상 가능</td>
+          </tr>
+          <tr>
+            <td><strong>장학금 차감</strong></td>
+            <td>-$100,000</td>
+            <td>-약 1억 3,800만 원</td>
+            <td><strong style="color:var(--accent-green)">확정</strong> — 국비유학(NIIED) 장학금</td>
+          </tr>
+          <tr>
+            <td><strong>실제 학비 부담</strong></td>
+            <td>$0~$10,000</td>
+            <td>0~약 1,380만 원</td>
+            <td>장학금 전액 커버 시 거의 0</td>
+          </tr>
+          <tr style="background:#3dd68c06">
+            <td><strong>국비유학 생활비 지원</strong></td>
+            <td>-$24,000~-$30,000</td>
+            <td>-약 3,312~4,140만 원</td>
+            <td><strong style="color:var(--accent-green)">확정 혜택</strong> — 월 $1,000~$1,250 stipend (NIIED 기준)</td>
+          </tr>
+          <tr style="background:#3dd68c06">
+            <td><strong>국비유학 건강보험 지원</strong></td>
+            <td>-$4,000~-$6,000</td>
+            <td>-약 552~828만 원</td>
+            <td><strong style="color:var(--accent-green)">확정 혜택</strong> — 건강보험 전액 또는 일부 지원</td>
+          </tr>
+          <tr style="background:#3dd68c06">
+            <td><strong>국비유학 항공권 지원</strong></td>
+            <td>-$1,500~-$2,500</td>
+            <td>-약 207~345만 원</td>
+            <td><strong style="color:var(--accent-green)">확정 혜택</strong> — 왕복 항공권 지원</td>
+          </tr>
+          <tr>
+            <td><strong>뉴욕 2년 생활비 (총액)</strong></td>
+            <td>$60,000~$72,000</td>
+            <td>약 8,280~9,936만 원</td>
+            <td>월 $2,500~$3,000 (룸쉐어 포함)</td>
+          </tr>
+          <tr>
+            <td><strong>건강보험 (2년)</strong></td>
+            <td>$4,000~$6,000</td>
+            <td>약 552~828만 원</td>
+            <td>국비 지원으로 실부담 거의 0</td>
+          </tr>
+          <tr>
+            <td><strong>비자 및 초기 정착비</strong></td>
+            <td>$3,000~$5,000</td>
+            <td>약 414~690만 원</td>
+            <td>보증금, 이사비 (항공권은 국비 지원)</td>
+          </tr>
+          <tr>
+            <td><strong>장비 · 소프트웨어 · 프로젝트</strong></td>
+            <td>$3,000~$5,000</td>
+            <td>약 414~690만 원</td>
+            <td>MacBook, Figma, 프로토타입 제작</td>
+          </tr>
+          <tr>
+            <td><strong>졸업 후 취업 준비 (6개월)</strong></td>
+            <td>$15,000~$18,000</td>
+            <td>약 2,070~2,484만 원</td>
+            <td>생활비 지속, 소득 없음 기간</td>
+          </tr>
+          <tr>
+            <td><strong>기회비용 (삼성 2년 순저축)</strong></td>
+            <td>—</td>
+            <td>약 9,000만 원</td>
+            <td>연 4,500만 × 2년</td>
+          </tr>
+          <tr style="background:#3dd68c08">
+            <td><strong>총 실질 비용 (국비유학 혜택 반영)</strong></td>
+            <td>~$50,000~$55,000</td>
+            <td><strong style="color:var(--accent-green)">약 1억 3천~1억 5천만 원</strong></td>
+            <td>생활비 + 정착비 + 기회비용. 학비·보험·항공 국비 커버.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="scenario-grid mb-32">
+    <div class="scenario-card scenario-best">
+      <div class="scenario-label">BEST CASE</div>
+      <h3>미국 취업 성공 시나리오</h3>
+      <p>SVA 재학 중 인턴십 → 졸업 후 3개월 내 Product Designer 취업 (뉴욕/SF AI 스타트업 또는 테크)</p>
+      <div class="amount">$130K~$160K/yr</div>
+      <p>5년 후 자산 순증 효과: <strong>약 +1억~2억 원</strong></p>
+      <p style="margin-top:8px;font-size:12px">삼성 잔류 대비 <strong style="color:var(--accent-green)">장기적 우위</strong>. 글로벌 커리어 + 소득 상승</p>
+    </div>
+    <div class="scenario-card scenario-base">
+      <div class="scenario-label">BASE CASE</div>
+      <h3>6~12개월 취업 소요</h3>
+      <p>졸업 후 6~12개월 구직 → 중소형 테크/스타트업 취업. OPT 12개월 내 해결</p>
+      <div class="amount">$100K~$120K/yr</div>
+      <p>5년 후 자산 순증 효과: <strong>약 -2천만~+5천만 원</strong></p>
+      <p style="margin-top:8px;font-size:12px">재정 버퍼 최소 6개월치($15K) 필수. <strong style="color:var(--accent-blue)">감당 가능하나 빡빡함</strong></p>
+    </div>
+    <div class="scenario-card scenario-worst">
+      <div class="scenario-label">WORST CASE</div>
+      <h3>미국 취업 실패 / 귀국</h3>
+      <p>OPT 기간 내 비자 스폰서 확보 실패 → 한국 복귀</p>
+      <div class="amount">-1.5억~-2억</div>
+      <p>총 손실 추정 (기회비용 + 지출 포함)</p>
+      <p style="margin-top:8px;font-size:12px">단, 한국 복귀 시 SVA 학위 + 미국 경험으로 <strong style="color:var(--accent-orange)">삼성 내 승진 or 글로벌 이직 가능</strong></p>
+    </div>
+  </div>
+
+  <div class="warning-box" style="border:1px solid #ff525240;background:#ff525210;border-radius:12px;padding:24px;margin-bottom:24px">
+    <h4 style="font-size:15px;font-weight:700;color:var(--accent-red);margin-bottom:12px">⚠ 국비유학 복무 의무 — 가장 중요한 확인 사항</h4>
+    <p style="margin-bottom:12px">국비유학(NIIED 한국장학재단 해외파견) 장학생은 일반적으로 <strong style="color:var(--text-primary)">졸업 후 귀국 복무 의무</strong>가 존재한다. 이는 "미국에서 커리어를 만든다"는 질문자의 목표와 직접 충돌할 수 있는 핵심 변수다.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:12px">
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--accent-red);margin-bottom:6px">일반적인 복무 의무 조건</div>
+        <ul class="bullet">
+          <li>졸업 후 일정 기간(통상 장학 기간 이상) 국내 복귀 의무</li>
+          <li>해외 취업 시 장학금 반환 요구 가능성</li>
+          <li>복무 의무 미이행 시 장학금 전액 + 이자 반환</li>
+          <li>장학 유형(파견 분야, 협약 내용)에 따라 조건 상이</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--accent-orange);margin-bottom:6px">확인해야 할 예외 조건</div>
+        <ul class="bullet">
+          <li>해외 취업 허용 여부 — 일부 프로그램은 허용</li>
+          <li>OPT 기간 취업이 복무 의무 면제 해당 여부</li>
+          <li>복무 의무 유예 또는 연장 신청 가능 여부</li>
+          <li>미국 취업 후 일정 기간 내 귀국 조건 인정 여부</li>
+        </ul>
+      </div>
+    </div>
+    <div style="background:#0d0d0f;border-radius:8px;padding:14px;font-size:13px;color:var(--text-secondary)">
+      <strong style="color:var(--accent-yellow)">즉각 행동:</strong> 장학금 수여 기관(한국장학재단 또는 해당 부처)에 <strong>서면으로</strong> 복무 의무 조건을 확인하라. "졸업 후 미국에서 OPT로 취업하는 것이 복무 의무 위반인가?"를 명확히 질의해야 한다. 이 답변이 진학 결정의 전제 조건이다.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="mb-16">손익분기점 분석</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>질문</th>
+            <th>분석 결과</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>미국 취업 성공 시 회수 기간</strong></td>
+            <td>$130K 연봉 기준 약 <strong>3~4년</strong> (삼성 대비 소득 차 감안)</td>
+          </tr>
+          <tr>
+            <td><strong>한국 복귀 시에도 가치 있는가?</strong></td>
+            <td>SVA 학위 + 뉴욕 경험은 삼성/LG/카카오 이직 시 레버리지 가능. 단, 회수는 5년 이상 소요</td>
+          </tr>
+          <tr>
+            <td><strong>국비유학 복무 의무</strong></td>
+            <td>복무 의무가 미국 취업을 막는다면 진학 목적 자체가 흔들림. 서면 확인 필수</td>
+          </tr>
+          <tr>
+            <td><strong>대출 한계선</strong></td>
+            <td>생활비 대출 <strong>5천만 원 이상</strong>은 위험. 한국 복귀 시 원리금 상환 부담이 커짐</td>
+          </tr>
+          <tr>
+            <td><strong>취업 지연 임계점</strong></td>
+            <td>OPT 기간 내 (<strong>12개월</strong>) 반드시 오퍼 확보해야 함. 12개월 초과 시 STEM OPT 없으면 위기</td>
+          </tr>
+          <tr>
+            <td><strong>환율 리스크</strong></td>
+            <td>달러 강세 시 생활비 부담 증가. 원화 자산 → 달러 전환 시점 전략 필요</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SECTION 5: 삼성 잔류 옵션 -->
+<section id="samsung">
+  <div class="section-header">
+    <div class="section-num">SECTION 05</div>
+    <h2 class="section-title">삼성전자 <span>잔류 옵션</span> 분석</h2>
+    <p class="section-desc">삼성 잔류는 단순히 "안전한 선택"이 아니다. 실제로 무엇을 얻고 무엇을 잃는지 냉정하게 평가한다.</p>
+  </div>
+
+  <div class="card-grid card-grid-2 mb-24">
+    <div class="card">
+      <h3 class="text-green mb-16">잔류 시 얻는 것</h3>
+      <ul class="bullet">
+        <li>연 4,500만 원 저축 지속 → 2년 후 현금 보유량 대폭 증가</li>
+        <li>AI UX 실무 경력 심화 — 세계에서 가장 큰 AI 기기 생태계 경험</li>
+        <li>One UI Common 같은 플랫폼 UX 오너십 가능성</li>
+        <li>특허 등록 → 이력서 + O-1 비자 요소 강화</li>
+        <li>국제 디자인 어워드 추가 수상 기회</li>
+        <li>CMU, UW 등 상위권 학교 지원 준비 시간</li>
+        <li>영어 인터뷰 / 미국식 포트폴리오 준비 시간</li>
+        <li>재정 안정성 → 유학 시 대출 최소화</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="text-red mb-16">잔류 시 잃는 것</h3>
+      <ul class="bullet">
+        <li>국비유학 + SVA 조합 기회 — 이만큼 유리한 재정 조건이 다시 오기 어려움</li>
+        <li>뉴욕 타이밍 — 시장 변화에 따라 2년 후 환경 달라질 수 있음</li>
+        <li>삼성 내부 보안으로 인해 포트폴리오 공개 범위 계속 제한</li>
+        <li>미국 진입이 늦어지는 나이 리스크 (인터뷰 경쟁 풀 변화)</li>
+        <li>삼성 안정성이 장기 목표 추진력을 약화시킬 수 있음</li>
+        <li>미국식 product thinking / portfolio 기준 체득 지연</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card mb-24">
+    <h3 class="mb-16">삼성 잔류 후 재지원 전략 (1~2년 후 상위권 학교 도전)</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">지금 ~ 3개월</div>
+        <h4>포트폴리오 공개 범위 파악</h4>
+        <p>삼성 내부 보안 정책 확인 → 어떤 프로젝트를 추상화/공개 가능한지 법무 확인. 외부 사이드 프로젝트 시작.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">3~9개월</div>
+        <h4>공개 AI UX 프로젝트 2개 완성</h4>
+        <p>AI Agent Interaction 또는 Multi-device UX 주제의 개인 프로젝트. Figma + 프로토타입 + 리서치 포함. Medium/Substack에 글 발행.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">6~12개월</div>
+        <h4>특허 출원 또는 HCI 컨퍼런스 발표</h4>
+        <p>CHI, CSCW, DIS 등에 논문 또는 포스터 제출. O-1 비자 요건 동시 강화. 추천서 확보 시작.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-period">12개월 후</div>
+        <h4>CMU MHCI / UW HCDE / Berkeley MDes 지원</h4>
+        <p>강화된 포트폴리오 + 논문/특허 + 추천서로 상위권 지원. GRE 제출 여부 확인. SOP에서 삼성 AI UX 경험 서사화.</p>
+      </div>
+    </div>
+    <div class="warning-box" style="margin-top:16px">
+      <h4>⚠ 잔류 전략의 핵심 리스크</h4>
+      <p>삼성에 남는 선택의 가장 큰 위험은 "나중에 하겠다"는 안주다. 국비유학 + SVA $100K 조합처럼 재정 부담이 거의 없는 조건이 다시 만들어지기는 매우 어렵다. 1~2년 후 상위권 합격이 보장되지 않으며, 그때는 전액 자비로 가야 할 수 있다. 잔류를 선택한다면 반드시 12개월 후 재판단 기준을 지금 명시해야 한다.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SECTION 6: 학교 비교 -->
+<section id="comparison">
+  <div class="section-header">
+    <div class="section-num">SECTION 06</div>
+    <h2 class="section-title">프로그램 <span>비교 분석</span></h2>
+    <p class="section-desc">SVA를 단독으로 보지 않는다. 질문자의 목표에 맞는 프로그램들과 체계적으로 비교한다.</p>
+  </div>
+
+  <div class="table-wrap mb-32">
+    <table class="matrix-table">
+      <thead>
+        <tr>
+          <th>프로그램</th>
+          <th>미국 취업 연결</th>
+          <th>Big Tech 접근</th>
+          <th>AI UX 적합</th>
+          <th>HCI 연구력</th>
+          <th>STEM OPT</th>
+          <th>위치</th>
+          <th>비용 부담</th>
+          <th>질문자 fit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>SVA MFA IxD</strong></td>
+          <td class="cell-mid">★★★☆☆</td>
+          <td class="cell-low">★★☆☆☆</td>
+          <td class="cell-high">★★★★☆</td>
+          <td class="cell-low">★★☆☆☆</td>
+          <td><span class="tag tag-orange">확인 필요</span></td>
+          <td>뉴욕</td>
+          <td class="cell-high">장학금 시 낮음</td>
+          <td class="cell-high">★★★★☆</td>
+        </tr>
+        <tr>
+          <td><strong>CMU MHCI</strong></td>
+          <td class="cell-high">★★★★★</td>
+          <td class="cell-high">★★★★☆</td>
+          <td class="cell-high">★★★★★</td>
+          <td class="cell-high">★★★★★</td>
+          <td><span class="tag tag-green">STEM 가능</span></td>
+          <td>피츠버그</td>
+          <td class="cell-low">높음 (장학금 거의 없음)</td>
+          <td class="cell-high">★★★★★</td>
+        </tr>
+        <tr>
+          <td><strong>UW HCDE</strong></td>
+          <td class="cell-high">★★★★★</td>
+          <td class="cell-high">★★★★★</td>
+          <td class="cell-high">★★★★★</td>
+          <td class="cell-high">★★★★★</td>
+          <td><span class="tag tag-green">STEM</span></td>
+          <td>시애틀</td>
+          <td class="cell-mid">중간</td>
+          <td class="cell-high">★★★★★</td>
+        </tr>
+        <tr>
+          <td><strong>UC Berkeley MDes</strong></td>
+          <td class="cell-high">★★★★☆</td>
+          <td class="cell-high">★★★★☆</td>
+          <td class="cell-high">★★★★☆</td>
+          <td class="cell-mid">★★★☆☆</td>
+          <td><span class="tag tag-orange">확인 필요</span></td>
+          <td>버클리</td>
+          <td class="cell-low">높음</td>
+          <td class="cell-high">★★★★☆</td>
+        </tr>
+        <tr>
+          <td><strong>NYU ITP</strong></td>
+          <td class="cell-mid">★★★☆☆</td>
+          <td class="cell-low">★★☆☆☆</td>
+          <td class="cell-high">★★★★☆</td>
+          <td class="cell-low">★★★☆☆</td>
+          <td><span class="tag tag-orange">제한적</span></td>
+          <td>뉴욕</td>
+          <td class="cell-mid">중간~높음</td>
+          <td class="cell-mid">★★★☆☆</td>
+        </tr>
+        <tr>
+          <td><strong>Parsons D&amp;T</strong></td>
+          <td class="cell-mid">★★★☆☆</td>
+          <td class="cell-low">★★☆☆☆</td>
+          <td class="cell-mid">★★★☆☆</td>
+          <td class="cell-low">★★☆☆☆</td>
+          <td><span class="tag tag-orange">확인 필요</span></td>
+          <td>뉴욕</td>
+          <td class="cell-mid">중간</td>
+          <td class="cell-mid">★★★☆☆</td>
+        </tr>
+        <tr>
+          <td><strong>MIT IDM/Media Lab</strong></td>
+          <td class="cell-high">★★★★★</td>
+          <td class="cell-high">★★★★★</td>
+          <td class="cell-high">★★★★★</td>
+          <td class="cell-high">★★★★★</td>
+          <td><span class="tag tag-green">STEM</span></td>
+          <td>보스턴</td>
+          <td class="cell-high">장학금 시 낮음</td>
+          <td class="cell-mid">진입 장벽 극히 높음</td>
+        </tr>
+        <tr>
+          <td><strong>삼성 잔류</strong></td>
+          <td class="cell-low">★★☆☆☆</td>
+          <td class="cell-low">★☆☆☆☆</td>
+          <td class="cell-high">★★★★★</td>
+          <td class="cell-low">★★☆☆☆</td>
+          <td><span class="tag tag-red">해당없음</span></td>
+          <td>한국</td>
+          <td class="cell-high">비용 없음</td>
+          <td class="cell-mid">미국 진입 가능성 낮음</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card-grid card-grid-2 mb-24">
+    <div class="card">
+      <h3 class="text-blue mb-12">SVA vs CMU MHCI — 핵심 비교</h3>
+      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">CMU MHCI는 Big Tech 직채, 학계 네트워크, STEM OPT 모든 면에서 SVA보다 우월하다. 그러나:</p>
+      <ul class="bullet">
+        <li>CMU는 장학금이 거의 없음 → 전액 자비 부담 ($80K+)</li>
+        <li>SVA 국비유학 $100K 확정 → 학비 + 보험 + 항공 커버, 실부담 거의 생활비만</li>
+        <li>CMU는 장학금 없음 → 전액 자비 + 뉴욕보다 높은 기회비용</li>
+        <li>1~2년 준비해도 CMU 합격이 보장되지 않음</li>
+        <li><strong>결론: 국비유학 조건 하에서 SVA가 CMU보다 재정적으로 압도적으로 유리함</strong></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="text-purple mb-12">SVA vs UW HCDE — 핵심 비교</h3>
+      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">UW HCDE는 시애틀 위치 + Microsoft/Amazon 네트워크 + STEM OPT + HCI 연구력에서 압도적이다.</p>
+      <ul class="bullet">
+        <li>UW는 상대적으로 학비 낮음 (공립대)</li>
+        <li>시애틀 = Microsoft, Amazon 직채 파이프라인</li>
+        <li>HCI 리서치 환경 → 질문자의 논문 경험과 시너지</li>
+        <li>합격 경쟁률이 CMU보다 현실적</li>
+        <li><strong>결론: 삼성 1년 더 후 UW 도전은 가장 이성적 대안 중 하나</strong></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SECTION 7: 포트폴리오 전략 -->
+<section id="portfolio">
+  <div class="section-header">
+    <div class="section-num">SECTION 07</div>
+    <h2 class="section-title">포트폴리오 <span>전략</span></h2>
+    <p class="section-desc">어떤 선택을 하든, 포트폴리오는 미국 취업의 실제 관문이다. 질문자의 자산을 최대로 활용하는 전략을 제시한다.</p>
+  </div>
+
+  <div class="card mb-24">
+    <h3 class="mb-16">현재 포트폴리오 자산 평가</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>자산</th>
+            <th>공개 가능성</th>
+            <th>미국 취업 활용도</th>
+            <th>보완 필요점</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>삼성 AI UX 프로젝트</strong></td>
+            <td><span class="tag tag-orange">낮음~중간</span></td>
+            <td><span class="tag tag-green">매우 높음</span></td>
+            <td>보안 범위 내 추상화 필요. 문제정의 + impact 중심 재구성</td>
+          </tr>
+          <tr>
+            <td><strong>One UI Common 시스템 UX</strong></td>
+            <td><span class="tag tag-red">낮음</span></td>
+            <td><span class="tag tag-green">매우 높음</span></td>
+            <td>시스템 UX 철학과 원칙으로 추상화 후 공개 가능</td>
+          </tr>
+          <tr>
+            <td><strong>UNIST UX Lab 프로젝트</strong></td>
+            <td><span class="tag tag-green">중간~높음</span></td>
+            <td><span class="tag tag-blue">중간~높음</span></td>
+            <td>미국식 리서치 케이스 스터디 포맷으로 재편집</td>
+          </tr>
+          <tr>
+            <td><strong>MANIMO (inclusive design)</strong></td>
+            <td><span class="tag tag-green">높음</span></td>
+            <td><span class="tag tag-green">높음</span></td>
+            <td>Inclusive AI Service Design으로 확장 + 영어화</td>
+          </tr>
+          <tr>
+            <td><strong>Red Dot / iF 수상작</strong></td>
+            <td><span class="tag tag-green">높음</span></td>
+            <td><span class="tag tag-green">높음</span></td>
+            <td>문제정의 → 프로세스 → 임팩트 3단 스토리텔링 강화</td>
+          </tr>
+          <tr>
+            <td><strong>창업 경험</strong></td>
+            <td><span class="tag tag-green">중간~높음</span></td>
+            <td><span class="tag tag-green">높음</span></td>
+            <td>Product Thinking + User Research + Iteration 관점으로 재구성</td>
+          </tr>
+          <tr>
+            <td><strong>특허 아이디어</strong></td>
+            <td><span class="tag tag-orange">낮음~중간</span></td>
+            <td><span class="tag tag-blue">중간~높음</span></td>
+            <td>공개 가능 범위 법무 확인 후 개념 수준 공개 가능</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card mb-24">
+    <h3 class="mb-16">SVA 진학 시 — 반드시 만들어야 할 6개 프로젝트</h3>
+    <div class="card-grid card-grid-2" style="gap:12px">
+      <div style="background:#4d9fff08;border:1px solid #4d9fff25;border-radius:10px;padding:16px">
+        <div style="font-size:11px;font-weight:700;color:var(--accent-blue);margin-bottom:8px">PROJECT 01</div>
+        <h4 style="font-size:14px;margin-bottom:6px">AI Agent Interaction System</h4>
+        <p style="font-size:12px;color:var(--text-secondary)">AI가 사용자 의도/상태/맥락을 이해하고 행동하는 방식 설계. 삼성 AI Agent 경험 추상화 + 공개 버전 제작</p>
+      </div>
+      <div style="background:#9b6dff08;border:1px solid #9b6dff25;border-radius:10px;padding:16px">
+        <div style="font-size:11px;font-weight:700;color:var(--accent-purple);margin-bottom:8px">PROJECT 02</div>
+        <h4 style="font-size:14px;margin-bottom:6px">Multi-device UX System</h4>
+        <p style="font-size:12px;color:var(--text-secondary)">모바일 → TV → 웨어러블 → 공간 컴퓨팅으로 이어지는 연속적 경험 설계. One UI 경험의 공개 재해석</p>
+      </div>
+      <div style="background:#3dd68c08;border:1px solid #3dd68c25;border-radius:10px;padding:16px">
+        <div style="font-size:11px;font-weight:700;color:var(--accent-green);margin-bottom:8px">PROJECT 03</div>
+        <h4 style="font-size:14px;margin-bottom:6px">Human-AI Trust & Control</h4>
+        <p style="font-size:12px;color:var(--text-secondary)">AI 추천/실행 상황에서 사용자 신뢰와 통제권 설계. AI 에이전트 시대 핵심 UX 문제</p>
+      </div>
+      <div style="background:#ff824208;border:1px solid #ff824225;border-radius:10px;padding:16px">
+        <div style="font-size:11px;font-weight:700;color:var(--accent-orange);margin-bottom:8px">PROJECT 04</div>
+        <h4 style="font-size:14px;margin-bottom:6px">Physical + Digital Interaction</h4>
+        <p style="font-size:12px;color:var(--text-secondary)">투명/플렉서블 디스플레이 경험에서 얻은 통찰 → 공개 가능한 물리-디지털 인터랙션 프로토타입</p>
+      </div>
+      <div style="background:#26d9d908;border:1px solid #26d9d925;border-radius:10px;padding:16px">
+        <div style="font-size:11px;font-weight:700;color:var(--accent-teal);margin-bottom:8px">PROJECT 05</div>
+        <h4 style="font-size:14px;margin-bottom:6px">Inclusive AI Service (MANIMO 확장)</h4>
+        <p style="font-size:12px;color:var(--text-secondary)">MANIMO 연장선의 포용적 AI 서비스. 아동, 고령자, 접근성 맥락에서의 AI UX</p>
+      </div>
+      <div style="background:#ffd74008;border:1px solid #ffd74025;border-radius:10px;padding:16px">
+        <div style="font-size:11px;font-weight:700;color:var(--accent-yellow);margin-bottom:8px">THESIS</div>
+        <h4 style="font-size:14px;margin-bottom:6px">Thesis — 대표 공개 작품</h4>
+        <p style="font-size:12px;color:var(--text-secondary)">삼성 경험 + HCI 연구 + AI UX 관심을 모두 연결하는 최종 작품. 취업 포트폴리오 핵심</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="mb-16">Thesis 방향 후보 5개</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Thesis 방향</th>
+            <th>삼성 경험 연결</th>
+            <th>미국 채용 매력도</th>
+            <th>차별성</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>AI Agents Across Personal Devices</strong><br><span style="font-size:11px;color:var(--text-muted)">멀티디바이스 AI 에이전트 경험 설계</span></td>
+            <td><span class="tag tag-green">매우 높음</span></td>
+            <td><span class="tag tag-green">매우 높음</span></td>
+            <td><span class="tag tag-green">희소</span></td>
+          </tr>
+          <tr>
+            <td><strong>Trust &amp; Control in Multi-Agent Ecosystems</strong><br><span style="font-size:11px;color:var(--text-muted)">AI 신뢰와 통제권 인터랙션 모델</span></td>
+            <td><span class="tag tag-green">높음</span></td>
+            <td><span class="tag tag-green">매우 높음</span></td>
+            <td><span class="tag tag-green">높음</span></td>
+          </tr>
+          <tr>
+            <td><strong>Notification as AI State Interface</strong><br><span style="font-size:11px;color:var(--text-muted)">알림이 AI 상태를 전달하는 새로운 인터페이스</span></td>
+            <td><span class="tag tag-green">높음</span></td>
+            <td><span class="tag tag-blue">중간~높음</span></td>
+            <td><span class="tag tag-green">높음</span></td>
+          </tr>
+          <tr>
+            <td><strong>Spatial UX for Transparent/Flexible Displays</strong><br><span style="font-size:11px;color:var(--text-muted)">신형태 디스플레이를 위한 공간 UX</span></td>
+            <td><span class="tag tag-green">매우 높음</span></td>
+            <td><span class="tag tag-blue">중간</span></td>
+            <td><span class="tag tag-green">매우 희소</span></td>
+          </tr>
+          <tr>
+            <td><strong>Inclusive AI Service for Accessibility Contexts</strong><br><span style="font-size:11px;color:var(--text-muted)">MANIMO 연결, 포용적 AI UX 서비스</span></td>
+            <td><span class="tag tag-blue">중간~높음</span></td>
+            <td><span class="tag tag-green">높음</span></td>
+            <td><span class="tag tag-blue">중간</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SECTION 8: 의사결정 매트릭스 -->
+<section id="matrix">
+  <div class="section-header">
+    <div class="section-num">SECTION 08</div>
+    <h2 class="section-title"><span>의사결정 매트릭스</span></h2>
+    <p class="section-desc">점수화된 프레임워크로 선택지를 비교한다. 감각이 아닌 기준으로 판단한다.</p>
+  </div>
+
+  <div class="card mb-24">
+    <h3 class="mb-16">가중치 기준 점수표 (각 5점 만점)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>평가 기준</th>
+            <th>가중치</th>
+            <th>지금 SVA</th>
+            <th>삼성 후 상위권</th>
+            <th>유학 없이 직접</th>
+            <th>삼성 장기 잔류</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>미국 취업 가능성</strong></td>
+            <td>20%</td>
+            <td>4.0</td>
+            <td>4.5</td>
+            <td>2.0</td>
+            <td>1.5</td>
+          </tr>
+          <tr>
+            <td><strong>장기 커리어 확장성</strong></td>
+            <td>15%</td>
+            <td>3.5</td>
+            <td>4.5</td>
+            <td>2.5</td>
+            <td>3.0</td>
+          </tr>
+          <tr>
+            <td><strong>재정 안정성</strong></td>
+            <td>15%</td>
+            <td>3.5</td>
+            <td>4.0</td>
+            <td>5.0</td>
+            <td>5.0</td>
+          </tr>
+          <tr>
+            <td><strong>현재 경력 연결성</strong></td>
+            <td>10%</td>
+            <td>4.0</td>
+            <td>4.5</td>
+            <td>4.0</td>
+            <td>5.0</td>
+          </tr>
+          <tr>
+            <td><strong>포트폴리오 강화 효과</strong></td>
+            <td>15%</td>
+            <td>4.5</td>
+            <td>4.5</td>
+            <td>2.0</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <td><strong>비자 체류 가능성</strong></td>
+            <td>10%</td>
+            <td>3.5</td>
+            <td>4.5</td>
+            <td>1.5</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td><strong>정체성 적합성</strong></td>
+            <td>10%</td>
+            <td>4.0</td>
+            <td>4.0</td>
+            <td>3.0</td>
+            <td>2.0</td>
+          </tr>
+          <tr>
+            <td><strong>후회 최소화</strong></td>
+            <td>5%</td>
+            <td>4.0</td>
+            <td>3.5</td>
+            <td>2.5</td>
+            <td>2.0</td>
+          </tr>
+          <tr style="background:#4d9fff08">
+            <td><strong>가중 합산 점수</strong></td>
+            <td>100%</td>
+            <td><strong class="text-blue">3.86</strong></td>
+            <td><strong class="text-green">4.33</strong></td>
+            <td><strong class="text-orange">2.68</strong></td>
+            <td><strong class="text-muted">2.83</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:12px">* "삼성 후 상위권"은 CMU, UW, Berkeley 등 합격 가능성이 현실적일 때의 기댓값. 합격 불확실성을 감안하면 실질 기댓값은 더 낮아진다.</p>
+  </div>
+
+  <div class="card mb-24">
+    <h3 class="mb-16">민감도 분석 — 조건 변화에 따른 결론 변동</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>변수 변화</th>
+            <th>결론 변화</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>국비유학 장학금 $100,000 확정 (현재 상황)</td>
+            <td><span class="tag tag-green">재정 리스크 해소</span> — 학비 + 보험 + 항공 커버로 실부담 대폭 감소</td>
+          </tr>
+          <tr>
+            <td>국비유학 복무 의무 — 해외 취업 허용 확인</td>
+            <td><span class="tag tag-green">SVA 강력 추천</span> — 재정 + 체류 모두 유리한 조건 완성</td>
+          </tr>
+          <tr>
+            <td>국비유학 복무 의무 — 해외 취업 불허 확인</td>
+            <td><span class="tag tag-red">진학 목적 재검토 필수</span> — 장학금 반환 리스크 vs 미국 취업 목표 충돌</td>
+          </tr>
+          <tr>
+            <td>SVA가 STEM OPT 불가 확인</td>
+            <td><span class="tag tag-orange">비자 전략 재설계 필요</span> — OPT 12개월만 의존, H-1B 압박 극심</td>
+          </tr>
+          <tr>
+            <td>미국 취업시장 추가 악화</td>
+            <td><span class="tag tag-orange">Base case → Worst case 확률 증가</span> — 재정 버퍼 더 확보 필요</td>
+          </tr>
+          <tr>
+            <td>삼성에서 중요한 AI UX 프로젝트 오너십 부여</td>
+            <td><span class="tag tag-blue">잔류 1년 후 재판단</span> — 포트폴리오 자산 가치 상승</td>
+          </tr>
+          <tr>
+            <td>CMU/UW 합격 가능성 높아짐 (추천서/포폴 강화)</td>
+            <td><span class="tag tag-red">SVA 보류, 상위권 재도전</span> — 장기 커리어 ROI 차이가 큼</td>
+          </tr>
+          <tr>
+            <td>졸업 후 취업 3개월 내 완료</td>
+            <td><span class="tag tag-green">재정 손익분기 3년 달성 가능</span></td>
+          </tr>
+          <tr>
+            <td>졸업 후 취업 12개월 이상 소요</td>
+            <td><span class="tag tag-red">재정 위기 + OPT 소진</span> — 최악의 경우 귀국</td>
+          </tr>
+          <tr>
+            <td>한국 복귀 가능성 50% 이상 인식</td>
+            <td><span class="tag tag-orange">진학 보류 권장</span> — 리스크 대비 회수 불가</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SECTION 9: 최종 결론 -->
+<section id="conclusion">
+  <div class="section-header">
+    <div class="section-num">SECTION 09</div>
+    <h2 class="section-title"><span>최종 결론</span> 및 실행 계획</h2>
+    <p class="section-desc">조건부 명확한 결론. "좋을 수도 있다"로 끝내지 않는다.</p>
+  </div>
+
+  <!-- 최종 판단 -->
+  <div style="background:linear-gradient(135deg,#4d9fff15,#9b6dff15);border:1px solid #4d9fff40;border-radius:16px;padding:32px;margin-bottom:32px">
+    <div style="font-size:11px;font-weight:700;color:var(--accent-blue);letter-spacing:0.1em;margin-bottom:16px">FINAL VERDICT</div>
+    <p style="font-size:17px;line-height:1.8;color:var(--text-primary);margin-bottom:20px">
+      현재 정보 기준으로 질문자에게 가장 합리적인 선택은 <strong style="color:var(--accent-blue)">국비유학 복무 의무가 미국 취업을 허용하는 조건이라면, SVA MFA Interaction Design 진학</strong>이다.<br>
+      그 이유는 ① 국비유학 $100K로 재정 리스크가 실질적으로 해소됨, ② 삼성 AI UX 경력의 공개 포트폴리오 전환 기회, ③ 뉴욕 네트워크 기반 미국 진입 가속 때문이다.<br>
+      다만 <strong style="color:var(--accent-orange)">국비유학 복무 의무가 졸업 후 미국 취업을 금지하거나, CMU/UW 합격 가능성이 현실적으로 높아지거나, 미국 취업에 대한 의지가 60% 미만</strong>이라면 결론은 삼성 잔류 후 상위권 재도전으로 바뀐다.<br>
+      따라서 질문자는 지금 당장 <strong>국비유학 복무 의무 조건을 서면으로 확인</strong>하고, SVA STEM OPT 여부를 검증한 뒤 최종 결정을 내려야 한다.
+    </p>
+  </div>
+
+  <!-- 6개월 실행계획 -->
+  <div class="card mb-24">
+    <h3 class="mb-16">6개월 실행계획 — SVA 진학 선택 시</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:var(--accent-blue)"></div>
+        <div class="timeline-period">지금 ~ 1개월 (입학 결정 전)</div>
+        <h4>핵심 확인 사항 처리</h4>
+        <p>국비유학 복무 의무 서면 확인(최우선) → SVA OIA에 STEM OPT CIP 코드 확인 → 국비유학 stipend 지급 조건 및 금액 확인 → 이민 변호사 O-1 상담</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:var(--accent-purple)"></div>
+        <div class="timeline-period">입학 직후 ~ 3개월</div>
+        <h4>뉴욕 네트워크 형성 + 포트폴리오 시작</h4>
+        <p>Meetup, AIGA NY, 디자인 스튜디오 이벤트 참여 → 교수진 면담으로 thesis 방향 초안 확정 → LinkedIn 영어 업데이트 → 첫 번째 AI UX 사이드 프로젝트 착수</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:var(--accent-green)"></div>
+        <div class="timeline-period">3~6개월 (1학년 1학기 종료)</div>
+        <h4>인터십 지원 시작 + 포트폴리오 1개 완성</h4>
+        <p>여름 인턴십 지원 (NYC 테크 스타트업, 컨설팅, 미디어) → 케이스 스터디 1개 완성 → LinkedIn 포트폴리오 공개 → 미국식 이력서 + 인터뷰 준비</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:var(--accent-orange)"></div>
+        <div class="timeline-period">6~12개월 (여름 인턴십)</div>
+        <h4>인턴십 경험 → 오퍼 가능성 확인</h4>
+        <p>인턴십 수행 → 정규직 전환 가능성 파악 → 포트폴리오 2~3번째 케이스 스터디 제작 → thesis 리서치 본격 시작</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background:var(--accent-red)"></div>
+        <div class="timeline-period">12~24개월 (2학년)</div>
+        <h4>Thesis + 취업 본격화</h4>
+        <p>Thesis 완성 → SVA showcase 적극 활용 → 졸업 전 취업 오퍼 확보가 최우선 → OPT 신청 준비 → 비자 스폰서 가능 회사 집중 지원</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 최종 체크리스트 -->
+  <div class="card mb-24">
+    <h3 class="mb-16">지금 당장 확인해야 할 10가지</h3>
+    <ul class="checklist">
+      <li><div class="check-num">1</div><div><strong>국비유학 복무 의무 조건 서면 확인 (최우선)</strong> — 한국장학재단 또는 주관 부처에 "졸업 후 미국 OPT 취업이 복무 의무 위반인가?"를 서면으로 질의. 구두 답변은 효력 없음. 이것이 전제 조건이다.</div></li>
+      <li><div class="check-num">2</div><div><strong>SVA STEM OPT 여부</strong> — SVA OIA에 직접 이메일/전화. CIP 코드 확인 필수. STEM OPT 불가면 체류 전략 전면 재검토.</div></li>
+      <li><div class="check-num">3</div><div><strong>국비유학 월 stipend 및 지원 항목 확인</strong> — 생활비 지원 금액(월), 건강보험 지원 범위, 항공권 지원 방식을 구체적으로 파악. 실납부 생활비 시뮬레이션에 반영.</div></li>
+      <li><div class="check-num">4</div><div><strong>뉴욕 2년 생활비 시뮬레이션</strong> — 룸쉐어 시 월 $1,800~$2,200, 단독 시 $2,800+. 현실적 예산 월별 시트 작성.</div></li>
+      <li><div class="check-num">5</div><div><strong>보유 자산 → 달러 전환 계획</strong> — 환율 리스크 최소화를 위한 환전 타이밍 전략. 달러 MMF 또는 외화예금 활용 여부.</div></li>
+      <li><div class="check-num">6</div><div><strong>삼성 퇴직 시점 및 퇴직금</strong> — 퇴직금 수령 여부, 스톡/보상 계획 확인. 최적 퇴직 타이밍 결정.</div></li>
+      <li><div class="check-num">7</div><div><strong>SVA 졸업생 LinkedIn 직접 확인</strong> — 국제학생 출신 졸업생 5~10명에게 직접 DM. 실제 취업 경험, 비자 과정 청취.</div></li>
+      <li><div class="check-num">8</div><div><strong>O-1 비자 변호사 상담</strong> — 현재 수상 + 삼성 경력 + 논문 + 특허로 O-1 가능성 1차 평가. $300~500 상담 비용 투자 가치 있음.</div></li>
+      <li><div class="check-num">9</div><div><strong>미국 취업 의지 강도 자가 점검</strong> — "반드시 미국에서 커리어를 만든다"가 90% 이상인가? 아니라면 재정 리스크 감당이 어렵다.</div></li>
+      <li><div class="check-num">10</div><div><strong>Worst Case 시나리오 수용 가능성 확인</strong> — 미국 취업 실패 후 한국 복귀 시 경제적 손실을 감당할 수 있는가? 가족/파트너와 합의됐는가?</div></li>
+    </ul>
+  </div>
+
+  <!-- 최종 포지셔닝 문장 -->
+  <div class="card">
+    <h3 class="text-blue mb-16">미국 시장에서 질문자의 차별화 포지셔닝</h3>
+    <div style="background:#0d0d0f;border:1px solid var(--border);border-radius:10px;padding:20px;font-family:monospace;font-size:14px;color:var(--accent-green);line-height:1.8">
+      "I'm an Interaction Designer with 3+ years at Samsung's AI UX team,<br>
+      where I designed multi-device AI agent experiences and next-generation<br>
+      form factor interactions — including transparent and flexible display UX.<br>
+      My work spans AI system UX, multi-modal interaction, and inclusive design.<br>
+      I hold international design awards (Red Dot, iF) and HCI research experience.<br>
+      I'm now at SVA to translate that scale-level experience into<br>
+      publicly demonstrable AI interaction design work for the US market."
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:12px">이 포지셔닝이 일반 MFA 졸업생과 질문자를 분리하는 핵심이다. 삼성 경력은 숨길 이유가 없다 — 오히려 희소성이다.</p>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer>
+  <div class="container">
+    <p style="margin-bottom:8px">SVA MFA Interaction Design 진학 의사결정 리서치 보고서 · 2026년 5월</p>
+    <p style="color:var(--text-muted)">본 보고서는 공개 정보와 시장 데이터를 기반으로 분석한 의사결정 지원 자료입니다. 최종 결정은 SVA, 이민 변호사, 재무 전문가와의 직접 상담을 통해 검증하십시오.</p>
+  </div>
+</footer>
+
+</body>
+</html>
