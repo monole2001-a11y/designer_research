@@ -1313,13 +1313,13 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
       <div style="background:#3dd68c10;border:1px solid #3dd68c35;border-radius:10px;padding:16px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-          <span style="font-size:13px;font-weight:700;color:var(--accent-green)">최소 시나리오</span>
+          <span style="font-size:13px;font-weight:700;color:var(--accent-green)">최소 시나리오 (21개월)</span>
           <span style="background:#3dd68c25;color:var(--accent-green);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px">✓ 가능</span>
         </div>
-        <div style="font-size:22px;font-weight:800;color:var(--accent-green);margin-bottom:4px">96,876만 원 <span style="font-size:13px;font-weight:400">($70,200)</span></div>
-        <div style="font-size:12px;color:var(--text-muted)">예산 대비 약 <strong style="color:var(--accent-green)">+13,124만 원 여유</strong></div>
-        <div style="margin-top:8px;height:6px;background:#1f1f28;border-radius:3px"><div style="width:88%;height:100%;background:var(--accent-green);border-radius:3px"></div></div>
-        <div style="font-size:11px;color:var(--text-muted);margin-top:4px">예산 소진율 88% — 아슬하지만 가능</div>
+        <div style="font-size:22px;font-weight:800;color:var(--accent-green);margin-bottom:4px">87,975만 원 <span style="font-size:13px;font-weight:400">($63,750)</span></div>
+        <div style="font-size:12px;color:var(--text-muted)">예산 대비 약 <strong style="color:var(--accent-green)">+22,025만 원 여유</strong><br>유급 인턴 성공 시 +30,445만 원</div>
+        <div style="margin-top:8px;height:6px;background:#1f1f28;border-radius:3px"><div style="width:80%;height:100%;background:var(--accent-green);border-radius:3px"></div></div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px">예산 소진율 80% — 여유 있음 (기존 88%에서 개선)</div>
       </div>
       <div style="background:#ff525210;border:1px solid #ff525235;border-radius:10px;padding:16px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
@@ -1470,6 +1470,188 @@
     </div>
   </div>
 
+  <!-- 기간별 지출 타임라인 -->
+  <div class="card mb-24">
+    <h3 class="mb-4">기간별 <span style="color:var(--accent-blue)">지출 타임라인</span> <span style="color:var(--accent-green);font-size:14px;font-weight:600">2026년 9월 → 2028년 5월 졸업</span></h3>
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:20px">재학 기간 21개월 기준 · 최소 시나리오(월 $2,150) · 환율 1,380원/달러</p>
+
+    <!-- 기간별 테이블 -->
+    <div class="table-wrap mb-20">
+      <table>
+        <thead>
+          <tr>
+            <th>기간</th>
+            <th>시기</th>
+            <th>월수</th>
+            <th>주요 지출 항목</th>
+            <th>기간 합계 (USD)</th>
+            <th>기간 합계 (KRW)</th>
+            <th>누적 지출 (USD)</th>
+            <th>잔여 예산</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#4d9fff08">
+            <td><strong>출국 준비</strong></td>
+            <td>2026년 8월</td>
+            <td>—</td>
+            <td>보증금 $1,100 · 항공 $900 · 초기 정착 $800 · 비자비 $400</td>
+            <td><strong>$3,200</strong></td>
+            <td>약 441만</td>
+            <td>$3,200</td>
+            <td style="color:var(--accent-green)"><strong>$76,510</strong><br><span style="font-size:10px">1억 556만</span></td>
+          </tr>
+          <tr>
+            <td><strong>1학기 (Year 1 Fall)</strong></td>
+            <td>2026년 9월~12월</td>
+            <td>4개월</td>
+            <td>생활비 $2,150×4 + 장비 $2,500 (9월 일시)</td>
+            <td><strong>$11,100</strong></td>
+            <td>약 1,532만</td>
+            <td>$14,300</td>
+            <td style="color:var(--accent-green)"><strong>$65,410</strong><br><span style="font-size:10px">9,027만</span></td>
+          </tr>
+          <tr>
+            <td><strong>2학기 (Year 1 Spring)</strong></td>
+            <td>2027년 1월~5월</td>
+            <td>5개월</td>
+            <td>생활비 $2,150×5</td>
+            <td><strong>$10,750</strong></td>
+            <td>약 1,484만</td>
+            <td>$25,050</td>
+            <td style="color:var(--accent-blue)"><strong>$54,660</strong><br><span style="font-size:10px">7,543만</span></td>
+          </tr>
+          <tr style="background:#3dd68c08">
+            <td><strong>여름 인턴십 ①</strong><br><span style="font-size:11px;color:var(--accent-green)">유급 인턴 가정</span></td>
+            <td>2027년 6월~8월</td>
+            <td>3개월</td>
+            <td>생활비 $6,450 — 인턴 수입 $9,000 ($3,000×3)<br><span style="font-size:11px;color:var(--accent-green)">→ 순수입 +$2,550</span></td>
+            <td><strong style="color:var(--accent-green)">-$2,550</strong><br><span style="font-size:11px;color:var(--text-muted)">(수입이 비용 초과)</span></td>
+            <td>-약 352만</td>
+            <td style="color:var(--accent-green)">$22,500</td>
+            <td style="color:var(--accent-green)"><strong>$57,210</strong><br><span style="font-size:10px">7,895만 ↑</span></td>
+          </tr>
+          <tr style="background:#ff824208">
+            <td><strong>여름 인턴십 ②</strong><br><span style="font-size:11px;color:var(--accent-orange)">무급 인턴 또는 개인작업</span></td>
+            <td>2027년 6월~8월</td>
+            <td>3개월</td>
+            <td>생활비 $2,150×3</td>
+            <td><strong>$6,450</strong></td>
+            <td>약 890만</td>
+            <td>$31,500</td>
+            <td style="color:var(--accent-blue)"><strong>$48,210</strong><br><span style="font-size:10px">6,653만</span></td>
+          </tr>
+          <tr>
+            <td><strong>3학기 (Year 2 Fall)</strong></td>
+            <td>2027년 9월~12월</td>
+            <td>4개월</td>
+            <td>생활비 $2,150×4</td>
+            <td><strong>$8,600</strong></td>
+            <td>약 1,187만</td>
+            <td>$31,100 (유급)<br>$40,100 (무급)</td>
+            <td>
+              <span style="color:var(--accent-green)"><strong>$48,610</strong> (유급)<br><span style="font-size:10px">6,708만</span></span><br>
+              <span style="color:var(--accent-blue)"><strong>$39,610</strong> (무급)<br><span style="font-size:10px">5,466만</span></span>
+            </td>
+          </tr>
+          <tr style="background:#9b6dff08">
+            <td><strong>4학기 (Year 2 Spring)</strong><br><span style="font-size:11px;color:var(--accent-purple)">Thesis 마무리 + 졸업</span></td>
+            <td>2028년 1월~5월</td>
+            <td>5개월</td>
+            <td>생활비 $2,150×5</td>
+            <td><strong>$10,750</strong></td>
+            <td>약 1,484만</td>
+            <td>$41,850 (유급)<br>$50,850 (무급)</td>
+            <td>
+              <span style="color:var(--accent-green)"><strong>$37,860</strong> (유급)<br><span style="font-size:10px">5,225만</span></span><br>
+              <span style="color:var(--accent-blue)"><strong>$28,860</strong> (무급)<br><span style="font-size:10px">3,983만</span></span>
+            </td>
+          </tr>
+          <tr style="background:#ffd74010">
+            <td><strong>졸업 후 구직</strong><br><span style="font-size:11px;color:var(--accent-yellow)">OPT 시작</span></td>
+            <td>2028년 6월~</td>
+            <td>3개월</td>
+            <td>생활비 $2,150×3 (취업까지 무소득)</td>
+            <td><strong>$6,450</strong></td>
+            <td>약 890만</td>
+            <td>$48,300 (유급)<br>$57,300 (무급)</td>
+            <td>
+              <span style="color:var(--accent-green)"><strong>$31,410</strong> (유급)<br><span style="font-size:10px">4,335만 여유</span></span><br>
+              <span style="color:var(--accent-blue)"><strong>$22,410</strong> (무급)<br><span style="font-size:10px">3,093만 여유</span></span>
+            </td>
+          </tr>
+          <tr style="background:#ffd74010">
+            <td><strong>졸업 후 구직</strong></td>
+            <td>2028년 6월~</td>
+            <td>6개월</td>
+            <td>생활비 $2,150×6</td>
+            <td><strong>$12,900</strong></td>
+            <td>약 1,780만</td>
+            <td>$54,750 (유급)<br>$63,750 (무급)</td>
+            <td>
+              <span style="color:var(--accent-green)"><strong>$24,960</strong> (유급)<br><span style="font-size:10px">3,444만 여유 ✓</span></span><br>
+              <span style="color:var(--accent-green)"><strong>$15,960</strong> (무급)<br><span style="font-size:10px">2,202만 여유 ✓</span></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 졸업 시점 요약 카드 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+      <div style="background:#3dd68c0d;border:1px solid #3dd68c35;border-radius:10px;padding:18px">
+        <div style="font-size:11px;font-weight:700;color:var(--accent-green);margin-bottom:8px">시나리오 A — 유급 인턴십 성공 (2027 여름)</div>
+        <div style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">여름 인턴 $3,000×3개월 수입으로 예산 일부 회복</div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+          <span style="font-size:12px;color:var(--text-muted)">졸업 시점 총 지출</span>
+          <strong style="color:var(--accent-green)">$41,850 (5,775만)</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+          <span style="font-size:12px;color:var(--text-muted)">잔여 예산 (6개월 구직 후)</span>
+          <strong style="color:var(--accent-green)">$24,960 (3,444만)</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between">
+          <span style="font-size:12px;color:var(--text-muted)">추가 구직 가능 기간</span>
+          <strong style="color:var(--accent-green)">+11.6개월</strong>
+        </div>
+        <div style="margin-top:10px;height:6px;background:#1f1f28;border-radius:3px">
+          <div style="width:68%;height:100%;background:var(--accent-green);border-radius:3px"></div>
+        </div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px">예산 소진율 68% — 여유로운 상태</div>
+      </div>
+      <div style="background:#4d9fff0d;border:1px solid #4d9fff35;border-radius:10px;padding:18px">
+        <div style="font-size:11px;font-weight:700;color:var(--accent-blue);margin-bottom:8px">시나리오 B — 무급 인턴 또는 개인 작업 (2027 여름)</div>
+        <div style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">여름 수입 없음, 최소 생활비만 지출</div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+          <span style="font-size:12px;color:var(--text-muted)">졸업 시점 총 지출</span>
+          <strong style="color:var(--accent-blue)">$50,850 (7,017만)</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+          <span style="font-size:12px;color:var(--text-muted)">잔여 예산 (6개월 구직 후)</span>
+          <strong style="color:var(--accent-blue)">$15,960 (2,202만)</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between">
+          <span style="font-size:12px;color:var(--text-muted)">추가 구직 가능 기간</span>
+          <strong style="color:var(--accent-blue)">+7.4개월</strong>
+        </div>
+        <div style="margin-top:10px;height:6px;background:#1f1f28;border-radius:3px">
+          <div style="width:82%;height:100%;background:var(--accent-blue);border-radius:3px"></div>
+        </div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px">예산 소진율 82% — 가능하나 집중 필요</div>
+      </div>
+    </div>
+
+    <!-- 24개월 기준 대비 절감 효과 -->
+    <div style="background:#9b6dff10;border:1px solid #9b6dff30;border-radius:8px;padding:14px">
+      <div style="font-size:12px;font-weight:700;color:var(--accent-purple);margin-bottom:8px">📌 21개월 재학 vs 기존 24개월 가정 비교</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;font-size:12px;color:var(--text-secondary)">
+        <div><strong style="color:var(--text-primary)">생활비 절감</strong><br>3개월 × $2,150 = $6,450<br>≈ 890만 원 절약</div>
+        <div><strong style="color:var(--text-primary)">버퍼 증가</strong><br>기존 1,312만 → <strong style="color:var(--accent-green)">2,202만~3,444만</strong><br>예산 여유 대폭 개선</div>
+        <div><strong style="color:var(--text-primary)">구직 가능 기간</strong><br>기존 4.4개월 → <strong style="color:var(--accent-green)">7.4~11.6개월</strong><br>실질적 안전망 확보</div>
+      </div>
+    </div>
+  </div>
+
   <!-- 총 비용 통합 테이블 -->
   <div class="card mb-24">
     <h3 class="mb-16">총 유학 비용 계산 <span class="text-muted" style="font-size:13px;font-weight:400">(국비유학 장학금 $100K 확정, 환율 1,380원/달러)</span></h3>
@@ -1500,10 +1682,10 @@
             <td>초과분만 자비</td>
           </tr>
           <tr>
-            <td><strong>2년 생활비 (쉐어하우스+지하철)</strong></td>
-            <td><strong>$51,600</strong><br><span style="font-size:11px;color:var(--text-muted)">월 $2,150 × 24</span></td>
-            <td><strong>$78,720</strong><br><span style="font-size:11px;color:var(--text-muted)">월 $3,280 × 24</span></td>
-            <td>임대·교통·식비·보험 포함</td>
+            <td><strong>재학 중 생활비 (21개월)</strong><br><span style="font-size:11px;color:var(--accent-green)">9월 2026 → 5월 2028</span></td>
+            <td><strong>$45,150</strong><br><span style="font-size:11px;color:var(--text-muted)">월 $2,150 × 21개월</span></td>
+            <td><strong>$68,880</strong><br><span style="font-size:11px;color:var(--text-muted)">월 $3,280 × 21개월</span></td>
+            <td>24개월 가정 대비 3개월 절감 ($6,450 절약)</td>
           </tr>
           <tr>
             <td><strong>초기 정착비</strong><br><span style="font-size:11px;color:var(--text-muted)">보증금·항공권·이사</span></td>
@@ -1518,10 +1700,10 @@
             <td>Figma, Adobe CC 등</td>
           </tr>
           <tr>
-            <td><strong>졸업 후 구직 기간 생활비</strong></td>
+            <td><strong>졸업 후 구직 생활비</strong><br><span style="font-size:11px;color:var(--accent-yellow)">OPT 시작 (2028년 6월~)</span></td>
             <td>$12,900<br><span style="font-size:11px;color:var(--text-muted)">월 $2,150 × 6개월</span></td>
             <td>$19,680<br><span style="font-size:11px;color:var(--text-muted)">월 $3,280 × 6개월</span></td>
-            <td>OPT 취업까지 무소득 기간</td>
+            <td>OPT 취업까지 무소득 기간. 3개월 취업 시 $6,450으로 절감.</td>
           </tr>
           <tr style="background:#ff824208">
             <td><strong>기회비용 (삼성 2년 순저축)</strong></td>
@@ -1529,15 +1711,19 @@
             <td>연 4,500만 × 2년</td>
           </tr>
           <tr style="background:#3dd68c08;border-top:2px solid #3dd68c40">
-            <td><strong>현금 실지출 소계</strong><br><span style="font-size:11px;color:var(--text-muted)">(기회비용 제외)</span></td>
-            <td><strong style="color:var(--accent-green);font-size:15px">$70,200</strong><br><span style="font-size:11px;color:var(--text-muted)">≈ 약 9,688만 원</span></td>
-            <td><strong style="color:var(--accent-blue);font-size:15px">$108,400</strong><br><span style="font-size:11px;color:var(--text-muted)">≈ 약 1억 4,959만 원</span></td>
-            <td>학비 제외, 생활·정착·장비·구직</td>
+            <td><strong>현금 실지출 소계</strong><br><span style="font-size:11px;color:var(--text-muted)">(기회비용 제외, 무급 인턴 기준)</span></td>
+            <td><strong style="color:var(--accent-green);font-size:15px">$63,750</strong><br><span style="font-size:11px;color:var(--text-muted)">≈ 약 8,797만 원</span><br><span style="font-size:11px;color:var(--accent-green)">유급 인턴 시: $54,750 (7,555만)</span></td>
+            <td><strong style="color:var(--accent-orange);font-size:15px">$102,080</strong><br><span style="font-size:11px;color:var(--text-muted)">≈ 약 1억 4,087만 원</span><br><span style="font-size:11px;color:var(--accent-red)">예산 초과 — 불가</span></td>
+            <td>21개월 기준. 24개월 대비 최소 $6,450 절감.</td>
           </tr>
           <tr style="background:#4d9fff08;border-top:2px solid #4d9fff30">
             <td><strong>총 실질 비용</strong><br><span style="font-size:11px;color:var(--text-muted)">(기회비용 포함)</span></td>
-            <td><strong style="color:var(--accent-green);font-size:16px">약 1억 7,700만 원</strong><br><span style="font-size:11px;color:var(--text-muted)">$70,200 + 기회비용 9,000만</span></td>
-            <td><strong style="color:var(--accent-orange);font-size:16px">약 2억 4천만 원</strong><br><span style="font-size:11px;color:var(--text-muted)">$108,400 + 기회비용 9,000만</span></td>
+            <td>
+              <strong style="color:var(--accent-green);font-size:15px">약 1억 6,797만 원</strong><br>
+              <span style="font-size:11px;color:var(--text-muted)">무급: $63,750 + 기회비용 9,000만</span><br>
+              <strong style="color:var(--accent-green)">유급 시: 약 1억 5,555만 원</strong>
+            </td>
+            <td><strong style="color:var(--accent-red);font-size:15px">약 2억 3,087만 원</strong><br><span style="font-size:11px;color:var(--text-muted)">$102,080 + 기회비용 9,000만</span></td>
             <td>학비($100K)는 장학금으로 0</td>
           </tr>
         </tbody>
@@ -1545,12 +1731,14 @@
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px">
       <div style="background:#3dd68c0a;border:1px solid #3dd68c25;border-radius:8px;padding:12px;font-size:12px">
-        <strong style="color:var(--accent-green)">최소 시나리오 요약</strong><br>
-        <span style="color:var(--text-muted)">Queens 쉐어룸 · 절약 식비 · 기존 장비 활용 · 3개월 내 취업 시 현금 지출 <strong style="color:var(--accent-green)">$57,300 (약 7,907만 원)</strong></span>
+        <strong style="color:var(--accent-green)">최소 시나리오 요약 (21개월 기준)</strong><br>
+        <span style="color:var(--text-muted)">Queens 쉐어룸 · 절약 식비 · 기존 장비 · 6개월 구직 기준 <strong style="color:var(--accent-green)">$63,750 (약 8,797만 원)</strong><br>
+        유급 인턴십 성공 시: <strong style="color:var(--accent-green)">$54,750 (약 7,555만 원)</strong></span>
       </div>
-      <div style="background:#4d9fff0a;border:1px solid #4d9fff25;border-radius:8px;padding:12px;font-size:12px">
-        <strong style="color:var(--accent-blue)">평균 시나리오 요약</strong><br>
-        <span style="color:var(--text-muted)">Brooklyn 개인실 · 주 1~2회 외식 · 신형 장비 · 6개월 구직 기준 현금 지출 <strong style="color:var(--accent-blue)">$108,400 (약 1억 5천만 원)</strong></span>
+      <div style="background:#ff524210;border:1px solid #ff525225;border-radius:8px;padding:12px;font-size:12px">
+        <strong style="color:var(--accent-red)">평균 시나리오 — 예산 초과로 불가</strong><br>
+        <span style="color:var(--text-muted)">Brooklyn 개인실 · 외식 포함 · 신형 장비 · 21개월 현금 지출 <strong style="color:var(--accent-red)">$102,080 (약 1억 4,087만 원)</strong><br>
+        예산 1억 1,000만 원 초과 → 반드시 최소 시나리오로 생활해야 함</span>
       </div>
     </div>
   </div>
