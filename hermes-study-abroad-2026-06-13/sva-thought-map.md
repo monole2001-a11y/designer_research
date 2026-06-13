@@ -207,6 +207,44 @@
 - **D-day(확정 시) 이후**: 이 지도는 "결정 보조" 모드에서 **"실행 적응 추적"** 모드로 전환 — B/C 재비교 보조는 중단하고, §4-D의 전환 비용(지위 역전·외로움·돈의 소음) 신호 관측으로 용도를 바꾼다.
 - 이 문서는 사용자의 생각을 기록한 지도이지 사용자를 규정하는 문서가 아니다 — 사용자가 "이건 내 생각이 아니다"라고 하면 해당 항목을 즉시 수정·삭제한다.
 
+## 부록 A. 심리 이론 출처 + 추가 인사이트 (2026-06-13 보강)
+
+본문 §2·§6에서 인용한 심리 개념의 학술 출처를 명시해 검증 가능하게 하고, 이 사례에 유용한 의사결정 심리 도구를 몇 개 추가한다. 이 부록은 외부 공개 출처 기반이며 개인 정보를 외부에 넣지 않고 수집했다. **진단이 아니라 의사결정 보조 틀이다.**
+
+### A-1. 본문에서 쓴 개념의 출처
+
+| 본문 위치 | 개념 | 출처 (검증용) |
+| --- | --- | --- |
+| 신호 1 | 미루기 = 단기 기분 조절(감정 조절 실패) | Sirois, F. & Pychyl, T. (2013). *Procrastination and the Priority of Short-Term Mood Regulation*. Social & Personality Psychology Compass 7(2), 115–127 |
+| 신호 1·3 | 불확실성 비관용 ↔ 결정 미루기 상관 | Intolerance of Uncertainty 연구 (Dugas·Freeston·Buhr 계열; Luhmann et al. 2011 지연·확률 보상 실험의 후속 검증) |
+| 신호 2 | 접근–접근 갈등(둘 다 좋아 못 고름) | Lewin, K. 갈등 유형론 (approach–approach conflict) |
+| 신호 4 | Maximizer가 더 나은 결과에도 덜 만족 | Schwartz, B. et al. (2002). *Maximizing Versus Satisficing*. J. Personality & Social Psychology. 후속: maximizing/satisficing과 웰빙·self-rumination 관계 연구(Cambridge, Judgment & Decision Making) |
+| 신호 5 | 내면화된 기대(introjection)와 자기가치 혼선 | 자기결정이론(Deci & Ryan)의 introjected regulation |
+| 신호 6 | 조기완료(foreclosure) — 탐색 없이 정체성 각본 닫힘 | Marcia, J. 정체성 지위론(identity status) |
+| §4-A | 좋은데 답답함 = 유능감·자율성 결핍 | 자기결정이론(SDT, Deci & Ryan) 3대 기본욕구: 자율성·유능감·관계성 |
+| §6 층2 | 사회적 시계(social clock) | Neugarten, B. |
+| §6 층4 | 서사 정체성·인생 2막의 저자권 | McAdams, D. narrative identity |
+| 처방 ② | 숙고 모드 vs 실행 모드(루비콘) | Gollwitzer, P. Rubicon model of action phases |
+
+### A-2. 추가로 쓸 만한 도구 (증거 기반)
+
+1. **WOOP / MCII (Mental Contrasting + Implementation Intentions)** — Oettingen & Gollwitzer. Wish→Outcome→Obstacle→Plan(if-then)의 4단계. **단순 긍정 상상보다 행동 전환율이 높다는 실험 증거** 다수(다이어트·운동·학업). 이 사례 적용: 막연한 "준비되면 간다" 대신 "**만약** 불안해서 보고서를 다시 열고 싶으면(obstacle), **그러면** 게이트 행동 1개로 교체한다(if-then)" — 본인의 실행의도 답안(Q47)을 이 형식으로 재작성하면 미루기 가드가 행동 수준에서 작동. 출처: [Gollwitzer & Oettingen — Implementation Intentions (2019)](https://www.psy.uni-hamburg.de/arbeitsbereiche/paedagogische-psychologie-und-motivation/personen/oettingen-gabriele/dokumente/gollwitzer-oettingen-2019-implementation-intentions.pdf), [MCII improves performance (PMC)](https://pmc.ncbi.nlm.nih.gov/articles/PMC4106484/).
+2. **예상 후회(anticipated regret) — 비대칭 처리**: 행동(한 일)의 후회는 단기에 더 크지만, **비행동(안 한 일)의 후회는 장기에 더 오래 간다**는 연구 흐름(Gilovich & Medvec). 본인 Q29("안 한 후회가 더 힘듦")·Q18(80세 시점)과 정합. 단 이 비대칭을 "그러니 무조건 가라"로 쓰면 확증편향 — 후회 최소화가 아니라 **"감당할 손실의 선택"**(deep-dive 핵심 문장)이 판정 기준임을 유지.
+3. **걱정 시간제(stimulus control for worry)**: 하루 15분 "걱정 슬롯"에만 걱정을 적고 슬롯 밖 걱정은 "이월"로 처리 → 걱정 총량 감소가 검증된 CBT 기법. 신호 3 대응의 구체 도구.
+4. **공포의 단위 분해 → 측정 가능 / 순수 운**: 불확실성 비관용의 해독제는 정보가 아니라 "모름을 견디는 근육" + 통제 가능 부분의 행동화. "통제 불가" 항목을 ① 측정 가능(영어 점수·버퍼·base rate) ② 진짜 운(H-1B 추첨)으로 쪼개 ①은 행동, ②는 하방 설계(D·E)로.
+5. **결정 후 규칙(반사실 차단)**: Maximizer는 결정 후 "만약 다른 걸 골랐다면(counterfactual)"으로 자신을 갉음. 결정 문장에 "이 손실에 동의한다"를 명시하면 동의한 손실은 후회가 아니라 비용이 된다 — 결정 지침서 §5 v12 양식의 심리학적 근거.
+
+출처(추가): [Sirois & Pychyl 2013 (Wiley)](https://compass.onlinelibrary.wiley.com/doi/abs/10.1111/spc3.12011), [Maximizing vs satisficing & well-being (Cambridge)](https://www.cambridge.org/core/journals/judgment-and-decision-making/article/way-of-making-choices-maximizing-and-satisficing-and-its-relationship-to-wellbeing-personality-and-selfrumination/64424CFEE4D1BB8C8E6D875D0F84CD8E), [IU & delayed probabilistic rewards (PMC)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8462694/).
+
+### A-3. Hermes의 추가 심리 인사이트 (이 사례 한정 합성)
+
+본문 신호들을 가로질러 읽을 때 드러나는 패턴 — 새 결론이 아니라 관측 메모다.
+
+- **불안의 방향성**: 신호 1·3·4(분석 루프·비관용·Maximizer)는 전부 *불확실성을 줄이려는* 같은 엔진의 다른 출력이다. 정서의 바닥(신호 7)이 설렘인데 표층이 불안인 구조는 **"가기 싫은 불안"이 아니라 "완벽하게 가고 싶은 불안"** — 처방의 방향이 "갈까 말까"가 아니라 "어떻게 충분의 기준을 외부화할까"여야 하는 이유.
+- **'미루기 공포'의 양날**: Q25의 미루기 공포는 신호인 동시에, 너무 강하면 **증명용 서두름**(게이트 미완에도 출발)이라는 역편향을 만든다. 즉 같은 공포가 미루기와 조급함 양쪽을 다 만들 수 있다 — 그래서 판정은 감정이 아니라 게이트 체크리스트가 한다는 규칙이 이 사람에게 특히 중요.
+- **"미국이면 다 풀린다"의 함정**: §6 종합대로, 미국이 푸는 것은 *구조*(기회·임팩트 채널)이지 *습관*(Maximizer·통제 욕구·완벽주의)이 아니다. 습관은 이사 짐에 같이 실린다. 단 같은 기질이 미국 맥락에선 "준비된 이민자"의 강점으로 뒤집힌다 — 고칠 대상이 아니라 배치를 바꿀 대상.
+- **결정 피로 경보**: 분석이 길어질수록 "아무거나 빨리 끝내고 싶다"는 충동(decision fatigue)이 온다. **밤의 결정·통보 금지, 큰 결정은 잘 잔 다음 날 오전 게이트 표 앞에서** — Hermes는 사용자가 밤에 큰 결정을 통보하면 이 원칙을 상기시킨다(§7 표에 반영됨).
+
 ---
 
-*진단·상담 아님 — 의사결정 보조 추정. 정서적 어려움이 커지면 전문가 상담 우선. 판정 체계·수치 원장은 `study-abroad-decision-guide.md`, 원문은 §머리말의 ref 파일들이 우선한다.*
+*진단·상담 아님 — 의사결정 보조 추정. 정서적 어려움이 커지면 전문가 상담 우선. 판정 체계·수치 원장은 `study-abroad-decision-guide.md`, 미국 취업시장 기준선은 `2026-06-13_us-design-job-market-skills.md`, 원문은 §머리말의 ref 파일들이 우선한다.*

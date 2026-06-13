@@ -145,15 +145,7 @@
 
 ## 7. 커리어·비자 핵심
 
-### 7-0. 2026-06-13 14:30 KST 공식자료 재확인
-
-- SVA MFA Interaction Design FAQ: MFA IxD는 STEM program, CIP code `30.3101`, SEVIS listing `Human Computer Interaction`으로 안내된다. 이 내용은 G2의 “확인 질문”을 강화하지만, 실제 게이트 통과는 **본인 I-20에 같은 CIP가 찍혀 있고 DSO가 서면 확인**할 때만 인정한다.
-- USCIS OPT: F-1 학생의 전공 관련 임시 고용허가이며 최대 12개월. Pre-completion OPT는 post-completion OPT 가능 기간을 차감한다.
-- USCIS STEM OPT: qualifying STEM degree 기반 post-completion OPT에 대해 24개월 extension을 신청하는 제도다. E-Verify employer, DSO endorsed I-20, Form I-765 등 요건이 붙는다.
-- DHS/ICE STEM list: ICE는 최신 STEM Designated Degree Program List를 ICE.gov/SEVIS/Schools에서 확인하라고 안내한다. archived PDF는 최신성 주의.
-- Study in the States CPT: CPT는 DSO가 SEVIS에 authorize하고 I-20에 출력되는 특정 employer/기간 기반 training이다. full-time CPT 1년은 OPT eligibility를 없앨 수 있다.
-- DS-160/CEAC: application ID 기록, 20분 inactivity timeout, 약 90분 소요, 본인 전자서명이 중요하다.
-- 링크와 확인일은 `objective-sources.md/html`에 별도 원장으로 보관했다.
+> 시장 측 기준선(요구 역량·포트폴리오 채용 기준·연봉·비자 트렌드, 2026 출처)은 별도 노트 **`03_Research/2026-06-13_us-design-job-market-skills.md`**. 아래는 그 요약 + 본인 맥락.
 
 - **활주로는 B·C 동일**: STEM OPT 36개월 + H-1B 최대 3회(누적 ~60%대) + 한국 국적 영주권 대기열 사실상 0. "STEM 여부"가 아니라 **"STEM + employer + portfolio + timing"**이 결과를 만든다.
 - **정책 역풍 대응**: $100K payment·가중 추첨 → E-Verify 대기업·cap-exempt(대학·연구기관)·O-1/NIW 브리지 동시 설계. AI interaction·design systems·UX engineering 등 고임금 직무 타깃, 삼성 경력의 시니어 포지셔닝 활용.
@@ -223,6 +215,8 @@
 | 반론·No-Go 신호·연쇄 리스크 | `ref/sva-career-decision-rebuttal.html` |
 | 빅테크 PD 석사 비교 (CMU·GT 등) | `ref/bigtech-product-design-masters-report-start50m-loan80m-mit-harvard.html` 외 파생 |
 | 미국 PD 채용 요구·SVA 채널 실체 | `ref/sva-product-designer-us-jobs-report.html` |
+| 미국 디자인 취업시장 요구 역량·포트폴리오 기준 (2026 외부 출처) | `03_Research/2026-06-13_us-design-job-market-skills.md` |
+| 심리 신호·발화 추적·이론 출처 | `03_Research/sva-thought-map.md` |
 | F-1 준비 일정 | `ref/f1-study-abroad-prep-plan-2026.html` |
 | 퇴사 전 대출 계획 | `ref/samsung-student-loan-plan-income-80m.html` (구버전 `samsung-student-loan-plan.html`은 대체됨) |
 | NYC 생활비 | `ref/sva-ixd-nyc-low-cost-living-budget.html` |

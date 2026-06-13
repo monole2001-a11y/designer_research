@@ -95,14 +95,6 @@ G0 요약
 
 G0이 통과 또는 잠정 통과면 바로 아래를 진행한다.
 
-### 4-0. 2026-06-13 14:30 KST 공식자료 확인 메모
-
-- SVA MFA Interaction Design FAQ는 MFA IxD가 STEM program이고 CIP code가 `30.3101`, SEVIS listing이 `Human Computer Interaction`이라고 안내한다. 다만 G2는 웹페이지 문구만으로 닫지 말고 **본인 I-20의 CIP/major field + DSO 서면 회신**으로만 닫는다.
-- USCIS는 F-1 OPT를 전공 관련 임시 고용허가로 설명하며, 일반 OPT는 최대 12개월이다. STEM OPT는 qualifying STEM degree 보유자가 post-completion OPT에 대해 **24개월 extension을 신청**하는 구조다. 즉 “자동 36개월”이 아니라 “12개월 OPT + 요건 충족 시 24개월 STEM OPT 신청 가능”으로 표현한다.
-- DHS/Study in the States CPT 자료는 CPT가 DSO의 SEVIS authorization과 I-20 출력이 필요한 특정 employer/기간 기반 training이라고 설명한다. full-time CPT 1년은 OPT eligibility를 없앨 수 있으므로 재학 중 인턴십 가정은 학교 CPT policy 확인 전 보수적으로 둔다.
-- DS-160은 CEAC에서 시작하며 application ID 기록, 20분 inactivity timeout, 약 90분 소요, 본인 전자서명이 핵심 주의사항이다.
-- 상세 링크는 `objective-sources.md/html`에 분리했다.
-
 ### G1 — 국비 약관 원문 확보
 
 확인해야 할 항목:

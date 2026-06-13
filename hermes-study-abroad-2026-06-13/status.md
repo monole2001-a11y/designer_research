@@ -44,3 +44,4 @@ Last updated: 2026-06-13
 | 2026-06-13 | Nous Hermes Agent 통합: HERMES.md (컨텍스트 파일), hermes-setup/ (스킬 7개, 메모리 시드, SOUL.md, 연결 가이드) |
 | 2026-06-13 | 유학·결정 통합 지침서 작성 (`03_Research/study-abroad-decision-guide.md`) — ref 전수조사 합본+valt+73답안 요약, 게이트 G0~G6, 절대 날짜 캘린더. 프로젝트 파일에 게이트 매핑 반영 |
 | 2026-06-13 | SVA 생각 지도 작성 (`03_Research/sva-thought-map.md`) — 심리 7신호·신호/잔향 분류·회피 6패턴·현실/커리어 렌즈·시나리오 5갈래·응답 프로토콜·진자 로그. 심리 보고서(06-12)+deep-dive+73답안 기반 |
+| 2026-06-13 | 외부 출처 보강: 미국 디자인 취업시장 리서치 노트 신설 (`03_Research/2026-06-13_us-design-job-market-skills.md`, NN/g·UX Design Institute 등 2026 출처) + SVA 생각 지도에 심리 이론 출처·추가 도구(WOOP/MCII·예상후회 등) 부록 추가. 결정 지침서·커리어 파일에 링크 |
