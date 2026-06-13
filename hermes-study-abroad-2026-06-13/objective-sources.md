@@ -1,6 +1,8 @@
-# 객관자료 원장 — 2026-06-13 19:36 KST 확인
+# 객관자료 원장 — 2026-06-14 00:58 KST 재확인
 
 이 문서는 사용자의 개인 재무·회사 자료가 아니라 공개/공식 출처만 모은 확인 원장이다. 실행 전에는 각 기관 원문과 본인 서류(I-20, 장학 약정서, 비자 예약 화면)를 다시 대조해야 한다.
+
+이번 점검에서는 SVA FAQ, USCIS STEM OPT, travel.state.gov Student Visa, SVA Academic Calendar, NIIED 국비유학생 사업 페이지를 공개 쿼리/URL로 재확인했다. 결론 변화는 없다: SVA 합격과 국비 $100K는 사용자 확인 사실, I-20·CIP·국비 지급/생활비/반환 조건·G3 runway는 계속 미확정이다.
 
 ## 1. SVA MFA Interaction Design / STEM
 
