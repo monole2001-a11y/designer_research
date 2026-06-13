@@ -1,1 +1,68 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Claude Code Setup · Hermes Notes</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body><header class="site-header"><div class="topbar"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Hermes Notes</span></a><nav class="nav"><a href="status.html">Status</a><a href="action-dashboard.html">Action</a><a href="finance-runway.html">Finance</a><a href="study-abroad.html">Study Abroad Project</a><a href="career.html">Career Project</a><a href="gate-sprint.html">Gate Sprint</a><a href="decision-guide.html">Decision Guide</a><a href="sva-thought-map.html">SVA Thought Map</a><a href="us-design-market.html">US Design Job Market</a><a href="local-reference-map.html">Reference Map</a><a href="objective-sources.html">Sources</a><a href="claude-code.html">Claude Code</a><a href="soul.html">SOUL</a></nav></div></header><section class="doc-header"><span class="eyebrow">Claude Code</span><h1>Claude Code Setup</h1><p>워크스페이스 안의 <code>.claude/</code> 및 <code>CLAUDE.md</code> 구성 요약. 사용자가 말한 “with calude”에 해당하는 Claude Code 연동 폴더로 보임.</p><div class="actions"><a class="btn" href="index.html">← 전체 문서</a></div></section><main><article class="doc"><h2>확인 결과</h2><ul><li><code>with calude</code>라는 이름의 폴더는 없음.</li><li>대신 <code>.claude/</code> 폴더와 <code>CLAUDE.md</code>가 있음.</li><li><code>.claude/</code>는 2026-06-12 23:29~23:30 KST에 생성/갱신된 Claude Code 설정 및 slash command 묶음.</li><li><code>.claude/settings.local.json</code>은 2026-06-13 00:18 KST에 갱신됨.</li></ul><h2>CLAUDE.md 역할</h2><p>Claude Code가 이 워크스페이스에서 Hermes처럼 동작하도록 하는 운영 지침이다. 기본 언어, 날짜 표기, 우선 도메인, 세션 시작 루틴, 파일 라우팅, 안전 원칙, 출력 형식, 투자 비협상 원칙을 정의한다.</p><h2>.claude/settings.json</h2><p>Claude Code에서 허용/차단할 명령을 정의한다.</p><ul><li>허용: <code>ls</code>, <code>grep</code>, <code>rg</code>, <code>wc</code>, <code>git status</code>, <code>git log</code>, <code>git diff</code>, <code>git branch</code></li><li>차단: <code>sudo</code>, <code>rm -rf</code>, <code>git reset --hard</code>, <code>git clean</code>, force push, <code>.env</code>/<code>.pem</code>/<code>.key</code>/<code>.p12</code> 읽기</li></ul><h2>.claude/settings.local.json</h2><p>로컬 전용 허용 규칙이다. Hermes Agent 문서 도메인 WebFetch와 특정 로컬 HTML을 textutil로 읽는 권한이 추가되어 있다. 민감 경로나 원문 내용은 이 웹 페이지에 원문 전체로 싣지 않는다.</p><h2>Slash Commands</h2><div class="table-wrap"><table><thead><tr><th>Command</th><th>역할</th></tr></thead><tbody><tr><td><code>/start</code></td><td>STATUS, inbox, project next actions를 보고 세션 동기화 브리핑</td></tr><tr><td><code>/inbox</code></td><td>00_Inbox 항목을 Task / Project update / Research / Decision 등으로 분류하고 반영</td></tr><tr><td><code>/daily</code></td><td>일간 리포트 생성 및 STATUS 갱신</td></tr><tr><td><code>/weekly</code></td><td>주간 리포트 생성 및 다음 주 우선순위 정렬</td></tr><tr><td><code>/decision &lt;주제&gt;</code></td><td>의사결정 보조 후 decision note와 프로젝트 Decisions 표 갱신</td></tr><tr><td><code>/research &lt;질문&gt;</code></td><td>로컬 우선 리서치 후 출처 포함 research note 생성</td></tr><tr><td><code>/invest &lt;종목/ETF&gt;</code></td><td>투자 thesis 노트 생성/갱신. 매수/매도 지시 금지</td></tr></tbody></table></div><h2>이번 유학 페이지와의 관계</h2><p>Claude Code 구성 자체는 유학 결론을 바꾸는 자료는 아니지만, 이 워크스페이스가 Claude Code/Hermes/Codex 사이에서 같은 규칙으로 작동하도록 만든 운영 인프라다. 따라서 웹 페이지에는 원문 전체가 아니라 안전 요약으로만 반영했다.</p></article></main></body></html>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Claude Code · Hermes Notes</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body><header class="site-header"><div class="topbar"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Hermes Notes</span></a><nav class="nav"><a href="status.html" class="">Status</a><a href="study-abroad.html" class="">Project</a><a href="gate-sprint.html" class="">Gate Sprint</a><a href="decision-guide.html" class="">Decision Guide</a><a href="objective-sources.html" class="">Objective Sources</a><a href="sva-thought-map.html" class="">SVA Thought Map</a><a href="local-reference-map.html" class="">Reference Map</a><a href="claude-code.html" class="active">Claude Code</a><a href="soul.html" class="">SOUL</a></nav><select class="mobile-doc-select" aria-label="문서 이동" onchange="if(this.value) location.href=this.value"><option value="">문서 이동</option><option value="status.html" >Status</option><option value="study-abroad.html" >Project</option><option value="gate-sprint.html" >Gate Sprint</option><option value="decision-guide.html" >Decision Guide</option><option value="objective-sources.html" >Objective Sources</option><option value="sva-thought-map.html" >SVA Thought Map</option><option value="local-reference-map.html" >Reference Map</option><option value="claude-code.html" selected>Claude Code</option><option value="soul.html" >SOUL</option></select></div></header><section class="doc-header"><span class="eyebrow">2026-06-13 · GitHub Pages</span><h1>Claude Code</h1><p>Claude Code 설정/commands 안전 요약</p><div class="actions"><a class="btn" href="index.html">← 전체 문서</a></div></section><main><article class="doc"><h1>Claude Code Setup — 안전 요약</h1>
+<p>확인: 2026-06-13 14:50 KST 범위: <code>CLAUDE.md</code>, <code>.claude/settings.json</code>, <code>.claude/settings.local.json</code>, <code>.claude/commands/*.md</code></p>
+<p>이 페이지는 Claude Code 설정을 웹에서 볼 수 있게 요약한 것이다. <code>settings.local.json</code>에는 로컬 파일 경로/개별 허용 명령이 포함되어 있어 원문 전체를 싣지 않고 안전 요약만 둔다.</p>
+<h2>1. CLAUDE.md의 역할</h2>
+<p><code>CLAUDE.md</code>는 Claude Code가 이 워크스페이스에서 Hermes처럼 동작하도록 하는 자동 로드 운영 지침이다.</p>
+<p>핵심 내용:</p>
+<ul>
+<li>기본 언어: 한국어.</li>
+<li>날짜 기록: 항상 절대 날짜 <code>YYYY-MM-DD</code> 사용.</li>
+<li>우선 도메인: 유학, 커리어, 업무 리서치, 투자.</li>
+<li>세션 시작 루틴: <code>STATUS.md</code> 확인, <code>00_Inbox/</code> 새 항목 확인, 마감 임박 항목 우선 알림.</li>
+<li>멀티 에이전트 동기화: Claude Code는 <code>CLAUDE.md</code>, Hermes Agent는 <code>HERMES.md</code>, AGENTS 표준 에이전트는 <code>AGENTS.md</code>를 읽으며, 운영 규칙 변경 시 <code>CLAUDE.md</code>와 <code>HERMES.md</code>를 함께 갱신.</li>
+<li>파일 라우팅: Inbox, Profile, Projects, Research, Reports, Prompts, Archive로 역할 분리.</li>
+<li><code>ref/</code> 취급: private local source material로 보고, 원문·요약·경로 목록을 승인 없이 외부 서비스에 넣지 않음.</li>
+<li>투자 원칙: 매수/매도 지시 금지, 반대 근거와 무효화 조건 포함, 계좌/보유 수량/매입가 요구 금지.</li>
+</ul>
+<h2>2. <code>.claude/settings.json</code> 요약</h2>
+<p>전역에 가까운 Claude Code 권한 설정이다.</p>
+<p>허용된 명령 범주:</p>
+<ul>
+<li>파일/검색 확인: <code>ls</code>, <code>grep</code>, <code>rg</code>, <code>wc</code></li>
+<li>git 읽기 작업: <code>git status</code>, <code>git log</code>, <code>git diff</code>, <code>git branch</code></li>
+</ul>
+<p>차단된 명령/파일 범주:</p>
+<ul>
+<li>위험 명령: <code>sudo</code>, <code>rm -rf</code>, <code>rm -fr</code>, <code>git reset --hard</code>, <code>git clean</code>, <code>git push --force</code>, <code>git push -f</code></li>
+<li>민감 파일 읽기: <code>.env</code>, <code>.env.*</code>, <code>*.pem</code>, <code>*.key</code>, <code>*.p12</code></li>
+</ul>
+<p>의사결정 의미:</p>
+<ul>
+<li>Claude Code가 일반 탐색과 git 상태 확인은 할 수 있게 하되, 파괴적 명령과 인증/비밀키 파일 접근은 막는 구조다.</li>
+</ul>
+<h2>3. <code>.claude/settings.local.json</code> 안전 요약</h2>
+<p>로컬 예외 허용 설정이다. 원문에는 특정 웹 도메인과 로컬 <code>ref/</code> 파일 변환 명령이 들어 있어, 웹 공개 페이지에는 전체 원문을 싣지 않는다.</p>
+<p>안전 요약:</p>
+<ul>
+<li>Hermes Agent 공식 문서 도메인에 대한 WebFetch 허용이 있다.</li>
+<li>특정 로컬 참고 HTML을 텍스트로 변환하는 명령 허용이 있다.</li>
+<li>이 설정은 워크스페이스 로컬 운용 편의를 위한 것이며, 공개 사이트에는 로컬 경로/명령 원문을 확장해 싣지 않는다.</li>
+</ul>
+<h2>4. Slash commands (<code>.claude/commands/*.md</code>)</h2>
+<p>현재 확인된 명령 7개:</p>
+<div class="table-wrap"><table>
+<tr><th>Command</th><th>역할</th><th>출력/반영</th></tr>
+<tr><td><code>/start</code></td><td>세션 동기화 브리핑</td><td>Status, Inbox, 마감, 오늘 추천 행동</td></tr>
+<tr><td><code>/inbox</code></td><td><code>00_Inbox/</code> 항목 분류·처리</td><td>프로젝트/리서치/리포트 반영, 아카이브 이동은 사용자 확인 후</td></tr>
+<tr><td><code>/daily</code></td><td>일간 리포트 생성</td><td><code>04_Reports/YYYY-MM-DD_daily.md</code>, <code>STATUS.md</code> 갱신</td></tr>
+<tr><td><code>/weekly</code></td><td>주간 리포트 생성</td><td><code>04_Reports/YYYY-MM-DD_weekly.md</code>, 다음 주 우선순위 정리</td></tr>
+<tr><td><code>/decision &lt;주제&gt;</code></td><td>의사결정 보조</td><td>결정 노트 생성, 프로젝트 Decisions 표에 “검토 중” 등으로 반영</td></tr>
+<tr><td><code>/research &lt;질문&gt;</code></td><td>출처 포함 리서치</td><td>로컬 우선 확인 후 필요 시 공개/공식 자료 검색, 리서치 노트 생성</td></tr>
+<tr><td><code>/invest &lt;종목/ETF&gt;</code></td><td>투자 thesis 노트 생성·갱신</td><td>매수/매도 지시 없이 thesis/반대근거/무효화 조건 기록</td></tr>
+</table></div>
+<h2>5. 이번 유학 결정 사이트에 주는 의미</h2>
+<ul>
+<li>Claude Code 설정은 유학 결정 자체의 사실 근거가 아니라, <strong>반복 가능한 운영 체계</strong>다.</li>
+<li><code>/research</code> 명령은 공개/공식 출처 우선, 민감정보를 쿼리에 넣지 않는 원칙을 명시한다. 이번 Pages 업데이트의 검색 원칙과 일치한다.</li>
+<li><code>/decision</code> 명령은 사실·가정·추정·추천을 분리하고, 최종 결정은 사용자 몫으로 둔다. 이는 B(지금·국비·SVA) vs C(2년 후·자비·탑급 HCI)를 Hermes가 대신 결정하지 않고 게이트 증거로 보조한다는 원칙과 맞는다.</li>
+<li><code>settings.json</code>의 위험 명령 차단은 이 예약 작업의 금지사항(삭제, force push, reset 등 금지)과 방향이 같다.</li>
+</ul>
+<h2>6. 공개 제외 원칙</h2>
+<p>이 사이트에는 다음을 싣지 않는다.</p>
+<ul>
+<li>원본 <code>ref/</code> 파일 전문.</li>
+<li>인증/config/session/runtime 파일.</li>
+<li><code>.env*</code>, 토큰, API 키, 비밀번호, 개인 식별 가능한 보안 정보.</li>
+<li>로컬 세션/로그/데이터베이스/gateway state.</li>
+<li><code>settings.local.json</code>의 로컬 경로·명령 원문 전체.</li>
+</ul></article></main></body></html>
