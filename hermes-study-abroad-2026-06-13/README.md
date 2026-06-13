@@ -4,4 +4,4 @@ Mobile-friendly GitHub Pages site generated from Hermes/Claude Code study-abroad
 
 Published via GitHub Pages under `designer_research/hermes-study-abroad-2026-06-13/`.
 
-Last generated: 2026-06-13 20:34 KST
+Last generated: 2026-06-13 22:58 KST

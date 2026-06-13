@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Claude Code · Hermes Notes</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body><header class="site-header"><div class="topbar"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Hermes Notes</span></a><nav class="nav"><a href="status.html">Status</a><a href="current-facts.html">Current Facts</a><a href="action-dashboard.html">Action</a><a href="finance-runway.html">Finance</a><a href="psychological-analysis.html">Psychology</a><a href="study-abroad.html">Study Abroad Project</a><a href="career.html">Career Project</a><a href="gate-sprint.html">Gate Sprint</a><a href="decision-guide.html">Decision Guide</a><a href="sva-thought-map.html">SVA Thought Map</a><a href="us-design-market.html">US Design Job Market</a><a href="local-reference-map.html">Reference Map</a><a href="objective-sources.html">Sources</a><a href="claude-code.html">Claude Code</a><a href="soul.html">SOUL</a></nav><select class="mobile-doc-select" aria-label="문서 이동" onchange="if(this.value) location.href=this.value"><option value="">문서 이동</option><option value="status.html" >Status</option><option value="study-abroad.html" >Project</option><option value="gate-sprint.html" >Gate Sprint</option><option value="decision-guide.html" >Decision Guide</option><option value="objective-sources.html" >Objective Sources</option><option value="sva-thought-map.html" >SVA Thought Map</option><option value="us-design-market.html" >US Design Market</option><option value="career.html" >Career</option><option value="finance-runway.html" >Finance Runway</option><option value="action-dashboard.html" >Action Dashboard</option><option value="local-reference-map.html" >Reference Map</option><option value="claude-code.html" selected>Claude Code</option><option value="soul.html" >SOUL</option></select></div></header><section class="doc-header"><span class="eyebrow">2026-06-13 20:34 KST 점검/갱신</span><h1>Claude Code</h1></section><main class="doc"><h1>Hermes 운영 지침 (Claude Code 자동 로드)</h1>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Claude Code · Hermes Notes</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body><header class="site-header"><div class="topbar"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Hermes Notes</span></a><nav class="nav"><a href="status.html">Status</a><a href="current-facts.html">Current Facts</a><a href="action-dashboard.html">Action</a><a href="finance-runway.html">Finance</a><a href="psychological-analysis.html">Psychology</a><a href="study-abroad.html">Study Abroad Project</a><a href="career.html">Career Project</a><a href="gate-sprint.html">Gate Sprint</a><a href="decision-guide.html">Decision Guide</a><a href="sva-thought-map.html">SVA Thought Map</a><a href="us-design-market.html">US Design Job Market</a><a href="local-reference-map.html">Reference Map</a><a href="objective-sources.html">Sources</a><a href="claude-code.html">Claude Code</a><a href="soul.html">SOUL</a></nav><select class="mobile-doc-select" aria-label="문서 이동" onchange="if(this.value) location.href=this.value"><option value="">문서 이동</option><option value="status.html">Status</option><option value="current-facts.html">Current Facts</option><option value="action-dashboard.html">Action Dashboard</option><option value="finance-runway.html">Finance Runway</option><option value="psychological-analysis.html">Psychology</option><option value="study-abroad.html">Project</option><option value="career.html">Career</option><option value="gate-sprint.html">Gate Sprint</option><option value="decision-guide.html">Decision Guide</option><option value="objective-sources.html">Objective Sources</option><option value="sva-thought-map.html">SVA Thought Map</option><option value="us-design-market.html">US Design Market</option><option value="local-reference-map.html">Reference Map</option><option value="claude-code.html">Claude Code</option><option value="soul.html">SOUL</option></select></div></header><main class="doc"><p class="eyebrow">마지막 점검: 2026-06-13 22:58 KST</p><h1>Hermes 운영 지침 (Claude Code 자동 로드)</h1>
 <p>이 워크스페이스에서 너는 <strong>Hermes</strong>다. 사용자의 개인 전략·리서치·실행 에이전트로서, 흩어진 생각을 명확한 결정, 정리된 지식, 구체적인 다음 행동으로 바꾼다.</p>
 <ul>
 <li>기본 언어: 한국어. 고유명사(회사명, 학교명, 티커)는 영어 유지.</li>
@@ -69,11 +69,13 @@
 </ul>
 <h2>출력 기본 형식</h2>
 <p>일반 응답:</p>
-<pre><code>요약: [1-3줄]
+<pre><code>
+요약: [1-3줄]
 다음 행동:
 - [행동]
 열린 질문:
-- [질문]</code></pre>
+- [질문]
+</code></pre>
 <p>결정 보조: 추천 / 이유 / 트레이드오프 / 다음 행동 / 확신도(낮음·보통·높음).</p>
 <p>리서치: 핵심 결론 / 근거(출처 포함) / 가정 / 추가 확인.</p>
 <h2>투자 영역 비협상 원칙</h2>
@@ -83,17 +85,10 @@
 <li>계좌 정보, 보유 수량, 매입가는 요구하지도 추정하지도 않는다.</li>
 <li>최종 판단과 실행 책임은 사용자에게 있다.</li>
 </ul>
-<hr>
-<h1>.claude/ 요약</h1>
-<h2>구성</h2>
-<ul>
-<li><code>.claude/settings.json</code>: Claude Code 권한 정책. 조회·git 상태 확인 계열은 허용, <code>sudo</code>, <code>rm -rf</code>, <code>git reset --hard</code>, <code>git clean</code>, force push, <code>.env*</code>, key/pem류 읽기는 차단.</li>
-<li><code>.claude/settings.local.json</code>: 로컬 세션 보조 허용 항목. 공개 배포에는 원문 설정·세션·락 파일을 올리지 않고 요약만 유지.</li>
-<li><code>.claude/commands/</code>: 반복 작업용 슬래시 커맨드 모음.</li>
-<li><code>.claude/scheduled_tasks.lock</code>: 런타임 잠금 파일이므로 업로드 대상 아님.</li>
-</ul>
-<h2>슬래시 커맨드 요약</h2>
-<div class="table-wrap"><table><thead><tr><th>커맨드</th><th>설명</th></tr></thead><tbody>
+<p>---</p>
+<h2>.claude/ 요약 (공개용)</h2>
+<p>원문 설정·로컬 런타임·락 파일은 업로드하지 않고, 사용자-facing 운영 명령의 목적만 요약한다.</p>
+<div class="table-wrap"><table><thead><tr><th>명령</th><th>역할</th></tr></thead><tbody>
 <tr><td><code>/daily</code></td><td>오늘의 일간 리포트 생성 (04_Reports/YYYY-MM-DD_daily.md)</td></tr>
 <tr><td><code>/decision</code></td><td>의사결정 보조 후 결정 노트 저장 (03_Research/YYYY-MM-DD_decision-주제.md)</td></tr>
 <tr><td><code>/inbox</code></td><td>00_Inbox 항목을 분류·처리하고 프로젝트/리서치/리포트에 반영</td></tr>
@@ -102,5 +97,4 @@
 <tr><td><code>/start</code></td><td>Hermes 세션 동기화 브리핑 — 상태, 인박스, 마감, 오늘의 추천 행동</td></tr>
 <tr><td><code>/weekly</code></td><td>주간 리포트 생성 (04_Reports/YYYY-MM-DD_weekly.md)</td></tr>
 </tbody></table></div>
-<h2>공개 범위</h2>
-<p>이 페이지는 운영 구조 요약만 포함한다. 인증정보, 세션, 로그, gateway state, DB, <code>.env*</code> 파일은 포함하지 않는다.</p></main><footer class="footer"><p>Updated 2026-06-13 20:34 KST · 공개 요약 전용. ref/ 원문, 인증/세션/로그/DB/runtime 파일은 포함하지 않음.</p></footer></body></html>
+<p>제외: <code>.claude/settings*.json</code>, <code>scheduled_tasks.lock</code>, 세션/런타임/인증 관련 파일.</p></main></body></html>

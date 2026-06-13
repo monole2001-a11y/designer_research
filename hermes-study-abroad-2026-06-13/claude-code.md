@@ -106,18 +106,11 @@ AGENTS.md의 안전 원칙이 항상 우선한다. 그 위에서:
 
 ---
 
-# .claude/ 요약
+## .claude/ 요약 (공개용)
 
-## 구성
+원문 설정·로컬 런타임·락 파일은 업로드하지 않고, 사용자-facing 운영 명령의 목적만 요약한다.
 
-- `.claude/settings.json`: Claude Code 권한 정책. 조회·git 상태 확인 계열은 허용, `sudo`, `rm -rf`, `git reset --hard`, `git clean`, force push, `.env*`, key/pem류 읽기는 차단.
-- `.claude/settings.local.json`: 로컬 세션 보조 허용 항목. 공개 배포에는 원문 설정·세션·락 파일을 올리지 않고 요약만 유지.
-- `.claude/commands/`: 반복 작업용 슬래시 커맨드 모음.
-- `.claude/scheduled_tasks.lock`: 런타임 잠금 파일이므로 업로드 대상 아님.
-
-## 슬래시 커맨드 요약
-
-| 커맨드 | 설명 |
+| 명령 | 역할 |
 | --- | --- |
 | `/daily` | 오늘의 일간 리포트 생성 (04_Reports/YYYY-MM-DD_daily.md) |
 | `/decision` | 의사결정 보조 후 결정 노트 저장 (03_Research/YYYY-MM-DD_decision-주제.md) |
@@ -127,6 +120,4 @@ AGENTS.md의 안전 원칙이 항상 우선한다. 그 위에서:
 | `/start` | Hermes 세션 동기화 브리핑 — 상태, 인박스, 마감, 오늘의 추천 행동 |
 | `/weekly` | 주간 리포트 생성 (04_Reports/YYYY-MM-DD_weekly.md) |
 
-## 공개 범위
-
-이 페이지는 운영 구조 요약만 포함한다. 인증정보, 세션, 로그, gateway state, DB, `.env*` 파일은 포함하지 않는다.
+제외: `.claude/settings*.json`, `scheduled_tasks.lock`, 세션/런타임/인증 관련 파일.
