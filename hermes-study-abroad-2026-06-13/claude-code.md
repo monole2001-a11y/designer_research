@@ -1,6 +1,6 @@
 # Claude Code Setup — 안전 요약
 
-확인: 2026-06-13 14:50 KST  
+확인: 2026-06-13 15:11 KST  
 범위: `CLAUDE.md`, `.claude/settings.json`, `.claude/settings.local.json`, `.claude/commands/*.md`
 
 이 페이지는 Claude Code 설정을 웹에서 볼 수 있게 요약한 것이다. `settings.local.json`에는 로컬 파일 경로/개별 허용 명령이 포함되어 있어 원문 전체를 싣지 않고 안전 요약만 둔다.
@@ -61,6 +61,8 @@
 | `/decision <주제>` | 의사결정 보조 | 결정 노트 생성, 프로젝트 Decisions 표에 “검토 중” 등으로 반영 |
 | `/research <질문>` | 출처 포함 리서치 | 로컬 우선 확인 후 필요 시 공개/공식 자료 검색, 리서치 노트 생성 |
 | `/invest <종목/ETF>` | 투자 thesis 노트 생성·갱신 | 매수/매도 지시 없이 thesis/반대근거/무효화 조건 기록 |
+
+추가 확인: `.claude/settings.local.json`에는 로컬 경로가 포함된 개별 허용 명령이 있어 공개 페이지에는 계속 안전 요약만 유지한다. 슬래시 커맨드 원문에는 `/research`의 “공개/공식 출처 우선, 민감정보 검색 쿼리 금지” 원칙과 `/decision`의 “사실·가정·추정·추천 분리” 원칙이 명시되어 있다.
 
 ## 5. 이번 유학 결정 사이트에 주는 의미
 

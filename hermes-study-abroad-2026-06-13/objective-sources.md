@@ -1,4 +1,4 @@
-# 객관자료 원장 — 2026-06-13 14:50 KST 확인
+# 객관자료 원장 — 2026-06-13 15:11 KST 확인
 
 이 문서는 사용자의 개인 재무·회사 자료가 아니라 공개/공식 출처만 모은 확인 원장이다. 실행 전에는 각 기관 원문과 본인 서류(I-20, 장학 약정서, 비자 예약 화면)를 다시 대조해야 한다.
 
@@ -9,6 +9,9 @@
   - 확인일: 2026-06-13 KST
 - 같은 FAQ는 프로그램 길이를 2년/4학기, 시작 9월·종료 5월로 설명한다. full-time residency 성격이고 full-time work는 특히 1년 차에 가능하면 피하라고 안내한다.
 - 단, 실제 STEM OPT 판단의 실행 증거는 프로그램 웹페이지 문구가 아니라 **본인 I-20의 CIP/major field 표기 + DSO 서면 확인**이다. 따라서 G2는 계속 “내 I-20에 30.3101이 적혀 있는가”로 닫는다.
+- SVA ixD 공개 페이지는 Fall 2026 applications가 아직 open 상태라고 표시하고, 프로그램을 Chelsea 기반 2년제 MFA로 설명한다. 이는 G0 확인 행동(합격/I-20 여부 확인)을 대체하지는 않지만, “Fall 2026 창이 웹상 완전히 닫혔다”는 반대 증거는 아니다.
+  - 출처: https://interactiondesign.sva.edu/
+  - 확인일: 2026-06-13 KST
 
 ## 2. DHS/ICE STEM Designated Degree Program List
 
@@ -31,8 +34,14 @@
 
 ## 4. Study in the States / E-Verify / CPT
 
+- Study in the States STEM OPT Hub는 SEVP-certified/accredited 미국 대학의 eligible STEM degree를 가진 F-1 학생이 USCIS EAD를 받아 24개월 STEM OPT extension을 신청할 수 있다고 설명한다.
+  - 출처: https://studyinthestates.dhs.gov/stem-opt-hub
+  - 확인일: 2026-06-13 KST
 - E-Verify: Study in the States는 STEM OPT extension에 참여하려는 F-1 학생이 USCIS E-Verify program에 등록된 employer를 선택해야 한다고 안내한다.
   - 출처: https://studyinthestates.dhs.gov/students/work/understanding-e-verify
+  - 확인일: 2026-06-13 KST
+- STEM OPT reporting: 학생은 6개월마다 DSO와 SEVIS 정보를 validate하고, 주소·고용주·employment status 등 변경은 10일 이내 보고해야 하며, 12개월/종료 시점 self-evaluation(Form I-983 관련)을 제출해야 한다. 따라서 취업 활주로는 “36개월 자동 체류”가 아니라 **학교 DSO·E-Verify employer·보고 의무를 계속 충족하는 관리형 활주로**로 적어야 한다.
+  - 출처: https://studyinthestates.dhs.gov/stem-opt-hub/for-students/students-stem-opt-reporting-requirements
   - 확인일: 2026-06-13 KST
 - CPT: CPT는 전공과 직접 관련되고 학교 curriculum의 integral part인 training이며, DSO가 SEVIS에 authorize하고 Form I-20에 출력된다. Full-time CPT 1년은 OPT eligibility를 없앨 수 있다.
   - 출처: Study in the States / DHS, F-1 Curricular Practical Training, https://studyinthestates.dhs.gov/sevis-help-hub/student-records/fm-student-employment/f-1-curricular-practical-training-cpt
