@@ -14,7 +14,7 @@ Last updated: 2026-06-13
 
 | 도메인 | 상태 한 줄 | 파일 |
 | --- | --- | --- |
-| 유학 | 방향 확정(떠난다). B(지금·국비·SVA) vs C(2년 후·자비·탑급HCI)를 게이트 G0~G6로 판정 대기. 결정 지침서 + SVA 생각 지도(`03_Research/sva-thought-map.md`) 완성 | `02_Projects/study-abroad.md` |
+| 유학 | 방향 확정(떠난다). B(지금·국비·SVA) vs C(2년 후·자비·탑급HCI)를 게이트 G0~G6로 판정 대기. 결정 지침서·생각 지도·실행 키트 8종 완비. **실행 진입점: `03_Research/study-abroad-30day-runsheet.md`** | `02_Projects/study-abroad.md` |
 | 커리어 | 초기 세팅. 목표 역할(PD / AI PD / Design Technologist) 미정. 공개 포트폴리오 번역 후보 작성 대기 | `02_Projects/career.md` |
 | 업무 리서치 | 초기 세팅. 세미나 자료의 공개/비공개 구분 대기. 민감도 표시 규칙은 템플릿에 반영됨 | `02_Projects/work-research.md` |
 | 투자 | 초기 세팅. 관심 종목/기간/리스크 허용도 미입력. thesis 기록 양식 준비됨 | `02_Projects/investment-research.md` |
@@ -50,3 +50,5 @@ Last updated: 2026-06-13
 | 2026-06-13 | 실행 키트 추가: F-1 비자 준비 체크리스트(`study-abroad-f1-visa-prep-checklist.md`, 2026 절차·수수료 검증), 포트폴리오 케이스 템플릿(`portfolio-case-study-template.md`, 채용기준 반영). study-abroad·career 파일 연결 |
 | 2026-06-13 | 실행 키트 추가: AI-era 역량 self-assessment(`ai-era-design-skills-self-assessment.md`, career Next Action 완료), 영어 게이트 TOEFL 노트(`english-gate-toefl-prep.md`, GT 100+/CMU 8.5 IELTS 확인, "C가 영어 먼저 요구" 역설 반영) |
 | 2026-06-13 | 실행 키트 추가: D-day 결정 문장 워크시트(`05_Prompts/decision-statement-worksheet.md`, v12 양식+미루기 가드 4요소+자기기만 검사), G3 현금흐름 스트레스 템플릿(`g3-cashflow-stress-test-template.md`, 환율 2칼럼+버퍼≥$25K 판정, 개인수치 외부전송 금지 명시) |
+| 2026-06-13 | 통합+감사: 30일 실행 런시트(`study-abroad-30day-runsheet.md`, 8키트+게이트 절대날짜 시퀀싱, study-abroad.md 진입점 링크). 정합성 감사 통과 — 버퍼 $25K·환율 1500/1650·D-day 7/10·국비 $80K/$100K·만기 2027-08·국비 5/20 마감이 전 파일 일치 |
+| 2026-06-13 | 내비게이션 정합(README 유학 자산 섹션·STATUS 유학 행 런시트 진입점) + 캡스톤 일간 리포트(`04_Reports/2026-06-13_daily.md`). 연속 업데이트 루프(07:07~) 핵심 범위 완료 — 게이트 키트 일체+심리/시장 자료 완비, 병목은 사용자 실행으로 이동 |

@@ -51,6 +51,7 @@
 - **`03_Research/study-abroad-decision-guide.md`: Hermes 운영용 통합 지침서 (가치 ground truth, 5경로, 사실 원장, 게이트 G0~G6, 판정 규칙, 재정·비자 핵심, 행동 수칙). 이 결정을 보조할 때 가장 먼저 볼 것.**
 - **`03_Research/sva-thought-map.md`: SVA 생각 지도 — 심리·현실·커리어 렌즈, 7개 심리 신호 클러스터, 신호/잔향 분류, 5개 시나리오 가지, 발화→대응 프로토콜, 진자 로그, 심리 이론 출처+추가 인사이트(부록 A). 사용자가 SVA에 대한 생각·감정을 말할 때 펼 것.**
 - `03_Research/2026-06-13_us-design-job-market-skills.md`: 미국 디자인 취업시장 요구 역량·포트폴리오 채용 기준·연봉·비자 트렌드 (2026 외부 출처). G4·G5의 시장 측 기준선.
+- **실행 진입점: `03_Research/study-abroad-30day-runsheet.md` — 8개 키트+게이트를 절대 날짜로 시퀀싱한 단일 체크 런시트. 무엇부터 할지 막힐 때 여기서 체크박스 1개를 닫는다.**
 - 실행 키트(게이트 닫기용): `03_Research/study-abroad-g4-alumni-interview-kit.md`(G4), `03_Research/study-abroad-g1-niied-scholarship-checklist.md`(G1), `03_Research/study-abroad-f1-visa-prep-checklist.md`(출국 비자), `03_Research/portfolio-case-study-template.md`(G5), `03_Research/english-gate-toefl-prep.md`(영어 게이트 — C일수록 먼저 요구), `03_Research/g3-cashflow-stress-test-template.md`(G3 재정), `05_Prompts/decision-statement-worksheet.md`(D-day 결정 문장+미루기 가드).
 - `ref/go-vs-stay-decision-master-framework.html`: 보고서 25편 전수조사 합본 + 최종 의사결정 기준점 (2026-06-11, 최신 원문).
 - `ref/session-context-2026-06-03.md`: 삼성 잔류 vs 지금 SVA vs 2년 후 Top HCI의 핵심 요약.
