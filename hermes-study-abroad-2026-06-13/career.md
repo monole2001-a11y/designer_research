@@ -23,6 +23,7 @@
 | 현재 목표 역할을 Product Designer, AI Product Designer, Design Technologist 중 어디에 둘지 정리 | 사용자 | TBD | Not started |
 | 삼성 경험을 공개 가능한 포트폴리오 언어로 번역할 후보 3개 작성 | Hermes | TBD | Not started |
 | 공개 포트폴리오 첫 케이스의 NDA/공개 범위 확인 | 사용자 | TBD | Not started |
+| 케이스 1개 골격 채우기 (`03_Research/portfolio-case-study-template.md` 복사해 작성) | 사용자 | TBD | Not started |
 | AI-era product design 역량 체크리스트 만들기 | Hermes | TBD | Not started |
 
 ## Decisions

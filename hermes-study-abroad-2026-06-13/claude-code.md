@@ -1,9 +1,9 @@
 # Claude Code Setup — 안전 요약
 
-확인: 2026-06-13 15:11 KST  
+확인: 2026-06-13 19:36 KST  
 범위: `CLAUDE.md`, `.claude/settings.json`, `.claude/settings.local.json`, `.claude/commands/*.md`
 
-이 페이지는 Claude Code 설정을 웹에서 볼 수 있게 요약한 것이다. `settings.local.json`에는 로컬 파일 경로/개별 허용 명령이 포함되어 있어 원문 전체를 싣지 않고 안전 요약만 둔다.
+이 페이지는 Claude Code 설정을 웹에서 볼 수 있게 요약한 것이다. `settings.local.json`에는 로컬 파일 경로/개별 허용 명령이 포함될 수 있어 원문 전체를 싣지 않고 안전 요약만 둔다.
 
 ## 1. CLAUDE.md의 역할
 
@@ -52,17 +52,17 @@
 
 현재 확인된 명령 7개:
 
-| Command | 역할 | 출력/반영 |
-| --- | --- | --- |
-| `/start` | 세션 동기화 브리핑 | Status, Inbox, 마감, 오늘 추천 행동 |
-| `/inbox` | `00_Inbox/` 항목 분류·처리 | 프로젝트/리서치/리포트 반영, 아카이브 이동은 사용자 확인 후 |
-| `/daily` | 일간 리포트 생성 | `04_Reports/YYYY-MM-DD_daily.md`, `STATUS.md` 갱신 |
-| `/weekly` | 주간 리포트 생성 | `04_Reports/YYYY-MM-DD_weekly.md`, 다음 주 우선순위 정리 |
-| `/decision <주제>` | 의사결정 보조 | 결정 노트 생성, 프로젝트 Decisions 표에 “검토 중” 등으로 반영 |
-| `/research <질문>` | 출처 포함 리서치 | 로컬 우선 확인 후 필요 시 공개/공식 자료 검색, 리서치 노트 생성 |
-| `/invest <종목/ETF>` | 투자 thesis 노트 생성·갱신 | 매수/매도 지시 없이 thesis/반대근거/무효화 조건 기록 |
+| Command | 역할 |
+| --- | --- |
+| `/daily` | 오늘의 일간 리포트 생성 (04_Reports/YYYY-MM-DD_daily.md) |
+| `/decision` | 의사결정 보조 후 결정 노트 저장 (03_Research/YYYY-MM-DD_decision-주제.md) |
+| `/inbox` | 00_Inbox 항목을 분류·처리하고 프로젝트/리서치/리포트에 반영 |
+| `/invest` | 투자 thesis 노트 생성·갱신 (리서치/기록 전용, 매수/매도 지시 금지) |
+| `/research` | 리서치 수행 후 출처 포함 노트 저장 (03_Research/YYYY-MM-DD_topic.md) |
+| `/start` | Hermes 세션 동기화 브리핑 — 상태, 인박스, 마감, 오늘의 추천 행동 |
+| `/weekly` | 주간 리포트 생성 (04_Reports/YYYY-MM-DD_weekly.md) |
 
-추가 확인: `.claude/settings.local.json`에는 로컬 경로가 포함된 개별 허용 명령이 있어 공개 페이지에는 계속 안전 요약만 유지한다. 슬래시 커맨드 원문에는 `/research`의 “공개/공식 출처 우선, 민감정보 검색 쿼리 금지” 원칙과 `/decision`의 “사실·가정·추정·추천 분리” 원칙이 명시되어 있다.
+추가 확인: 슬래시 커맨드 원문에는 `/research`의 “공개/공식 출처 우선, 민감정보 검색 쿼리 금지” 원칙과 `/decision`의 “사실·가정·추정·추천 분리” 원칙이 명시되어 있다.
 
 ## 5. 이번 유학 결정 사이트에 주는 의미
 
