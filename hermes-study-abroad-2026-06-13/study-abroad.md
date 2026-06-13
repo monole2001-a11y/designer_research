@@ -12,8 +12,8 @@
 
 ## Current Status
 
-- Status: 초기 세팅
-- Last updated: 2026-06-12
+- Status: 게이트 스프린트 진행 — SVA MFA IxD 합격 + 국비 $100K 확인, I-20/CIP·국비 약관·재정 runway 확인 대기
+- Last updated: 2026-06-13
 - Owner: 사용자
 
 ## Next Actions
@@ -22,7 +22,7 @@
 
 | Action | Owner | Due | Status |
 | --- | --- | --- | --- |
-| G0: Fall 2026 합격·I-20 보유 여부 확정 (모든 계산의 전제 — 최우선) | 사용자 | 2026-06-15 권장 | Not started |
+| G0: Fall 2026 SVA MFA IxD 합격 확인 + I-20 보유/시작일/CIP 30.3101 확인 | 사용자 | 2026-06-15 권장 | **Partial — 합격 확인, I-20/CIP 대기** |
 | G1: 국비 약관 원문 확보 — 전형($80K/$100K)·지급 시점·생활비·유지/반환 조건. 체크리스트+문의 메일: `03_Research/study-abroad-g1-niied-scholarship-checklist.md` | 사용자 | 2026-06-19 권장 | Not started |
 | G2: SVA DSO에 I-20 CIP 30.3101(STEM) 서면 확인 | 사용자 | 2026-06-19 권장 | Not started |
 | G3: 재정 스트레스 테스트 — 환율 1,650 + 졸업 후 버퍼 ≥ $25K, 월별 현금흐름표 (한도조회는 7월 중순). 템플릿: `03_Research/g3-cashflow-stress-test-template.md` | Hermes+사용자 | 2026-07-03 권장 | Not started |
@@ -36,6 +36,7 @@
 | Date | Decision | Reason | Revisit Trigger |
 | --- | --- | --- | --- |
 | 2026-06-12 | 유학을 Hermes v1 우선 추적 영역으로 설정 | 장기 의사결정과 리서치 축적이 필요함 | 목표 국가, 전공, 일정이 바뀔 때 |
+| 2026-06-13 | SVA MFA IxD 합격 + 국비 $100K 보유 확인 | B(지금·국비·SVA)의 핵심 positive 조건 2개가 확인됨. 단 I-20/CIP, 약관, 재정 runway는 아직 별도 게이트 | I-20/CIP 불일치, 국비 지급/반환 조건 불리, G3 재정 스트레스 불통과 |
 
 ## Risks And Blockers
 
@@ -43,7 +44,8 @@
 - 기존 ref에는 서로 다른 시점의 국비/SVA/Top HCI 가정이 섞여 있어 최신 원문 확인이 필요하다.
 - SVA STEM/CIP는 긍정 신호와 불확실성이 함께 기록되어 있으므로 DSO/I-20 서면 확인 전까지 확정으로 쓰지 않는다.
 - 합본 보고서(2026-06-11)의 권장 D-day는 **2026-07-10**, 물리적 상한은 2026-08-01(SVA 납부)이다. 사용자의 최종 확정이 필요하다.
-- G0(합격·I-20 보유 여부)이 모든 계산의 전제다. 없으면 B는 사실상 Fall 2027이 되어 조급함의 근거 절반이 사라진다.
+- G0 중 **SVA MFA IxD 합격은 확인됨**. 남은 전제는 I-20 보유 여부, program start date, CIP 30.3101 표기다. I-20/CIP가 닫히면 G2 STEM/OPT 판단으로 바로 연결한다.
+- G1 중 **국비 $100K 보유는 확인됨**. 남은 전제는 지급 시점, 생활비 사용 가능 여부, 유지/반환 조건 원문이다.
 - **국비 타이밍 (2026-06-13 확인)**: 2026년도 국비유학생 선발 시험 원서접수는 2026-05-07~05-20 마감(공고 2026-33). "지금·국비로 간다(B)"는 **이미 2026 선발돼 있는 상태**를 전제로만 성립 — 아니면 국비-B는 2027 사이클. G0와 함께 B-2026의 이중 시간 전제. (상세: `03_Research/study-abroad-g1-niied-scholarship-checklist.md`)
 
 ## Reference Context
