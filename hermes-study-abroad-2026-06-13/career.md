@@ -24,7 +24,7 @@
 | 삼성 경험을 공개 가능한 포트폴리오 언어로 번역할 후보 3개 작성 | Hermes | TBD | Not started |
 | 공개 포트폴리오 첫 케이스의 NDA/공개 범위 확인 | 사용자 | TBD | Not started |
 | 케이스 1개 골격 채우기 (`03_Research/portfolio-case-study-template.md` 복사해 작성) | 사용자 | TBD | Not started |
-| AI-era product design 역량 체크리스트 만들기 | Hermes | TBD | Not started |
+| AI-era product design 역량 체크리스트 만들기 → `03_Research/ai-era-design-skills-self-assessment.md` (6대 역량군 자가평가 워크시트) | Hermes | 2026-06-13 | Done — 사용자 자가평가 대기 |
 
 ## Decisions
 

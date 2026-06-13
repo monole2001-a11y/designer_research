@@ -1,6 +1,6 @@
 # Claude Code Setup — 안전 요약
 
-확인: 2026-06-13 19:36 KST  
+확인: 2026-06-13 20:16 KST  
 범위: `CLAUDE.md`, `.claude/settings.json`, `.claude/settings.local.json`, `.claude/commands/*.md`
 
 이 페이지는 Claude Code 설정을 웹에서 볼 수 있게 요약한 것이다. `settings.local.json`에는 로컬 파일 경로/개별 허용 명령이 포함될 수 있어 원문 전체를 싣지 않고 안전 요약만 둔다.

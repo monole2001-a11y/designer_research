@@ -48,3 +48,5 @@ Last updated: 2026-06-13
 | 2026-06-13 | 외부 출처 보강: 미국 디자인 취업시장 리서치 노트 신설 (`03_Research/2026-06-13_us-design-job-market-skills.md`, NN/g·UX Design Institute 등 2026 출처) + SVA 생각 지도에 심리 이론 출처·추가 도구(WOOP/MCII·예상후회 등) 부록 추가. 결정 지침서·커리어 파일에 링크 |
 | 2026-06-13 | 실행 키트 신설(연속 작업 루프): G4 alumni 인터뷰 키트(`study-abroad-g4-alumni-interview-kit.md`, 발송 가능 형태), G1 국비 약관 체크리스트(`study-abroad-g1-niied-scholarship-checklist.md`). **발견: 2026 국비 선발 원서접수 5/20 마감 → B-2026은 이미 선발된 상태 전제** (열린 질문·리스크 반영) |
 | 2026-06-13 | 실행 키트 추가: F-1 비자 준비 체크리스트(`study-abroad-f1-visa-prep-checklist.md`, 2026 절차·수수료 검증), 포트폴리오 케이스 템플릿(`portfolio-case-study-template.md`, 채용기준 반영). study-abroad·career 파일 연결 |
+| 2026-06-13 | 실행 키트 추가: AI-era 역량 self-assessment(`ai-era-design-skills-self-assessment.md`, career Next Action 완료), 영어 게이트 TOEFL 노트(`english-gate-toefl-prep.md`, GT 100+/CMU 8.5 IELTS 확인, "C가 영어 먼저 요구" 역설 반영) |
+| 2026-06-13 | 실행 키트 추가: D-day 결정 문장 워크시트(`05_Prompts/decision-statement-worksheet.md`, v12 양식+미루기 가드 4요소+자기기만 검사), G3 현금흐름 스트레스 템플릿(`g3-cashflow-stress-test-template.md`, 환율 2칼럼+버퍼≥$25K 판정, 개인수치 외부전송 금지 명시) |
