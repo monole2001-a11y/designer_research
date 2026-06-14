@@ -279,7 +279,7 @@
   <nav class="tabbar" role="tablist" aria-label="문답 탭">
     <div class="tabbar-inner">
       <button type="button" class="tab-btn active" data-tab="checkup" role="tab" aria-selected="true" aria-controls="panel-checkup">🧭 점검 문답 <span class="cnt" id="cntCheckup">0/20</span></button>
-      <button type="button" class="tab-btn" data-tab="deep" role="tab" aria-selected="false" aria-controls="panel-deep">📝 심층 질문 <span class="cnt" id="cntDeep">0/20</span></button>
+      <button type="button" class="tab-btn" data-tab="deep" role="tab" aria-selected="false" aria-controls="panel-deep">📝 심층 질문 <span class="cnt" id="cntDeep">0/25</span></button>
     </div>
   </nav>
 
@@ -800,7 +800,13 @@
       { id: "E17", g: "E · 결정의 마지막 저항", q: "머리로는 답을 아는데 몸이 안 움직인다면, 그 저항을 한 문장으로 적는다면?", why: "분석 루프(신호 1) 밑에 깔린 진짜 저항을 표면화한다." },
       { id: "E18", g: "E · 결정의 마지막 저항", q: "‘지금 간다’와 ‘2년 후 간다’ 사이에서, 단 하나의 정보·사건이 결정을 확 기울게 한다면 그건 무엇인가?", why: "교착(신호 2)의 실제 결정 변수를 특정 — 이게 곧 마지막 게이트가 된다." },
       { id: "E19", g: "E · 결정의 마지막 저항", q: "누가 대신 결정해 준다면 어느 쪽이길 ‘바라게’ 되나? (옳은 답 말고, 바라는 답)", why: "직감(신호 2의 ‘지금’ 쪽)을 우회로로 측정하는 고전적 방법." },
-      { id: "E20", g: "E · 결정의 마지막 저항", q: "이 문서·분석에서 “이건 나랑 안 맞아” 싶었던 지점이 있나? 있다면 어디인가.", why: "가장 중요한 데이터 — 추정이 틀린 곳을 본인이 직접 짚으면 분석 전체가 교정된다." }
+      { id: "E20", g: "E · 결정의 마지막 저항", q: "이 문서·분석에서 “이건 나랑 안 맞아” 싶었던 지점이 있나? 있다면 어디인가.", why: "가장 중요한 데이터 — 추정이 틀린 곳을 본인이 직접 짚으면 분석 전체가 교정된다." },
+
+      { id: "F21", g: "F · 사각지대 점검 (미검토 레버)", q: "현재 회사의 휴직(특히 유학·자기계발) 제도를 확인했나? 가능하다면 복직 조건은? (‘퇴사만이 유일한 길’이라고 가정하고 있지는 않나)", why: "휴직이 가능하면 최대 공포(‘2년이 영원이 된다’·비가역성)가 가역적 베팅으로 바뀐다 — 게이트 수학을 가장 크게 바꾸는 레버." },
+      { id: "F22", g: "F · 사각지대 점검 (미검토 레버)", q: "목표 직무의 실제 채용공고에서 선호 배경은 MFA(작가·포트폴리오)에 가깝나, MS-HCI/CS(연구·제품)에 가깝나? 확인해봤나?", why: "지금까지 WHEN·RANK만 따졌다 — 학위 ‘종류’가 목표에 맞는 그릇인지 검증." },
+      { id: "F23", g: "F · 사각지대 점검 (미검토 레버)", q: "만약 국비가 SVA 전용이 아니었다면, 그래도 SVA를 1순위로 골랐을까? 아니라면 진짜 1순위는 어디인가?", why: "‘돈이 프로그램을 골랐는지, 목표가 골랐는지’를 가른다 — 자기일치 vs 최적화의 핵심 검증." },
+      { id: "F24", g: "F · 사각지대 점검 (미검토 레버)", q: "삼성 미국 법인 전배나 온라인 탑티어(GT OMSCS 등) 같은 ‘안 떠나거나 저비용’ 대안을 검토했나, 배제했다면 이유는?", why: "‘떠난다 vs 남는다’ 이분법에서 빠진 하이브리드·저비용 제3 경로의 존재 여부 확인." },
+      { id: "F25", g: "F · 사각지대 점검 (미검토 레버)", q: "사각지대 항목 중 ‘알고도 안 본다’에 동의하고 닫을 항목과, 반드시 확인할 항목을 각각 적는다면?", why: "모든 변수를 다 파는 건 Maximizer 함정 — ‘동의하고 닫기’도 결정 행위다." }
     ];
 
     var state = {};
@@ -991,11 +997,11 @@
       // 심층 탭
       var sd = document.getElementById("statusDeep");
       if (sd) {
-        var dn = Math.min(countDeep(), 20);
-        var dpct = Math.round(dn / 20 * 100);
+        var dn = Math.min(countDeep(), 25);
+        var dpct = Math.round(dn / 25 * 100);
         sd.className = "status-card deep";
         sd.innerHTML =
-          "<div class=\"row1\"><div><span class=\"prog-label\">답한 질문 " + dn + "/20</span> <span class=\"prog-sub\">" + (dn === 0 ? "· 한 줄부터 시작" : (dn === 20 ? "· 전부 답함 — 내보내서 클로드에게" : "· " + (20 - dn) + "개 더 있으면 분석이 더 정확해진다")) + "</span></div>" +
+          "<div class=\"row1\"><div><span class=\"prog-label\">답한 질문 " + dn + "/25</span> <span class=\"prog-sub\">" + (dn === 0 ? "· 한 줄부터 시작" : (dn === 25 ? "· 전부 답함 — 내보내서 클로드에게" : "· " + (25 - dn) + "개 더 있으면 분석이 더 정확해진다")) + "</span></div>" +
           "<button type=\"button\" class=\"jump-btn\" data-jump=\"deepqRoot\">다음 미응답으로 ↓</button></div>" +
           "<div class=\"pbar\"><div style=\"width:" + Math.max(dpct, 2) + "%\"></div></div>";
       }
@@ -1021,7 +1027,7 @@
     function refresh() {
       var c = document.getElementById("cntCheckup"), d = document.getElementById("cntDeep");
       if (c) { c.textContent = Math.min(countCheckup(), 20) + "/20"; }
-      if (d) { d.textContent = Math.min(countDeep(), 20) + "/20"; }
+      if (d) { d.textContent = Math.min(countDeep(), 25) + "/25"; }
       renderStatus();
       markAnswered();
     }
