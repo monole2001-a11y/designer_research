@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>문답 전용 — 의사결정 점검 · 심층 질문</title>
+  <style>
+    :root {
+      --bg: #090b10;
+      --surface: #111722;
+      --surface2: #182131;
+      --surface3: #202b3d;
+      --border: #2b3749;
+      --text: #eef4fb;
+      --muted: #a8b3c3;
+      --dim: #728095;
+      --blue: #83b8ff;
+      --green: #62d6a7;
+      --amber: #ffc464;
+      --red: #ff7474;
+      --violet: #b6a0ff;
+      --cyan: #5bd7d1;
+      --ink: #06111e;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Pretendard", "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.72;
+      padding-bottom: 80px;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .hero {
+      background:
+        linear-gradient(180deg, rgba(17,23,34,0.97), rgba(9,11,16,0.98)),
+        radial-gradient(circle at 16% 16%, rgba(91,215,209,0.16), transparent 36%),
+        radial-gradient(circle at 84% 12%, rgba(182,160,255,0.18), transparent 34%);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 20px 24px;
+    }
+    .hero-inner, .container { max-width: 920px; margin: 0 auto; }
+    .eyebrow {
+      display: inline-flex; align-items: center;
+      border: 1px solid rgba(91,215,209,0.34); background: rgba(91,215,209,0.10); color: var(--cyan);
+      border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 800; margin-bottom: 14px;
+    }
+    h1 { font-size: clamp(24px, 5vw, 34px); line-height: 1.22; font-weight: 880; margin-bottom: 12px; }
+    .hero p { color: var(--muted); font-size: 15px; margin-bottom: 16px; }
+    .meta { display: flex; flex-wrap: wrap; gap: 9px; }
+    .pill {
+      display: inline-flex; align-items: center; border: 1px solid var(--border);
+      background: rgba(255,255,255,0.035); color: var(--muted); border-radius: 999px;
+      padding: 6px 11px; font-size: 12px; font-weight: 700;
+    }
+    .backlink { font-size: 13px; font-weight: 760; }
+
+    .container { padding: 0 20px; }
+
+    /* 탭 바 */
+    .tabbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(9,11,16,0.94); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      display: flex; gap: 8px; padding: 10px 20px; overflow-x: auto;
+    }
+    .tabbar-inner { max-width: 920px; margin: 0 auto; display: flex; gap: 8px; width: 100%; }
+    .tab-btn {
+      flex: 1 1 0; min-width: 130px; white-space: nowrap;
+      border: 1px solid var(--border); background: var(--surface); color: var(--muted);
+      border-radius: 10px; padding: 11px 14px; font-size: 13.5px; font-weight: 820; cursor: pointer; font-family: inherit;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .tab-btn .cnt {
+      font-size: 11px; font-weight: 850; color: var(--dim);
+      background: var(--surface2); border: 1px solid var(--border); border-radius: 999px; padding: 1px 7px;
+    }
+    .tab-btn.active { background: rgba(91,215,209,0.14); border-color: rgba(91,215,209,0.6); color: var(--cyan); }
+    .tab-btn.active .cnt { color: var(--cyan); border-color: rgba(91,215,209,0.5); background: rgba(91,215,209,0.10); }
+
+    .tab-panel { display: none; margin-top: 24px; }
+    .tab-panel.active { display: block; }
+
+    /* 통합 내보내기 바 */
+    .combo-bar {
+      margin-top: 22px; background: linear-gradient(135deg, rgba(98,214,167,0.10), rgba(91,215,209,0.07));
+      border: 1px solid rgba(98,214,167,0.3); border-radius: 12px; padding: 16px 18px;
+      display: grid; grid-template-columns: 1fr auto; gap: 12px 16px; align-items: center;
+    }
+    .combo-desc { font-size: 13px; color: var(--muted); }
+    .combo-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .prompt-box { grid-column: 1 / -1; display: none; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
+    .prompt-box.show { display: block; }
+    .prompt-box code { display: block; color: var(--text); font-size: 12.5px; line-height: 1.65; white-space: pre-wrap; word-break: break-word; font-family: "SF Mono", ui-monospace, Menlo, monospace; }
+    @media (max-width: 640px) { .combo-bar { grid-template-columns: 1fr; } }
+
+    /* 진행 요약 카드 */
+    .status-card {
+      background: var(--surface2); border: 1px solid var(--border); border-radius: 10px;
+      padding: 14px 16px; margin-bottom: 18px;
+    }
+    .status-card .row1 { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+    .status-card .prog-label { font-size: 13px; font-weight: 850; color: var(--text); }
+    .status-card .prog-sub { font-size: 12px; color: var(--dim); }
+    .status-card .pbar { height: 8px; background: var(--surface3); border-radius: 999px; overflow: hidden; margin-bottom: 12px; }
+    .status-card .pbar > div { height: 100%; background: var(--cyan); border-radius: 999px; transition: width 0.3s; }
+    .status-card.deep .pbar > div { background: var(--violet); }
+    .status-card .last { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+    .status-card .last b { color: var(--text); }
+    .jump-btn {
+      border: 1px solid rgba(91,215,209,0.5); background: rgba(91,215,209,0.12); color: var(--cyan);
+      border-radius: 8px; padding: 8px 13px; font-size: 12.5px; font-weight: 820; cursor: pointer; font-family: inherit; white-space: nowrap;
+    }
+    .status-card.deep .jump-btn { border-color: rgba(182,160,255,0.5); background: rgba(182,160,255,0.12); color: var(--violet); }
+    .jump-btn:hover { filter: brightness(1.12); }
+    @keyframes qpulse { 0% { box-shadow: 0 0 0 0 rgba(91,215,209,0.5); } 100% { box-shadow: 0 0 0 10px rgba(91,215,209,0); } }
+    .q-card.flash { border-color: rgba(91,215,209,0.7); animation: qpulse 1s ease-out 2; }
+
+    .lead {
+      background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--cyan);
+      border-radius: 8px; padding: 16px 18px; color: var(--text); font-size: 15px; margin-bottom: 18px;
+    }
+
+    .panel-title { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .panel-title h2 { font-size: clamp(19px, 3vw, 24px); font-weight: 850; }
+    .panel-title .badge {
+      width: 30px; height: 30px; border-radius: 8px; background: var(--cyan); color: var(--ink);
+      display: inline-flex; align-items: center; justify-content: center; font-size: 15px; flex: 0 0 auto;
+    }
+    .panel-title.violet .badge { background: var(--violet); }
+
+    p, li, td { color: var(--muted); font-size: 14px; }
+    strong { color: var(--text); }
+    h3 { font-size: 16px; line-height: 1.45; font-weight: 820; margin-bottom: 9px; }
+
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 18px; min-width: 0; }
+    .kicker {
+      display: block; color: var(--dim); font-size: 11px; font-weight: 880;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;
+    }
+    .tag { display: inline-flex; align-items: center; border-radius: 5px; padding: 2px 7px; font-size: 11px; font-weight: 850; }
+    .tag.warn { background: rgba(255,196,100,0.16); color: var(--amber); }
+
+    .list { display: grid; gap: 9px; list-style: none; }
+    .list li { position: relative; padding-left: 18px; }
+    .list li::before { content: ""; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 999px; background: var(--blue); }
+
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
+
+    .callout { border: 1px solid var(--border); border-left: 4px solid var(--cyan); background: rgba(91,215,209,0.07); border-radius: 8px; padding: 16px 18px; margin-top: 16px; }
+    .callout.warn { border-left-color: var(--amber); background: rgba(255,196,100,0.08); }
+    .callout.bad { border-left-color: var(--red); background: rgba(255,116,116,0.08); }
+    .callout.violet { border-left-color: var(--violet); background: rgba(182,160,255,0.08); }
+
+    .meter-row { display: grid; grid-template-columns: 130px 1fr; gap: 10px; align-items: center; margin-bottom: 12px; }
+    .meter-label { font-size: 12px; font-weight: 800; color: var(--muted); text-align: right; }
+    .meter-track { position: relative; height: 26px; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .meter-fill { position: absolute; top: 0; left: 0; height: 100%; display: flex; align-items: center; padding-left: 10px; font-size: 11px; font-weight: 850; color: var(--ink); }
+
+    /* QA form */
+    .qa-group-title { display: flex; align-items: center; gap: 10px; margin: 24px 0 12px; }
+    .qa-group-title .gchip { background: rgba(182,160,255,0.15); color: var(--violet); border-radius: 6px; padding: 3px 9px; font-size: 12px; font-weight: 850; }
+    .q-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 15px 16px; margin-bottom: 12px; position: relative; transition: border-color 0.2s; }
+    .q-card.answered { border-left: 3px solid var(--green); }
+    .q-card.answered::after {
+      content: "✓"; position: absolute; top: 12px; right: 14px;
+      color: var(--green); font-size: 13px; font-weight: 900;
+      width: 20px; height: 20px; border-radius: 999px; background: rgba(98,214,167,0.14);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .q-card .q-text { color: var(--text); font-size: 14px; font-weight: 800; margin-bottom: 10px; padding-right: 26px; }
+    .q-card .q-why { color: var(--muted); font-size: 12px; line-height: 1.55; margin: -4px 0 10px; padding-left: 10px; border-left: 2px solid var(--border); }
+    .q-opts { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+    .opt-btn {
+      border: 1px solid var(--border); background: var(--surface2); color: var(--muted);
+      border-radius: 999px; padding: 9px 14px; font-size: 13.5px; font-weight: 760; cursor: pointer; font-family: inherit;
+    }
+    .opt-btn.sel { background: rgba(91,215,209,0.16); border-color: rgba(91,215,209,0.6); color: var(--cyan); }
+    .q-card textarea {
+      width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
+      color: var(--text); font-size: 14px; padding: 10px 12px; font-family: inherit; line-height: 1.6; min-height: 46px; resize: vertical;
+    }
+    .q-card textarea:focus { outline: none; border-color: rgba(91,215,209,0.6); }
+
+    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; position: sticky; bottom: 0;
+      background: linear-gradient(180deg, rgba(9,11,16,0), rgba(9,11,16,0.92) 30%); padding: 12px 0 6px; }
+    .btn {
+      border: 1px solid var(--border); background: var(--surface2); color: var(--text);
+      border-radius: 8px; padding: 11px 16px; font-size: 13.5px; font-weight: 850; cursor: pointer; font-family: inherit;
+    }
+    .btn.primary { background: rgba(98,214,167,0.16); border-color: rgba(98,214,167,0.5); color: var(--green); }
+    .btn.violet { background: rgba(182,160,255,0.14); border-color: rgba(182,160,255,0.5); color: var(--violet); }
+    .btn.ghost { color: var(--dim); }
+    .btn:hover { border-color: rgba(131,184,255,0.6); }
+    .save-state { color: var(--dim); font-size: 12px; align-self: center; }
+
+    #analysisPanel { display: none; margin-top: 18px; }
+    #analysisPanel.show { display: block; }
+    .ana-narrative { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; margin-top: 14px; }
+    .ana-narrative p { margin-bottom: 8px; }
+    .ana-narrative p.trend { background: rgba(131,184,255,0.08); border-left: 3px solid var(--blue); border-radius: 4px; padding: 8px 12px; }
+
+    .trend-table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 0; }
+    .trend-table th, .trend-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: center; white-space: nowrap; }
+    .trend-table th { color: var(--muted); font-weight: 800; }
+    .trend-table td:first-child, .trend-table th:first-child { text-align: left; }
+    .trend-table tr:last-child td { border-bottom: 0; }
+    .delta-good { color: var(--green); font-weight: 850; }
+    .delta-bad { color: var(--red); font-weight: 850; }
+    .delta-flat { color: var(--dim); }
+    #safetyBanner { display: none; margin-bottom: 14px; }
+    #safetyBanner.show { display: block; }
+    #trendPanel { margin-top: 14px; }
+    #trendPanel .empty { color: var(--dim); font-size: 13px; }
+
+    .footer-note { margin-top: 36px; border-top: 1px solid var(--border); padding-top: 18px; color: var(--dim); font-size: 12px; }
+
+    /* 플로팅 컨트롤 */
+    .fab-wrap { position: fixed; right: 16px; bottom: 18px; z-index: 30; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+    .fab {
+      border: 1px solid var(--border); background: rgba(24,33,49,0.96); backdrop-filter: blur(8px); color: var(--text);
+      border-radius: 999px; padding: 11px 15px; font-size: 13px; font-weight: 820; cursor: pointer; font-family: inherit;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4); display: none; align-items: center; gap: 6px;
+    }
+    .fab.show { display: inline-flex; }
+    .fab.next { border-color: rgba(91,215,209,0.5); color: var(--cyan); }
+    .fab:hover { filter: brightness(1.12); }
+
+    @media (max-width: 720px) {
+      .meter-row { grid-template-columns: 1fr; gap: 4px; }
+      .meter-label { text-align: left; }
+      .tab-btn { min-width: 120px; padding: 10px 10px; font-size: 13px; }
+    }
+
+    /* 포커스 가시성 (키보드 내비게이션) */
+    .tab-btn:focus-visible, .btn:focus-visible, .opt-btn:focus-visible, .jump-btn:focus-visible, .fab:focus-visible {
+      outline: 2px solid var(--cyan); outline-offset: 2px;
+    }
+
+    /* 모션 민감 사용자 배려 */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .q-card.flash { animation: none; }
+      .status-card .pbar > div { transition: none; }
+    }
+
+    /* 인쇄 / PDF — 두 탭을 모두 펼치고 인터랙션 컨트롤은 숨김 */
+    @media print {
+      body { background: #fff; color: #000; padding: 0; }
+      .tabbar, .btn-row, .combo-actions, .prompt-box, .fab-wrap, .jump-btn, .status-card .pbar { display: none !important; }
+      .tab-panel { display: block !important; margin-top: 20px; }
+      .card, .lead, .q-card, .callout, .status-card, .combo-bar { border-color: #ccc; background: #fff; }
+      a { color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">문답 전용 · Q&amp;A Only</span>
+      <h1>문답 전용 — 점검과 심층 질문만 모았다</h1>
+      <p>
+        전체 보고서의 <strong>두 가지 문답</strong>만 따로 모은 페이지다. 모바일에서 긴 보고서를 스크롤하지 않고
+        <strong>점검 문답</strong>(매주 상태 점검·자동 분석·추세)과 <strong>심층 질문</strong>(자세히 답해 클로드에게 전달)을 바로 쓸 수 있다.
+        답은 전체 보고서와 <strong>같은 브라우저 저장소를 공유</strong>한다 — 여기서 답해도 보고서에 그대로 반영된다.
+      </p>
+      <div class="meta">
+        <span class="pill">저장: 이 브라우저에만 (서버 전송 없음)</span>
+        <span class="pill">전체 보고서와 답안 동기화</span>
+        <a class="backlink pill" href="decision-psychology-support-report.html">← 전체 보고서로</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabbar" role="tablist" aria-label="문답 탭">
+    <div class="tabbar-inner">
+      <button type="button" class="tab-btn active" data-tab="checkup" role="tab" aria-selected="true" aria-controls="panel-checkup">🧭 점검 문답 <span class="cnt" id="cntCheckup">0/20</span></button>
+      <button type="button" class="tab-btn" data-tab="deep" role="tab" aria-selected="false" aria-controls="panel-deep">📝 심층 질문 <span class="cnt" id="cntDeep">0/20</span></button>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <div class="callout bad" id="storageWarn" style="display:none; margin-top:18px;">
+      <strong>⚠ 이 브라우저는 답을 저장하지 못합니다.</strong> 비공개(시크릿) 모드이거나 저장이 차단된 상태로 보입니다 —
+      페이지를 닫으면 답이 사라집니다. 일반 모드로 다시 열거나, 답한 뒤 바로 <strong>📦 통합 .txt 내보내기</strong>로 저장하세요.
+    </div>
+
+    <!-- ===== 공용: 통합 내보내기 + 클로드 전달 ===== -->
+    <div class="combo-bar">
+      <div class="combo-left">
+        <span class="kicker" style="margin-bottom:4px;">한 파일로 클로드에게</span>
+        <span class="combo-desc">점검 분석 + 심층 답안을 <strong>하나의 .txt</strong>로 묶어 내보낸다 — 그 파일 하나만 주면 된다.</span>
+      </div>
+      <div class="combo-actions">
+        <button type="button" class="btn primary" id="comboExportBtn">📦 통합 .txt 내보내기</button>
+        <button type="button" class="btn" id="copyPromptBtn">📋 전달 문구 복사</button>
+      </div>
+      <div class="prompt-box" id="promptBox">
+        <span class="kicker">클로드에게 이렇게 말하세요 (복사됨)</span>
+        <code id="promptText">방금 보낸 decision-qa-and-deep.txt를 읽고, decision-psychology-support-report의 §5 신호 강도·§6 신호/잔향 판정·재정·커리어 게이트를 내 실제 답변으로 갱신해줘. 추정이었던 부분이 실측으로 바뀌는 지점을 표시해줘.</code>
+      </div>
+    </div>
+
+    <!-- ===== 탭 1: 점검 문답 ===== -->
+    <section class="tab-panel active" id="panel-checkup">
+      <div class="panel-title"><span class="badge">🧭</span><h2>점검 문답 — 20문항, 답하면 분석되고 추세로 쌓인다</h2></div>
+      <div class="lead">
+        오늘의 실제 상태를 측정한다. 객관식은 클릭(<strong>다시 클릭하면 해제</strong>), 주관식은 자유롭게.
+        <strong>🧠 분석 보기</strong>는 4개 지표와 해석을, <strong>📈 이번 점검 기록</strong>은 추세(↑↓)를, <strong>💾 저장하기</strong>는 .txt를 만든다. 권장: 주 1회.
+      </div>
+
+      <div class="status-card" id="statusCheckup"></div>
+
+      <div id="qaRoot"></div>
+
+      <div class="btn-row">
+        <button type="button" class="btn violet" id="analyzeBtn">🧠 분석 보기</button>
+        <button type="button" class="btn" id="snapshotBtn">📈 이번 점검 기록 (추세)</button>
+        <button type="button" class="btn primary" id="qaExportBtn">💾 저장하기 (.txt)</button>
+        <button type="button" class="btn ghost" id="qaResetBtn">초기화</button>
+        <span class="save-state" id="qaSaveState">자동저장: 준비</span>
+      </div>
+
+      <div id="analysisPanel">
+        <div class="callout bad" id="safetyBanner"></div>
+        <div class="card" style="border-top:3px solid var(--violet);">
+          <span class="kicker">자동 분석 — 추정이지 진단이 아니다</span>
+          <div class="meter-row"><span class="meter-label">심리 부하</span><div class="meter-track"><div class="meter-fill" id="mLoad" style="background:var(--red);width:0%;"></div></div></div>
+          <div class="meter-row"><span class="meter-label">게이트 진행</span><div class="meter-track"><div class="meter-fill" id="mGate" style="background:var(--green);width:0%;"></div></div></div>
+          <div class="meter-row"><span class="meter-label">회피 위험</span><div class="meter-track"><div class="meter-fill" id="mRisk" style="background:var(--amber);width:0%;"></div></div></div>
+          <div class="meter-row"><span class="meter-label">결정 준비도</span><div class="meter-track"><div class="meter-fill" id="mReady" style="background:var(--cyan);width:0%;"></div></div></div>
+          <div class="ana-narrative" id="anaText"></div>
+        </div>
+        <div class="card" id="trendPanel" style="border-top:3px solid var(--blue);">
+          <span class="kicker">점검 이력 — 추세는 한 번의 점수보다 정직하다</span>
+          <div id="trendBody"></div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <strong>안전 기준:</strong> 문항 1에서 “거의 매일”과 문항 4에서 “무너지고 있다”가 동시에 나오거나, 2주 이상 수면·식사가 계속 무너지면
+        이 문서의 처방보다 <strong>전문가 상담이 우선</strong>이다. 결정 능력의 문제가 아니라 결정 체력의 문제이며, 치료가 아니라 정비다.
+      </div>
+    </section>
+
+    <!-- ===== 탭 2: 심층 질문 ===== -->
+    <section class="tab-panel" id="panel-deep">
+      <div class="panel-title violet"><span class="badge">📝</span><h2>심층 질문 — 답하면 분석이 추정에서 실측으로 바뀐다</h2></div>
+      <div class="lead">
+        73문항·점검 문답과 <strong>겹치지 않는</strong> 20문항. 자세히 답하면 보고서의 §5 신호 강도·§6 기원·재정·커리어 게이트가 실제 데이터로 바뀐다.
+        한 번에 다 채울 필요 없다 — 떠오르는 것부터, 한 줄이라도. <strong>💾 .txt로 내보내기</strong> 후 <strong>그 파일을 클로드에게 주면</strong> 해당 섹션을 다시 쓴다.
+      </div>
+
+      <div class="status-card" id="statusDeep"></div>
+
+      <div id="deepqRoot"></div>
+
+      <div class="btn-row">
+        <button type="button" class="btn primary" id="dqExportBtn">💾 .txt로 내보내기</button>
+        <button type="button" class="btn ghost" id="dqResetBtn">초기화</button>
+        <span class="save-state" id="dqSaveState">자동저장: 준비</span>
+      </div>
+
+      <div class="callout violet">
+        <strong>쓰는 법:</strong> ① 답할 수 있는 것만(빈칸은 “모름/아직”도 데이터) → ② <strong>💾 .txt로 내보내기</strong> → ③ 그 파일을 클로드에게 전달.
+        그러면 §5 신호 강도·§6 신호/잔향 판정·재정·커리어 게이트가 당신의 실제 답으로 갱신된다. 솔직할수록 분석이 정확해진다.
+      </div>
+    </section>
+
+    <p class="footer-note">
+      decision-qa-only.html · 전체 보고서 <a href="decision-psychology-support-report.html">decision-psychology-support-report.html</a>의 문답만 추출 ·
+      답안·점검 이력은 이 브라우저 localStorage에만 저장되며 전체 보고서와 키를 공유한다(<code>psych-checkup-v1</code> · <code>psych-checkup-history-v1</code> · <code>psych-deepdive-v1</code>).
+      이 문서는 심리상담·치료·재정·법률 자문이 아니다.
+    </p>
+
+  </main>
+
+  <div class="fab-wrap" id="fabWrap">
+    <button type="button" class="fab next" id="fabNext" aria-label="다음 미응답 문항으로 이동">다음 미응답 ↓</button>
+    <button type="button" class="fab" id="fabTop" aria-label="맨 위로 이동">맨 위로 ↑</button>
+  </div>
+
+  <script id="qaScript">
+  (function () {
+    var KEY = "psych-checkup-v1";
+
+    var QA = [
+      { id: "S1", g: "S · 상태 체크", q: "지난 2주, 이 결정 생각으로 잠을 설치거나 일 집중이 깨진 날은 얼마나 되나?", o: ["거의 없다", "주 1~2일", "주 3일 이상", "거의 매일"] },
+      { id: "S2", g: "S · 상태 체크", q: "지금 이 결정을 떠올릴 때 가장 지배적인 감정 하나는?", o: ["설렘", "불안", "피로·지침", "무감각", "뒤섞여 모르겠다"] },
+      { id: "S3", g: "S · 상태 체크", q: "보고서·자료를 다시 읽는 행동은 지금 나에게 무엇을 주는가?", o: ["새로운 답", "안심(읽는 동안만)", "둘 다", "모르겠다"] },
+      { id: "S4", g: "S · 상태 체크", q: "몸 상태(수면·식사·운동)는 이 결정을 받쳐주고 있나?", o: ["잘 받쳐준다", "보통이다", "무너지고 있다"] },
+      { id: "F5", g: "F · 사실 게이트 재확인", q: "Fall 2026 합격·I-20의 현재 상태는? (G0)", o: ["보유하고 있다", "진행 중이다", "없다 — Fall 2027로 재설정", "확인해 보지 않았다"] },
+      { id: "F6", g: "F · 사실 게이트 재확인", q: "국비 전형은 어느 쪽인가? (G1)", o: ["꿈나래 $100K 확정", "일반 $80K 확정", "아직 모른다"] },
+      { id: "F7", g: "F · 사실 게이트 재확인", q: "국비 지급 시점이 8/1 등록금 납부와 맞는지 확인했나? (G1)", o: ["서면으로 확인했다", "구두로만 들었다", "아직 모른다"] },
+      { id: "F8", g: "F · 사실 게이트 재확인", q: "은행 한도조회(7월 중순) 준비 — 필요 서류 목록을 만들었나? (G3)", o: ["만들었다", "아직이다"] },
+      { id: "F9", g: "F · 사실 게이트 재확인", q: "국제학생 alumni 인터뷰는 몇 명 진행했나? (G4)", o: ["0명", "1~3명", "4~9명", "10명 이상"] },
+      { id: "P10", g: "P · 심리 점검", q: "“미루는 사람이 될까 봐”라는 공포가 지금 결정을 서두르게 만들고 있지는 않나?", o: ["그렇다", "아니다", "모르겠다"] },
+      { id: "P11", g: "P · 심리 점검", q: "직감(지금 국비·SVA)과 이성(2년 후 자비·탑급 HCI)의 거리는 한 달 전보다?", o: ["좁혀졌다", "그대로다", "더 벌어졌다"] },
+      { id: "P12", g: "P · 심리 점검", q: "“가족에게 짐이 된다”는 생각의 근거는?", o: ["실제 대화에서 들었다", "내 느낌·상상이다", "섞여 있다"] },
+      { id: "P13", g: "P · 심리 점검", q: "더 두려운 것은 어느 쪽인가?", o: ["결혼 자체", "안주 — 탐색이 끝나는 것", "모르겠다"] },
+      { id: "P14", g: "P · 심리 점검", q: "지금 가장 큰 공포 하나만 남긴다면?", o: ["재정", "영어", "취업·비자", "미루는 사람이 되는 것", "가족·관계"] },
+      { id: "P15", g: "P · 심리 점검", q: "그 공포를 이번 주 측정 가능한 행동 1개로 바꿀 수 있나?", o: ["있다 — 어떤 행동인지 안다", "없다 — 막막하다", "모르겠다"] },
+      { id: "D16", g: "D · 결정 준비도", q: "결정 문장(경로·동의하는 손실·트리거·증인)을 지금 쓸 수 있나?", o: ["쓸 수 있다", "반쯤 쓸 수 있다", "아직 못 쓴다"] },
+      { id: "D17", g: "D · 결정 준비도", q: "D-day(권장 2026-07-10)를 달력에 박았나?", o: ["박았다", "아직이다"] },
+      { id: "D18", g: "D · 결정 준비도", q: "가족과의 결정 대화는? (G6)", o: ["이미 했다", "날짜를 잡았다", "아직이다"] },
+      { id: "D19", g: "D · 결정 준비도", q: "이 문답을 닫고 24시간 안에 할 단 하나의 행동은? (주관식에 구체적으로)", o: ["정했다 — 아래에 적는다", "아직 못 정했다"] },
+      { id: "D20", g: "D · 결정 준비도", q: "한 문장으로 — “나는 지금 ___ 상태다.” (주관식)", o: [] }
+    ];
+
+    // 점수 맵: 문항 id → { dim, v: 옵션 인덱스별 점수 }
+    var SCORE = {
+      S1: { dim: "load", v: [0, 1, 2, 3] },
+      S2: { dim: "load", v: [0, 2, 2, 3, 1] },
+      S3: { dim: "risk", v: [0, 2, 1, 1] },
+      S4: { dim: "load", v: [0, 1, 3] },
+      F5: { dim: "gate", v: [2, 1, 1, 0] },
+      F6: { dim: "gate", v: [2, 2, 0] },
+      F7: { dim: "gate", v: [2, 1, 0] },
+      F8: { dim: "gate", v: [1, 0] },
+      F9: { dim: "gate", v: [0, 1, 1, 2] },
+      P10: { dim: "risk", v: [2, 0, 1] },
+      P11: { dim: "risk", v: [0, 1, 2] },
+      P12: { dim: "risk", v: [0, 2, 1] },
+      P15: { dim: "risk", v: [0, 2, 1] },
+      D16: { dim: "ready", v: [2, 1, 0] },
+      D17: { dim: "ready", v: [1, 0] },
+      D18: { dim: "ready", v: [2, 1, 0] },
+      D19: { dim: "ready", v: [1, 0] }
+    };
+    var MAX = { load: 11, gate: 9, risk: 10, ready: 6 };
+
+    var state = {};
+    try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { state = {}; }
+
+    // 점검 이력 (추세) — 답안과 별도 저장소라 답안 초기화 후에도 추세는 유지된다
+    var HKEY = "psych-checkup-history-v1";
+    var history = [];
+    try { history = JSON.parse(localStorage.getItem(HKEY) || "[]") || []; } catch (e) { history = []; }
+
+    // 차원별 “좋은 방향” — gate·ready는 오를수록, load·risk는 내릴수록 좋다
+    var GOOD_UP = { gate: true, ready: true, load: false, risk: false };
+    var DIM_LABEL = { load: "심리 부하", gate: "게이트 진행", risk: "회피 위험", ready: "결정 준비도" };
+
+    var saveEl = document.getElementById("qaSaveState");
+    function persist() {
+      try {
+        localStorage.setItem(KEY, JSON.stringify(state));
+        if (saveEl) { saveEl.textContent = "자동저장: 완료 " + new Date().toLocaleTimeString("ko-KR"); }
+      } catch (e) {
+        if (saveEl) { saveEl.textContent = "자동저장: 실패(브라우저 설정 확인)"; }
+      }
+    }
+
+    function ans(id) { return state[id] || { c: -1, t: "" }; }
+
+    // 렌더
+    var root = document.getElementById("qaRoot");
+    var lastGroup = "";
+    QA.forEach(function (item, idx) {
+      if (item.g !== lastGroup) {
+        lastGroup = item.g;
+        var gt = document.createElement("div");
+        gt.className = "qa-group-title";
+        var chip = document.createElement("span");
+        chip.className = "gchip";
+        chip.textContent = item.g;
+        gt.appendChild(chip);
+        root.appendChild(gt);
+      }
+      var card = document.createElement("div");
+      card.className = "q-card";
+      var qt = document.createElement("div");
+      qt.className = "q-text";
+      qt.textContent = "Q" + (idx + 1) + ". " + item.q;
+      card.appendChild(qt);
+
+      if (item.o.length) {
+        var opts = document.createElement("div");
+        opts.className = "q-opts";
+        item.o.forEach(function (label, oi) {
+          var b = document.createElement("button");
+          b.type = "button";
+          b.className = "opt-btn" + (ans(item.id).c === oi ? " sel" : "");
+          b.textContent = label;
+          b.addEventListener("click", function () {
+            var a = ans(item.id);
+            a.c = (a.c === oi) ? -1 : oi;
+            state[item.id] = a;
+            var btns = opts.querySelectorAll(".opt-btn");
+            for (var k = 0; k < btns.length; k++) {
+              btns[k].classList.toggle("sel", k === a.c);
+            }
+            persist();
+          });
+          opts.appendChild(b);
+        });
+        card.appendChild(opts);
+      }
+
+      var ta = document.createElement("textarea");
+      ta.placeholder = "주관식 (선택)";
+      ta.value = ans(item.id).t || "";
+      ta.addEventListener("input", function () {
+        var a = ans(item.id);
+        a.t = ta.value;
+        state[item.id] = a;
+        persist();
+      });
+      card.appendChild(ta);
+      root.appendChild(card);
+    });
+
+    // 분석
+    function compute() {
+      var sum = { load: 0, gate: 0, risk: 0, ready: 0 };
+      var answered = 0;
+      QA.forEach(function (item) {
+        var a = ans(item.id);
+        if (a.c >= 0 || (a.t && a.t.trim())) { answered++; }
+        var sc = SCORE[item.id];
+        if (sc && a.c >= 0 && typeof sc.v[a.c] === "number") {
+          sum[sc.dim] += sc.v[a.c];
+        }
+      });
+      return { sum: sum, answered: answered };
+    }
+
+    function band(dim, val) {
+      var r = val / MAX[dim];
+      if (dim === "load") { return r >= 0.65 ? "높음" : (r >= 0.35 ? "중간" : "낮음"); }
+      if (dim === "risk") { return r >= 0.6 ? "높음" : (r >= 0.35 ? "중간" : "낮음"); }
+      if (dim === "gate") { return r >= 0.75 ? "닫힘 임박" : (r >= 0.4 ? "진행 중" : "초기"); }
+      return r >= 0.8 ? "준비됨" : (r >= 0.45 ? "근접" : "준비 전");
+    }
+
+    // 추세: 현재 점수를 마지막 기록과 비교한 한 줄 (없으면 null)
+    function trendLine(curSum) {
+      if (!history.length) { return null; }
+      var prev = history[history.length - 1];
+      var parts = [];
+      var good = 0, bad = 0;
+      ["gate", "ready", "load", "risk"].forEach(function (dim) {
+        var diff = curSum[dim] - prev[dim];
+        if (diff === 0) { return; }
+        var improved = GOOD_UP[dim] ? (diff > 0) : (diff < 0);
+        if (improved) { good++; } else { bad++; }
+        parts.push(DIM_LABEL[dim] + " " + (diff > 0 ? "+" : "") + diff + (improved ? " ↑(개선)" : " ↓(악화)"));
+      });
+      var head = "마지막 기록(" + prev.d.slice(0, 10) + ") 대비: ";
+      if (!parts.length) { return head + "변화 없음 — 기준점이 막 갱신되었거나 정체 구간이다."; }
+      var verdict = (good > 0 && bad === 0) ? " → 전반적으로 옳은 방향이다." : (bad > 0 && good === 0) ? " → 역방향 신호 — 이번 주는 게이트 행동 1개부터 다시." : " → 혼조. 게이트·준비도가 오르면 부하·위험의 일시 상승은 정상이다.";
+      return head + parts.join(", ") + verdict;
+    }
+
+    function narrative(res) {
+      var s = res.sum;
+      var lines = [];
+      lines.push("응답 " + res.answered + "/" + QA.length + " · 심리 부하 " + s.load + "/" + MAX.load + " (" + band("load", s.load) + ") · 게이트 진행 " + s.gate + "/" + MAX.gate + " (" + band("gate", s.gate) + ") · 회피 위험 " + s.risk + "/" + MAX.risk + " (" + band("risk", s.risk) + ") · 결정 준비도 " + s.ready + "/" + MAX.ready + " (" + band("ready", s.ready) + ")");
+      var tl = trendLine(s);
+      if (tl) { lines.push("[추세] " + tl); }
+
+      if (band("load", s.load) === "높음") {
+        lines.push("심리 부하가 높다. 이번 주의 우선순위는 분석·결정이 아니라 수면·운동·걱정 시간제(처방 ③·공통 처방)다. 부하가 높은 상태의 판단은 손실 회피와 충동 양쪽으로 휜다 — 결정 작업은 잘 잔 다음 날 오전으로 옮겨라. 문항 1과 4가 동시에 최악이면 전문가 상담이 먼저다.");
+      } else if (band("load", s.load) === "중간") {
+        lines.push("심리 부하는 관리 가능한 수준이다. 단 부하의 원천이 “생각”이라면(문항 3에서 안심 선택) 읽기를 줄이고 게이트 행동 1개로 교체하라(처방 ①).");
+      } else {
+        lines.push("심리 부하가 낮다 — 결정 체력이 받쳐주는 지금이 게이트를 닫기 가장 좋은 구간이다.");
+      }
+
+      if (band("gate", s.gate) === "초기") {
+        lines.push("사실 게이트가 아직 초기다. 다음 행동은 정해져 있다: 국비 약관 문의 이메일 1통(G1, 15분). 분석은 이미 충분하다 — 불확실성은 이제 확인 행동으로만 줄어든다.");
+      } else if (band("gate", s.gate) === "진행 중") {
+        lines.push("게이트가 진행 중이다. 남은 미확인 항목(F군에서 “아직/모른다”로 답한 것)을 이번 주 캘린더에 분배하라 — 한 주에 두 개면 D-day 전에 모두 닫힌다.");
+      } else {
+        lines.push("게이트가 거의 닫혔다. 이제 남은 것은 판정과 선언이다 — master-framework §9의 판정 매트릭스에 결과를 대입하고 결정 문장을 써라.");
+      }
+
+      if (band("risk", s.risk) === "높음") {
+        lines.push("회피 위험이 높다. 신호를 구체적으로 보라: 안심용 읽기(문항 3), 증명용 서두름(문항 10), 상상 속 가족(문항 12), 행동 없는 공포(문항 15) 중 해당 항목의 처방(① ⑤ ③)을 펴라. 특히 문항 15에서 “없다·막막하다”라면, 공포의 이름을 종이에 적고 측정 단위(금액·점수·사례 수)를 하나만 붙이는 것부터 시작하라.");
+      } else if (band("risk", s.risk) === "중간") {
+        lines.push("회피 신호가 일부 있다. 가장 점수가 높았던 한 항목만 골라 이번 주에 그 반대 행동을 1개 하라 — 전부 고치려는 것 자체가 Maximizer의 함정이다(처방 ④).");
+      } else {
+        lines.push("회피 위험이 낮다 — 지금의 고민은 회피가 아니라 정상적인 숙고에 가깝다. 자신을 의심하는 데 에너지를 쓰지 마라.");
+      }
+
+      if (band("ready", s.ready) === "준비됨") {
+        lines.push("결정 준비도가 높다. 미루지 마라 — 이번 주 안에 가족 앞에서 결정 문장을 읽는 것까지 가라. 준비된 상태의 유효기간은 생각보다 짧다.");
+      } else if (band("ready", s.ready) === "근접") {
+        lines.push("결정 준비도가 근접 구간이다. 결정 문장의 빈칸 중 못 채우는 칸이 무엇인지 보라 — 그 칸이 진짜 남은 문제이고, 보통 게이트 1~2개와 일치한다.");
+      } else {
+        lines.push("결정 준비도가 아직 낮다 — 정상이다. 준비도는 의지가 아니라 게이트 진행의 함수다. 사실 게이트 문항(F군)을 닫으면 결정 준비도(D군)는 따라온다.");
+      }
+
+      var s2 = ans("S2");
+      if (s2.c === 0) {
+        lines.push("그리고 하나 — 지배적 감정이 여전히 “설렘”이다. 접근 동기가 살아 있다는 뜻이니, 그 에너지는 걱정이 아니라 게이트를 닫는 데 써라(처방 ⑦).");
+      }
+      lines.push("다음 점검 권장: 7일 후. 이 결과를 .txt로 저장해 두고 다음 점검과 비교하라 — 게이트 진행이 오르고 회피 위험이 내리면 옳은 방향이다.");
+      return lines;
+    }
+
+    // 안전 배너: 수면(S1=거의 매일) + 몸상태(S4=무너지고 있다) 동시, 또는 부하 임계 초과 시 자동 발동
+    function renderSafety(res) {
+      var banner = document.getElementById("safetyBanner");
+      if (!banner) { return; }
+      var s1 = ans("S1").c, s4 = ans("S4").c;
+      var hardSignal = (s1 === 3 && s4 === 2);
+      var loadCritical = (res.sum.load / MAX.load) >= 0.85;
+      if (hardSignal || loadCritical) {
+        banner.innerHTML = "<strong>⚠ 안전 신호 — 이 문서의 처방보다 전문가 상담이 먼저입니다.</strong> " +
+          (hardSignal ? "수면이 거의 매일 깨지고 몸이 무너지고 있다고 답했습니다. " : "심리 부하가 임계 수준입니다. ") +
+          "지금 필요한 것은 결정 가속이 아니라 회복입니다 — 결정 작업은 잠시 멈추고, 가까운 사람이나 상담 전문가에게 현재 상태를 먼저 이야기하세요. 이것은 결정 능력의 문제가 아니라 결정 체력의 문제이며, 약함이 아니라 정확한 우선순위입니다.";
+        banner.className = "callout bad show";
+      } else {
+        banner.className = "callout bad";
+        banner.innerHTML = "";
+      }
+    }
+
+    function renderTrend() {
+      var body = document.getElementById("trendBody");
+      if (!body) { return; }
+      if (!history.length) {
+        body.innerHTML = "<p class=\"empty\">아직 기록된 점검이 없습니다. <strong>📈 이번 점검 기록</strong>을 누르면 오늘의 4지표가 저장되고, 다음 점검부터 증감(↑↓)이 여기에 표시됩니다.</p>";
+        return;
+      }
+      var dims = ["load", "gate", "risk", "ready"];
+      var html = "<div class=\"table-wrap\"><table class=\"trend-table\"><thead><tr><th>점검일</th><th>심리 부하</th><th>게이트</th><th>회피 위험</th><th>준비도</th><th>응답</th></tr></thead><tbody>";
+      history.forEach(function (h, i) {
+        html += "<tr><td>" + h.d.slice(0, 10) + " " + h.d.slice(11, 16) + "</td>";
+        dims.forEach(function (dim) {
+          var cell = "" + h[dim] + "/" + MAX[dim];
+          if (i > 0) {
+            var diff = h[dim] - history[i - 1][dim];
+            if (diff !== 0) {
+              var improved = GOOD_UP[dim] ? (diff > 0) : (diff < 0);
+              var cls = improved ? "delta-good" : "delta-bad";
+              cell += " <span class=\"" + cls + "\">" + (diff > 0 ? "+" : "") + diff + (improved ? "↑" : "↓") + "</span>";
+            } else {
+              cell += " <span class=\"delta-flat\">·</span>";
+            }
+          }
+          html += "<td>" + cell + "</td>";
+        });
+        html += "<td>" + (h.answered != null ? h.answered + "/" + QA.length : "—") + "</td></tr>";
+      });
+      html += "</tbody></table></div>";
+      if (history.length >= 2) {
+        html += "<p style=\"font-size:12.5px;color:var(--muted);margin-top:10px;\">읽는 법: <span class=\"delta-good\">초록 ↑</span> = 좋아지는 방향(게이트·준비도 상승, 부하·위험 하락), <span class=\"delta-bad\">빨강 ↓</span> = 그 반대. 한 줄의 점수가 아니라 <strong>여러 줄의 기울기</strong>를 보세요.</p>";
+      }
+      body.innerHTML = html;
+    }
+
+    function renderAnalysis() {
+      var res = compute();
+      var panel = document.getElementById("analysisPanel");
+      panel.className = "show";
+      renderSafety(res);
+      function setMeter(id, dim, color) {
+        var el = document.getElementById(id);
+        var pct = Math.round((res.sum[dim] / MAX[dim]) * 100);
+        el.style.width = Math.max(pct, 8) + "%";
+        el.textContent = res.sum[dim] + "/" + MAX[dim] + " · " + band(dim, res.sum[dim]);
+      }
+      setMeter("mLoad", "load");
+      setMeter("mGate", "gate");
+      setMeter("mRisk", "risk");
+      setMeter("mReady", "ready");
+      var anaEl = document.getElementById("anaText");
+      anaEl.innerHTML = "";
+      narrative(res).forEach(function (line) {
+        var p = document.createElement("p");
+        if (line.indexOf("[추세] ") === 0) {
+          p.className = "trend";
+          p.textContent = line.slice(5);
+        } else {
+          p.textContent = line;
+        }
+        anaEl.appendChild(p);
+      });
+      renderTrend();
+      return res;
+    }
+
+    // 이번 점검 기록 (추세 누적)
+    function snapshot() {
+      var res = compute();
+      var s = res.sum;
+      history.push({ d: new Date().toISOString(), load: s.load, gate: s.gate, risk: s.risk, ready: s.ready, answered: res.answered });
+      if (history.length > 24) { history = history.slice(history.length - 24); }
+      try { localStorage.setItem(HKEY, JSON.stringify(history)); } catch (e) {}
+      renderAnalysis();
+    }
+
+    var analyzeBtn = document.getElementById("analyzeBtn");
+    if (analyzeBtn) { analyzeBtn.addEventListener("click", renderAnalysis); }
+
+    var snapshotBtn = document.getElementById("snapshotBtn");
+    if (snapshotBtn) {
+      snapshotBtn.addEventListener("click", function () {
+        snapshot();
+        if (saveEl) { saveEl.textContent = "점검 기록됨: " + new Date().toLocaleTimeString("ko-KR") + " (이력 " + history.length + "회)"; }
+      });
+    }
+
+    // 내보내기
+    var exportBtn = document.getElementById("qaExportBtn");
+    if (exportBtn) {
+      exportBtn.addEventListener("click", function () {
+        var res = compute();
+        var lines = [];
+        lines.push("의사결정 심리 점검 문답 — 답안 + 자동 분석");
+        lines.push("내보낸 시각: " + new Date().toLocaleString("ko-KR"));
+        lines.push("");
+        var lastG = "";
+        QA.forEach(function (item, idx) {
+          if (item.g !== lastG) {
+            lastG = item.g;
+            lines.push("===== " + item.g + " =====");
+          }
+          var a = ans(item.id);
+          lines.push("Q" + (idx + 1) + ". " + item.q);
+          if (a.c >= 0 && item.o[a.c]) { lines.push("   [선택] " + item.o[a.c]); }
+          if (a.t && a.t.trim()) { lines.push("   [주관식] " + a.t.trim()); }
+          if (a.c < 0 && !(a.t && a.t.trim())) { lines.push("   [무응답]"); }
+        });
+        lines.push("");
+        lines.push("===== 자동 분석 =====");
+        narrative(res).forEach(function (line) { lines.push(line); });
+        if (history.length) {
+          lines.push("");
+          lines.push("===== 점검 이력 (추세) =====");
+          lines.push("점검일\t부하/" + MAX.load + "\t게이트/" + MAX.gate + "\t위험/" + MAX.risk + "\t준비도/" + MAX.ready + "\t응답");
+          history.forEach(function (h) {
+            lines.push(h.d.slice(0, 16).replace("T", " ") + "\t" + h.load + "\t" + h.gate + "\t" + h.risk + "\t" + h.ready + "\t" + (h.answered != null ? h.answered + "/" + QA.length : "-"));
+          });
+        }
+        lines.push("");
+        lines.push("— 응답 " + res.answered + " / " + QA.length + " —");
+        var blob = new Blob([lines.join("\n")], { type: "text/plain;charset=utf-8" });
+        var a2 = document.createElement("a");
+        a2.href = URL.createObjectURL(blob);
+        a2.download = "psych-checkup-" + new Date().toISOString().slice(0, 10) + ".txt";
+        document.body.appendChild(a2);
+        a2.click();
+        document.body.removeChild(a2);
+        URL.revokeObjectURL(a2.href);
+      });
+    }
+
+    // 초기화
+    var resetBtn = document.getElementById("qaResetBtn");
+    if (resetBtn) {
+      resetBtn.addEventListener("click", function () {
+        if (!confirm("문답 답안을 초기화할까요? (점검 이력·내보낸 .txt는 그대로 남습니다)")) { return; }
+        state = {};
+        try { localStorage.removeItem(KEY); } catch (e) {}
+        if (history.length && confirm("점검 이력(추세 " + history.length + "회)도 함께 지울까요?\n[취소]를 누르면 이력은 보존됩니다.")) {
+          history = [];
+          try { localStorage.removeItem(HKEY); } catch (e) {}
+        }
+        root.innerHTML = "";
+        location.reload();
+      });
+    }
+  })();
+  </script>
+
+  <script id="deepqScript">
+  (function () {
+    var KEY = "psych-deepdive-v1";
+
+    // 심층 질문 — 자유서술. 73문항·§9 점검문답과 겹치지 않고, 답하면 분석을 실측으로 바꾸는 항목.
+    var DQ = [
+      { id: "A1", g: "A · 재정·국비의 실측 (게이트 G1·G3)", q: "퇴사 시점에 실제로 손에 쥐는 총 현금은? (보유 현금 + 퇴직금·정산금 등, 가능하면 ‘언제 얼마’ 월 단위로)", why: "§4 재정 비교와 G3 버퍼 계산이 ‘대략’에서 실제 숫자로 바뀐다." },
+      { id: "A2", g: "A · 재정·국비의 실측 (게이트 G1·G3)", q: "국비 전형이 확정됐다면 어느 것이고($80K / $100K), 지급 방식·시점은? 등록금 8/1 납부와 타이밍이 맞나?", why: "G1의 ‘아직 모른다’를 닫는 핵심. 시점 불일치는 대출 설계를 통째로 바꾼다." },
+      { id: "A3", g: "A · 재정·국비의 실측 (게이트 G1·G3)", q: "대출 7천만의 실제 한도 조회를 했나? 금리·만기·재직 조건과, 퇴사가 한도에 미치는 영향은?", why: "재직 중 골든윈도우(§1 시간창 표)의 전제가 실제로 성립하는지 검증된다." },
+      { id: "A4", g: "A · 재정·국비의 실측 (게이트 G1·G3)", q: "SVA 합격·I-20는 지금 어떤 상태인가? (합격·서류 대기·미지원 등 솔직하게)", why: "G0의 실제 상태. 미지원이면 ‘지금 간다’ 경로의 달력 자체가 재설정된다." },
+
+      { id: "B5", g: "B · 커리어의 구체화 (‘상품화·임팩트’의 실체)", q: "“세상에 없는 걸 만들고 싶다 / 상품화·임팩트”가 구체적으로 어떤 결과물인가? 5년 뒤 포트폴리오에 올라갈 작업 1개를 상상해 묘사해보라.", why: "valt의 추상적 동기를 검증 가능한 목표로 바꾼다 — 신호 7(접근 동기)이 진짜 끌림인지 막연한 환상인지 갈린다." },
+      { id: "B6", g: "B · 커리어의 구체화 (‘상품화·임팩트’의 실체)", q: "목표로 하는 회사·직무·도시가 있나? 있다면 왜 거기인가? (없으면 ‘없음’도 답)", why: "‘빅테크는 가능성이지 파이프라인 아님’(§4)이 당신 목표에 어떻게 적용되는지 정밀화된다." },
+      { id: "B7", g: "B · 커리어의 구체화 (‘상품화·임팩트’의 실체)", q: "삼성에서 지금 하는 일 중, 미국에서도 계속하고 싶은 것 하나와 두 번 다시 하고 싶지 않은 것 하나는?", why: "조직 불만(미는 힘) vs 확장 욕구(끄는 힘)의 §6 가설을 본인 언어로 검증." },
+      { id: "B8", g: "B · 커리어의 구체화 (‘상품화·임팩트’의 실체)", q: "포트폴리오(G5)는 지금 몇 %인가? 외부에 공개 가능한 케이스 스터디가 있나?", why: "G5의 실제 진척. 에너지 나는 작업이라 게이트 진입로로 쓰기 좋다(§2 사용법)." },
+
+      { id: "C9", g: "C · 관계·가족의 실측 (게이트 G6)", q: "가족과 유학 얘기를 실제로 어디까지 했나? 가장 최근 대화에서 나온 ‘실제 말 한 마디’는?", why: "§5 신호 5(분리 죄책감)가 ‘상상 속 가족’인지 ‘실제 가족’인지 결정적으로 가른다." },
+      { id: "C10", g: "C · 관계·가족의 실측 (게이트 G6)", q: "파트너가 있다면 그 사람의 상황과 이 결정에 대한 입장은? (동행 / 장거리 / 미정 / 해당없음)", why: "73문항에 빠진 변수. ‘결혼=안주’ 공포(신호 6)와 직접 연결된다." },
+      { id: "C11", g: "C · 관계·가족의 실측 (게이트 G6)", q: "“가족에게 짐이 될까”의 가장 현실적인 시나리오 하나는? (예: 부모 건강·금전·정서 중 무엇)", why: "막연한 죄책감을 구체적 관리 항목으로 바꾼다 — 그래야 처방 ⑤가 작동한다." },
+      { id: "C12", g: "C · 관계·가족의 실측 (게이트 G6)", q: "2년간 한국을 떠나 있을 때 가장 잃기 싫은 관계·일상은? 그건 원격으로 유지 가능한가?", why: "감수할 손실(§4 동의문)의 관계 항목을 구체화한다." },
+
+      { id: "D13", g: "D · 가치의 경계 (valt의 ‘섞임’을 푸는 질문)", q: "“결혼=안주”에서 당신이 두려운 ‘안주’의 구체적 장면 한 컷은? 그 장면에 ‘없으면 안주가 아닌’ 요소는 무엇인가?", why: "신호 6(조기 고착 공포)의 적이 ‘결혼’인지 ‘끝난 탐색’인지 본인이 직접 확인." },
+      { id: "D14", g: "D · 가치의 경계 (valt의 ‘섞임’을 푸는 질문)", q: "자율성이 1순위인데, 미국행조차 ‘사회적 시계의 새 모범답안(유학=새 정답)’이 될 위험은 없나? 둘을 어떻게 구별하겠나?", why: "§6 인사이트 4(자기일치 vs 최적화)의 가장 날카로운 자기검증." },
+      { id: "D15", g: "D · 가치의 경계 (valt의 ‘섞임’을 푸는 질문)", q: "돈이 무한히 있다면 그래도 유학을 갈 것인가? 그 답이 ‘FIRE 욕구가 진짜 목적인지’를 말해준다.", why: "§6 기원표의 ‘FIRE = 통제감 치환’ 가설을 검증." },
+      { id: "D16", g: "D · 가치의 경계 (valt의 ‘섞임’을 푸는 질문)", q: "5년 뒤·10년 뒤 “이 결정을 잘했다”고 느낄 단 하나의 증거는 각각 무엇인가?", why: "후회 연구(§8)를 당신 기준으로 번역 — 결정 문장의 ‘얻는 것’ 칸이 채워진다." },
+
+      { id: "E17", g: "E · 결정의 마지막 저항", q: "머리로는 답을 아는데 몸이 안 움직인다면, 그 저항을 한 문장으로 적는다면?", why: "분석 루프(신호 1) 밑에 깔린 진짜 저항을 표면화한다." },
+      { id: "E18", g: "E · 결정의 마지막 저항", q: "‘지금 간다’와 ‘2년 후 간다’ 사이에서, 단 하나의 정보·사건이 결정을 확 기울게 한다면 그건 무엇인가?", why: "교착(신호 2)의 실제 결정 변수를 특정 — 이게 곧 마지막 게이트가 된다." },
+      { id: "E19", g: "E · 결정의 마지막 저항", q: "누가 대신 결정해 준다면 어느 쪽이길 ‘바라게’ 되나? (옳은 답 말고, 바라는 답)", why: "직감(신호 2의 ‘지금’ 쪽)을 우회로로 측정하는 고전적 방법." },
+      { id: "E20", g: "E · 결정의 마지막 저항", q: "이 문서·분석에서 “이건 나랑 안 맞아” 싶었던 지점이 있나? 있다면 어디인가.", why: "가장 중요한 데이터 — 추정이 틀린 곳을 본인이 직접 짚으면 분석 전체가 교정된다." }
+    ];
+
+    var state = {};
+    try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { state = {}; }
+
+    var saveEl = document.getElementById("dqSaveState");
+    function persist() {
+      try {
+        localStorage.setItem(KEY, JSON.stringify(state));
+        if (saveEl) { saveEl.textContent = "자동저장: 완료 " + new Date().toLocaleTimeString("ko-KR"); }
+      } catch (e) {
+        if (saveEl) { saveEl.textContent = "자동저장: 실패(브라우저 설정 확인)"; }
+      }
+    }
+
+    var root = document.getElementById("deepqRoot");
+    var lastGroup = "";
+    DQ.forEach(function (item, idx) {
+      if (item.g !== lastGroup) {
+        lastGroup = item.g;
+        var gt = document.createElement("div");
+        gt.className = "qa-group-title";
+        var chip = document.createElement("span");
+        chip.className = "gchip";
+        chip.textContent = item.g;
+        gt.appendChild(chip);
+        root.appendChild(gt);
+      }
+      var card = document.createElement("div");
+      card.className = "q-card";
+      var qt = document.createElement("div");
+      qt.className = "q-text";
+      qt.textContent = "Q" + (idx + 1) + ". " + item.q;
+      card.appendChild(qt);
+      if (item.why) {
+        var why = document.createElement("div");
+        why.className = "q-why";
+        why.textContent = "↳ 왜 묻나: " + item.why;
+        card.appendChild(why);
+      }
+      var ta = document.createElement("textarea");
+      ta.placeholder = "자유롭게 — 한 줄이라도, ‘모름/아직’도 데이터입니다";
+      ta.value = (state[item.id] && state[item.id].t) || "";
+      ta.addEventListener("input", function () {
+        state[item.id] = { t: ta.value };
+        persist();
+      });
+      card.appendChild(ta);
+      root.appendChild(card);
+    });
+
+    var exportBtn = document.getElementById("dqExportBtn");
+    if (exportBtn) {
+      exportBtn.addEventListener("click", function () {
+        var lines = [];
+        var answered = 0;
+        lines.push("의사결정 심층 질문 — 답안 (클로드에게 그대로 전달하세요)");
+        lines.push("내보낸 시각: " + new Date().toLocaleString("ko-KR"));
+        lines.push("용도: 이 답안을 클로드에게 주면 decision-psychology-support-report의 §5 신호 강도 · §6 신호/잔향 판정 · 재정·커리어 게이트를 실제 답변으로 갱신합니다.");
+        lines.push("");
+        var lastG = "";
+        DQ.forEach(function (item, idx) {
+          if (item.g !== lastG) { lastG = item.g; lines.push("===== " + item.g + " ====="); }
+          var t = (state[item.id] && state[item.id].t || "").trim();
+          if (t) { answered++; }
+          lines.push("Q" + (idx + 1) + ". " + item.q);
+          lines.push("[답] " + (t || "(미응답)"));
+          lines.push("");
+        });
+        lines.push("— 응답 " + answered + " / " + DQ.length + " —");
+        var blob = new Blob([lines.join("\n")], { type: "text/plain;charset=utf-8" });
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "deep-questions-" + new Date().toISOString().slice(0, 10) + ".txt";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(a.href);
+      });
+    }
+
+    var resetBtn = document.getElementById("dqResetBtn");
+    if (resetBtn) {
+      resetBtn.addEventListener("click", function () {
+        if (!confirm("심층 질문 답안을 모두 초기화할까요? (내보낸 .txt는 남습니다)")) { return; }
+        state = {};
+        try { localStorage.removeItem(KEY); } catch (e) {}
+        root.innerHTML = "";
+        location.reload();
+      });
+    }
+  })();
+  </script>
+
+  <script id="tabScript">
+  (function () {
+    // 저장 가능 여부 점검 — 비공개 모드 등에서 localStorage 쓰기 실패 시 경고
+    (function () {
+      var okStore = false;
+      try { localStorage.setItem("__qa_probe__", "1"); localStorage.removeItem("__qa_probe__"); okStore = true; } catch (e) { okStore = false; }
+      if (!okStore) {
+        var w = document.getElementById("storageWarn");
+        if (w) { w.style.display = "block"; }
+      }
+    })();
+
+    // 탭 전환
+    var btns = document.querySelectorAll(".tab-btn");
+    var panels = document.querySelectorAll(".tab-panel");
+    function activate(name) {
+      btns.forEach(function (b) {
+        var on = b.getAttribute("data-tab") === name;
+        b.classList.toggle("active", on);
+        b.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      panels.forEach(function (p) { p.classList.toggle("active", p.id === "panel-" + name); });
+      try { localStorage.setItem("psych-qa-active-tab", name); } catch (e) {}
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    btns.forEach(function (b) {
+      b.addEventListener("click", function () { activate(b.getAttribute("data-tab")); });
+    });
+    var saved = "checkup";
+    try { saved = localStorage.getItem("psych-qa-active-tab") || "checkup"; } catch (e) {}
+    activate(saved);
+
+    // 응답 카운터 — 두 폼의 localStorage를 직접 읽어 갱신 (폼 스크립트와 독립)
+    function readObj(k) { try { return JSON.parse(localStorage.getItem(k) || "{}") || {}; } catch (e) { return {}; } }
+    function countCheckup() {
+      var s = readObj("psych-checkup-v1"), n = 0;
+      Object.keys(s).forEach(function (id) { var a = s[id]; if (a && (a.c >= 0 || (a.t && a.t.trim()))) { n++; } });
+      return n;
+    }
+    function countDeep() {
+      var s = readObj("psych-deepdive-v1"), n = 0;
+      Object.keys(s).forEach(function (id) { var a = s[id]; if (a && a.t && a.t.trim()) { n++; } });
+      return n;
+    }
+    // 다음 미응답 문항으로 스크롤 (DOM 기반 — 폼 스크립트와 독립)
+    function jumpNext(rootId) {
+      var root = document.getElementById(rootId);
+      if (!root) { return; }
+      var cards = root.querySelectorAll(".q-card");
+      for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        var sel = card.querySelectorAll(".opt-btn.sel").length > 0;
+        var ta = card.querySelector("textarea");
+        var hasText = ta && ta.value && ta.value.trim();
+        if (!sel && !hasText) {
+          card.scrollIntoView({ behavior: "smooth", block: "center" });
+          card.classList.add("flash");
+          (function (c) { setTimeout(function () { c.classList.remove("flash"); }, 2200); })(card);
+          if (ta) { try { ta.focus(); } catch (e) {} }
+          return;
+        }
+      }
+      // 전부 응답됨 — 맨 위로
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function relDays(iso) {
+      var then = new Date(iso).getTime();
+      var diff = Math.floor((Date.now() - then) / 86400000);
+      if (diff <= 0) { return "오늘"; }
+      if (diff === 1) { return "어제"; }
+      return diff + "일 전";
+    }
+
+    function renderStatus() {
+      // 점검 탭
+      var sc = document.getElementById("statusCheckup");
+      if (sc) {
+        var n = Math.min(countCheckup(), 20);
+        var pct = Math.round(n / 20 * 100);
+        var hist = readObj2("psych-checkup-history-v1");
+        var lastHtml = "";
+        if (hist.length) {
+          var h = hist[hist.length - 1];
+          lastHtml = "<div class=\"last\">마지막 점검 기록: <b>" + h.d.slice(0, 10) + " (" + relDays(h.d) + ")</b> · 부하 " + h.load + "/11 · 게이트 " + h.gate + "/9 · 회피 " + h.risk + "/10 · 준비도 " + h.ready + "/6 <span style=\"color:var(--dim)\">— 추세는 아래 ‘🧠 분석 보기’에서</span></div>";
+        } else {
+          lastHtml = "<div class=\"last\">아직 기록된 점검이 없다 — 답한 뒤 <b>📈 이번 점검 기록</b>을 누르면 추세가 쌓이기 시작한다.</div>";
+        }
+        sc.innerHTML =
+          "<div class=\"row1\"><div><span class=\"prog-label\">오늘 점검 진행 " + n + "/20</span> <span class=\"prog-sub\">" + (n === 20 ? "· 완료 — 분석/기록으로" : "· " + (20 - n) + "문항 남음") + "</span></div>" +
+          "<button type=\"button\" class=\"jump-btn\" data-jump=\"qaRoot\">다음 미응답으로 ↓</button></div>" +
+          "<div class=\"pbar\"><div style=\"width:" + Math.max(pct, 2) + "%\"></div></div>" + lastHtml;
+      }
+      // 심층 탭
+      var sd = document.getElementById("statusDeep");
+      if (sd) {
+        var dn = Math.min(countDeep(), 20);
+        var dpct = Math.round(dn / 20 * 100);
+        sd.className = "status-card deep";
+        sd.innerHTML =
+          "<div class=\"row1\"><div><span class=\"prog-label\">답한 질문 " + dn + "/20</span> <span class=\"prog-sub\">" + (dn === 0 ? "· 한 줄부터 시작" : (dn === 20 ? "· 전부 답함 — 내보내서 클로드에게" : "· " + (20 - dn) + "개 더 있으면 분석이 더 정확해진다")) + "</span></div>" +
+          "<button type=\"button\" class=\"jump-btn\" data-jump=\"deepqRoot\">다음 미응답으로 ↓</button></div>" +
+          "<div class=\"pbar\"><div style=\"width:" + Math.max(dpct, 2) + "%\"></div></div>";
+      }
+    }
+    function readObj2(k) { try { return JSON.parse(localStorage.getItem(k) || "[]") || []; } catch (e) { return []; } }
+
+    // 문항별 응답 상태 표시 (DOM 기반)
+    function markAnswered() {
+      ["qaRoot", "deepqRoot"].forEach(function (rid) {
+        var root = document.getElementById(rid);
+        if (!root) { return; }
+        var cards = root.querySelectorAll(".q-card");
+        for (var i = 0; i < cards.length; i++) {
+          var card = cards[i];
+          var sel = card.querySelectorAll(".opt-btn.sel").length > 0;
+          var ta = card.querySelector("textarea");
+          var hasText = ta && ta.value && ta.value.trim();
+          card.classList.toggle("answered", !!(sel || hasText));
+        }
+      });
+    }
+
+    function refresh() {
+      var c = document.getElementById("cntCheckup"), d = document.getElementById("cntDeep");
+      if (c) { c.textContent = Math.min(countCheckup(), 20) + "/20"; }
+      if (d) { d.textContent = Math.min(countDeep(), 20) + "/20"; }
+      renderStatus();
+      markAnswered();
+    }
+
+    // 진행 요약의 ‘다음 미응답으로’ 버튼 (이벤트 위임)
+    document.addEventListener("click", function (e) {
+      var tgt = e && e.target;
+      if (tgt && tgt.getAttribute && tgt.getAttribute("data-jump")) {
+        jumpNext(tgt.getAttribute("data-jump"));
+      }
+    });
+    // ----- 통합 내보내기 (점검 + 심층을 한 .txt로) -----
+    function cardsToLines(rootId, withOpts) {
+      var root = document.getElementById(rootId);
+      var out = [];
+      if (!root) { return out; }
+      var groups = root.children;
+      for (var i = 0; i < groups.length; i++) {
+        var el = groups[i];
+        var cls = el.className || "";
+        if (cls.indexOf("qa-group-title") >= 0) {
+          var chip = el.querySelector(".gchip");
+          out.push("");
+          out.push("--- " + (chip ? chip.textContent : "") + " ---");
+        } else if (cls.indexOf("q-card") >= 0) {
+          var qt = el.querySelector(".q-text");
+          out.push(qt ? qt.textContent : "");
+          if (withOpts) {
+            var sel = el.querySelector(".opt-btn.sel");
+            if (sel) { out.push("   [선택] " + sel.textContent); }
+          }
+          var ta = el.querySelector("textarea");
+          if (ta && ta.value && ta.value.trim()) { out.push("   [주관식] " + ta.value.trim()); }
+          if (!(el.querySelector(".opt-btn.sel")) && !(ta && ta.value && ta.value.trim())) { out.push("   [무응답]"); }
+        }
+      }
+      return out;
+    }
+
+    function comboExport() {
+      // 최신 분석 반영
+      var ab = document.getElementById("analyzeBtn");
+      if (ab) { ab.click(); }
+      var L = [];
+      L.push("의사결정 문답 통합 — 점검 + 심층 (클로드에게 이 파일 하나만 전달하세요)");
+      L.push("내보낸 시각: " + new Date().toLocaleString("ko-KR"));
+      L.push("용도: 이 파일을 클로드에게 주면 decision-psychology-support-report의 §5 신호 강도 · §6 신호/잔향 판정 · 재정·커리어 게이트를 실제 답변으로 갱신합니다.");
+      L.push("");
+      L.push("================ 1. 점검 문답 (오늘 상태) ================");
+      L = L.concat(cardsToLines("qaRoot", true));
+      L.push("");
+      L.push("--- 점검 자동 분석 ---");
+      var ana = document.getElementById("anaText");
+      if (ana && ana.children.length) {
+        for (var i = 0; i < ana.children.length; i++) { L.push(ana.children[i].textContent); }
+      } else { L.push("(분석 미실행)"); }
+      var hist = readObj2("psych-checkup-history-v1");
+      if (hist.length) {
+        L.push("");
+        L.push("--- 점검 이력(추세) ---");
+        L.push("점검일\t부하/11\t게이트/9\t위험/10\t준비도/6\t응답");
+        hist.forEach(function (h) {
+          L.push(h.d.slice(0, 16).replace("T", " ") + "\t" + h.load + "\t" + h.gate + "\t" + h.risk + "\t" + h.ready + "\t" + (h.answered != null ? h.answered + "/20" : "-"));
+        });
+      }
+      L.push("");
+      L.push("================ 2. 심층 질문 (자세한 답변) ================");
+      L = L.concat(cardsToLines("deepqRoot", false));
+      L.push("");
+      L.push("================ 전달 문구 ================");
+      var pt = document.getElementById("promptText");
+      L.push(pt ? pt.textContent : "");
+
+      var blob = new Blob([L.join("\n")], { type: "text/plain;charset=utf-8" });
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "decision-qa-and-deep-" + new Date().toISOString().slice(0, 10) + ".txt";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(a.href);
+    }
+
+    var comboBtn = document.getElementById("comboExportBtn");
+    if (comboBtn) { comboBtn.addEventListener("click", comboExport); }
+
+    var copyBtn = document.getElementById("copyPromptBtn");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function () {
+        var box = document.getElementById("promptBox");
+        var pt = document.getElementById("promptText");
+        if (box) { box.classList.add("show"); }
+        var txt = pt ? pt.textContent : "";
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).then(function () {
+            copyBtn.textContent = "✓ 복사됨";
+            setTimeout(function () { copyBtn.textContent = "📋 전달 문구 복사"; }, 1800);
+          }).catch(function () {});
+        }
+      });
+    }
+
+    // ----- 플로팅 컨트롤 (맨 위로 / 다음 미응답) -----
+    function activeRootId() {
+      var name = "checkup";
+      try { name = localStorage.getItem("psych-qa-active-tab") || "checkup"; } catch (e) {}
+      return name === "deep" ? "deepqRoot" : "qaRoot";
+    }
+    var fabTop = document.getElementById("fabTop");
+    var fabNext = document.getElementById("fabNext");
+    if (fabTop) { fabTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); }); }
+    if (fabNext) { fabNext.addEventListener("click", function () { jumpNext(activeRootId()); }); }
+    function onScroll() {
+      var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+      var show = y > 360;
+      if (fabTop) { fabTop.classList.toggle("show", show); }
+      if (fabNext) { fabNext.classList.toggle("show", show); }
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    // 폼 조작 후 갱신 (이벤트 위임 — 폼 스크립트가 먼저 저장한 뒤 실행되도록 setTimeout 0)
+    document.addEventListener("click", function () { setTimeout(refresh, 0); });
+    document.addEventListener("input", function () { setTimeout(refresh, 0); });
+    refresh();
+  })();
+  </script>
+
+</body>
+</html>
