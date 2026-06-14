@@ -232,6 +232,21 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 2. G5 산출물은 스크린샷 묶음이 아니라 `research insight → flow/prototype → trust/exception design → design system → stakeholder rationale`의 증거 묶음이어야 한다.
 3. SVA 수업 프로젝트도 가능하면 법률/의료/금융/개발자/운영자처럼 **전문가가 AI 결과를 검증해야 하는 고신뢰 workflow**를 잡는 편이 최신 JD 반복 신호와 맞다.
 
+### 3-10. 2026-06-14 16:40 KST 공개 JD 재확인
+
+이번 루프에서는 0G Labs `Product Designer - AI Application` 원문을 재확인했고, Lever/Jobgether 공개 검색 결과 일부는 원문 추출 시 404로 내려간 상태임을 확인했다. 따라서 결론에는 원문 확인 가능한 0G Labs와 공개 검색 snippet만 보수적으로 반영한다.
+
+- **AI-native product design은 technical complexity translation으로 반복된다**: 0G Labs는 agent interfaces, model interaction flows, developer-facing tools, dashboards/SaaS 경험, complex information architecture를 clean human-centered interface로 바꾸는 능력을 명시한다.
+- **Research·usability testing·rapid prototyping이 AI 공고에서도 기본값이다**: AI 도구 사용 능력은 독립 자격보다 user research, usability testing, prototype validation, product strategy와 함께 요구된다.
+- **Design system은 web/product surfaces를 가로지르는 scale 장치다**: 0G Labs는 scalable design system을 build/maintain하는 역할을 요구한다. 사용자의 포트폴리오에서도 단일 화면보다 반복 가능한 pattern·component·state 규칙을 보여줘야 한다.
+- **일부 공개 JD는 빠르게 내려간다**: Lever/Jobgether 결과처럼 검색 snippet은 남아도 원문은 404일 수 있다. 따라서 지원 직전에는 최신 원공고 기준으로 요구사항을 다시 확인해야 한다.
+
+사용자에게의 추가 함의:
+
+1. 공개 case 1개는 `agent/model workflow → user control/validation → dashboard or developer surface → design system → research/prototype evidence` 구조가 가장 선명하다.
+2. “AI 툴을 썼다”는 문장보다 **AI 기능의 불확실성을 사용자가 이해·검증·수정하도록 설계했다**는 문장이 더 강하다.
+3. G4 alumni 인터뷰에는 “AI-native/developer-tool 포트폴리오가 Product Designer로 읽혔는지, Design Engineer로 읽혔는지, 그 경계가 면접에서 어떻게 평가됐는지”를 추가한다.
+
 ---
 
 ## 4. 사용자 포트폴리오로 번역할 체크리스트
@@ -311,5 +326,7 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 - Harvey — Senior Product Designer 공개 공고 snippet(확인일 2026-06-14 16:26 KST): legal/professional-services AI, engineers·AI researchers·PM·lawyers 협업, complex problems→intuitive solutions, high-quality interactions/prototypes, AI outputs의 understand/trust/guide UX, design-system refinement, user research.
 - adaption — Product Designer 공개 Ashby 공고 snippet(확인일 2026-06-14 16:26 KST): Design + Front End 조직, portfolio 기반 선별, technical/AI-native product designer 포지션 신호 참고.
 - 0G Labs/Goodie AI/EvenUp — 공개 snippets 재확인(확인일 2026-06-14 16:26 KST): AI-native technical complexity translation, B2B SaaS/enterprise workflow, user research/usability testing, customer success/operations feedback, design systems, strong writing, Figma, AI product interfaces.
+- 0G Labs — Product Designer, AI Application 원문 재확인(확인일 2026-06-14 16:40 KST): agent interfaces, model interaction flows, developer-facing tools, dashboards/SaaS, technical complexity→human-centered UI, user research/usability testing/rapid prototyping, scalable design system, AI tools as workflow multiplier.
+- Lever/Jobgether 공개 검색 결과 일부(확인일 2026-06-14 16:40 KST): 검색 snippet에는 Figma, prototypes, design systems, analytics/testing, collaboration, accessibility가 반복되지만 원문 추출 시 404인 항목이 있어 보수적으로 snippet 참고로만 둔다.
 
 주의: 일부 원 공고는 추출 시점에 내려갔거나 mirror/snippet 기반이다. 실제 지원 전에는 타깃 회사의 최신 JD 원문을 다시 수집해야 한다.
