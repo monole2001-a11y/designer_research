@@ -1,8 +1,8 @@
-# 객관자료 원장 — 2026-06-14 10:55 KST 재확인
+# 객관자료 원장 — 2026-06-14 11:58 KST 재확인
 
 이 문서는 사용자의 개인 재무·회사 자료가 아니라 공개/공식 출처만 모은 확인 원장이다. 실행 전에는 각 기관 원문과 본인 서류(I-20, 장학 약정서, 비자 예약 화면)를 다시 대조해야 한다.
 
-이번 점검에서는 SVA FAQ, DHS/Study in the States STEM OPT eligibility, travel.state.gov Student Visa, SVA Academic Calendar, NIIED 국비유학생 사업 페이지를 공개 쿼리/URL로 재확인했다. 결론 변화는 없다: SVA 합격과 국비 $100K는 사용자 확인 사실, I-20·CIP·국비 지급/생활비/반환 조건·G3 runway는 계속 미확정이다.
+이번 점검에서는 SVA STEM major letter, DHS/ICE STEM list, Study in the States STEM OPT Hub, 공개 Product Designer JD(Figma/Epoch AI)를 추가 확인했다. 결론 변화는 없다: SVA 합격과 국비 $100K는 사용자 확인 사실, I-20·program start date·본인 I-20의 CIP 30.3101 표기·국비 지급/생활비/반환 조건·G3 runway는 계속 미확정이다.
 
 ## 1. SVA MFA Interaction Design / STEM
 
@@ -11,6 +11,9 @@
   - 확인일: 2026-06-13 KST
 - 같은 FAQ는 프로그램 길이를 2년/4학기, 시작 9월·종료 5월로 설명한다. full-time residency 성격이고 full-time work는 특히 1년 차에 가능하면 피하라고 안내한다.
 - 단, 실제 STEM OPT 판단의 실행 증거는 프로그램 웹페이지 문구가 아니라 **본인 I-20의 CIP/major field 표기 + DSO 서면 확인**이다. 따라서 G2는 계속 “내 I-20에 30.3101이 적혀 있는가”로 닫는다.
+- SVA International Student Office의 STEM OPT extension-eligible majors letter는 `MFA Interaction Design`의 STEM CIP code를 `30.3101`, SEVIS listed major를 `Human Computer Interaction`으로 표시한다.
+  - 출처: https://sva.edu/downloads/stem-majors-at-sva
+  - 확인일: 2026-06-14 KST
 - SVA ixD 공개 페이지는 Fall 2026 applications가 아직 open 상태라고 표시하고, 프로그램을 Chelsea 기반 2년제 MFA로 설명한다. 이는 G0 확인 행동(합격/I-20 여부 확인)을 대체하지는 않지만, “Fall 2026 창이 웹상 완전히 닫혔다”는 반대 증거는 아니다.
   - 출처: https://interactiondesign.sva.edu/
   - 확인일: 2026-06-13 KST
@@ -22,6 +25,9 @@
   - 확인일: 2026-06-13 KST
 - 목록은 STEM 지정 여부를 CIP code 기준으로 관리한다. `30`번대는 Multi/Interdisciplinary Studies 중 지정된 6-digit CIP만 포함되는 계열이므로, **SVA가 본인 I-20에 정확히 어떤 CIP를 발급했는지**가 핵심이다.
 - 운영상 주의: `30.3101 Human Computer Interaction` 자체의 STEM 근거가 있더라도, 학교가 내 SEVIS/I-20에 다른 코드로 발급하면 G2는 닫히지 않는다.
+- 2024 DHS STEM list PDF는 STEM OPT 24개월 연장 목적의 지정 전공 목록이며, Study in the States는 eligible STEM degree를 가진 F-1 학생이 USCIS EAD를 받아 24개월 STEM OPT extension을 신청할 수 있다고 설명한다. 따라서 사이트 표현은 계속 **“12개월 OPT + 요건 충족 시 24개월 STEM OPT extension 신청 가능”**으로 유지한다.
+  - 출처: https://www.ice.gov/doclib/sevis/pdf/stemList2024.pdf / https://studyinthestates.dhs.gov/stem-opt-hub
+  - 확인일: 2026-06-14 KST
 
 ## 3. USCIS OPT / STEM OPT
 
