@@ -187,6 +187,21 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 2. SVA에서 만들 프로젝트는 “감각적인 인터랙션”만으로 끝내지 말고, **human factors·safety/trust·운영 복구 흐름**을 포함한 시스템 설계 사례로 키운다.
 3. G4 alumni 인터뷰에는 “복잡 도메인/AI/데이터 포트폴리오가 general mobile app case보다 면접에서 더 강하게 읽혔는가?”를 추가한다.
 
+### 3-7. 2026-06-14 15:55 KST 공개 JD 추가 점검
+
+이번 루프에서는 Ashby 공개 공고의 Peek `Product Designer` 원문을 추가 확인했다. 새 결론을 만들기보다 기존 반복 신호를 한 번 더 검증한다.
+
+- **Operational product에서의 complex workflow 단순화**: Peek은 투어·박물관·액티비티 운영자를 위한 B2B/B2C surface에서 PM/Engineering과 end-to-end feature ownership, complex workflows를 intuitive flow로 바꾸는 역량을 요구한다.
+- **AI는 독립 역량보다 리서치·프로토타입 가속 장치로 등장**: 공고는 AI-enhanced tools를 research synthesis, ideation, prototype generation에 쓰는 hands-on 역량을 요구한다. 즉 포트폴리오에는 “AI 사용” 자체보다 **AI로 탐색 속도를 높였고 최종 판단은 사용자/비즈니스 근거로 검증했다**는 기록이 필요하다.
+- **Craft와 accessibility는 신뢰 구축의 일부**: Peek은 tiny details가 friction을 줄이고 trust를 만든다고 설명하며, accessible flows와 qualitative/quantitative insight 기반 iteration을 함께 요구한다.
+- **포트폴리오 평가는 문제 정의 과정까지 본다**: sketches, prototypes, research, full portfolio 모두 가능하지만, 핵심은 how you define problems, explore solutions, bring clarity to complex challenges다.
+
+사용자에게의 추가 함의:
+
+1. 공개 case에는 완성 화면뿐 아니라 `문제 정의 → 탐색 스케치 → prototype → research/usability evidence → ship-like iteration`의 흔적을 남긴다.
+2. SVA 과제도 “시각 결과물”보다 **운영/업무 흐름의 마찰을 줄이고 신뢰를 만든 과정**으로 기록해야 최신 PD 공고 언어와 맞는다.
+3. G5 포트폴리오 체크리스트에 “AI를 어디에 썼는가?”보다 “AI가 만든 후보를 어떤 사용자/비즈니스 근거로 채택·폐기했는가?”를 추가한다.
+
 ---
 
 ## 4. 사용자 포트폴리오로 번역할 체크리스트
@@ -259,5 +274,6 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 - 0G Labs — Product Designer, AI Application 공개 공고(확인일 2026-06-14 15:41 KST): AI-native product design, agent interfaces, model interaction flows, developer tools/dashboards/SaaS, user research/usability testing, scalable design system, AI tools as workflow multiplier.
 - Anara — Product Designer 공개 공고(확인일 2026-06-14 15:41 KST): AI workspace for scientific discovery, humans-and-AI collaboration, user conversations→features, engineering implementation, fast shipping, design systems/documentation/workflows.
 - Ashby — Design Engineer 공개 설명(확인일 2026-06-14 15:41 KST): customer research, written proposals, prototyping, wireframes, end-to-end implementation ownership, deliberate async communication; Design Engineer-adjacent 신호 참고.
+- Peek — Product Designer 공개 공고(확인일 2026-06-14 15:55 KST): experiences-industry operational platform, B2B/B2C surfaces, end-to-end feature ownership, complex workflows→intuitive accessible flows, prototypes, user interviews/usability tests, qualitative/quantitative insight, AI-enhanced research synthesis/ideation/prototype generation, design system/reusable patterns, HTML/CSS handoff familiarity plus.
 
 주의: 일부 원 공고는 추출 시점에 내려갔거나 mirror/snippet 기반이다. 실제 지원 전에는 타깃 회사의 최신 JD 원문을 다시 수집해야 한다.
