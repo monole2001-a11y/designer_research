@@ -129,6 +129,20 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 2. “포트폴리오에서 complex workflow / data-heavy UI / B2B power-user 사례가 general app redesign보다 더 강하게 읽혔나?”
 3. “디자인 rationale writing과 PM/Engineering 협업 사례를 어떻게 증명했나?”
 
+### 3-3. 2026-06-14 12:31 KST 공개 JD 추가 확인
+
+이번 루프에서는 Figma `Product Designer, AI Models`, Niural `Senior Product Designer`, Goodie AI `Product Designer` 공개 원문을 추가 확인했다. 개인/회사 내부정보는 검색·반영하지 않았다.
+
+- **AI evaluation / heuristics**: Figma AI Models 공고는 디자이너가 AI 연구와 디자인 원칙 사이의 bridge가 되어, AI-generated output의 품질을 평가하고 design principles/heuristics를 문서화하는 역할을 요구한다. AI 역량은 “툴 사용”보다 **모델 산출물을 판단·평가·가이드하는 디자인 기준**으로 옮겨가고 있다.
+- **Senior prototype-as-business artifact**: Niural은 sales demo, internal showcase, stakeholder presentation에 쓰이는 high-fidelity interactive prototype ownership을 강조한다. 즉 prototype은 학습용 산출물이 아니라 **비즈니스 의사결정과 alignment를 움직이는 증거물**이어야 한다.
+- **B2B AI control plane / dashboard**: Goodie AI는 AI search/brand visibility라는 새 B2B 문제공간에서 research, user flows, design systems, data feedback, dashboard/data visualization, accessibility, front-end constraints를 함께 요구한다. 이는 사용자 포트폴리오가 **AI/데이터/복잡 workflow를 readable dashboard와 control surface로 번역하는 사례**를 가져야 함을 강화한다.
+
+포트폴리오 체크리스트에 추가할 질문:
+
+1. 내 case에는 AI/데이터 산출물을 평가하는 **heuristic 또는 quality bar**가 있는가?
+2. prototype이 단순 화면 시연을 넘어 stakeholder decision, PM/Engineering alignment, business metric에 연결되는가?
+3. dashboard/control-plane류 복잡 UI에서 상태, 권한, 예외, 신뢰/검증 흐름을 보여주는가?
+
 ---
 
 ## 4. 사용자 포트폴리오로 번역할 체크리스트
@@ -186,5 +200,8 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 - Meta Product Designer 공고 요약(Memorisely/ux-news mirror): ambiguous design projects, 2B+ users, UX/interaction/visual design, cross-functional influence, design roadmaps, advanced prototyping.
 - KOHO Senior Product Designer 공고 snippet: consumer mobile, GenAI workflow, Figma, design rationale, ownership, ambiguity, B2C/fintech context.
 - Harmattan AI Product Designer 공고 snippet: complex data-heavy systems, operator research, mission-critical interfaces, design systems, accessibility, engineering validation.
+- Figma — Product Designer, AI Models 공개 공고(확인일 2026-06-14 12:31 KST): AI research와 design principles를 연결, AI-generated output 평가, design heuristics/principles 문서화, coding/image model 사용 경험, AI/ML technical understanding, ambiguity handling.
+- Niural — Senior Product Designer 공개 공고(확인일 2026-06-14 12:31 KST): high-fidelity interactive prototypes for sales demos/internal showcases/stakeholder presentations, design systems/workflows, PM/engineering/marketing collaboration, research/usability testing, ambiguity를 structure로 바꾸는 역량.
+- Goodie AI — Product Designer 공개 공고(확인일 2026-06-14 12:31 KST): AI search/B2B software, research-to-implementation, user flows/wireframes/prototypes, design systems/component libraries, user behavior data, dashboard/data visualization, accessibility/responsive design, front-end constraints, business metrics.
 
 주의: 일부 원 공고는 추출 시점에 내려갔거나 mirror/snippet 기반이다. 실제 지원 전에는 타깃 회사의 최신 JD 원문을 다시 수집해야 한다.
