@@ -262,6 +262,20 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 2. SVA 프로젝트는 단순 “AI 기능 데모”보다 **사람이 중요한 결정을 할 때 AI/데이터를 어떻게 믿고, 비교하고, 되돌릴 수 있는지**를 설계하는 편이 강하다.
 3. G5 체크리스트에 “AI-assisted workflow를 어디에 썼는가?”와 함께 “AI가 thinking을 대체하지 않았다는 판단 기록이 있는가?”를 추가한다.
 
+### 3-12. 2026-06-14 17:10 KST 공개 JD 추가 점검
+
+이번 루프에서는 Khosla Ventures Job Board에 공개된 Lattice `Senior Product Designer, AI`와 Greenhouse/Simplify 공개 `Senior Product Designer, Data` 설명을 추가 확인했다. 개인/회사 내부정보는 검색·반영하지 않았다.
+
+- **AI-native PD는 interface만이 아니라 output 품질을 설계한다**: Lattice는 “prototype in code, push pixels, write the doc”를 함께 요구하고, AI case study에서 화면뿐 아니라 AI output의 quality, tone, formatting, edge cases, iteration loops를 보여달라고 명시한다. 즉 포트폴리오에는 `프롬프트/모델 출력 → 품질 기준 → 예외/실패 케이스 → UI·문구·제어장치 개선`의 흐름이 필요하다.
+- **Data-heavy B2B PD는 schema/query 제약까지 이해해야 한다**: Greenhouse Data Experience 공고는 reporting/analytics UX, data engineer와 schema·query capability 협업, user research/workshops, flows/wireframes/high-fidelity prototypes, design-system patterns, design QA를 반복한다. 이는 “복잡한 데이터를 의사결정 가능한 화면으로 번역하는 능력”이 senior PD 신호임을 재확인한다.
+- **Writing이 alignment tool로 승격되고 있다**: Lattice의 “write the doc that aligns the room” 표현은 최신 AI/complex-product 공고에서 rationale writing이 단순 커뮤니케이션이 아니라 PM/Engineering/Data와 방향을 맞추는 실행 도구로 평가됨을 보여준다.
+
+사용자에게의 추가 함의:
+
+1. SVA 공개 case 1개는 `data/AI output quality criteria → edge cases → user control/trust UI → coded or Figma prototype → rationale doc` 구조가 강하다.
+2. 삼성 경력은 구체 제품명을 노출하지 않고도 “schema/constraint가 있는 복잡 시스템을 사용자 의사결정 UI로 바꾼 경험”으로 번역할 수 있다.
+3. G5 포트폴리오 체크리스트에 “AI output 자체를 어떻게 평가·교정했는가?”와 “방을 정렬시킨 문서/의사결정 기록이 있는가?”를 추가한다.
+
 ---
 
 ## 4. 사용자 포트폴리오로 번역할 체크리스트
@@ -346,5 +360,7 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 - Lottie — Senior Product Designer 공개 Ashby 공고(확인일 2026-06-14 16:55 KST): high-stakes care marketplace, accessibility, trust signals, information hierarchy, emotional context, PM과 문제 정의 단계부터 협업, complex multi-state marketplace flow, AI tooling for faster prototyping/iteration without replacing craft, portfolio showing craft rigour and systemic thinking.
 - WHOOP — Senior Product Designer, AI & Emerging Technology Focus 공개 Lever 공고(확인일 2026-06-14 16:55 KST): AI-driven insights→trustworthy/actionable interfaces, research/usability testing, IA/workflows, Figma prototype, no-code/low-code prototype tools, PM/Engineering/Data Science collaboration, AI workflow use, inclusive/ethical/transparent AI design.
 - Ramp/Flex/Nace.ai — 공개 Ashby snippets(확인일 2026-06-14 16:55 KST): AI-first/builder-led design, LLM/Cursor/Claude/v0/Replit 기반 prototype, customer research as velocity tool, design-system contribution, end-to-end ownership, strong product thinking·interaction design·craft portfolio.
+- Lattice — Senior Product Designer, AI 공개 Khosla Ventures Job Board 공고(확인일 2026-06-14 17:10 KST): AI-native product suite, ambiguity/self-starter, prototype in code, visual/interaction craft, alignment document writing, AI output quality/tone/formatting/edge cases/iteration loops를 portfolio evidence로 요구.
+- Greenhouse/Simplify — Senior Product Designer, Data 공개 설명(확인일 2026-06-14 17:10 KST): reporting/analytics UX, schema/query capability를 두고 data engineers와 협업, user research sessions/workshops, flows/wireframes/high-fidelity prototypes, Seedling design-system patterns, design QA, complex data-centric B2B SaaS.
 
 주의: 일부 원 공고는 추출 시점에 내려갔거나 mirror/snippet 기반이다. 실제 지원 전에는 타깃 회사의 최신 JD 원문을 다시 수집해야 한다.

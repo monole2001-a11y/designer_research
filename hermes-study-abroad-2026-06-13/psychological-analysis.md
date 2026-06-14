@@ -7,7 +7,7 @@
 
 지금의 심리 상태는 “가기 싫은데 억지로 가려는 상태”가 아니라, **가고 싶은 방향은 분명하지만 손실·불확실성·책임을 완벽히 통제하고 싶어서 결정이 느려지는 상태**에 가깝다.
 
-2026-06-14 16:55 KST 점검: 새로 닫힌 사실은 없으므로 심리 해석의 중심도 바꾸지 않는다. SVA 합격과 국비 $100K가 이미 확인된 상태에서는 “갈 수 있는지”보다 **확인되지 않은 잔여 게이트(I-20/CIP, 국비 약관, G3 runway)를 닫지 않은 채 새 비교를 늘리는 패턴**을 경계해야 한다. 이번 Product Designer JD 추가 점검도 결론을 바꾸기보다 G4/G5의 행동 기준을 더 좁힌다: 새 비교를 늘리는 대신 `I-20/CIP 확인 → 국비 약관 원문 → 월별 runway → 공개 case 1개` 순서로 사실 게이트를 닫고, 공개 case는 `high-stakes decision → information hierarchy/trust signals → AI/data insight explanation → prototype validation → design-system polish`처럼 JD 언어로 번역 가능한 증거를 남기는 것이 맞다. 특히 AI-native·health/performance·care marketplace 공고는 trust signal, explainability, fairness/transparency, user control/validation, no-code/low-code or coded prototype을 반복하므로, 사용자가 결과를 이해·신뢰·비교·수정하게 만드는 사례가 최신 공고 반복 신호와 맞다. 이 문서는 진단이 아니라 결정 보조용 패턴 로그다.
+2026-06-14 17:10 KST 점검: 새로 닫힌 사실은 없으므로 심리 해석의 중심도 바꾸지 않는다. SVA 합격과 국비 $100K가 이미 확인된 상태에서는 “갈 수 있는지”보다 **확인되지 않은 잔여 게이트(I-20/CIP, 국비 약관, G3 runway)를 닫지 않은 채 새 비교를 늘리는 패턴**을 경계해야 한다. 이번 Product Designer JD 추가 점검도 결론을 바꾸기보다 G4/G5의 행동 기준을 더 좁힌다: 새 비교를 늘리는 대신 `I-20/CIP 확인 → 국비 약관 원문 → 월별 runway → 공개 case 1개` 순서로 사실 게이트를 닫고, 공개 case는 `data/AI output quality criteria → edge cases → user control/trust UI → coded or Figma prototype → rationale doc`처럼 JD 언어로 번역 가능한 증거를 남기는 것이 맞다. Lattice/Greenhouse류 공고는 화면 제작뿐 아니라 AI output 품질·톤·포맷·예외 케이스, schema/query 제약 이해, 그리고 “방을 정렬시키는 문서”를 반복 신호로 보여준다. 따라서 지금의 분석 루프는 새 선택지를 늘리기보다 **output 품질 기준·실패 케이스·의사결정 문서**를 남기는 실행 루프로 바뀌어야 한다. 이 문서는 진단이 아니라 결정 보조용 패턴 로그다.
 
 가장 중요한 문장:
 
