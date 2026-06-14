@@ -217,6 +217,21 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 2. SVA 프로젝트를 고를 때 consumer app redesign보다 **AI infrastructure, data dashboard, expert workflow, developer/operator tool** 성격의 문제를 잡는 편이 커리어 전환 신호가 강하다.
 3. G4 alumni 인터뷰에는 “developer tools/AI infrastructure/technical B2B 포트폴리오가 Product Designer 면접에서 장점으로 읽혔는지, 아니면 너무 technical하게 보였는지”를 추가한다.
 
+### 3-9. 2026-06-14 16:26 KST 공개 JD 추가 점검
+
+이번 루프에서는 공개 검색 결과 기준으로 Harvey `Senior Product Designer`, Ashby 공개 adaption `Product Designer`, 0G Labs/Goodie AI/EvenUp 공고 snippets를 재확인했다. 개인/회사 내부정보는 검색·반영하지 않았다.
+
+- **Professional-services AI UX는 trust/guidance가 핵심**: Harvey는 법률·전문서비스 지식 업무에서 engineers, AI researchers, PM, lawyers와 협업하며 사용자가 AI outputs를 understand, trust, effectively guide하도록 만드는 interaction/prototype을 요구한다. AI 제품 포트폴리오에는 단순 생성 결과보다 **근거·검증·수정·가이드 흐름**이 보여야 한다.
+- **복잡 문제를 intuitive solution으로 바꾸는 polished craft**: Harvey/Goodie AI/EvenUp 모두 high-quality design, interactions, prototypes, user flows, high-fidelity UI, design-system refinement를 반복한다. 즉 `복잡성 번역`은 거친 구조도만이 아니라 **완성도 있는 UI craft와 상태/예외 처리**로 끝나야 한다.
+- **Customer-facing B2B insight loop**: Goodie AI와 EvenUp은 user research/usability testing뿐 아니라 customer success, operations, product marketing, sales feedback까지 product loop에 넣는다. 사용자의 공개 case도 학교 과제처럼 닫히지 말고 **실제 사용자/운영 피드백을 받아 iteration한 흔적**이 필요하다.
+- **AI-native/technical product는 portfolio link 자체가 선별 장치**: adaption/0G Labs류 공고는 design+front-end 또는 AI-native product design을 전면에 둔다. `Figma prototype + coded/data prototype + 짧은 rationale writing` 조합이 있으면 일반 PD보다 Design Technologist-adjacent 신호가 선명해진다.
+
+사용자에게의 추가 함의:
+
+1. 공개 case의 핵심 문장은 `AI/전문 지식 업무에서 사용자가 결과를 이해·신뢰·수정·가이드하게 만든다`로 압축할 수 있어야 한다.
+2. G5 산출물은 스크린샷 묶음이 아니라 `research insight → flow/prototype → trust/exception design → design system → stakeholder rationale`의 증거 묶음이어야 한다.
+3. SVA 수업 프로젝트도 가능하면 법률/의료/금융/개발자/운영자처럼 **전문가가 AI 결과를 검증해야 하는 고신뢰 workflow**를 잡는 편이 최신 JD 반복 신호와 맞다.
+
 ---
 
 ## 4. 사용자 포트폴리오로 번역할 체크리스트
@@ -293,5 +308,8 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 - Fireworks AI — Product Designer 공개 공고 snippet(확인일 2026-06-14 16:10 KST): AI infrastructure/developer platform, model deployment, inference monitoring, agent building, API ergonomics, console UI, zero-to-ship ownership, research/prototyping/iteration, design systems, PM/Engineering partnership, front-end/design-to-code literacy plus.
 - Figma — Product Designer, Design, Dev, & AI Tools 공개 공고 재확인(확인일 2026-06-14 16:10 KST): discovery-to-launch ownership, user needs·technical constraints·business goals balance, structured rationale, user-centered research, AI/emerging tools, advanced Figma/HTML/CSS/design-development hybrid plus.
 - Goodie AI/Preql AI/0G Labs — 공개 Ashby snippets 재확인(확인일 2026-06-14 16:10 KST): AI control plane, natural-language data transformation, dashboards/visualization, agent/model interaction flows, B2B SaaS research, usability testing, component libraries, engineering handoff.
+- Harvey — Senior Product Designer 공개 공고 snippet(확인일 2026-06-14 16:26 KST): legal/professional-services AI, engineers·AI researchers·PM·lawyers 협업, complex problems→intuitive solutions, high-quality interactions/prototypes, AI outputs의 understand/trust/guide UX, design-system refinement, user research.
+- adaption — Product Designer 공개 Ashby 공고 snippet(확인일 2026-06-14 16:26 KST): Design + Front End 조직, portfolio 기반 선별, technical/AI-native product designer 포지션 신호 참고.
+- 0G Labs/Goodie AI/EvenUp — 공개 snippets 재확인(확인일 2026-06-14 16:26 KST): AI-native technical complexity translation, B2B SaaS/enterprise workflow, user research/usability testing, customer success/operations feedback, design systems, strong writing, Figma, AI product interfaces.
 
 주의: 일부 원 공고는 추출 시점에 내려갔거나 mirror/snippet 기반이다. 실제 지원 전에는 타깃 회사의 최신 JD 원문을 다시 수집해야 한다.
