@@ -9,6 +9,8 @@
 
 2026-06-14 18:29 KST 점검: 새로 닫힌 사실은 없으므로 심리 해석의 중심도 바꾸지 않는다. SVA 합격과 국비 $100K가 이미 확인된 상태에서는 “갈 수 있는지”보다 **확인되지 않은 잔여 게이트(I-20/CIP, 국비 약관, G3 runway)를 닫지 않은 채 새 비교를 늘리는 패턴**을 경계해야 한다. 이번 Product Designer JD 추가 점검도 결론을 바꾸기보다 G4/G5의 행동 기준을 더 좁힌다: 새 비교를 늘리는 대신 `I-20/CIP 확인 → 국비 약관 원문 → 월별 runway → 공개 case 1개` 순서로 사실 게이트를 닫고, 공개 case는 `critical workflow → state/alert model → design-system pattern → engineering sync/adoption → evidence`처럼 JD 언어로 번역 가능한 증거를 남기는 것이 맞다. Bloomberg·Okta·Manychat·Verkada·Beacon AI·FieldAI·Hostinger류 공개 공고는 enterprise/complex product에서도 research, prototyping, design systems, PM/Engineering 협업, portfolio evidence, success metric, adoption story를 반복한다. 따라서 지금의 분석 루프는 새 선택지를 늘리기보다 **복잡한 권한·상태·데이터·예외·경고 흐름을 사용자가 이해하고 실행할 수 있는 제품 증거**로 바꾸는 실행 루프로 전환해야 한다. 이 문서는 진단이 아니라 결정 보조용 패턴 로그다.
 
+2026-06-14 20:49 KST 점검: Spacial AI·Fresha·Eloquent AI 및 WPP/Figma/Samsung Research America/Jobgether/WHOOP/0G Labs/Goodie AI/Raspberry AI 공개 JD를 재확인해도 심리 결론은 변하지 않는다. 오히려 “더 많은 공고를 보면 확신이 올 것”이라는 Maximizer 루프를 줄이고, **한 개의 공개 case를 JD 언어로 번역 가능한 증거 묶음**으로 만드는 쪽이 더 유효하다. 이번 업데이트의 행동 기준은 `전문가/복잡 도메인 → agent/data state model → control/override UX → prototype → design-system/adoption note`다. 즉 불안을 낮추는 추가 비교가 아니라, I-20/CIP·국비 약관·G3 runway를 닫는 사실 행동과 G5 case evidence 생산으로 전환해야 한다.
+
 가장 중요한 문장:
 
 > 이 사람의 문제는 의지가 약한 것이 아니라, **결정의 손실까지 완벽하게 납득한 뒤에만 움직이려는 통제 지향성**이다.

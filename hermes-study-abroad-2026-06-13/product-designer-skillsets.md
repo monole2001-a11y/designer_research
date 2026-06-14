@@ -351,6 +351,21 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 2. 삼성/복잡 시스템 경험은 구체 내부정보 없이도 “여러 surface·상태·권한·예외를 일관된 design system과 interaction으로 묶은 경험”으로 번역할 수 있다.
 3. G4 alumni 인터뷰에는 “design system case에서 adoption/governance/engineering sync까지 보여줬는지, 아니면 visual component만으로 충분했는지”를 추가한다.
 
+### 3-18. 2026-06-14 20:49 KST 공개 JD 추가 점검
+
+이번 루프에서는 개인/회사 내부정보 없이 공개 JD/검색 결과만 확인했다. 새로 반영한 근거는 Spacial AI `Product Designer`, Fresha `Senior Product Designer`, Eloquent AI `Product Designer` 및 WPP/Figma/Samsung Research America/Jobgether/WHOOP/0G Labs/Goodie AI/Raspberry AI 재확인이다.
+
+- **AI product는 “agent를 보이게 하는 dashboard/control surface”로 수렴**: Eloquent AI·0G Labs·Goodie AI는 agent interface, AI-powered dashboard, model interaction flow, CUI, data visualization, AI control plane을 반복한다. 포트폴리오에서는 “AI 기능”보다 **agent가 무엇을 하고 있는지, 언제 사람이 개입해야 하는지, 결과를 어떻게 신뢰/수정하는지**를 보여야 한다.
+- **복잡 도메인 번역력이 강한 신호**: Spacial AI는 architecture/engineering/construction workflow, permit/code-compliant drawing, Revit/Rhino/CAD/BIM 이해를 언급한다. Fresha도 AI-powered OS에서 복잡한 partner/customer 문제를 clear solution으로 distill하는 역량을 요구한다. 즉 사용자의 공개 case는 consumer app redesign보다 **도메인 제약·전문가 workflow·상태 모델을 단순화한 사례**가 더 강하다.
+- **Design system은 governance + adoption + front-end bridge**: WPP와 Jobgether design-system JD는 enterprise scale, roadmap/governance/documentation, adoption/training, PM/Developer collaboration, HTML/CSS/JS/React literacy, AI workflow integration을 반복한다. design-system 증거는 component screenshot이 아니라 **팀이 실제로 쓰게 만든 운영/채택 기록**이어야 한다.
+- **Research/prototyping/craft는 여전히 기본값**: Figma·Fresha·Raspberry AI·Goodie AI는 user flows, wireframes, high-fidelity visuals, interactive prototypes, user research/usability testing, rationale communication, PM/Engineering 협업을 계속 요구한다. AI/technical literacy가 추가되어도 기본 Product Designer core를 대체하지 않는다.
+
+사용자에게의 추가 함의:
+
+1. G5 공개 case 1개는 `전문가/복잡 도메인 → agent/data state model → control/override UX → prototype → design-system/adoption note` 구조로 작성한다.
+2. SVA 프로젝트 선택 기준은 “시각적으로 멋있는가”가 아니라 **JD 문장으로 번역 가능한 evidence가 남는가**다: research, prototype, design system, collaboration, metric/adoption.
+3. G4 alumni 인터뷰에는 “AI/agent dashboard 또는 complex B2B tool case가 실제 인터뷰에서 general consumer app보다 강하게 작동했는가?”를 추가한다.
+
 ---
 
 ## 4. 사용자 포트폴리오로 번역할 체크리스트
@@ -455,5 +470,9 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 - Beacon AI — Product Designer 공개 Ashby 공고(확인일 2026-06-14 18:29 KST): aviation/pilot assistant, safety-critical AI, user research/usability testing with pilots, AI-driven data/alerts를 clear/actionable high-pressure interface로 번역, scalable design system, end-to-end specs/handoff.
 - FieldAI — Senior Product Designer 공개 Lever 공고(확인일 2026-06-14 18:29 KST): human-robot interaction, autonomous robots at scale, data products, design system policies/primitives/tokens/documented interaction patterns, design ops/governance/versioning, complex industrial workflow translation.
 - Hostinger — Senior Design System Designer 공개 Lever 공고(확인일 2026-06-14 18:29 KST): design system as product, Figma variables/auto-layout/component architecture/tokens, CSS/design-to-code translation, AI-assisted workflow readiness, portfolio with before/after decisions and adoption story.
+- Spacial AI — Product Designer 공개 Ashby 공고(확인일 2026-06-14 20:49 KST): AEC/architecture/engineering/construction workflow, platform UI/system-level design, user flows/wireframes/high-fidelity/interactive prototypes, design systems, technical tools(CAD/BIM) literacy, cross-functional collaboration.
+- Fresha — Senior Product Designer 공개 Lever 공고(확인일 2026-06-14 20:49 KST): AI-powered OS, narratives around product needs/opportunities, user flows/prototypes/high-fidelity visuals, accessibility, research activities, scalable solutions to complex partner/customer challenges.
+- Eloquent AI — Product Designer 공개 Ashby 공고 재확인(확인일 2026-06-14 20:49 KST): AI operators, AI-powered dashboards, monitoring/control/optimization, CUI, data visualization, rapid Figma/motion/front-end prototypes, user research, PM/engineering/AI researcher collaboration.
+- WPP/Figma/Samsung Research America/Jobgether/WHOOP/0G Labs/Goodie AI/Raspberry AI — 공개 JD 재확인(확인일 2026-06-14 20:49 KST): product thinking, interaction, research, prototyping, design systems, collaboration, AI/technical literacy, portfolio evidence 반복 확인.
 
 주의: 일부 원 공고는 추출 시점에 내려갔거나 mirror/snippet 기반이다. 실제 지원 전에는 타깃 회사의 최신 JD 원문을 다시 수집해야 한다.
