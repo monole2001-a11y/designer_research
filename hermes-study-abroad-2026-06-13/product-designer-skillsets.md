@@ -143,6 +143,20 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 2. prototype이 단순 화면 시연을 넘어 stakeholder decision, PM/Engineering alignment, business metric에 연결되는가?
 3. dashboard/control-plane류 복잡 UI에서 상태, 권한, 예외, 신뢰/검증 흐름을 보여주는가?
 
+### 3-4. 2026-06-14 12:46 KST 공개 JD 추가 점검
+
+이번 루프에서는 Greenhouse `Senior Product Designer, Data`, Preql AI `Product Designer`, Lodgify/Jobgether `Senior Product Designer — Design Systems` 공개 공고/스니펫을 추가 확인했다.
+
+- **Data product design is a bridge role**: Greenhouse·Preql AI류 공고는 designer가 데이터 엔지니어링/스키마/쿼리 가능성, reporting/analytics, 데이터 정제 workflow를 이해하고 PM·Engineering·Data Science와 함께 의사결정을 만들어야 함을 반복한다.
+- **Trustworthy AI/data workflow**: Preql AI는 finance team이 자연어로 데이터 파이프라인을 만들고, transformation logic을 감사 가능한 방식으로 이해해야 한다고 명시한다. AI UX의 핵심은 “마법 같은 생성”보다 **사용자가 결과·근거·수정 과정을 신뢰할 수 있는 설명 구조**다.
+- **Design system governance**: Lodgify/Jobgether류 design-system 공고는 component 제작만이 아니라 contribution model, documentation, governance, adoption, engineering implementation alignment를 요구한다. 포트폴리오에는 “시스템을 만들었다”보다 **어떻게 채택·유지·확장되게 했는가**가 보여야 한다.
+
+사용자에게의 추가 함의:
+
+1. 공개 case 1개는 `complex data/AI workflow → readable state model → validated prototype → design-system pattern` 흐름으로 구성하면 JD 반복 신호와 잘 맞는다.
+2. AI/technical literacy는 개발 지식 과시가 아니라, **기술 제약을 이해해 사용자가 믿고 조작할 수 있는 인터페이스로 번역한 증거**로 써야 한다.
+3. G4 alumni 인터뷰에는 “design system이 실제 채용 평가에서 UI craft인지, engineering adoption/governance 증거인지”를 추가로 물어본다.
+
 ---
 
 ## 4. 사용자 포트폴리오로 번역할 체크리스트
@@ -200,8 +214,11 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 - Meta Product Designer 공고 요약(Memorisely/ux-news mirror): ambiguous design projects, 2B+ users, UX/interaction/visual design, cross-functional influence, design roadmaps, advanced prototyping.
 - KOHO Senior Product Designer 공고 snippet: consumer mobile, GenAI workflow, Figma, design rationale, ownership, ambiguity, B2C/fintech context.
 - Harmattan AI Product Designer 공고 snippet: complex data-heavy systems, operator research, mission-critical interfaces, design systems, accessibility, engineering validation.
-- Figma — Product Designer, AI Models 공개 공고(확인일 2026-06-14 12:31 KST): AI research와 design principles를 연결, AI-generated output 평가, design heuristics/principles 문서화, coding/image model 사용 경험, AI/ML technical understanding, ambiguity handling.
-- Niural — Senior Product Designer 공개 공고(확인일 2026-06-14 12:31 KST): high-fidelity interactive prototypes for sales demos/internal showcases/stakeholder presentations, design systems/workflows, PM/engineering/marketing collaboration, research/usability testing, ambiguity를 structure로 바꾸는 역량.
-- Goodie AI — Product Designer 공개 공고(확인일 2026-06-14 12:31 KST): AI search/B2B software, research-to-implementation, user flows/wireframes/prototypes, design systems/component libraries, user behavior data, dashboard/data visualization, accessibility/responsive design, front-end constraints, business metrics.
+- Figma — Product Designer, AI Models 공개 공고(확인일 2026-06-14): AI research와 design principles 사이의 bridge, AI-generated output 평가, design heuristics/principles 문서화, AI/ML technical understanding, ambiguity.
+- Niural — Senior Product Designer 공개 공고(확인일 2026-06-14): high-fidelity interactive prototypes for sales demos/internal showcases/stakeholder presentations, design systems/workflows, PM/engineering/marketing collaboration, research/usability testing, ambiguity를 structure로 바꾸는 역량.
+- Goodie AI — Product Designer 공개 공고(확인일 2026-06-14): AI search/B2B software, research-to-implementation, user flows/wireframes/prototypes, design systems/component libraries, user behavior data, dashboard/data visualization, accessibility/responsive design, front-end constraints, business metrics.
+- Greenhouse — Senior Product Designer, Data 공개 공고 snippet(확인일 2026-06-14): reporting/analytics UX, data engineers와 schema/query capability 협업, user research/workshops, flows/wireframes/high-fidelity prototypes, design-system patterns, design QA.
+- Preql AI — Product Designer 공개 공고(확인일 2026-06-14): AI-powered financial data platform, natural-language data transformation workflow, dashboards/visualization, auditability/trust, user research, design system, engineering handoff.
+- Lodgify/Jobgether — Senior Product Designer, Design Systems 공개 공고 snippet(확인일 2026-06-14): design-system strategy/governance/documentation/adoption, front-end implementation alignment, HTML/CSS/JS/React literacy, AI workflow experimentation.
 
 주의: 일부 원 공고는 추출 시점에 내려갔거나 mirror/snippet 기반이다. 실제 지원 전에는 타깃 회사의 최신 JD 원문을 다시 수집해야 한다.
