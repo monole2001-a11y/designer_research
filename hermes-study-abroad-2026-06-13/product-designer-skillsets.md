@@ -276,6 +276,21 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 2. 삼성 경력은 구체 제품명을 노출하지 않고도 “schema/constraint가 있는 복잡 시스템을 사용자 의사결정 UI로 바꾼 경험”으로 번역할 수 있다.
 3. G5 포트폴리오 체크리스트에 “AI output 자체를 어떻게 평가·교정했는가?”와 “방을 정렬시킨 문서/의사결정 기록이 있는가?”를 추가한다.
 
+### 3-13. 2026-06-14 17:27 KST 공개 JD 추가 점검
+
+이번 루프에서는 Ashby 공개 EvenUp/Raspberry AI/0G Labs/Preql AI snippets, Spektr 공개 Product Designer 공고, Pandektes 공개 Senior Product Designer, Nace AI 공개 snippet을 추가 확인했다. 개인/회사 내부정보는 검색·반영하지 않았다.
+
+- **전문가용 B2B AI는 “신뢰 가능한 업무 단축”으로 수렴**: EvenUp·Pandektes·Preql AI·Spektr류 공고는 법률/금융/KYC/리스크처럼 사용자가 결과를 검증해야 하는 영역에서 AI를 단순 자동화가 아니라 근거·수정·감사 가능성을 가진 workflow로 설계하라고 요구한다.
+- **Design Engineer-adjacent 신호가 실제 공고 언어로 더 자주 등장**: Pandektes와 Nace AI snippets는 production-quality React component, code prototype, system architecture, scalable Figma design system을 언급한다. 사용자의 포지셔닝은 “코딩하는 디자이너”가 아니라 **복잡한 판단 흐름을 빠르게 prototype하고 구현 제약까지 이해하는 Product Designer**로 잡는 편이 안전하다.
+- **AI tool fluency는 속도보다 판단의 증거로 평가된다**: 0G Labs·Pandektes·Spektr는 Figma AI, Claude Code, v0, Cursor 같은 도구를 workflow multiplier로 보지만, 동시에 user research, product data, craft, systems thinking, point of view를 요구한다. 즉 AI 사용 기록은 `무엇을 더 빨리 만들었나`보다 `무엇을 검증하고 무엇을 버렸나`로 써야 한다.
+- **정보 구조와 상태 모델이 visual craft보다 먼저 선별된다**: Nace AI snippet은 high-fidelity visuals보다 clear thinking과 strong information architecture를 더 중시한다고 표현한다. 복잡한 AI/data case에서는 화면 polish 이전에 `사용자 목표 → 상태/권한/예외 → trust signal → action path`가 선명해야 한다.
+
+사용자에게의 추가 함의:
+
+1. G5 공개 case는 `전문가 업무 맥락 → AI/데이터 결과의 검증 필요 → 상태/예외/권한 모델 → prototype/code or Figma system → 사용자 피드백/판단 기록`으로 쓰는 것이 최신 JD 반복 신호와 가장 잘 맞는다.
+2. SVA 프로젝트 주제는 일반 소비자 앱보다 **법률·금융·KYC·개발자도구·운영 dashboard처럼 고신뢰/고밀도 업무를 단순화하는 문제**가 ROI가 높다.
+3. 포트폴리오 문장에는 “AI 도구를 적극 활용”보다 **AI가 낸 결과를 사용자가 이해·수정·신뢰하게 만든 인터랙션 구조**를 전면에 둔다.
+
 ---
 
 ## 4. 사용자 포트폴리오로 번역할 체크리스트
@@ -362,5 +377,8 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 - Ramp/Flex/Nace.ai — 공개 Ashby snippets(확인일 2026-06-14 16:55 KST): AI-first/builder-led design, LLM/Cursor/Claude/v0/Replit 기반 prototype, customer research as velocity tool, design-system contribution, end-to-end ownership, strong product thinking·interaction design·craft portfolio.
 - Lattice — Senior Product Designer, AI 공개 Khosla Ventures Job Board 공고(확인일 2026-06-14 17:10 KST): AI-native product suite, ambiguity/self-starter, prototype in code, visual/interaction craft, alignment document writing, AI output quality/tone/formatting/edge cases/iteration loops를 portfolio evidence로 요구.
 - Greenhouse/Simplify — Senior Product Designer, Data 공개 설명(확인일 2026-06-14 17:10 KST): reporting/analytics UX, schema/query capability를 두고 data engineers와 협업, user research sessions/workshops, flows/wireframes/high-fidelity prototypes, Seedling design-system patterns, design QA, complex data-centric B2B SaaS.
+- Spektr — Product Designer 공개 공고(확인일 2026-06-14 17:27 KST): KYC/KYB/risk signals, end-to-end research→high-fidelity prototype, design system foundation, engineering collaboration, customer research/data analysis, AI-powered features를 transparent/trustworthy interface로 설계, Figma/Claude 등 AI tool fluency.
+- Pandektes — Senior Product Designer 공개 Ashby 공고 snippet(확인일 2026-06-14 17:27 KST): AI legal research, dense professional-domain UI, user/product-data driven iteration, Claude Code/v0/Cursor prototype, production React components, design system for deep-information UI and AI flows, trust in AI search/chat.
+- Nace AI — Senior Product Designer, AI & Prototyping 공개 Ashby snippet(확인일 2026-06-14 17:27 KST): system architecture, intricate user flows, scalable Figma design system, clear thinking/information architecture over visual polish.
 
 주의: 일부 원 공고는 추출 시점에 내려갔거나 mirror/snippet 기반이다. 실제 지원 전에는 타깃 회사의 최신 JD 원문을 다시 수집해야 한다.
