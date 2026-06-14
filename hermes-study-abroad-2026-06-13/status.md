@@ -17,7 +17,7 @@ Last updated: 2026-06-13
 | 유학 | 방향 확정(떠난다). B(지금·국비·SVA) vs C(2년 후·자비·탑급HCI)를 게이트 G0~G6로 판정 대기. 결정 지침서·생각 지도·실행 키트 8종 완비. **실행 진입점: `03_Research/study-abroad-30day-runsheet.md`** | `02_Projects/study-abroad.md` |
 | 커리어 | 초기 세팅. 목표 역할(PD / AI PD / Design Technologist) 미정. 공개 포트폴리오 번역 후보 작성 대기 | `02_Projects/career.md` |
 | 업무 리서치 | 운영 키트 완비(`work-research-sensitivity-and-narrative-kit.md`: 민감도 3분류·세미나 분류표·공개 narrative 추출). 사용자 민감도 분류 대기 | `02_Projects/work-research.md` |
-| 투자 | 운영방안(`investment-operating-plan.md`) 중심 = **대출 보유 시 투자 운용**(자금 사다리·금리 기준선·레버리지 금지·loan-first 체크) + 인테이크 워크시트. 사용자 여유분 산정·테마 3개 선택 대기 | `02_Projects/investment-research.md` |
+| 투자 | 마스터 지침서(`investment-strategy-guide.md`, v1.0+) = **대출 보유 운용 + 전략 + 레짐별 운용 + 데일리 레포트 로그**. 운영방안·워크시트 통합. 사용자 여유분 산정·테마 3개 선택 대기 | `02_Projects/investment-research.md` |
 
 ## 임박한 마감일
 
@@ -55,3 +55,4 @@ Last updated: 2026-06-13
 | 2026-06-13 | 도메인 buildout 완성: 업무 리서치 운영 키트(민감도 분류·공개 narrative 추출)·투자 운영 키트(테마 우선순위·종목 인테이크·thesis 점검) 신설. 4개 도메인 모두 실행 준비 상태 도달 — 각 병목은 사용자 입력 |
 | 2026-06-13 | SVA MFA IxD 합격 및 국비 $100K 보유 상태를 사용자 확인. STATUS/프로젝트/GitHub Pages에 반영 시작 |
 | 2026-06-13 | 투자 운영방안 신설·심화(`03_Research/investment-operating-plan.md`) — 중심을 **대출 보유 시 투자 운용**(§6)으로 재설정: 자금 우선순위 사다리·금리=무위험 기준선·레버리지 금지·소득중단 현금흐름 스트레스·유동성 만기정렬·loan-first 체크리스트. 위험관리 프레임(자문 아님) |
+| 2026-06-14 | 투자 마스터 지침서 빌드(`03_Research/investment-strategy-guide.md`, 15→압축 루프) — §0~§10+부록: 전제·자금 사다리·리스크/loan-first·전략·**레짐 매트릭스(국면별 운용)**·리뷰 리추얼·**데일리 레포트 로그**·트리거·thesis. operating-plan/워크시트 통합(마스터화). v1.0 완성 |
