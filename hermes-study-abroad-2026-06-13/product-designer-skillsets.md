@@ -202,6 +202,21 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 2. SVA 과제도 “시각 결과물”보다 **운영/업무 흐름의 마찰을 줄이고 신뢰를 만든 과정**으로 기록해야 최신 PD 공고 언어와 맞는다.
 3. G5 포트폴리오 체크리스트에 “AI를 어디에 썼는가?”보다 “AI가 만든 후보를 어떤 사용자/비즈니스 근거로 채택·폐기했는가?”를 추가한다.
 
+### 3-8. 2026-06-14 16:10 KST 공개 JD 추가 점검
+
+이번 루프에서는 Greenhouse 공개 Figma `Product Designer, Design, Dev, & AI Tools`, Greenhouse 공개 Fireworks AI `Product Designer`, Ashby 공개 0G Labs/Goodie AI/Preql AI 공고 snippets를 재확인했다. 개인/회사 내부정보는 검색·반영하지 않았다.
+
+- **AI infrastructure / developer platform UX가 강한 반복 신호**: Fireworks AI는 model deployment, inference monitoring, agent building, API ergonomics, console UI, onboarding-to-production 흐름을 단순화하는 Product Designer를 요구한다. 이는 “AI 앱 화면”보다 **AI 인프라·에이전트·개발자 워크플로를 사용자가 이해하고 운용할 수 있게 만드는 UX**가 강한 포지셔닝임을 보여준다.
+- **Structured rationale + discovery-to-launch ownership**: Figma는 discovery부터 launch까지 독립적으로 디자인을 drive하고, user needs·technical constraints·business goals를 균형 있게 다루며, structured thinking과 clearly articulated rationale을 요구한다. 사용자의 case study도 결과 화면보다 **문제 정의·제약·대안·선택 이유**가 보여야 한다.
+- **B2B AI/data workflow의 trust surface**: Preql AI와 Goodie AI 공고는 natural-language data transformation, dashboards/visualization, AI control plane, user behavior data, customer success insight를 반복한다. 포트폴리오에는 **AI 결과를 신뢰·검증·수정하는 화면과 운영 피드백 루프**가 들어가야 한다.
+- **Design systems는 scaling과 handoff의 증거**: 0G Labs/Goodie AI/Fireworks AI는 scalable design system, component library, engineering handoff, product consistency를 반복한다. 단순 UI kit가 아니라 **복잡한 AI/B2B surface를 빠르게 ship하게 만든 운영 체계**로 보여줘야 한다.
+
+사용자에게의 추가 함의:
+
+1. 공개 case 1개는 `AI/technical workflow → onboarding/monitoring/control surface → trust & exception handling → design-system pattern → PM/Engineering rationale` 구조가 가장 JD 언어와 잘 맞는다.
+2. SVA 프로젝트를 고를 때 consumer app redesign보다 **AI infrastructure, data dashboard, expert workflow, developer/operator tool** 성격의 문제를 잡는 편이 커리어 전환 신호가 강하다.
+3. G4 alumni 인터뷰에는 “developer tools/AI infrastructure/technical B2B 포트폴리오가 Product Designer 면접에서 장점으로 읽혔는지, 아니면 너무 technical하게 보였는지”를 추가한다.
+
 ---
 
 ## 4. 사용자 포트폴리오로 번역할 체크리스트
@@ -275,5 +290,8 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 - Anara — Product Designer 공개 공고(확인일 2026-06-14 15:41 KST): AI workspace for scientific discovery, humans-and-AI collaboration, user conversations→features, engineering implementation, fast shipping, design systems/documentation/workflows.
 - Ashby — Design Engineer 공개 설명(확인일 2026-06-14 15:41 KST): customer research, written proposals, prototyping, wireframes, end-to-end implementation ownership, deliberate async communication; Design Engineer-adjacent 신호 참고.
 - Peek — Product Designer 공개 공고(확인일 2026-06-14 15:55 KST): experiences-industry operational platform, B2B/B2C surfaces, end-to-end feature ownership, complex workflows→intuitive accessible flows, prototypes, user interviews/usability tests, qualitative/quantitative insight, AI-enhanced research synthesis/ideation/prototype generation, design system/reusable patterns, HTML/CSS handoff familiarity plus.
+- Fireworks AI — Product Designer 공개 공고 snippet(확인일 2026-06-14 16:10 KST): AI infrastructure/developer platform, model deployment, inference monitoring, agent building, API ergonomics, console UI, zero-to-ship ownership, research/prototyping/iteration, design systems, PM/Engineering partnership, front-end/design-to-code literacy plus.
+- Figma — Product Designer, Design, Dev, & AI Tools 공개 공고 재확인(확인일 2026-06-14 16:10 KST): discovery-to-launch ownership, user needs·technical constraints·business goals balance, structured rationale, user-centered research, AI/emerging tools, advanced Figma/HTML/CSS/design-development hybrid plus.
+- Goodie AI/Preql AI/0G Labs — 공개 Ashby snippets 재확인(확인일 2026-06-14 16:10 KST): AI control plane, natural-language data transformation, dashboards/visualization, agent/model interaction flows, B2B SaaS research, usability testing, component libraries, engineering handoff.
 
 주의: 일부 원 공고는 추출 시점에 내려갔거나 mirror/snippet 기반이다. 실제 지원 전에는 타깃 회사의 최신 JD 원문을 다시 수집해야 한다.
