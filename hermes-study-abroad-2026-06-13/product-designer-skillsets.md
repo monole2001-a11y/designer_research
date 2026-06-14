@@ -336,6 +336,21 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 2. AI/technical literacy는 별도 장식이 아니라, **복잡한 권한·상태·데이터·예외 흐름을 구현 가능한 design system과 prototype으로 번역한 증거**로 써야 한다.
 3. G4 alumni 인터뷰에는 “design system case가 실제 제품 임팩트와 연결되어 보였는지, 아니면 UI kit처럼 읽혔는지”를 추가한다.
 
+### 3-17. 2026-06-14 18:29 KST 공개 JD 추가 점검
+
+이번 루프에서는 Greenhouse 공개 Verkada `Lead Product Designer - Design Systems`, Ashby 공개 Beacon AI `Product Designer`, Lever 공개 FieldAI `Senior Product Designer`, Lever 공개 Hostinger `Senior Design System Designer` 공고/설명을 추가 확인했다. 개인/회사 내부정보는 검색·반영하지 않았다.
+
+- **Physical/security·robotics·aviation 제품은 hardware/software 경계를 묶는 design system을 요구**: Verkada와 FieldAI는 AI-powered physical security, robotics, hardware/touch interfaces, data products를 다루며 component library·tokens·documentation·governance·Storybook/engineering sync·accessibility를 반복한다. design system은 화면 묶음이 아니라 **여러 물리/디지털 surface에서 일관성과 신뢰를 유지하는 운영 인프라**로 평가된다.
+- **Safety-critical AI UX는 clarity·speed·precision이 핵심**: Beacon AI는 pilot assistant 맥락에서 user research/usability testing, pilots/aviation professionals의 mental model, AI-driven data/alerts를 high-pressure cockpit에서 즉시 이해 가능한 interface로 번역하는 능력을 요구한다. 이는 AI UX가 “똑똑한 기능”보다 **위험한 순간에 사람이 빠르게 이해·판단·개입할 수 있게 만드는 interaction**임을 재확인한다.
+- **Design-system portfolio는 adoption story까지 요구**: Hostinger와 Verkada는 Figma variables/auto-layout, tokens, component architecture, governance, contribution process, design-to-code/CSS token translation, skeptical PM/engineer를 설득하는 communication을 요구한다. 포트폴리오에는 `before/after`, decision, trade-off, adoption/change story가 있어야 한다.
+- **기본 PD 신호는 계속 동일하다**: product thinking, interaction, research/testing, prototyping, design systems, collaboration, AI/technical literacy, portfolio evidence가 모두 반복된다. 새 공고는 결론을 바꾸지 않고 **G5 공개 case의 구조를 더 엄격하게 만든다**.
+
+사용자에게의 추가 함의:
+
+1. 공개 case 1개는 `physical/digital or complex workflow → critical decision/alert/state model → design-system pattern → engineering sync/adoption → evidence of changed outcome` 구조로 확장하면 최신 JD 언어와 잘 맞는다.
+2. 삼성/복잡 시스템 경험은 구체 내부정보 없이도 “여러 surface·상태·권한·예외를 일관된 design system과 interaction으로 묶은 경험”으로 번역할 수 있다.
+3. G4 alumni 인터뷰에는 “design system case에서 adoption/governance/engineering sync까지 보여줬는지, 아니면 visual component만으로 충분했는지”를 추가한다.
+
 ---
 
 ## 4. 사용자 포트폴리오로 번역할 체크리스트
@@ -436,5 +451,9 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 - Bloomberg — Product Designer, Design Systems 공개 검색/JD 설명(확인일 2026-06-14 18:14 KST): shipped products portfolio, end-to-end feature design + scalable systems thinking, design-code parity, Figma/Proto.io/HTML/CSS, motion/interaction pattern, AI-assisted design/design-to-code tooling familiarity.
 - Okta — Staff Product Designer, Enterprise Access 공개 Greenhouse 설명(확인일 2026-06-14 18:14 KST): enterprise/B2B shipped portfolio, complex technical projects, conceptual/interaction/IA/visual design, HTML/CSS/JS 기본 이해, user research, success metrics, UX framework/standard.
 - Manychat — Senior Product Designer, Community Management 공개 Greenhouse 설명(확인일 2026-06-14 18:14 KST): data + customer insight + workflow context 기반 discovery, lightweight research/testing, PM/Engineering trade-off alignment, design system 적용, product goals/metrics 연결, AI-assisted prototyping/AI-enabled experiences plus.
+- Verkada — Lead Product Designer, Design Systems 공개 Greenhouse 공고(확인일 2026-06-14 18:29 KST): AI-powered physical security platform, Figma components/tokens/documentation, responsive web·mobile·hardware/touch interface scale, governance, design-engineering bridge, Storybook/front-end/accessibility, polished systemic portfolio.
+- Beacon AI — Product Designer 공개 Ashby 공고(확인일 2026-06-14 18:29 KST): aviation/pilot assistant, safety-critical AI, user research/usability testing with pilots, AI-driven data/alerts를 clear/actionable high-pressure interface로 번역, scalable design system, end-to-end specs/handoff.
+- FieldAI — Senior Product Designer 공개 Lever 공고(확인일 2026-06-14 18:29 KST): human-robot interaction, autonomous robots at scale, data products, design system policies/primitives/tokens/documented interaction patterns, design ops/governance/versioning, complex industrial workflow translation.
+- Hostinger — Senior Design System Designer 공개 Lever 공고(확인일 2026-06-14 18:29 KST): design system as product, Figma variables/auto-layout/component architecture/tokens, CSS/design-to-code translation, AI-assisted workflow readiness, portfolio with before/after decisions and adoption story.
 
 주의: 일부 원 공고는 추출 시점에 내려갔거나 mirror/snippet 기반이다. 실제 지원 전에는 타깃 회사의 최신 JD 원문을 다시 수집해야 한다.

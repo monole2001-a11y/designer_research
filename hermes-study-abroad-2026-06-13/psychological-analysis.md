@@ -7,7 +7,7 @@
 
 지금의 심리 상태는 “가기 싫은데 억지로 가려는 상태”가 아니라, **가고 싶은 방향은 분명하지만 손실·불확실성·책임을 완벽히 통제하고 싶어서 결정이 느려지는 상태**에 가깝다.
 
-2026-06-14 18:14 KST 점검: 새로 닫힌 사실은 없으므로 심리 해석의 중심도 바꾸지 않는다. SVA 합격과 국비 $100K가 이미 확인된 상태에서는 “갈 수 있는지”보다 **확인되지 않은 잔여 게이트(I-20/CIP, 국비 약관, G3 runway)를 닫지 않은 채 새 비교를 늘리는 패턴**을 경계해야 한다. 이번 Product Designer JD 추가 점검도 결론을 바꾸기보다 G4/G5의 행동 기준을 더 좁힌다: 새 비교를 늘리는 대신 `I-20/CIP 확인 → 국비 약관 원문 → 월별 runway → 공개 case 1개` 순서로 사실 게이트를 닫고, 공개 case는 `shipped/ship-like feature → design-system pattern → design-code parity/trade-off → user research or metric → rationale writing`처럼 JD 언어로 번역 가능한 증거를 남기는 것이 맞다. Bloomberg·Okta·Manychat류 공개 공고는 enterprise/complex product에서도 research, prototyping, design systems, PM/Engineering 협업, portfolio evidence, success metric을 반복한다. 따라서 지금의 분석 루프는 새 선택지를 늘리기보다 **복잡한 권한·상태·데이터·예외 흐름을 사용자가 이해하고 실행할 수 있는 제품 증거**로 바꾸는 실행 루프로 전환해야 한다. 이 문서는 진단이 아니라 결정 보조용 패턴 로그다.
+2026-06-14 18:29 KST 점검: 새로 닫힌 사실은 없으므로 심리 해석의 중심도 바꾸지 않는다. SVA 합격과 국비 $100K가 이미 확인된 상태에서는 “갈 수 있는지”보다 **확인되지 않은 잔여 게이트(I-20/CIP, 국비 약관, G3 runway)를 닫지 않은 채 새 비교를 늘리는 패턴**을 경계해야 한다. 이번 Product Designer JD 추가 점검도 결론을 바꾸기보다 G4/G5의 행동 기준을 더 좁힌다: 새 비교를 늘리는 대신 `I-20/CIP 확인 → 국비 약관 원문 → 월별 runway → 공개 case 1개` 순서로 사실 게이트를 닫고, 공개 case는 `critical workflow → state/alert model → design-system pattern → engineering sync/adoption → evidence`처럼 JD 언어로 번역 가능한 증거를 남기는 것이 맞다. Bloomberg·Okta·Manychat·Verkada·Beacon AI·FieldAI·Hostinger류 공개 공고는 enterprise/complex product에서도 research, prototyping, design systems, PM/Engineering 협업, portfolio evidence, success metric, adoption story를 반복한다. 따라서 지금의 분석 루프는 새 선택지를 늘리기보다 **복잡한 권한·상태·데이터·예외·경고 흐름을 사용자가 이해하고 실행할 수 있는 제품 증거**로 바꾸는 실행 루프로 전환해야 한다. 이 문서는 진단이 아니라 결정 보조용 패턴 로그다.
 
 가장 중요한 문장:
 
@@ -288,6 +288,18 @@ Bloomberg·Okta·Manychat류 공고는 design system, enterprise complexity, suc
 - 실행 문장: “오늘 새 공고를 더 비교하지 말고, case 후보 1개에 `어떤 기능을 ship-like하게 만들었나 / 어떤 pattern이 재사용되는가 / 개발 제약은 무엇인가 / 어떤 근거로 성공을 판단하는가` 4줄을 쓴다.”
 
 즉 최신 JD의 압박은 ‘나는 부족하다’가 아니라, **SVA 2년 동안 공개 증거를 어떤 모양으로 쌓을지 정하는 체크리스트**로만 사용한다.
+
+### 8-6. 2026-06-14 18:29 KST 점검: safety-critical·hardware/AI 공고가 만든 압박의 처리
+
+Verkada·Beacon AI·FieldAI·Hostinger류 공고는 AI/robotics/aviation/security처럼 더 무거운 맥락에서 clarity, speed, precision, design-system governance, hardware/software surface, adoption story를 요구한다. 이 정보가 들어오면 “이제는 항공·로봇·보안 같은 고위험 도메인까지 해야 하나?”라는 과확장 압박이 생길 수 있다.
+
+이 압박은 진로 불안이 아니라 G5 case의 범위를 좁히는 질문으로만 처리한다.
+
+- 불안 문장: “고신뢰 AI/하드웨어/로봇 도메인까지 알아야 경쟁력이 있나?”
+- 게이트 문장: “첫 공개 case가 사용자의 중요한 판단 순간에 필요한 상태·경고·권한·예외를 명확히 보여주고, 그 pattern이 design system과 engineering sync로 이어지는가?”
+- 실행 문장: “오늘 새 도메인을 더 비교하지 말고, case 후보 1개에 `사용자가 놓치면 위험한 상태는 무엇인가 / 어떤 signal을 먼저 보여줘야 하는가 / 언제 사람이 override해야 하는가 / 이 pattern이 어떻게 재사용되는가` 4줄을 쓴다.”
+
+즉 최신 JD의 무게는 사용자를 평가하는 잣대가 아니라, **복잡한 결정을 안전하고 실행 가능한 interface로 바꾸는 포트폴리오 구조**를 정하는 입력이다.
 
 ---
 
