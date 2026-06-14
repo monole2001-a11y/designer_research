@@ -7,7 +7,7 @@
 
 지금의 심리 상태는 “가기 싫은데 억지로 가려는 상태”가 아니라, **가고 싶은 방향은 분명하지만 손실·불확실성·책임을 완벽히 통제하고 싶어서 결정이 느려지는 상태**에 가깝다.
 
-2026-06-14 17:58 KST 점검: 새로 닫힌 사실은 없으므로 심리 해석의 중심도 바꾸지 않는다. SVA 합격과 국비 $100K가 이미 확인된 상태에서는 “갈 수 있는지”보다 **확인되지 않은 잔여 게이트(I-20/CIP, 국비 약관, G3 runway)를 닫지 않은 채 새 비교를 늘리는 패턴**을 경계해야 한다. 이번 Product Designer JD 추가 점검도 결론을 바꾸기보다 G4/G5의 행동 기준을 더 좁힌다: 새 비교를 늘리는 대신 `I-20/CIP 확인 → 국비 약관 원문 → 월별 runway → 공개 case 1개` 순서로 사실 게이트를 닫고, 공개 case는 `mission-critical / expert workflow → service blueprint → AI/data decision support → human agency/traceability → prototype/design-system handoff`처럼 JD 언어로 번역 가능한 증거를 남기는 것이 맞다. Epsilon3·Jobgether·Artemis·Radical AI류 공개 공고는 research, prototyping, design systems, PM/Engineering 협업, accessibility, portfolio evidence를 반복하면서, 특히 AI/고신뢰/복잡 도메인에서는 human agency·traceability·front-end trade-off·governance를 요구한다. 따라서 지금의 분석 루프는 새 선택지를 늘리기보다 **AI/데이터/운영 시스템이 무엇을 왜 제안했고 사용자가 어디서 이해·추적·개입하는지**를 작은 공개 case로 관찰 가능한 증거로 바꾸는 실행 루프로 전환해야 한다. 이 문서는 진단이 아니라 결정 보조용 패턴 로그다.
+2026-06-14 18:14 KST 점검: 새로 닫힌 사실은 없으므로 심리 해석의 중심도 바꾸지 않는다. SVA 합격과 국비 $100K가 이미 확인된 상태에서는 “갈 수 있는지”보다 **확인되지 않은 잔여 게이트(I-20/CIP, 국비 약관, G3 runway)를 닫지 않은 채 새 비교를 늘리는 패턴**을 경계해야 한다. 이번 Product Designer JD 추가 점검도 결론을 바꾸기보다 G4/G5의 행동 기준을 더 좁힌다: 새 비교를 늘리는 대신 `I-20/CIP 확인 → 국비 약관 원문 → 월별 runway → 공개 case 1개` 순서로 사실 게이트를 닫고, 공개 case는 `shipped/ship-like feature → design-system pattern → design-code parity/trade-off → user research or metric → rationale writing`처럼 JD 언어로 번역 가능한 증거를 남기는 것이 맞다. Bloomberg·Okta·Manychat류 공개 공고는 enterprise/complex product에서도 research, prototyping, design systems, PM/Engineering 협업, portfolio evidence, success metric을 반복한다. 따라서 지금의 분석 루프는 새 선택지를 늘리기보다 **복잡한 권한·상태·데이터·예외 흐름을 사용자가 이해하고 실행할 수 있는 제품 증거**로 바꾸는 실행 루프로 전환해야 한다. 이 문서는 진단이 아니라 결정 보조용 패턴 로그다.
 
 가장 중요한 문장:
 
@@ -276,6 +276,18 @@ Epsilon3·Artemis·Jobgether·Radical AI류 공고는 Product Designer에게 hum
 - 실행 문장: “오늘 새 비교를 늘리지 말고, case 후보 1개에 `사용자가 어떤 결정을 해야 하는가 / AI·데이터가 무엇을 제안하는가 / 사용자는 어떻게 이해·검증·되돌리는가 / 구현·접근성 제약은 무엇인가` 4줄을 쓴다.”
 
 즉 최신 JD의 압박을 ‘더 공부해야 한다’로 받지 말고, **하나의 공개 가능한 고신뢰 workflow case를 설계할 조건 목록**으로만 사용한다.
+
+### 8-5. 2026-06-14 18:14 KST 점검: design-system 공고가 만든 압박의 처리
+
+Bloomberg·Okta·Manychat류 공고는 design system, enterprise complexity, success metric, research/testing, PM/Engineering trade-off를 반복한다. 이 정보가 들어오면 “학교 가기 전에 이미 senior 수준의 시스템 증거가 있어야 하나?”라는 압박이 생길 수 있다.
+
+이 압박은 자기평가가 아니라 G5 산출물 조건으로만 처리한다.
+
+- 불안 문장: “design system, code parity, metric, research까지 다 증명해야 하나?”
+- 게이트 문장: “첫 공개 case가 실제 기능 문제를 design-system pattern과 구현 제약, 사용자/비즈니스 근거로 설명하는가?”
+- 실행 문장: “오늘 새 공고를 더 비교하지 말고, case 후보 1개에 `어떤 기능을 ship-like하게 만들었나 / 어떤 pattern이 재사용되는가 / 개발 제약은 무엇인가 / 어떤 근거로 성공을 판단하는가` 4줄을 쓴다.”
+
+즉 최신 JD의 압박은 ‘나는 부족하다’가 아니라, **SVA 2년 동안 공개 증거를 어떤 모양으로 쌓을지 정하는 체크리스트**로만 사용한다.
 
 ---
 
