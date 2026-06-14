@@ -40,6 +40,7 @@
 
 ## Reference Context
 
+- **`03_Research/2026-06-14_product-designer-job-skillsets.md`: 실제/공개 Product Designer·UX Designer 공고에서 반복되는 요구 스킬셋 정리. Product thinking, interaction, research, prototyping, design systems, collaboration, AI/technical literacy를 포트폴리오 증거로 번역.**
 - **`03_Research/2026-06-13_us-design-job-market-skills.md`: 미국 디자인 취업시장 2026 요구 역량(6대 군)·포트폴리오 채용 기준(6~8초·business impact·소유권)·연봉·H-1B wage-weighted·Design Technologist 트랙 요건. 외부 출처+확인일 있음. "AI-era 역량 체크리스트"의 1차 기준선.**
 - `ref/project-context.md`: 2026 product designer market report의 목적, 데이터 원칙, 섹션 구조.
 - `ref/product-designer-outlook-2026.html`: AI-era product design 요구역량, 포트폴리오 기준, 석사/커리어 전략.
