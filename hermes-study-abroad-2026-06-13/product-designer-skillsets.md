@@ -306,6 +306,21 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 2. Design Technologist-adjacent 신호는 “코드를 할 줄 안다”가 아니라 **새 interaction pattern을 빠르게 검증하고, 구현 제약과 design system으로 ship 가능하게 만든다**로 표현해야 한다.
 3. G4 alumni 인터뷰에는 “AI/agentic workflow 포트폴리오에서 observability·override·governance 같은 신뢰 장치가 실제 면접 질문으로 나왔는가?”를 추가한다.
 
+### 3-15. 2026-06-14 17:58 KST 공개 JD 추가 점검
+
+이번 루프에서는 Ashby 공개 Artemis `Product Engineer`, Lever 공개 Epsilon3 `Senior Product Designer`, Lever 공개 Jobgether `Senior Product Designer — Design Systems`/`Senior Designer, Design Systems`, Radical AI 공고 재확인 결과를 추가로 보았다. 개인/회사 내부정보는 검색·반영하지 않았다.
+
+- **Product Engineer/Designer 경계가 complex AI product에서 가까워진다**: Artemis는 security data portal에서 design-system primitives, React/TypeScript, Python/Go, AI-native interface, product thinking, product design 협업을 함께 요구한다. 순수 PD 공고는 아니지만, 복잡 데이터·AI 제품에서는 디자이너가 구현 제약과 엔지니어링 언어를 이해할수록 신호가 강해진다는 점을 보강한다.
+- **Mission-critical AI/HCI는 human agency와 traceability를 요구한다**: Epsilon3는 우주/고급 하드웨어 운영 플랫폼에서 human-AI interaction, real-time telemetry, high-stakes procedures, service blueprint, data-driven prototype, transparent/actionable AI pattern, design systems를 요구한다. AI UX의 핵심은 자동화 자체가 아니라 **고압 상황에서 사람이 이해·추적·개입할 수 있는 결정 흐름**이다.
+- **Design system 공고는 governance·adoption·front-end trade-off까지 본다**: Jobgether design-system류 공고는 component, token, documentation뿐 아니라 roadmap, governance, adoption support, design review, WCAG AA/accessibility, HTML/CSS/JS/React 이해, AI-assisted/design-to-code workflow 실험을 반복한다.
+- **복잡 도메인 번역은 반복 검증된 핵심 축**: Radical AI 재확인은 scientists·roboticists·mechanical engineers와 협업해 lab informatics, hardware-facing display, data visualization, component library를 설계하는 역량을 강조한다. SVA 산출물도 “감각적 인터랙션”만이 아니라 **전문가 workflow·데이터·물리/운영 제약을 명확한 IA와 prototype으로 바꾸는 증거**여야 한다.
+
+사용자에게의 추가 함의:
+
+1. 공개 case 1개는 `mission-critical / expert workflow → service blueprint → AI/data decision support → human agency/traceability → prototype/design-system handoff` 구조가 최신 JD 반복 신호와 잘 맞는다.
+2. Design Technologist-adjacent 포지셔닝은 “개발자처럼 보이기”가 아니라 **고신뢰 제품에서 user research, IA, prototype, engineering trade-off, accessibility를 묶어 ship 가능성을 높이는 사람**으로 표현한다.
+3. G4 alumni 인터뷰에는 “mission-critical/enterprise/AI infrastructure 포트폴리오가 PD 면접에서 너무 technical하게 읽히지 않게 어떤 narrative를 썼는가?”를 추가한다.
+
 ---
 
 ## 4. 사용자 포트폴리오로 번역할 체크리스트
@@ -399,5 +414,9 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 - Tessera Labs — Senior Product Designer 공개 Ashby 공고(확인일 2026-06-14 17:44 KST): enterprise multi-agent AI, SAP/Salesforce/Workday/Snowflake workflow, human-in-the-loop control/trust, governance/audit, observability into agent reasoning/actions, review/intervene/override, research with enterprise users, design-system maintenance.
 - adaption — Product Designer 공개 Ashby 공고(확인일 2026-06-14 17:44 KST): future human–AI interaction paradigms, experimentation/prototyping/iteration, end-to-end ownership, design–engineering boundary, strong portfolio, typography/layout/motion, fast-paced AI product environment.
 - Hostinger — Product Designer 공개 Ashby 공고(확인일 2026-06-14 17:44 KST): end-to-end design area ownership, user research, analytics/validation, prototyping, design systems/process contribution, user/business/technical constraint balance, real case portfolio with process.
+- Artemis — Product Engineer 공개 Ashby 공고(확인일 2026-06-14 17:58 KST): security data portal, AI-native intuitive interfaces, product thinking, design-system primitives, React/TypeScript, Python/Go, product design/AI-ML/security 협업, complex analytics/observability domain.
+- Epsilon3 — Senior Product Designer 공개 Lever 공고(확인일 2026-06-14 17:58 KST): aerospace/hardware operations SaaS, human-AI interaction, real-time telemetry, high-stakes procedure management, service blueprint, data-driven prototype, transparent/actionable AI patterns, specialized design system.
+- Jobgether — Senior Product Designer/Designer, Design Systems 공개 Lever 공고(확인일 2026-06-14 17:58 KST): design-system strategy/roadmap/governance/adoption, web/mobile scalability, WCAG AA/accessibility, Figma components/variants/tokens, HTML/CSS/JS/React/front-end trade-off, AI-assisted/design-to-code workflow.
+- Radical AI — Senior Product Designer 공개 Lever 공고 재확인(확인일 2026-06-14 17:58 KST): lab informatics, hardware-facing displays, scientists·roboticists·mechanical engineers 협업, data visualization, component libraries, frontend concepts plus.
 
 주의: 일부 원 공고는 추출 시점에 내려갔거나 mirror/snippet 기반이다. 실제 지원 전에는 타깃 회사의 최신 JD 원문을 다시 수집해야 한다.
