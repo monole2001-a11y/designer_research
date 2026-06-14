@@ -157,6 +157,21 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 2. AI/technical literacy는 개발 지식 과시가 아니라, **기술 제약을 이해해 사용자가 믿고 조작할 수 있는 인터페이스로 번역한 증거**로 써야 한다.
 3. G4 alumni 인터뷰에는 “design system이 실제 채용 평가에서 UI craft인지, engineering adoption/governance 증거인지”를 추가로 물어본다.
 
+### 3-5. 2026-06-14 13:02 KST 공개 JD 추가 점검
+
+이번 루프에서는 개인/회사 내부정보 없이 공개 JD/공개 리소스만 확인했다. 새로 확인한 반복 신호는 아래와 같다.
+
+- **Design system은 이제 UI kit가 아니라 제품 인프라**: Tabs와 Onebrief의 design-system 공고는 components·patterns·tokens·documentation뿐 아니라 Figma와 code sync, Storybook/modern frontend, adoption, contribution model, QA, accessibility를 요구한다. 즉 포트폴리오에서는 “컴포넌트 목록”보다 **디자인-엔지니어링 drift를 줄이고 실제 ship 속도/품질을 올린 운영 증거**가 강하다.
+- **AI-native interface는 control/override까지 포함**: Samsung Research America의 Staff AI Product Designer 공고는 agentic OS, multi-agent task orchestration, proactive systems, user control/override, multimodal interaction을 명시한다. AI 제품 UX는 화면 생성이 아니라 **모델 행동을 사용자가 이해·개입·복구할 수 있게 만드는 상호작용 구조**가 핵심이다.
+- **AI workflow는 생산성 도구가 아니라 판단 재배치**: Figma의 AI for product design 공개 리소스는 research/data synthesis, ideation, prototype acceleration을 강조하지만, JD들과 함께 보면 차별점은 “AI로 빨리 만들었다”가 아니라 **AI가 만든 결과를 어떤 기준으로 검증하고 제품 판단에 연결했는가**다.
+- **접근성/환경 제약이 senior signal**: Onebrief류 공고는 low-vision, small/legacy screens, low-luminance environments, WCAG 2.2, real-world hardware constraints까지 요구한다. 복잡 시스템 포트폴리오에는 edge case·환경 제약·실패 상태 설계가 들어가야 senior하게 읽힌다.
+
+사용자에게의 추가 함의:
+
+1. 공개 case에는 `AI/복잡 시스템 → 사용자 control/override → 예외·복구 흐름 → design-system/token pattern → engineering adoption`의 연결을 넣는다.
+2. SVA에서 만들 산출물은 “학교 과제”가 아니라, JD 언어로 번역 가능한 **shipped/ship-like product evidence**여야 한다.
+3. G4 alumni 인터뷰에는 “AI product 포트폴리오에서 control/override, accessibility, engineering adoption까지 평가받았는가?”를 추가한다.
+
 ---
 
 ## 4. 사용자 포트폴리오로 번역할 체크리스트
@@ -220,5 +235,9 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 - Greenhouse — Senior Product Designer, Data 공개 공고 snippet(확인일 2026-06-14): reporting/analytics UX, data engineers와 schema/query capability 협업, user research/workshops, flows/wireframes/high-fidelity prototypes, design-system patterns, design QA.
 - Preql AI — Product Designer 공개 공고(확인일 2026-06-14): AI-powered financial data platform, natural-language data transformation workflow, dashboards/visualization, auditability/trust, user research, design system, engineering handoff.
 - Lodgify/Jobgether — Senior Product Designer, Design Systems 공개 공고 snippet(확인일 2026-06-14): design-system strategy/governance/documentation/adoption, front-end implementation alignment, HTML/CSS/JS/React literacy, AI workflow experimentation.
+- Tabs — Product Designer, Design Systems 공개 공고(확인일 2026-06-14 13:02 KST): AI-native revenue platform, components/patterns/tokens/documentation, Figma-code sync, implementation QA, accessibility, contribution model, product-team-as-user.
+- Onebrief — Product Designer, Design Systems 공개 공고 snippet(확인일 2026-06-14 13:02 KST): AI-powered workflow software, token-driven UI systems, Figma/Storybook/frontend sync, adoption, accessibility/WCAG 2.2, low-vision·legacy-screen·hardware constraints.
+- Samsung Research America — Staff AI Product Designer 공개 공고(확인일 2026-06-14 13:02 KST): agentic OS interaction models, multi-agent orchestration, generative UI principles, LLM/agentic system behavior, user control/override, multimodal interactions.
+- Figma Resource Library — How to use AI for product design(확인일 2026-06-14 13:02 KST): AI-assisted research/data analysis, ideation, concepting, interactive prototype acceleration, AI workflow literacy.
 
 주의: 일부 원 공고는 추출 시점에 내려갔거나 mirror/snippet 기반이다. 실제 지원 전에는 타깃 회사의 최신 JD 원문을 다시 수집해야 한다.
