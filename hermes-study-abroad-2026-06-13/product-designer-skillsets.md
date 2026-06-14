@@ -172,6 +172,21 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 2. SVA에서 만들 산출물은 “학교 과제”가 아니라, JD 언어로 번역 가능한 **shipped/ship-like product evidence**여야 한다.
 3. G4 alumni 인터뷰에는 “AI product 포트폴리오에서 control/override, accessibility, engineering adoption까지 평가받았는가?”를 추가한다.
 
+### 3-6. 2026-06-14 15:41 KST 공개 JD 추가 점검
+
+이번 루프에서도 개인/회사 내부정보 없이 공개 JD/snippet만 확인했다. 새로 확인한 반복 신호는 아래와 같다.
+
+- **Scientific/robotic AI product는 복잡 도메인 번역 능력을 요구**: Radical AI의 Senior Product Designer 공고는 autonomous/self-driving lab, lab informatics, scientists·roboticists·mechanical engineers 협업, information architecture와 data visualization을 강조한다. 사용자의 포트폴리오는 “AI 앱”보다 **전문가가 실제 결정을 내리는 복잡 workflow를 읽기 쉬운 상태 모델과 데이터 UI로 바꾸는 능력**을 보여줄수록 강하다.
+- **Safety-critical / human factors 맥락은 senior signal**: SkyGrid의 Senior Product Designer 공고는 autonomous aviation, operational objectives, safety principles, user workload, human factors, usability tests, customer feedback, roadmap/value proposition alignment를 반복한다. 이는 AI·복잡 시스템 포트폴리오에서 **오류·경고·권한·복구·workload 감소**까지 설계해야 함을 강화한다.
+- **AI-native designer는 tools user가 아니라 workflow owner**: 0G Labs와 Anara류 공고는 agent interfaces, model interaction flows, developer tools/dashboards/SaaS, AI-assisted workflow, rapid prototyping, design-system maintenance, founder/engineering과의 빠른 ship을 요구한다. “AI를 썼다”보다 **AI 기능이 사용자의 협업·검증·반복 행동을 어떻게 바꾸는지 설계한 증거**가 필요하다.
+- **Design engineer adjacent 신호가 더 강해짐**: Ashby Design Engineer류 공개 설명은 customer research, written proposals, prototyping, wireframes, implementation ownership, asynchronous communication을 한 사람이 강하게 소유하는 문화를 보여준다. Product Designer 포지셔닝도 coded prototype·명확한 글쓰기·문제 정의 문서가 함께 있을 때 더 경쟁력 있다.
+
+사용자에게의 추가 함의:
+
+1. 공개 case 1개는 `complex domain → user workload map → state/exception model → data/AI prototype → validation/rationale` 구조로 쓰면 최신 JD 반복 신호와 잘 맞는다.
+2. SVA에서 만들 프로젝트는 “감각적인 인터랙션”만으로 끝내지 말고, **human factors·safety/trust·운영 복구 흐름**을 포함한 시스템 설계 사례로 키운다.
+3. G4 alumni 인터뷰에는 “복잡 도메인/AI/데이터 포트폴리오가 general mobile app case보다 면접에서 더 강하게 읽혔는가?”를 추가한다.
+
 ---
 
 ## 4. 사용자 포트폴리오로 번역할 체크리스트
@@ -239,5 +254,10 @@ G4 alumni 인터뷰에는 아래 질문을 추가한다.
 - Onebrief — Product Designer, Design Systems 공개 공고 snippet(확인일 2026-06-14 13:02 KST): AI-powered workflow software, token-driven UI systems, Figma/Storybook/frontend sync, adoption, accessibility/WCAG 2.2, low-vision·legacy-screen·hardware constraints.
 - Samsung Research America — Staff AI Product Designer 공개 공고(확인일 2026-06-14 13:02 KST): agentic OS interaction models, multi-agent orchestration, generative UI principles, LLM/agentic system behavior, user control/override, multimodal interactions.
 - Figma Resource Library — How to use AI for product design(확인일 2026-06-14 13:02 KST): AI-assisted research/data analysis, ideation, concepting, interactive prototype acceleration, AI workflow literacy.
+- Radical AI — Senior Product Designer 공개 공고(확인일 2026-06-14 15:41 KST): autonomous/self-driving lab platform, lab informatics, hardware-facing displays, scientists·roboticists·mechanical engineers 협업, information architecture, data visualization, expert Figma/prototyping/component libraries, frontend concepts plus.
+- SkyGrid — Senior Product Designer 공개 공고(확인일 2026-06-14 15:41 KST): autonomous aviation GUI, operational objectives, safety principles, user workload, human factors, usability tests/customer feedback, design system strategy, Figma handoff, roadmap/value proposition alignment.
+- 0G Labs — Product Designer, AI Application 공개 공고(확인일 2026-06-14 15:41 KST): AI-native product design, agent interfaces, model interaction flows, developer tools/dashboards/SaaS, user research/usability testing, scalable design system, AI tools as workflow multiplier.
+- Anara — Product Designer 공개 공고(확인일 2026-06-14 15:41 KST): AI workspace for scientific discovery, humans-and-AI collaboration, user conversations→features, engineering implementation, fast shipping, design systems/documentation/workflows.
+- Ashby — Design Engineer 공개 설명(확인일 2026-06-14 15:41 KST): customer research, written proposals, prototyping, wireframes, end-to-end implementation ownership, deliberate async communication; Design Engineer-adjacent 신호 참고.
 
 주의: 일부 원 공고는 추출 시점에 내려갔거나 mirror/snippet 기반이다. 실제 지원 전에는 타깃 회사의 최신 JD 원문을 다시 수집해야 한다.
