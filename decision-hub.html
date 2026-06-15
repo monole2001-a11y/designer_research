@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>결정 도구 허브 — 어디서부터?</title>
+  <style>
+    :root {
+      --bg: #090b10; --surface: #111722; --surface2: #182131; --surface3: #202b3d;
+      --border: #2b3749; --text: #eef4fb; --muted: #a8b3c3; --dim: #728095;
+      --blue: #83b8ff; --green: #62d6a7; --amber: #ffc464; --red: #ff7474;
+      --violet: #b6a0ff; --cyan: #5bd7d1; --ink: #06111e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: "Pretendard", "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.72; padding-bottom: 70px; }
+    a { color: var(--blue); text-decoration: none; }
+
+    .hero {
+      background: linear-gradient(180deg, rgba(17,23,34,0.97), rgba(9,11,16,0.98)),
+        radial-gradient(circle at 18% 16%, rgba(91,215,209,0.16), transparent 38%),
+        radial-gradient(circle at 82% 12%, rgba(182,160,255,0.18), transparent 36%);
+      border-bottom: 1px solid var(--border); padding: 46px 20px 28px;
+    }
+    .hero-inner, .container { max-width: 860px; margin: 0 auto; }
+    .eyebrow { display: inline-flex; align-items: center; border: 1px solid rgba(91,215,209,0.34); background: rgba(91,215,209,0.10); color: var(--cyan); border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 800; margin-bottom: 14px; }
+    h1 { font-size: clamp(26px, 6vw, 38px); line-height: 1.2; font-weight: 880; margin-bottom: 12px; }
+    .hero p { color: var(--muted); font-size: 15px; }
+
+    .container { padding: 26px 20px 0; }
+    h2 { font-size: 18px; font-weight: 850; margin: 26px 0 12px; }
+
+    /* 어디서부터 — 분기 안내 */
+    .router { display: grid; gap: 10px; }
+    .route { display: flex; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 13px 15px; }
+    .route .q { font-size: 13.5px; color: var(--text); font-weight: 760; flex: 1; }
+    .route .go { white-space: nowrap; font-size: 12.5px; font-weight: 850; color: var(--cyan); border: 1px solid rgba(91,215,209,0.4); border-radius: 999px; padding: 6px 11px; }
+    .route .go:hover { background: rgba(91,215,209,0.1); text-decoration: none; }
+
+    /* 도구 카드 */
+    .tools { display: grid; gap: 14px; margin-top: 6px; }
+    .tool { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; border-left: 4px solid var(--border); transition: border-color 0.2s, transform 0.1s; }
+    .tool:hover { border-color: rgba(131,184,255,0.5); text-decoration: none; transform: translateY(-1px); }
+    .tool.c-report { border-left-color: var(--cyan); }
+    .tool.c-qa { border-left-color: var(--blue); }
+    .tool.c-toolkit { border-left-color: var(--green); }
+    .tool.c-mycase { border-left-color: var(--violet); }
+    .tool.c-journal { border-left-color: var(--amber); }
+    .tool-top { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
+    .tool-title { font-size: 16px; font-weight: 850; color: var(--text); }
+    .tool-emoji { font-size: 18px; }
+    .badge { font-size: 11px; font-weight: 850; border-radius: 999px; padding: 2px 9px; background: var(--surface3); color: var(--muted); border: 1px solid var(--border); }
+    .badge.on { background: rgba(98,214,167,0.16); color: var(--green); border-color: rgba(98,214,167,0.4); }
+    .tool-desc { color: var(--muted); font-size: 13.5px; }
+    .tool-foot { margin-top: 9px; font-size: 12px; color: var(--dim); display: flex; align-items: center; gap: 8px; }
+    .tool-foot .open { color: var(--blue); font-weight: 800; }
+
+    .note { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--amber); border-radius: 8px; padding: 14px 16px; margin-top: 22px; color: var(--text); font-size: 14px; }
+    .footer-note { margin-top: 30px; border-top: 1px solid var(--border); padding-top: 18px; color: var(--dim); font-size: 12px; }
+
+    @media (max-width: 600px) { .route { flex-direction: column; align-items: flex-start; gap: 8px; } }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">결정 도구 허브 · Decision Hub</span>
+      <h1>어디서부터 시작할까 — 내 결정 도구 모음</h1>
+      <p>흩어진 도구들을 한 곳에. 아래 “어디서부터?”에서 지금 상태에 맞는 입구를 고르거나, 카드에서 직접 열면 된다. 각 카드의 배지는 <strong>이 브라우저에 저장된 내 진행 상황</strong>이다.</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <h2>어디서부터? — 지금 상태로 고르기</h2>
+    <div class="router">
+      <div class="route"><span class="q">결정이 막막하고 어디서 손대야 할지 모르겠다</span><a class="go" href="decision-paralysis-mycase.html">내 맞춤판 →</a></div>
+      <div class="route"><span class="q">마음 상태를 매주 점검하고 추세를 보고 싶다</span><a class="go" href="decision-qa-only.html">문답 전용 →</a></div>
+      <div class="route"><span class="q">“왜 결정을 못 하나” 이론·방법이 궁금하다</span><a class="go" href="decision-paralysis-toolkit.html">일반 도구함 →</a></div>
+      <div class="route"><span class="q">매일 흔들리는 마음을 한 줄씩 기록하고 싶다</span><a class="go" href="decision-journal.html">결정 일지 →</a></div>
+      <div class="route"><span class="q">전체 분석(상황·심리·기원·사각지대)을 다시 보고 싶다</span><a class="go" href="decision-psychology-support-report.html">전체 보고서 →</a></div>
+    </div>
+
+    <h2>도구 전체</h2>
+    <div class="tools">
+      <a class="tool c-report" href="decision-psychology-support-report.html">
+        <div class="tool-top"><span class="tool-emoji">📊</span><span class="tool-title">전체 보고서</span><span class="badge" id="b-report">—</span></div>
+        <div class="tool-desc">현재 상황·장단점·심리 진단·생각의 기원·해결책·사각지대까지 12개 섹션. 점검 문답·심층 질문 포함.</div>
+        <div class="tool-foot"><span class="open">열기 →</span><span>decision-psychology-support-report.html</span></div>
+      </a>
+      <a class="tool c-mycase" href="decision-paralysis-mycase.html">
+        <div class="tool-top"><span class="tool-emoji">🧬</span><span class="tool-title">내 맥락 맞춤판</span><span class="badge" id="b-mycase">—</span></div>
+        <div class="tool-desc">내 결정 마비 프로필 + 맞춤 처방 + 내 사례로 미리 채운 편집형 워크북. 막막할 때 첫 입구.</div>
+        <div class="tool-foot"><span class="open">열기 →</span><span>decision-paralysis-mycase.html</span></div>
+      </a>
+      <a class="tool c-qa" href="decision-qa-only.html">
+        <div class="tool-top"><span class="tool-emoji">📝</span><span class="tool-title">문답 전용 (모바일)</span><span class="badge" id="b-qa">—</span></div>
+        <div class="tool-desc">점검 문답(주간 상태·자동 분석·추세) + 심층 질문(클로드 전달용)만 모은 탭. 답안은 전체 보고서와 동기화.</div>
+        <div class="tool-foot"><span class="open">열기 →</span><span>decision-qa-only.html</span></div>
+      </a>
+      <a class="tool c-toolkit" href="decision-paralysis-toolkit.html">
+        <div class="tool-top"><span class="tool-emoji">🧠</span><span class="tool-title">결정장애 도구함 (일반)</span><span class="badge" id="b-toolkit">—</span></div>
+        <div class="tool-desc">결정을 못 하는 사람 누구나용 — 8가지 심리 기제·14가지 방법·6개 정리 도구·내 유형 자가점검.</div>
+        <div class="tool-foot"><span class="open">열기 →</span><span>decision-paralysis-toolkit.html</span></div>
+      </a>
+      <a class="tool c-journal" href="decision-journal.html">
+        <div class="tool-top"><span class="tool-emoji">📔</span><span class="tool-title">결정 일지</span><span class="badge" id="b-journal">—</span></div>
+        <div class="tool-desc">매일 “오늘 어디로 기울었나·계기·새 논거인가”를 한 줄씩. 진자 패턴이 데이터가 된다.</div>
+        <div class="tool-foot"><span class="open">열기 →</span><span>decision-journal.html</span></div>
+      </a>
+    </div>
+
+    <div class="note">
+      <strong>한 가지만 기억하면:</strong> 도구는 충분하다. 다음 한 걸음은 새 도구가 아니라 — <strong>★ 휴직 규정 확인</strong> 같은 게이트 행동 하나다.
+      도구는 그 행동을 쉽게 만들기 위한 것이지, 행동을 미루기 위한 것이 아니다.
+    </div>
+
+    <p class="footer-note">
+      decision-hub.html · 결정 도구 모음 입구 · 진행 배지는 이 브라우저 localStorage 기준(서버 전송 없음) · 작성 2026-06-15 KST.
+    </p>
+
+  </main>
+
+  <script>
+  (function () {
+    function obj(k) { try { return JSON.parse(localStorage.getItem(k) || "{}") || {}; } catch (e) { return {}; } }
+    function arr(k) { try { return JSON.parse(localStorage.getItem(k) || "[]") || []; } catch (e) { return []; } }
+    function set(id, txt, on) { var el = document.getElementById(id); if (!el) { return; } el.textContent = txt; if (on) { el.classList.add("on"); } }
+
+    // 점검 문답 (psych-checkup-v1, 20문항)
+    var ck = obj("psych-checkup-v1"); var ckN = 0;
+    Object.keys(ck).forEach(function (id) { var a = ck[id]; if (a && (a.c >= 0 || (a.t && (""+a.t).trim()))) { ckN++; } });
+    var hist = arr("psych-checkup-history-v1");
+    // 심층 질문 (psych-deepdive-v1, 25문항)
+    var dp = obj("psych-deepdive-v1"); var dpN = 0;
+    Object.keys(dp).forEach(function (id) { var a = dp[id]; if (a && a.t && (""+a.t).trim()) { dpN++; } });
+    // 맞춤 워크북 (mycase-worksheets-v1) — 편집한 칸 수
+    var mc = obj("mycase-worksheets-v1"); var mcN = Object.keys(mc).length;
+    // 일반 도구함: 워크시트(paralysis-worksheets-v1) + 유형점검(paralysis-quiz-v1, 10문항)
+    var pw = obj("paralysis-worksheets-v1"); var pwN = 0;
+    Object.keys(pw).forEach(function (id) { var a = pw[id]; if (a && a.t && (""+a.t).trim()) { pwN++; } });
+    var pq = obj("paralysis-quiz-v1"); var pqN = 0;
+    Object.keys(pq).forEach(function (id) { if (typeof pq[id] === "number" && pq[id] >= 0) { pqN++; } });
+    // 일지 (decision-journal-v1)
+    var jr = arr("decision-journal-v1");
+
+    // 전체 보고서 = 점검+심층 합산
+    set("b-report", (ckN + dpN > 0) ? ("문답 " + Math.min(ckN, 20) + "/20 · 심층 " + Math.min(dpN, 25) + "/25") : "시작 전", ckN + dpN > 0);
+    set("b-qa", (ckN > 0 || dpN > 0) ? ("점검 " + Math.min(ckN, 20) + "/20" + (hist.length ? " · 추세 " + hist.length + "회" : "") + " · 심층 " + Math.min(dpN, 25) + "/25") : "시작 전", ckN > 0 || dpN > 0);
+    set("b-mycase", mcN > 0 ? ("워크북 " + mcN + "칸 편집") : "초안 상태", mcN > 0);
+    set("b-toolkit", (pwN > 0 || pqN > 0) ? ("정리도구 " + pwN + " · 유형 " + Math.min(pqN, 10) + "/10") : "시작 전", pwN > 0 || pqN > 0);
+    set("b-journal", jr.length ? (jr.length + "개 기록") : "기록 없음", jr.length > 0);
+  })();
+  </script>
+</body>
+</html>

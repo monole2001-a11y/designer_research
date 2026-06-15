@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>결정 일지 — 흔들리는 마음을 한 줄씩</title>
+  <style>
+    :root {
+      --bg: #090b10; --surface: #111722; --surface2: #182131; --surface3: #202b3d;
+      --border: #2b3749; --text: #eef4fb; --muted: #a8b3c3; --dim: #728095;
+      --blue: #83b8ff; --green: #62d6a7; --amber: #ffc464; --red: #ff7474;
+      --violet: #b6a0ff; --cyan: #5bd7d1; --ink: #06111e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: "Pretendard", "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.72; padding-bottom: 70px; }
+    a { color: var(--blue); text-decoration: none; }
+
+    .hero { background: linear-gradient(180deg, rgba(17,23,34,0.97), rgba(9,11,16,0.98)), radial-gradient(circle at 82% 14%, rgba(255,196,100,0.16), transparent 38%); border-bottom: 1px solid var(--border); padding: 42px 20px 26px; }
+    .hero-inner, .container { max-width: 760px; margin: 0 auto; }
+    .eyebrow { display: inline-flex; align-items: center; border: 1px solid rgba(255,196,100,0.34); background: rgba(255,196,100,0.10); color: var(--amber); border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 800; margin-bottom: 14px; }
+    h1 { font-size: clamp(24px, 5vw, 34px); line-height: 1.22; font-weight: 880; margin-bottom: 12px; }
+    .hero p { color: var(--muted); font-size: 15px; margin-bottom: 14px; }
+    .meta { display: flex; flex-wrap: wrap; gap: 9px; }
+    .pill { display: inline-flex; align-items: center; border: 1px solid var(--border); background: rgba(255,255,255,0.035); color: var(--muted); border-radius: 999px; padding: 6px 11px; font-size: 12px; font-weight: 700; }
+
+    .container { padding: 24px 20px 0; }
+    h2 { font-size: 17px; font-weight: 850; margin: 22px 0 12px; }
+    p, li { color: var(--muted); font-size: 14px; }
+    strong { color: var(--text); }
+
+    .lead { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--amber); border-radius: 8px; padding: 15px 17px; color: var(--text); font-size: 14.5px; margin-bottom: 18px; }
+
+    /* 입력 카드 */
+    .entry-form { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+    .field { margin-bottom: 14px; }
+    .field label { display: block; font-size: 12.5px; font-weight: 850; color: var(--muted); margin-bottom: 8px; }
+    .lean-opts, .yn-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+    .opt-btn { border: 1px solid var(--border); background: var(--surface2); color: var(--muted); border-radius: 999px; padding: 9px 14px; font-size: 13.5px; font-weight: 760; cursor: pointer; font-family: inherit; }
+    .opt-btn.sel { background: rgba(91,215,209,0.16); border-color: rgba(91,215,209,0.6); color: var(--cyan); }
+    .opt-btn.lean-now.sel { background: rgba(98,214,167,0.18); border-color: rgba(98,214,167,0.6); color: var(--green); }
+    .opt-btn.lean-later.sel { background: rgba(182,160,255,0.18); border-color: rgba(182,160,255,0.6); color: var(--violet); }
+    .opt-btn.lean-stay.sel { background: rgba(131,184,255,0.18); border-color: rgba(131,184,255,0.6); color: var(--blue); }
+    .opt-btn.lean-unsure.sel { background: rgba(168,179,195,0.18); border-color: rgba(168,179,195,0.5); color: var(--muted); }
+    textarea { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; padding: 10px 12px; font-family: inherit; line-height: 1.6; min-height: 52px; resize: vertical; }
+    textarea:focus { outline: none; border-color: rgba(255,196,100,0.6); }
+
+    .btn { border: 1px solid var(--border); background: var(--surface2); color: var(--text); border-radius: 8px; padding: 11px 16px; font-size: 13.5px; font-weight: 850; cursor: pointer; font-family: inherit; }
+    .btn.primary { background: rgba(255,196,100,0.16); border-color: rgba(255,196,100,0.5); color: var(--amber); }
+    .btn.ghost { color: var(--dim); }
+    .btn:hover { border-color: rgba(131,184,255,0.6); }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+    .save-state { color: var(--dim); font-size: 12px; align-self: center; }
+
+    /* 요약 */
+    .summary { background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--amber); border-radius: 10px; padding: 16px 18px; margin-top: 8px; }
+    .sum-row { display: grid; grid-template-columns: 120px 1fr; gap: 10px; align-items: center; margin-bottom: 9px; }
+    .sum-label { font-size: 12px; font-weight: 800; color: var(--muted); text-align: right; }
+    .sbar { position: relative; height: 22px; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .sbar > div { position: absolute; top: 0; left: 0; height: 100%; display: flex; align-items: center; padding-left: 9px; font-size: 11px; font-weight: 850; color: var(--ink); }
+    .sum-note { font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+    /* 기록 목록 */
+    .entry { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 13px 15px; margin-bottom: 10px; border-left: 4px solid var(--border); }
+    .entry.now { border-left-color: var(--green); }
+    .entry.later { border-left-color: var(--violet); }
+    .entry.stay { border-left-color: var(--blue); }
+    .entry.unsure { border-left-color: var(--dim); }
+    .entry-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 5px; flex-wrap: wrap; }
+    .entry-lean { font-size: 13px; font-weight: 850; color: var(--text); }
+    .entry-date { font-size: 11.5px; color: var(--dim); }
+    .entry-body { font-size: 13.5px; color: var(--muted); }
+    .entry-tag { font-size: 11px; font-weight: 800; border-radius: 5px; padding: 1px 7px; margin-left: 6px; }
+    .entry-tag.newarg { background: rgba(255,116,116,0.15); color: var(--red); }
+    .entry-tag.repeat { background: rgba(168,179,195,0.14); color: var(--dim); }
+    .entry-del { background: none; border: none; color: var(--dim); font-size: 12px; cursor: pointer; font-family: inherit; }
+    .entry-del:hover { color: var(--red); }
+    .empty { color: var(--dim); font-size: 13px; padding: 8px 0; }
+
+    .footer-note { margin-top: 28px; border-top: 1px solid var(--border); padding-top: 18px; color: var(--dim); font-size: 12px; }
+    @media (max-width: 600px) { .sum-row { grid-template-columns: 1fr; gap: 3px; } .sum-label { text-align: left; } }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">결정 일지 · Decision Journal</span>
+      <h1>흔들리는 마음을 한 줄씩 — 진자를 데이터로</h1>
+      <p>
+        결정 전까지 마음은 매일 흔들린다. 그걸 <strong>없애려 하지 말고 기록</strong>하라. 오늘 어디로 기울었는지, 무엇 때문인지,
+        그게 <strong>새 논거인지 같은 생각의 재방송인지</strong>만 적으면 된다. 쌓이면 진자의 패턴이 보이고, 패턴은 D-day 판정의 재료가 된다.
+      </p>
+      <div class="meta">
+        <span class="pill">저장은 이 브라우저에만</span>
+        <a class="pill" href="decision-hub.html" style="color:var(--cyan);border-color:rgba(91,215,209,0.4);">← 도구 허브</a>
+        <a class="pill" href="decision-paralysis-mycase.html" style="color:var(--violet);border-color:rgba(182,160,255,0.4);">내 맞춤판 →</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="lead">
+      <strong>규칙(처방 ②):</strong> ‘재방송’이면 적기만 하고 반박하지 않는다 — 판정일은 D-day 하루다. 새 논거가 ‘예’인 경우는 드물고, 나오면 그게 진짜 결정 변수다.
+    </div>
+
+    <h2>오늘 기록 추가</h2>
+    <div class="entry-form">
+      <div class="field">
+        <label>오늘 마음은 어디로 기울었나?</label>
+        <div class="lean-opts" id="leanOpts">
+          <button type="button" class="opt-btn lean-now" data-lean="now">지금 국비·SVA</button>
+          <button type="button" class="opt-btn lean-later" data-lean="later">2년 후 탑급 HCI</button>
+          <button type="button" class="opt-btn lean-stay" data-lean="stay">삼성 잔류</button>
+          <button type="button" class="opt-btn lean-unsure" data-lean="unsure">모름 / 반반</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>계기 — 무엇 때문에 그렇게 기울었나? (한 줄)</label>
+        <textarea id="causeInput" placeholder="예: 환율 기사를 봤다 / 동료 얘기를 들었다 / 그냥 불안했다"></textarea>
+      </div>
+      <div class="field">
+        <label>이게 새 논거인가, 같은 생각의 재방송인가?</label>
+        <div class="yn-opts" id="newArgOpts">
+          <button type="button" class="opt-btn" data-na="repeat">재방송 (이미 아는 것)</button>
+          <button type="button" class="opt-btn" data-na="new">새 논거 (처음 나온 것)</button>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button type="button" class="btn primary" id="addBtn">＋ 오늘 기록 저장</button>
+        <button type="button" class="btn" id="exportBtn">💾 .txt 내보내기</button>
+        <button type="button" class="btn ghost" id="resetBtn">전체 초기화</button>
+        <span class="save-state" id="saveState"></span>
+      </div>
+    </div>
+
+    <h2>패턴 요약</h2>
+    <div class="summary" id="summary"></div>
+
+    <h2>기록 (<span id="count">0</span>)</h2>
+    <div id="entries"></div>
+
+    <p class="footer-note">
+      decision-journal.html · 진자 기록 도구 · 기록은 이 브라우저 localStorage(decision-journal-v1)에만 저장 · 작성 2026-06-15 KST ·
+      <a href="decision-hub.html">도구 허브</a>
+    </p>
+  </main>
+
+  <script id="journalScript">
+  (function () {
+    var KEY = "decision-journal-v1";
+    var LEAN = { now: "지금 국비·SVA", later: "2년 후 탑급 HCI", stay: "삼성 잔류", unsure: "모름 / 반반" };
+    var entries = [];
+    try { entries = JSON.parse(localStorage.getItem(KEY) || "[]") || []; } catch (e) { entries = []; }
+
+    var draft = { lean: null, na: null };
+    var saveEl = document.getElementById("saveState");
+    function persist() {
+      try { localStorage.setItem(KEY, JSON.stringify(entries)); } catch (e) { if (saveEl) { saveEl.textContent = "저장 실패(브라우저 설정 확인)"; } }
+    }
+
+    // 입력 토글
+    function wireToggle(wrapId, key, attr) {
+      var wrap = document.getElementById(wrapId);
+      var btns = wrap.querySelectorAll(".opt-btn");
+      btns.forEach(function (b) {
+        b.addEventListener("click", function () {
+          var v = b.getAttribute(attr);
+          draft[key] = (draft[key] === v) ? null : v;
+          for (var i = 0; i < btns.length; i++) { btns[i].classList.toggle("sel", btns[i].getAttribute(attr) === draft[key]); }
+        });
+      });
+    }
+    wireToggle("leanOpts", "lean", "data-lean");
+    wireToggle("newArgOpts", "na", "data-na");
+
+    var causeInput = document.getElementById("causeInput");
+
+    function fmtDate(iso) {
+      var d = new Date(iso);
+      return d.toLocaleDateString("ko-KR", { month: "2-digit", day: "2-digit" }) + " " + d.toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
+    }
+
+    function render() {
+      // 목록
+      var box = document.getElementById("entries");
+      document.getElementById("count").textContent = entries.length;
+      box.innerHTML = "";
+      if (!entries.length) { box.innerHTML = "<div class=\"empty\">아직 기록이 없다. 오늘 마음이 기운 쪽을 한 줄 남겨보라.</div>"; }
+      entries.slice().reverse().forEach(function (e) {
+        var div = document.createElement("div");
+        div.className = "entry " + (e.lean || "unsure");
+        var tag = e.na === "new" ? "<span class=\"entry-tag newarg\">새 논거</span>" : (e.na === "repeat" ? "<span class=\"entry-tag repeat\">재방송</span>" : "");
+        div.innerHTML =
+          "<div class=\"entry-head\"><span class=\"entry-lean\">" + (LEAN[e.lean] || "모름") + tag + "</span>" +
+          "<span class=\"entry-date\">" + fmtDate(e.d) + " <button type=\"button\" class=\"entry-del\" data-id=\"" + e.d + "\">삭제</button></span></div>" +
+          (e.cause ? "<div class=\"entry-body\">" + escapeHtml(e.cause) + "</div>" : "");
+        box.appendChild(div);
+      });
+      box.querySelectorAll(".entry-del").forEach(function (b) {
+        b.addEventListener("click", function () {
+          var id = b.getAttribute("data-id");
+          entries = entries.filter(function (x) { return String(x.d) !== String(id); });
+          persist(); render();
+        });
+      });
+      renderSummary();
+    }
+
+    function escapeHtml(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+    function renderSummary() {
+      var box = document.getElementById("summary");
+      if (!entries.length) { box.innerHTML = "<div class=\"empty\">기록이 쌓이면 여기에 ‘어디로 몇 번 기울었나 · 새 논거 비율 · 진자 빈도’가 나타난다.</div>"; return; }
+      var cnt = { now: 0, later: 0, stay: 0, unsure: 0 };
+      var newArg = 0, total = entries.length;
+      entries.forEach(function (e) { cnt[e.lean || "unsure"]++; if (e.na === "new") { newArg++; } });
+      var colors = { now: "var(--green)", later: "var(--violet)", stay: "var(--blue)", unsure: "var(--dim)" };
+      var html = "";
+      ["now", "later", "stay", "unsure"].forEach(function (k) {
+        var pct = Math.round(cnt[k] / total * 100);
+        html += "<div class=\"sum-row\"><span class=\"sum-label\">" + LEAN[k] + "</span><div class=\"sbar\"><div style=\"width:" + Math.max(pct, 3) + "%;background:" + colors[k] + "\">" + cnt[k] + "회 (" + pct + "%)</div></div></div>";
+      });
+      box.innerHTML = html;
+      // 해석 한 줄
+      var order = ["now", "later", "stay", "unsure"].sort(function (a, b) { return cnt[b] - cnt[a]; });
+      var top = order[0];
+      var naPct = Math.round(newArg / total * 100);
+      var note = document.createElement("div");
+      note.className = "sum-note";
+      var msg = "최근 " + total + "개 중 가장 자주 기운 쪽: <strong>" + LEAN[top] + "</strong>. ";
+      msg += "새 논거 비율 <strong>" + naPct + "%</strong> — ";
+      if (naPct <= 20) { msg += "대부분 재방송이다. 비교는 사실상 끝났다는 신호 — 남은 건 판정(D-day)이다."; }
+      else if (naPct <= 50) { msg += "절반 이하가 새 논거다. 새 논거만 모아 D-day에 한 번에 심사하라."; }
+      else { msg += "새 논거가 잦다. 아직 정보가 움직이는 국면일 수 있으니, 새 논거 항목을 따로 정리해두라."; }
+      note.innerHTML = msg;
+      box.appendChild(note);
+    }
+
+    document.getElementById("addBtn").addEventListener("click", function () {
+      if (!draft.lean && !causeInput.value.trim() && !draft.na) { if (saveEl) { saveEl.textContent = "기운 쪽이나 계기를 입력하세요"; } return; }
+      entries.push({ d: new Date().toISOString(), lean: draft.lean, na: draft.na, cause: causeInput.value.trim() });
+      persist();
+      // 입력 초기화
+      draft = { lean: null, na: null };
+      causeInput.value = "";
+      document.querySelectorAll(".opt-btn").forEach(function (b) { b.classList.remove("sel"); });
+      if (saveEl) { saveEl.textContent = "저장됨 · 총 " + entries.length + "개"; }
+      render();
+    });
+
+    document.getElementById("exportBtn").addEventListener("click", function () {
+      var L = [];
+      L.push("결정 일지 — 진자 기록");
+      L.push("내보낸 시각: " + new Date().toLocaleString("ko-KR"));
+      L.push("총 " + entries.length + "개");
+      L.push("");
+      entries.forEach(function (e) {
+        L.push("[" + fmtDate(e.d) + "] " + (LEAN[e.lean] || "모름") + (e.na === "new" ? " (새 논거)" : e.na === "repeat" ? " (재방송)" : ""));
+        if (e.cause) { L.push("   계기: " + e.cause); }
+      });
+      var blob = new Blob([L.join("\n")], { type: "text/plain;charset=utf-8" });
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "decision-journal-" + new Date().toISOString().slice(0, 10) + ".txt";
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      URL.revokeObjectURL(a.href);
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", function () {
+      if (!confirm("일지 기록을 모두 지울까요? (내보낸 .txt는 남습니다)")) { return; }
+      entries = []; try { localStorage.removeItem(KEY); } catch (e) {}
+      render();
+    });
+
+    render();
+  })();
+  </script>
+</body>
+</html>
