@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>결정을 못 하는 사람을 위한 도구함 — 이론 · 방법 · 생각정리</title>
+  <style>
+    :root {
+      --bg: #090b10; --surface: #111722; --surface2: #182131; --surface3: #202b3d;
+      --border: #2b3749; --text: #eef4fb; --muted: #a8b3c3; --dim: #728095;
+      --blue: #83b8ff; --green: #62d6a7; --amber: #ffc464; --red: #ff7474;
+      --violet: #b6a0ff; --cyan: #5bd7d1; --ink: #06111e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: "Pretendard", "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.72; padding-bottom: 90px; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .hero {
+      background: linear-gradient(180deg, rgba(17,23,34,0.97), rgba(9,11,16,0.98)),
+        radial-gradient(circle at 16% 16%, rgba(91,215,209,0.16), transparent 36%),
+        radial-gradient(circle at 84% 12%, rgba(182,160,255,0.18), transparent 34%);
+      border-bottom: 1px solid var(--border); padding: 44px 20px 26px;
+    }
+    .hero-inner, .container { max-width: 960px; margin: 0 auto; }
+    .eyebrow { display: inline-flex; align-items: center; border: 1px solid rgba(91,215,209,0.34); background: rgba(91,215,209,0.10); color: var(--cyan); border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 800; margin-bottom: 14px; }
+    h1 { font-size: clamp(25px, 5vw, 36px); line-height: 1.22; font-weight: 880; margin-bottom: 12px; }
+    .hero p { color: var(--muted); font-size: 15px; margin-bottom: 16px; }
+    .meta { display: flex; flex-wrap: wrap; gap: 9px; }
+    .pill { display: inline-flex; align-items: center; border: 1px solid var(--border); background: rgba(255,255,255,0.035); color: var(--muted); border-radius: 999px; padding: 6px 11px; font-size: 12px; font-weight: 700; }
+
+    .container { padding: 0 20px; }
+
+    .tabbar { position: sticky; top: 0; z-index: 20; background: rgba(9,11,16,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); padding: 10px 20px; }
+    .tabbar-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 8px; overflow-x: auto; }
+    .tab-btn { flex: 1 1 0; min-width: 110px; white-space: nowrap; border: 1px solid var(--border); background: var(--surface); color: var(--muted); border-radius: 10px; padding: 11px 12px; font-size: 13px; font-weight: 820; cursor: pointer; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .tab-btn.active { background: rgba(91,215,209,0.14); border-color: rgba(91,215,209,0.6); color: var(--cyan); }
+
+    .tab-panel { display: none; margin-top: 24px; }
+    .tab-panel.active { display: block; }
+
+    .panel-title { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .panel-title h2 { font-size: clamp(19px, 3vw, 24px); font-weight: 850; }
+    .panel-title .badge { width: 30px; height: 30px; border-radius: 8px; background: var(--cyan); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; font-size: 15px; flex: 0 0 auto; }
+
+    .lead { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--cyan); border-radius: 8px; padding: 16px 18px; color: var(--text); font-size: 15px; margin-bottom: 18px; }
+    p, li, td { color: var(--muted); font-size: 14px; }
+    strong { color: var(--text); }
+    h3 { font-size: 16px; line-height: 1.45; font-weight: 820; margin-bottom: 9px; }
+
+    .grid { display: grid; gap: 14px; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 18px; min-width: 0; }
+    .card.green { border-top: 3px solid var(--green); }
+    .card.amber { border-top: 3px solid var(--amber); }
+    .card.red { border-top: 3px solid var(--red); }
+    .card.violet { border-top: 3px solid var(--violet); }
+    .card.cyan { border-top: 3px solid var(--cyan); }
+    .card.blue { border-top: 3px solid var(--blue); }
+    .kicker { display: block; color: var(--dim); font-size: 11px; font-weight: 880; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+    .tag { display: inline-flex; align-items: center; border-radius: 5px; padding: 2px 7px; font-size: 11px; font-weight: 850; }
+    .tag.good { background: rgba(98,214,167,0.15); color: var(--green); }
+    .tag.warn { background: rgba(255,196,100,0.16); color: var(--amber); }
+    .tag.bad { background: rgba(255,116,116,0.15); color: var(--red); }
+    .tag.violet { background: rgba(182,160,255,0.15); color: var(--violet); }
+    .tag.cyan { background: rgba(91,215,209,0.15); color: var(--cyan); }
+
+    .list { display: grid; gap: 9px; list-style: none; }
+    .list li { position: relative; padding-left: 18px; }
+    .list li::before { content: ""; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 999px; background: var(--blue); }
+    .list.green li::before { background: var(--green); }
+    .list.amber li::before { background: var(--amber); }
+    .list.violet li::before { background: var(--violet); }
+
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
+    table { width: 100%; border-collapse: collapse; min-width: 720px; }
+    th { background: var(--surface2); color: var(--dim); text-align: left; padding: 12px 14px; font-size: 11px; font-weight: 880; letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+    td { padding: 13px 14px; border-bottom: 1px solid rgba(43,55,73,0.75); vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    td strong { color: var(--text); }
+
+    .callout { border: 1px solid var(--border); border-left: 4px solid var(--cyan); background: rgba(91,215,209,0.07); border-radius: 8px; padding: 16px 18px; margin-top: 16px; }
+    .callout.warn { border-left-color: var(--amber); background: rgba(255,196,100,0.08); }
+    .callout.bad { border-left-color: var(--red); background: rgba(255,116,116,0.08); }
+    .callout.good { border-left-color: var(--green); background: rgba(98,214,167,0.08); }
+    .callout.violet { border-left-color: var(--violet); background: rgba(182,160,255,0.08); }
+
+    /* worksheet / quiz */
+    .ws-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 18px; margin-bottom: 14px; }
+    .ws-card.answered { border-left: 3px solid var(--green); }
+    .ws-title { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .ws-title .gchip { background: rgba(182,160,255,0.15); color: var(--violet); border-radius: 6px; padding: 3px 9px; font-size: 12px; font-weight: 850; }
+    .ws-q { color: var(--text); font-size: 14px; font-weight: 760; margin: 10px 0 8px; }
+    .ws-card textarea { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; padding: 10px 12px; font-family: inherit; line-height: 1.6; min-height: 46px; resize: vertical; }
+    .ws-card textarea:focus { outline: none; border-color: rgba(91,215,209,0.6); }
+
+    .q-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 15px 16px; margin-bottom: 12px; }
+    .q-text { color: var(--text); font-size: 14px; font-weight: 800; margin-bottom: 10px; }
+    .q-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+    .opt-btn { border: 1px solid var(--border); background: var(--surface2); color: var(--muted); border-radius: 999px; padding: 9px 14px; font-size: 13.5px; font-weight: 760; cursor: pointer; font-family: inherit; }
+    .opt-btn.sel { background: rgba(91,215,209,0.16); border-color: rgba(91,215,209,0.6); color: var(--cyan); }
+
+    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .btn { border: 1px solid var(--border); background: var(--surface2); color: var(--text); border-radius: 8px; padding: 11px 16px; font-size: 13.5px; font-weight: 850; cursor: pointer; font-family: inherit; }
+    .btn.primary { background: rgba(98,214,167,0.16); border-color: rgba(98,214,167,0.5); color: var(--green); }
+    .btn.violet { background: rgba(182,160,255,0.14); border-color: rgba(182,160,255,0.5); color: var(--violet); }
+    .btn.ghost { color: var(--dim); }
+    .btn:hover { border-color: rgba(131,184,255,0.6); }
+    .save-state { color: var(--dim); font-size: 12px; align-self: center; }
+
+    #quizResult { display: none; margin-top: 18px; }
+    #quizResult.show { display: block; }
+    .meter-row { display: grid; grid-template-columns: 130px 1fr; gap: 10px; align-items: center; margin-bottom: 10px; }
+    .meter-label { font-size: 12px; font-weight: 800; color: var(--muted); text-align: right; }
+    .meter-track { position: relative; height: 24px; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .meter-fill { position: absolute; top: 0; left: 0; height: 100%; display: flex; align-items: center; padding-left: 10px; font-size: 11px; font-weight: 850; color: var(--ink); }
+
+    .footer-note { margin-top: 36px; border-top: 1px solid var(--border); padding-top: 18px; color: var(--dim); font-size: 12px; }
+
+    @media (max-width: 720px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .meter-row { grid-template-columns: 1fr; gap: 4px; }
+      .meter-label { text-align: left; }
+      .tab-btn { min-width: 92px; padding: 10px 8px; font-size: 12.5px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media print { .tabbar, .btn-row, .fab-wrap { display: none !important; } .tab-panel { display: block !important; } body { background: #fff; color: #000; } }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">결정을 못 하는 사람을 위한 도구함 · Decision Paralysis Toolkit</span>
+      <h1>결정을 못 하는 게 게으름이나 의지박약이 아닌 이유 — 그리고 빠져나오는 도구들</h1>
+      <p>
+        특정 결정에 매인 보고서가 아니다. <strong>‘결정을 못 하는 상태’ 자체</strong>를 다룬다 —
+        왜 그렇게 되는지(심리·정신의학 이론), 어떻게 빠져나오는지(근거 기반 방법), 그리고 생각을 실제로 정리하는
+        <strong>인터랙티브 도구</strong>와 <strong>내 유형 자가점검</strong>까지. 답·진단 결과는 .txt로 내보낼 수 있다.
+      </p>
+      <div class="meta">
+        <span class="pill">심리교육 — 진단·치료 아님</span>
+        <span class="pill">저장은 이 브라우저에만</span>
+        <a class="pill" href="decision-psychology-support-report.html" style="color:var(--cyan);border-color:rgba(91,215,209,0.4);">← 내 결정 보고서</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabbar" role="tablist" aria-label="도구함 탭">
+    <div class="tabbar-inner">
+      <button type="button" class="tab-btn active" data-tab="why" role="tab" aria-selected="true" aria-controls="panel-why">🧠 왜 못 하나</button>
+      <button type="button" class="tab-btn" data-tab="how" role="tab" aria-selected="false" aria-controls="panel-how">🛠 방법</button>
+      <button type="button" class="tab-btn" data-tab="tools" role="tab" aria-selected="false" aria-controls="panel-tools">📝 정리 도구</button>
+      <button type="button" class="tab-btn" data-tab="quiz" role="tab" aria-selected="false" aria-controls="panel-quiz">🧭 내 유형</button>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- ===== 탭 1: 왜 못 하나 (이론) ===== -->
+    <section class="tab-panel active" id="panel-why">
+      <div class="panel-title"><span class="badge">🧠</span><h2>왜 결정을 못 하나 — 결정 마비의 심리·정신의학</h2></div>
+      <div class="lead">
+        결정을 못 하는 건 대개 <strong>의지의 문제가 아니라 정보처리·감정조절의 문제</strong>다. 아래는 그 상태를 설명하는
+        검증된 이론들 — 자기를 비난하는 대신 <strong>“내 경우는 어느 기제인가”</strong>를 찾는 지도로 쓰면 된다(자가점검 탭이 도와준다).
+      </div>
+
+      <div class="grid grid-2" style="margin-bottom:14px;">
+        <div class="card red">
+          <span class="kicker">기제 1 · 가장 흔함</span>
+          <h3>분석 마비 · 선택 과부하</h3>
+          <p><strong>증상:</strong> 정보를 모을수록 더 못 고른다. 선택지가 많을수록 만족이 떨어지고 결정이 늦어진다.</p>
+          <p style="margin-top:6px;"><strong>이론:</strong> Schwartz <em>선택의 역설</em>, Iyengar &amp; Lepper의 ‘잼 실험’(선택지 24종일 때 6종일 때보다 구매율 급감). 정보의 한계효용은 빠르게 0이 된다 — 그 뒤의 수집은 결정이 아니라 회피다.</p>
+        </div>
+        <div class="card amber">
+          <span class="kicker">기제 2 · 기질</span>
+          <h3>극대화 성향 (Maximizer)</h3>
+          <p><strong>증상:</strong> ‘최선’을 찾느라 ‘충분히 좋은’을 못 받아들인다. 고른 뒤에도 안 고른 쪽을 곱씹는다.</p>
+          <p style="margin-top:6px;"><strong>이론:</strong> Simon의 satisficing(충분주의) vs maximizing. Maximizer는 객관적으로 더 나은 결과를 얻고도 <strong>주관적으로 덜 만족</strong>한다(Schwartz). ‘충분’의 내부 기준이 없어 외부 기준(마감·규칙)을 빌려야 닫힌다.</p>
+        </div>
+        <div class="card red">
+          <span class="kicker">기제 3 · 불안의 핵</span>
+          <h3>불확실성 비관용</h3>
+          <p><strong>증상:</strong> ‘모름’이 곧 ‘위험’으로 번역된다. 확률 50%를 90%처럼 대비한다. ‘만약…하면’이 연쇄로 이어진다.</p>
+          <p style="margin-top:6px;"><strong>이론:</strong> Dugas·Freeston·Ladouceur — 불확실성 비관용은 <strong>범불안(GAD)의 핵심 인지</strong>. 걱정은 ‘통제하는 느낌’을 주는 가짜 통제 행동이다. 해독제는 정보가 아니라 ‘모름을 견디는 근육’.</p>
+        </div>
+        <div class="card violet">
+          <span class="kicker">기제 4 · 갈등의 구조</span>
+          <h3>접근–접근 / 접근–회피 갈등</h3>
+          <p><strong>증상:</strong> 둘 다 좋아서(접근–접근) 또는 한 선택지가 좋으면서 동시에 무서워서(접근–회피) 진자처럼 오간다.</p>
+          <p style="margin-top:6px;"><strong>이론:</strong> Lewin의 갈등 유형. 접근–접근은 고통은 덜하나 가장 오래 끈다 — <strong>“둘 다 충분히 좋다”는 뜻</strong>이라 크게 틀릴 수 없다. 접근–회피는 다가갈수록 공포가 커져 결정 직전에 멈춘다.</p>
+        </div>
+        <div class="card amber">
+          <span class="kicker">기제 5 · 미래 시점의 함정</span>
+          <h3>예상 후회 (anticipated regret)</h3>
+          <p><strong>증상:</strong> “나중에 후회하면 어떡하지”가 결정을 멈춘다. 안 한 후회가 더 무서워 아무것도 안 한다.</p>
+          <p style="margin-top:6px;"><strong>이론:</strong> Loomes &amp; Sugden의 후회 이론. 핵심: 후회는 <strong>비대칭</strong>이다 — 장기적으로 사람은 ‘한 일’보다 ‘하지 않은 일’을 더 후회한다(Gilovich &amp; Medvec). 후회를 0으로 만들 선택은 없고, <strong>덜 후회할 쪽</strong>이 있을 뿐이다.</p>
+        </div>
+        <div class="card red">
+          <span class="kicker">기제 6 · 기준의 폭주</span>
+          <h3>부적응적 완벽주의</h3>
+          <p><strong>증상:</strong> 완벽한 결정이 아니면 시작을 못 한다. 실수 가능성이 곧 위협이다.</p>
+          <p style="margin-top:6px;"><strong>이론:</strong> Frost / Hewitt &amp; Flett — 특히 ‘사회적으로 부과된 완벽주의’는 <strong>미루기와 강하게 연결</strong>된다. 완벽주의의 적은 실수가 아니라 ‘시작 자체’를 막는 마비다.</p>
+        </div>
+        <div class="card violet">
+          <span class="kicker">기제 7 · 회피의 다섯 얼굴</span>
+          <h3>결정 갈등의 대처 패턴 (Janis &amp; Mann)</h3>
+          <p><strong>증상:</strong> 결정을 미루기 / 남에게 떠넘기기 / 못 본 척하기 / 한 선택지를 억지로 미화하기.</p>
+          <p style="margin-top:6px;"><strong>이론:</strong> Janis &amp; Mann의 <em>갈등 모델</em> — 결정 스트레스에 사람은 5가지로 반응한다: 무갈등 고수 · 무갈등 변화 · <strong>방어적 회피</strong>(미루기·전가·미화) · <strong>과각성</strong>(공황적 졸속) · <strong>경계</strong>(최적). 목표는 회피와 졸속 사이의 ‘경계’ 상태다.</p>
+        </div>
+        <div class="card amber">
+          <span class="kicker">기제 8 · 생각의 공회전</span>
+          <h3>반추 (rumination)</h3>
+          <p><strong>증상:</strong> 같은 생각을 답 없이 돈다. ‘생각 중’인 것 같지만 문제해결로 이어지지 않는다.</p>
+          <p style="margin-top:6px;"><strong>이론:</strong> Nolen-Hoeksema의 반응양식 이론 — 반추는 문제해결을 흉내 내지만 실제로는 우울·불안을 키운다. <strong>반추(왜·만약)와 성찰적 사고(무엇을·어떻게)</strong>를 구분하는 게 첫걸음.</p>
+        </div>
+      </div>
+
+      <div class="callout violet">
+        <strong>공통 분모:</strong> 위 8가지의 밑바탕엔 <strong>“미루기 = 감정 조절”</strong>(Sirois &amp; Pychyl)이 깔려 있다.
+        결정을 미루는 동안에는 불안이 잠깐 낮아진다 — 그래서 미루기는 ‘게으름’이 아니라 <strong>단기 진정·장기 악화의 루프</strong>다. 끊는 법은 ‘방법’ 탭에.
+      </div>
+
+      <h3 style="margin:22px 0 10px;">언제 ‘성격’이 아니라 ‘치료 대상’인가 — 임상 신호</h3>
+      <div class="callout bad">
+        <strong>아래는 진단이 아니라 ‘전문가를 만날 때’를 가리키는 선별 신호다.</strong> 결정을 못 하는 게 일시적 상태를 넘어
+        <strong>일상·수면·식사·관계·직무를 2주 이상 무너뜨리고</strong> 있다면, 이 도구함이 아니라 정신건강 전문가(정신건강의학과·임상심리)가 먼저다.
+      </div>
+      <div class="table-wrap" style="margin-top:14px;">
+        <table>
+          <thead><tr><th style="width:22%">상태</th><th style="width:42%">결정과의 관계 (선별 신호)</th><th>참고</th></tr></thead>
+          <tbody>
+            <tr><td><strong>범불안장애(GAD)</strong></td><td>통제 안 되는 과도한 걱정 + 불확실성 비관용 + 신체증상(긴장·불면). 결정 회피가 걱정의 일부.</td><td>인지행동치료(CBT)·약물치료 근거 풍부.</td></tr>
+            <tr><td><strong>강박(OCD) 경향</strong></td><td>병적 의심, ‘딱 맞는 느낌’ 추구, 반복 확인·안심 구하기. 결정이 끝나도 의심이 재발.</td><td>노출·반응방지(ERP)가 표준.</td></tr>
+            <tr><td><strong>우울</strong></td><td>‘우유부단’은 우울의 진단 증상 중 하나. 에너지·동기 저하로 결정 자체가 버겁다.</td><td>무가치감·흥미상실 동반 시 빠른 상담.</td></tr>
+            <tr><td><strong>ADHD 경향</strong></td><td>실행기능 곤란 — 시작·우선순위·마감이 어렵고, 분석 마비로 잘 빠진다.</td><td>성인 ADHD 평가는 전문가 영역.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warn">
+        <strong>안전:</strong> 무망감·자기비난이 심하거나 ‘사라지고 싶다’는 생각이 들면, 결정 문제보다 그게 먼저다 —
+        주변의 신뢰할 사람이나 전문기관에 즉시 연결하세요(한국: 자살예방상담 <strong>109</strong>, 정신건강 위기상담 <strong>1577-0199</strong>).
+      </div>
+    </section>
+
+    <!-- ===== 탭 2: 방법 ===== -->
+    <section class="tab-panel" id="panel-how">
+      <div class="panel-title"><span class="badge">🛠</span><h2>방법 — 근거 기반으로 빠져나오는 14가지</h2></div>
+      <div class="lead">
+        원칙은 하나다 — <strong>마음을 설득해 불안을 없앤 뒤 움직이려 하지 말 것.</strong> 그 순서는 영원히 오지 않는다.
+        대신 <strong>행동의 구조를 바꿔</strong> 결정을 가능하게 만든다(ACT의 핵심). 아래는 임상·의사결정 연구에서 온 방법들이다.
+      </div>
+
+      <div class="table-wrap" style="margin-bottom:16px;">
+        <table>
+          <thead><tr><th style="width:22%">방법</th><th style="width:40%">무엇 / 어떻게</th><th>어떤 기제에 듣나</th></tr></thead>
+          <tbody>
+            <tr><td><strong>탈파국화 (CBT)</strong></td><td>“최악이 뭔가 → 그 확률 → 그래도 회복 경로는?” 3단으로 공포를 현실 크기로 줄인다.</td><td>불확실성 비관용 · 예상 후회</td></tr>
+            <tr><td><strong>걱정 시간제</strong></td><td>하루 15분 ‘걱정 슬롯’에만 걱정을 적고, 그 밖에선 “슬롯으로 이월”. 걱정 총량이 준다(Borkovec).</td><td>반추 · 불확실성 비관용</td></tr>
+            <tr><td><strong>가치 기반 전념행동 (ACT)</strong></td><td>‘옳은 선택’이 아니라 ‘내 가치에 맞는 선택’으로 기준을 바꾸고, 불안을 데리고 행동한다.</td><td>접근–회피 · 완벽주의</td></tr>
+            <tr><td><strong>인지적 탈융합 (ACT)</strong></td><td>“나는 실패할 거야”를 “나는 ‘실패할 거야’라는 생각을 한다”로 한 칸 띄운다. 생각 ≠ 사실.</td><td>반추 · 완벽주의</td></tr>
+            <tr><td><strong>행동 활성화</strong></td><td>동기가 행동을 만드는 게 아니라 행동이 동기를 만든다 — 가장 작은 다음 행동 1개부터.</td><td>회피 · 우울형 무기력</td></tr>
+            <tr><td><strong>불확실성 노출</strong></td><td>결과를 100% 통제 못 하는 작은 행동을 일부러 한다(답 안 올 수도 있는 메시지 등). ‘모름’ 견디기 훈련.</td><td>불확실성 비관용</td></tr>
+            <tr><td><strong>실행의도 (if-then)</strong></td><td>“만약 X면 Y한다” 형식으로 미리 정한다. 메타분석 효과크기 d≈0.65로 실행률을 크게 올린다(Gollwitzer).</td><td>미루기 · 회피</td></tr>
+            <tr><td><strong>WOOP</strong></td><td>소망–결과–장애물–계획. 긍정 상상만 하면 동기가 새고, 장애물·if-then과 묶으면 연료가 된다(Oettingen).</td><td>미루기 · 분석 마비</td></tr>
+            <tr><td><strong>충분주의 규칙 (satisficing)</strong></td><td>‘이 정도면 충분’의 기준을 <strong>미리</strong> 숫자로 정하고, 충족되면 탐색을 멈춘다.</td><td>극대화 성향 · 완벽주의</td></tr>
+            <tr><td><strong>10-10-10</strong></td><td>이 선택, 10분 뒤·10개월 뒤·10년 뒤 어떻게 느낄까? 시간축을 늘리면 단기 불안이 작아진다(S. Welch).</td><td>예상 후회 · 불확실성</td></tr>
+            <tr><td><strong>프리모템 (pre-mortem)</strong></td><td>“1년 뒤 실패했다 — 왜?”를 먼저 상상해 위험을 미리 꺼내고 대비책을 짠다(G. Klein).</td><td>완벽주의 · 불확실성</td></tr>
+            <tr><td><strong>되돌릴 수 있나? (two-way door)</strong></td><td>가역적 결정은 빠르게, 비가역적 결정만 신중히. 대부분의 결정은 ‘양방향 문’이다(Bezos).</td><td>분석 마비 · 완벽주의</td></tr>
+            <tr><td><strong>바깥 시야 (outside view)</strong></td><td>“나 같은 상황의 사람들은 보통 어떻게 됐나(base rate)?”로 내 사례의 과대·과소 추정을 교정(Kahneman).</td><td>불확실성 · 반추</td></tr>
+            <tr><td><strong>동전 던지기 직감 테스트</strong></td><td>동전을 던지고 ‘나온 면에 실망/안도하는지’를 본다. 결과가 아니라 <strong>내 반응</strong>이 직감을 알려준다.</td><td>접근–접근 교착</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card green">
+          <span class="kicker">조합 처방 · 분석 마비형</span>
+          <h3>정보를 끊고 행동으로 교체</h3>
+          <ul class="list green">
+            <li><strong>읽기 금지선:</strong> “이 정보가 결정을 바꾸나?” 아니면 안 본다.</li>
+            <li><strong>충분 기준 선결정</strong> + <strong>마감(D-day)</strong>으로 외부에서 닫는다.</li>
+            <li>불안해서 더 알아보고 싶을 때 → <strong>다음 행동 1개</strong>로 교체(행동 활성화).</li>
+          </ul>
+        </div>
+        <div class="card green">
+          <span class="kicker">조합 처방 · 불안·반추형</span>
+          <h3>모름을 견디는 근육 키우기</h3>
+          <ul class="list green">
+            <li><strong>걱정 시간제</strong>로 반추를 가둔다.</li>
+            <li><strong>탈파국화</strong>로 공포를 측정 가능/순수 운으로 쪼갠다.</li>
+            <li><strong>불확실성 노출</strong>을 작게 반복 — ‘모름’에 익숙해진다.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout good">
+        <strong>한 줄:</strong> 어떤 방법이든 공통 효과는 <strong>“결정을 느낌이 아니라 구조(기준·마감·증인)에 맡기는 것”</strong>이다.
+        구조가 판정하면, 마음이 준비될 때까지 기다릴 필요가 없어진다. 아래 ‘정리 도구’가 그 구조를 만들어 준다.
+      </div>
+    </section>
+
+    <!-- ===== 탭 3: 정리 도구 ===== -->
+    <section class="tab-panel" id="panel-tools">
+      <div class="panel-title"><span class="badge">📝</span><h2>생각 정리 도구 — 머릿속을 종이로 꺼내기</h2></div>
+      <div class="lead">
+        결정 마비의 절반은 <strong>머릿속에서만 굴리기</strong> 때문이다. 6개 도구에 한 줄씩만 적어도 생각이 바깥으로 나와 작아진다.
+        자동 저장되고, <strong>💾 .txt로 내보내기</strong>로 한 파일에 모인다 — 나중에 다시 보거나 누군가(또는 클로드)에게 보여줄 수 있다.
+      </div>
+
+      <div id="wsRoot"></div>
+
+      <div class="btn-row">
+        <button type="button" class="btn primary" id="wsExportBtn">💾 .txt로 내보내기</button>
+        <button type="button" class="btn ghost" id="wsResetBtn">초기화</button>
+        <span class="save-state" id="wsSaveState">자동저장: 준비</span>
+      </div>
+      <div class="callout">
+        <strong>쓰는 순서 추천:</strong> 막막하면 <strong>A(명료화) → B(공포 분해) → E(충분 기준) → F(if-then)</strong> 순서가 가장 빠르게 결정을 닫는다.
+        C(프리모템)·D(10-10-10)는 큰 결정에서 더 유용하다.
+      </div>
+    </section>
+
+    <!-- ===== 탭 4: 내 유형 ===== -->
+    <section class="tab-panel" id="panel-quiz">
+      <div class="panel-title"><span class="badge">🧭</span><h2>자가점검 — 내 결정 마비는 어떤 유형인가</h2></div>
+      <div class="lead">
+        10문항이다. <strong>진단이 아니라 ‘어느 기제·도구부터 쓸지’를 가리키는 나침반</strong>이다. 가장 가까운 보기를 고르면(다시 누르면 해제),
+        <strong>🧭 결과 보기</strong>가 5개 유형의 비중과 <strong>당신에게 맞는 방법·도구</strong>를 알려준다. <strong>💾 저장</strong>으로 .txt 내보내기.
+      </div>
+
+      <div id="quizRoot"></div>
+
+      <div class="btn-row">
+        <button type="button" class="btn violet" id="quizAnalyzeBtn">🧭 결과 보기</button>
+        <button type="button" class="btn primary" id="quizExportBtn">💾 저장하기 (.txt)</button>
+        <button type="button" class="btn ghost" id="quizResetBtn">초기화</button>
+        <span class="save-state" id="quizSaveState">자동저장: 준비</span>
+      </div>
+
+      <div id="quizResult">
+        <div class="card violet">
+          <span class="kicker">유형 분포 — 추정이지 진단이 아니다</span>
+          <div id="quizMeters"></div>
+          <div id="quizText" style="margin-top:12px;"></div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <strong>주의:</strong> 이 점검은 ‘성향의 비중’을 보여줄 뿐 임상 진단이 아니다. ‘왜 못 하나’ 탭의 임상 신호에 해당하면
+        도구보다 전문가 상담이 먼저다.
+      </div>
+    </section>
+
+    <p class="footer-note">
+      decision-paralysis-toolkit.html · 결정을 못 하는 사람을 위한 일반 도구함 · 작성 2026-06-15 KST ·
+      이 문서는 심리교육 자료이며 의학적 진단·치료·상담을 대체하지 않는다. 답안은 이 브라우저 localStorage에만 저장되고 서버로 전송되지 않는다.
+      이론 출처: Schwartz(2004) · Iyengar &amp; Lepper(2000) · Simon(1956) · Dugas/Freeston(1998) · Lewin · Loomes &amp; Sugden(1982) · Gilovich &amp; Medvec(1995) · Hewitt &amp; Flett · Janis &amp; Mann(1977) · Nolen-Hoeksema · Sirois &amp; Pychyl · Gollwitzer &amp; Sheeran(2006) · Oettingen(WOOP) · Klein(pre-mortem) · Kahneman(outside view) · Welch(10-10-10).
+    </p>
+
+  </main>
+
+
+  <script id="wsScript">
+  (function () {
+    var KEY = "paralysis-worksheets-v1";
+    var WS = [
+      { g: "도구 A · 결정 명료화", items: [
+        { id: "A1", q: "결정해야 할 것을 한 문장으로 (마감일이 있으면 함께)" },
+        { id: "A2", q: "선택지를 모두 적기 — ‘안 하기 / 미루기’도 하나의 선택지다" },
+        { id: "A3", q: "이 결정에서 진짜 중요한 기준 3개 (내 가치)" },
+        { id: "A4", q: "각 선택지를 그 기준으로 보면 — 무엇이 이기나?" }
+      ]},
+      { g: "도구 B · 공포 분해기", items: [
+        { id: "B1", q: "지금 가장 큰 두려움을 한 문장으로" },
+        { id: "B2", q: "그중 ‘측정·준비 가능한 부분’ (점수·금액·연습·정보로 줄일 수 있는 것)" },
+        { id: "B3", q: "그중 ‘순수한 운’ (내가 못 바꾸는 것)" },
+        { id: "B4", q: "준비 가능한 부분의 다음 행동 1개 (15분짜리)" }
+      ]},
+      { g: "도구 C · 프리모템", items: [
+        { id: "C1", q: "1년 뒤 — 이 결정이 ‘실패’했다고 상상하라. 무엇이 잘못됐나?" },
+        { id: "C2", q: "그 실패를 막을 오늘의 조치 1~2개" },
+        { id: "C3", q: "그래도 실패하면 — 회수 가능한 것 (플랜B · 배운 것)" }
+      ]},
+      { g: "도구 D · 10-10-10", items: [
+        { id: "D1", q: "이 선택, 10분 뒤 어떤 기분일까?" },
+        { id: "D2", q: "10개월 뒤에는?" },
+        { id: "D3", q: "10년 뒤에는? (보통 여기서 답이 선명해진다)" }
+      ]},
+      { g: "도구 E · ‘충분’의 기준 선결정", items: [
+        { id: "E1", q: "‘이 정도면 충분하다’의 기준을 미리 못 박기 — 가능한 한 숫자로" },
+        { id: "E2", q: "그 기준을 충족하면 ‘더 알아보지 않겠다’고 약속하는가? (예/아니오 + 이유)" }
+      ]},
+      { g: "도구 F · if-then 실행의도", items: [
+        { id: "F1", q: "“만약 ___(상황·시점)이면, 나는 ___(행동)을 한다” — 한 문장으로" },
+        { id: "F2", q: "결정을 내릴 마감일(D-day)과, 알릴 증인 1명" }
+      ]}
+    ];
+
+    var state = {};
+    try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { state = {}; }
+    var saveEl = document.getElementById("wsSaveState");
+    function persist() {
+      try { localStorage.setItem(KEY, JSON.stringify(state)); if (saveEl) { saveEl.textContent = "자동저장: 완료 " + new Date().toLocaleTimeString("ko-KR"); } }
+      catch (e) { if (saveEl) { saveEl.textContent = "자동저장: 실패(브라우저 설정 확인)"; } }
+    }
+
+    var root = document.getElementById("wsRoot");
+    WS.forEach(function (grp) {
+      var card = document.createElement("div");
+      card.className = "ws-card";
+      var tt = document.createElement("div");
+      tt.className = "ws-title";
+      var chip = document.createElement("span");
+      chip.className = "gchip";
+      chip.textContent = grp.g;
+      tt.appendChild(chip);
+      card.appendChild(tt);
+      grp.items.forEach(function (it) {
+        var q = document.createElement("div");
+        q.className = "ws-q";
+        q.textContent = it.q;
+        card.appendChild(q);
+        var ta = document.createElement("textarea");
+        ta.placeholder = "한 줄이라도 — 머릿속에서 꺼내는 게 핵심";
+        ta.value = (state[it.id] && state[it.id].t) || "";
+        ta.addEventListener("input", function () {
+          state[it.id] = { t: ta.value };
+          var any = false;
+          grp.items.forEach(function (x) { if (state[x.id] && state[x.id].t && state[x.id].t.trim()) { any = true; } });
+          card.classList.toggle("answered", any);
+          persist();
+        });
+        card.appendChild(ta);
+      });
+      // 초기 answered 표시
+      var any0 = false;
+      grp.items.forEach(function (x) { if (state[x.id] && state[x.id].t && state[x.id].t.trim()) { any0 = true; } });
+      card.classList.toggle("answered", any0);
+      root.appendChild(card);
+    });
+
+    var exportBtn = document.getElementById("wsExportBtn");
+    if (exportBtn) {
+      exportBtn.addEventListener("click", function () {
+        var L = [];
+        var answered = 0;
+        L.push("결정 정리 워크시트 — 생각을 종이로 꺼낸 기록");
+        L.push("내보낸 시각: " + new Date().toLocaleString("ko-KR"));
+        L.push("");
+        WS.forEach(function (grp) {
+          L.push("===== " + grp.g + " =====");
+          grp.items.forEach(function (it) {
+            var t = (state[it.id] && state[it.id].t || "").trim();
+            if (t) { answered++; }
+            L.push("Q. " + it.q);
+            L.push("   " + (t || "(미응답)"));
+          });
+          L.push("");
+        });
+        L.push("— 응답 " + answered + "개 —");
+        var blob = new Blob([L.join("\n")], { type: "text/plain;charset=utf-8" });
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "decision-worksheet-" + new Date().toISOString().slice(0, 10) + ".txt";
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        URL.revokeObjectURL(a.href);
+      });
+    }
+    var resetBtn = document.getElementById("wsResetBtn");
+    if (resetBtn) {
+      resetBtn.addEventListener("click", function () {
+        if (!confirm("워크시트 답을 모두 초기화할까요? (내보낸 .txt는 남습니다)")) { return; }
+        state = {}; try { localStorage.removeItem(KEY); } catch (e) {}
+        root.innerHTML = ""; location.reload();
+      });
+    }
+  })();
+  </script>
+
+  <script id="quizScript">
+  (function () {
+    var KEY = "paralysis-quiz-v1";
+    var DIMS = { analysis: "분석 마비형", uncertainty: "불확실성 비관용형", regret: "후회 공포형", perfection: "완벽주의형", avoidance: "회피·미루기형" };
+    var Q = [
+      { id: "q1", q: "결정 앞에서 가장 먼저 하는 행동은?", o: [
+        { t: "정보를 더 찾는다", d: "analysis" }, { t: "최악의 시나리오를 상상한다", d: "uncertainty" },
+        { t: "나중에 후회할 장면을 떠올린다", d: "regret" }, { t: "완벽한 답을 찾으려 한다", d: "perfection" }, { t: "생각을 미룬다 / 딴 일을 한다", d: "avoidance" } ] },
+      { id: "q2", q: "결정이 막힐 때 머릿속은?", o: [
+        { t: "‘이 정보도 봐야 하는데’", d: "analysis" }, { t: "‘만약 …하면 어떡하지’가 연쇄로", d: "uncertainty" },
+        { t: "‘잘못 고르면 후회할 텐데’", d: "regret" }, { t: "‘아직 충분하지 않아’", d: "perfection" }, { t: "‘나중에 생각하자’", d: "avoidance" } ] },
+      { id: "q3", q: "선택지가 많아지면?", o: [
+        { t: "다 비교하느라 더 못 고른다", d: "analysis" }, { t: "불안이 커진다", d: "uncertainty" },
+        { t: "안 고른 것들이 아까워진다", d: "regret" }, { t: "최선을 못 찾을까 봐 멈춘다", d: "perfection" }, { t: "아예 미뤄버린다", d: "avoidance" } ] },
+      { id: "q4", q: "결정을 내린 뒤 나는?", o: [
+        { t: "‘더 알아볼걸’ 싶다", d: "analysis" }, { t: "결과가 불확실해 계속 불안하다", d: "uncertainty" },
+        { t: "안 고른 쪽을 곱씹는다", d: "regret" }, { t: "더 나은 선택이 있었을까 본다", d: "perfection" }, { t: "결정 자체를 잘 안 내린다", d: "avoidance" } ] },
+      { id: "q5", q: "‘충분히 알아봤다’는 느낌은?", o: [
+        { t: "거의 든 적 없다 — 늘 더 있다", d: "analysis" }, { t: "확실해지기 전엔 안 든다", d: "uncertainty" },
+        { t: "후회 안 할 확신이 있어야 든다", d: "regret" }, { t: "완벽해야 든다", d: "perfection" }, { t: "그 단계까지 잘 안 간다", d: "avoidance" } ] },
+      { id: "q6", q: "마감이 다가오면?", o: [
+        { t: "막판까지 자료를 더 본다", d: "analysis" }, { t: "불안이 치솟는다", d: "uncertainty" },
+        { t: "‘틀리면 어쩌지’ 공포가 커진다", d: "regret" }, { t: "완성도가 부족해 못 낸다", d: "perfection" }, { t: "벼락치기 / 회피로 도망", d: "avoidance" } ] },
+      { id: "q7", q: "남이 “그냥 골라”라고 하면?", o: [
+        { t: "‘근거가 더 필요해’", d: "analysis" }, { t: "‘잘못되면 어쩌라고’", d: "uncertainty" },
+        { t: "‘후회하면 네가 책임지냐’", d: "regret" }, { t: "‘대충은 못 해’", d: "perfection" }, { t: "‘이따 할게’", d: "avoidance" } ] },
+      { id: "q8", q: "결정 못 하는 나를 볼 때 드는 생각?", o: [
+        { t: "정보가 아직 부족해서야", d: "analysis" }, { t: "세상이 너무 불확실해서야", d: "uncertainty" },
+        { t: "후회가 무서워서야", d: "regret" }, { t: "기준이 높아서야", d: "perfection" }, { t: "그냥 마주하기 싫어서야", d: "avoidance" } ] },
+      { id: "q9", q: "되돌릴 수 있는 작은 결정도?", o: [
+        { t: "그래도 비교를 오래 한다", d: "analysis" }, { t: "잘못될까 망설인다", d: "uncertainty" },
+        { t: "사소한 것도 후회할까 본다", d: "regret" }, { t: "최선이 아니면 신경 쓰인다", d: "perfection" }, { t: "그냥 안 정하고 둔다", d: "avoidance" } ] },
+      { id: "q10", q: "결정이 끝난 뒤 가장 원하는 건?", o: [
+        { t: "내가 다 알아봤다는 확인", d: "analysis" }, { t: "결과가 확실하다는 보장", d: "uncertainty" },
+        { t: "후회하지 않으리란 안심", d: "regret" }, { t: "이게 최선이었다는 증명", d: "perfection" }, { t: "그냥 안 정해도 되는 것", d: "avoidance" } ] }
+    ];
+    // 유형별 추천 (방법 + 정리도구)
+    var REC = {
+      analysis: { m: "정보 단식(‘이 정보가 결정을 바꾸나?’) · 충분주의 규칙 · 되돌릴 수 있나(two-way door) · 행동 활성화", t: "도구 E(충분 기준) → 도구 A(명료화) → 도구 F(if-then)" },
+      uncertainty: { m: "탈파국화 · 걱정 시간제 · 불확실성 노출 · 바깥 시야(base rate)", t: "도구 B(공포 분해) → 도구 C(프리모템)" },
+      regret: { m: "10-10-10 · 후회 비대칭 인식(‘안 한 후회가 더 크다’) · 동전 던지기 직감 테스트", t: "도구 D(10-10-10) → 도구 C(프리모템)" },
+      perfection: { m: "충분주의 규칙 · 인지적 탈융합 · 되돌릴 수 있나 · 가치 기반 전념행동", t: "도구 E(충분 기준) → 도구 A(명료화)" },
+      avoidance: { m: "행동 활성화(가장 작은 다음 행동) · 실행의도(if-then)·WOOP · 마감·증인", t: "도구 F(if-then) → 도구 A(명료화)" }
+    };
+
+    var state = {};
+    try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { state = {}; }
+    var saveEl = document.getElementById("quizSaveState");
+    function persist() {
+      try { localStorage.setItem(KEY, JSON.stringify(state)); if (saveEl) { saveEl.textContent = "자동저장: 완료 " + new Date().toLocaleTimeString("ko-KR"); } }
+      catch (e) { if (saveEl) { saveEl.textContent = "자동저장: 실패"; } }
+    }
+    function ans(id) { return (typeof state[id] === "number") ? state[id] : -1; }
+
+    var root = document.getElementById("quizRoot");
+    Q.forEach(function (item, idx) {
+      var card = document.createElement("div");
+      card.className = "q-card";
+      var qt = document.createElement("div");
+      qt.className = "q-text";
+      qt.textContent = "Q" + (idx + 1) + ". " + item.q;
+      card.appendChild(qt);
+      var opts = document.createElement("div");
+      opts.className = "q-opts";
+      item.o.forEach(function (op, oi) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "opt-btn" + (ans(item.id) === oi ? " sel" : "");
+        b.textContent = op.t;
+        b.addEventListener("click", function () {
+          state[item.id] = (ans(item.id) === oi) ? -1 : oi;
+          var bs = opts.querySelectorAll(".opt-btn");
+          for (var k = 0; k < bs.length; k++) { bs[k].classList.toggle("sel", k === state[item.id]); }
+          persist();
+        });
+        opts.appendChild(b);
+      });
+      card.appendChild(opts);
+      root.appendChild(card);
+    });
+
+    function tally() {
+      var sum = { analysis: 0, uncertainty: 0, regret: 0, perfection: 0, avoidance: 0 };
+      var answered = 0;
+      Q.forEach(function (item) {
+        var a = ans(item.id);
+        if (a >= 0 && item.o[a]) { sum[item.o[a].d]++; answered++; }
+      });
+      return { sum: sum, answered: answered };
+    }
+    function ranked(sum) {
+      return Object.keys(sum).sort(function (a, b) { return sum[b] - sum[a]; });
+    }
+
+    function renderResult() {
+      var res = tally();
+      var panel = document.getElementById("quizResult");
+      panel.className = "show";
+      var order = ranked(res.sum);
+      var meters = document.getElementById("quizMeters");
+      meters.innerHTML = "";
+      order.forEach(function (d) {
+        var pct = res.answered ? Math.round(res.sum[d] / Q.length * 100) : 0;
+        var row = document.createElement("div");
+        row.className = "meter-row";
+        row.innerHTML = "<span class=\"meter-label\">" + DIMS[d] + "</span><div class=\"meter-track\"><div class=\"meter-fill\" style=\"background:var(--violet);width:" + Math.max(pct, 6) + "%\">" + res.sum[d] + "/" + Q.length + "</div></div>";
+        meters.appendChild(row);
+      });
+      var txt = document.getElementById("quizText");
+      txt.innerHTML = "";
+      function P(html) { var p = document.createElement("p"); p.style.marginBottom = "8px"; p.innerHTML = html; txt.appendChild(p); }
+      if (!res.answered) { P("아직 응답이 없습니다 — 보기를 골라 주세요."); return; }
+      var top = order[0], second = order[1];
+      P("<strong>주 유형: " + DIMS[top] + "</strong>" + (res.sum[second] === res.sum[top] ? " (+ " + DIMS[second] + " 동률)" : " · 다음: " + DIMS[second]) + " <span style=\"color:var(--dim)\">(응답 " + res.answered + "/" + Q.length + ")</span>");
+      P("<strong>당신에게 맞는 방법:</strong> " + REC[top].m);
+      P("<strong>먼저 쓸 정리 도구:</strong> " + REC[top].t + " — ‘정리 도구’ 탭에서.");
+      if (res.sum[second] > 0 && second !== top) {
+        P("<span style=\"color:var(--dim)\">보조(" + DIMS[second] + "): " + REC[second].m + "</span>");
+      }
+      P("<span style=\"color:var(--dim)\">이건 성향 비중 추정이지 진단이 아니다. ‘왜 못 하나’ 탭의 임상 신호에 해당하면 전문가 상담이 먼저다.</span>");
+    }
+
+    var analyzeBtn = document.getElementById("quizAnalyzeBtn");
+    if (analyzeBtn) { analyzeBtn.addEventListener("click", renderResult); }
+
+    var exportBtn = document.getElementById("quizExportBtn");
+    if (exportBtn) {
+      exportBtn.addEventListener("click", function () {
+        var res = tally();
+        var order = ranked(res.sum);
+        var L = [];
+        L.push("결정 마비 자가점검 — 결과");
+        L.push("내보낸 시각: " + new Date().toLocaleString("ko-KR"));
+        L.push("");
+        L.push("===== 응답 =====");
+        Q.forEach(function (item, idx) {
+          var a = ans(item.id);
+          L.push("Q" + (idx + 1) + ". " + item.q);
+          L.push("   " + (a >= 0 && item.o[a] ? item.o[a].t + " [" + DIMS[item.o[a].d] + "]" : "(미응답)"));
+        });
+        L.push("");
+        L.push("===== 유형 분포 =====");
+        order.forEach(function (d) { L.push(DIMS[d] + ": " + res.sum[d] + "/" + Q.length); });
+        if (res.answered) {
+          var top = order[0];
+          L.push("");
+          L.push("주 유형: " + DIMS[top]);
+          L.push("맞는 방법: " + REC[top].m);
+          L.push("먼저 쓸 도구: " + REC[top].t);
+        }
+        L.push("");
+        L.push("— 응답 " + res.answered + "/" + Q.length + " —");
+        var blob = new Blob([L.join("\n")], { type: "text/plain;charset=utf-8" });
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "decision-paralysis-type-" + new Date().toISOString().slice(0, 10) + ".txt";
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        URL.revokeObjectURL(a.href);
+      });
+    }
+    var resetBtn = document.getElementById("quizResetBtn");
+    if (resetBtn) {
+      resetBtn.addEventListener("click", function () {
+        if (!confirm("자가점검 답을 모두 초기화할까요?")) { return; }
+        state = {}; try { localStorage.removeItem(KEY); } catch (e) {}
+        root.innerHTML = ""; location.reload();
+      });
+    }
+  })();
+  </script>
+
+  <script id="tabScript">
+  (function () {
+    var btns = document.querySelectorAll(".tab-btn");
+    var panels = document.querySelectorAll(".tab-panel");
+    function activate(name) {
+      btns.forEach(function (b) {
+        var on = b.getAttribute("data-tab") === name;
+        b.classList.toggle("active", on);
+        b.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      panels.forEach(function (p) { p.classList.toggle("active", p.id === "panel-" + name); });
+      try { localStorage.setItem("paralysis-active-tab", name); } catch (e) {}
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    btns.forEach(function (b) { b.addEventListener("click", function () { activate(b.getAttribute("data-tab")); }); });
+    var saved = "why";
+    try { saved = localStorage.getItem("paralysis-active-tab") || "why"; } catch (e) {}
+    activate(saved);
+  })();
+  </script>
+</body>
+</html>
