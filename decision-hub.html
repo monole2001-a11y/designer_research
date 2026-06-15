@@ -47,6 +47,7 @@
     .tool.c-mycase { border-left-color: var(--violet); }
     .tool.c-journal { border-left-color: var(--amber); }
     .tool.c-gate { border-left-color: var(--green); }
+    .tool.c-intake { border-left-color: var(--blue); }
     .tool-top { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
     .tool-title { font-size: 16px; font-weight: 850; color: var(--text); }
     .tool-emoji { font-size: 18px; }
@@ -78,6 +79,7 @@
       <div class="route"><span class="q">결정이 막막하고 어디서 손대야 할지 모르겠다</span><a class="go" href="decision-paralysis-mycase.html">내 맞춤판 →</a></div>
       <div class="route"><span class="q">마음 상태를 매주 점검하고 추세를 보고 싶다</span><a class="go" href="decision-qa-only.html">문답 전용 →</a></div>
       <div class="route"><span class="q">“왜 결정을 못 하나” 이론·방법이 궁금하다</span><a class="go" href="decision-paralysis-toolkit.html">일반 도구함 →</a></div>
+      <div class="route"><span class="q">내 경력·포트폴리오·재정 자료를 정리해 클로드에게 줄 거다</span><a class="go" href="decision-evidence-intake.html">자료 입력 →</a></div>
       <div class="route"><span class="q">이제 행동할 차례 — 메일·메시지 문구가 필요하다</span><a class="go" href="decision-gate-scripts.html">게이트 문구 →</a></div>
       <div class="route"><span class="q">매일 흔들리는 마음을 한 줄씩 기록하고 싶다</span><a class="go" href="decision-journal.html">결정 일지 →</a></div>
       <div class="route"><span class="q">전체 분석(상황·심리·기원·사각지대)을 다시 보고 싶다</span><a class="go" href="decision-psychology-support-report.html">전체 보고서 →</a></div>
@@ -104,6 +106,11 @@
         <div class="tool-top"><span class="tool-emoji">🧠</span><span class="tool-title">결정장애 도구함 (일반)</span><span class="badge" id="b-toolkit">—</span></div>
         <div class="tool-desc">결정을 못 하는 사람 누구나용 — 8가지 심리 기제·14가지 방법·6개 정리 도구·내 유형 자가점검.</div>
         <div class="tool-foot"><span class="open">열기 →</span><span>decision-paralysis-toolkit.html</span></div>
+      </a>
+      <a class="tool c-intake" href="decision-evidence-intake.html">
+        <div class="tool-top"><span class="tool-emoji">🗂️</span><span class="tool-title">자료 입력</span><span class="badge" id="b-intake">—</span></div>
+        <div class="tool-desc">경력·포트폴리오·재정 자료를 칸에 채우고 한 번에 .txt로 내보내 클로드에게 — 분석을 추정→실측으로 바꾸는 입력구.</div>
+        <div class="tool-foot"><span class="open">열기 →</span><span>decision-evidence-intake.html</span></div>
       </a>
       <a class="tool c-gate" href="decision-gate-scripts.html">
         <div class="tool-top"><span class="tool-emoji">✉️</span><span class="tool-title">게이트 실행 문구</span><span class="badge on">행동</span></div>
@@ -150,6 +157,9 @@
     Object.keys(pq).forEach(function (id) { if (typeof pq[id] === "number" && pq[id] >= 0) { pqN++; } });
     // 일지 (decision-journal-v1)
     var jr = arr("decision-journal-v1");
+    // 자료 입력 (evidence-intake-v1)
+    var iv = obj("evidence-intake-v1"); var ivN = 0;
+    Object.keys(iv).forEach(function (id) { if (iv[id] && (""+iv[id]).trim()) { ivN++; } });
 
     // 전체 보고서 = 점검+심층 합산
     set("b-report", (ckN + dpN > 0) ? ("문답 " + Math.min(ckN, 20) + "/20 · 심층 " + Math.min(dpN, 25) + "/25") : "시작 전", ckN + dpN > 0);
@@ -157,6 +167,7 @@
     set("b-mycase", mcN > 0 ? ("워크북 " + mcN + "칸 편집") : "초안 상태", mcN > 0);
     set("b-toolkit", (pwN > 0 || pqN > 0) ? ("정리도구 " + pwN + " · 유형 " + Math.min(pqN, 10) + "/10") : "시작 전", pwN > 0 || pqN > 0);
     set("b-journal", jr.length ? (jr.length + "개 기록") : "기록 없음", jr.length > 0);
+    set("b-intake", ivN > 0 ? ("입력 " + ivN + "/15") : "입력 전", ivN > 0);
   })();
   </script>
 </body>

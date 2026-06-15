@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>자료 입력 — 찾은 걸 칸에 채우고 한 번에 보내기</title>
+  <style>
+    :root {
+      --bg: #090b10; --surface: #111722; --surface2: #182131; --surface3: #202b3d;
+      --border: #2b3749; --text: #eef4fb; --muted: #a8b3c3; --dim: #728095;
+      --blue: #83b8ff; --green: #62d6a7; --amber: #ffc464; --red: #ff7474;
+      --violet: #b6a0ff; --cyan: #5bd7d1; --ink: #06111e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: "Pretendard", "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.7; padding-bottom: 96px; }
+    a { color: var(--blue); text-decoration: none; }
+
+    .hero { background: linear-gradient(180deg, rgba(17,23,34,0.97), rgba(9,11,16,0.98)), radial-gradient(circle at 82% 14%, rgba(131,184,255,0.16), transparent 38%); border-bottom: 1px solid var(--border); padding: 40px 18px 24px; }
+    .hero-inner, .container { max-width: 760px; margin: 0 auto; }
+    .eyebrow { display: inline-flex; align-items: center; border: 1px solid rgba(131,184,255,0.34); background: rgba(131,184,255,0.10); color: var(--blue); border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 800; margin-bottom: 14px; }
+    h1 { font-size: clamp(22px, 5vw, 32px); line-height: 1.24; font-weight: 880; margin-bottom: 12px; }
+    .hero p { color: var(--muted); font-size: 15px; margin-bottom: 14px; }
+    .meta { display: flex; flex-wrap: wrap; gap: 9px; }
+    .pill { display: inline-flex; align-items: center; border: 1px solid var(--border); background: rgba(255,255,255,0.035); color: var(--muted); border-radius: 999px; padding: 6px 11px; font-size: 12px; font-weight: 700; }
+
+    .container { padding: 22px 18px 0; }
+    .howto { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--blue); border-radius: 8px; padding: 15px 17px; color: var(--text); font-size: 14.5px; margin-bottom: 18px; }
+    .howto strong { color: var(--text); }
+
+    .grp { display: flex; align-items: center; gap: 9px; margin: 24px 0 12px; }
+    .grp h2 { font-size: 16px; font-weight: 850; }
+    .grp .gtag { font-size: 11px; font-weight: 850; border-radius: 999px; padding: 3px 10px; }
+    .gtag.p1 { background: rgba(255,116,116,0.16); color: var(--red); }
+    .gtag.p2 { background: rgba(255,196,100,0.16); color: var(--amber); }
+    .gtag.p3 { background: rgba(98,214,167,0.16); color: var(--green); }
+    .gtag.p4 { background: rgba(131,184,255,0.14); color: var(--blue); }
+
+    .item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 15px 16px; margin-bottom: 12px; position: relative; }
+    .item.done { border-left: 3px solid var(--green); }
+    .item.done::after { content: "✓"; position: absolute; top: 13px; right: 14px; color: var(--green); font-weight: 900; font-size: 13px; width: 20px; height: 20px; border-radius: 999px; background: rgba(98,214,167,0.14); display: flex; align-items: center; justify-content: center; }
+    .q { color: var(--text); font-size: 14.5px; font-weight: 820; margin-bottom: 5px; padding-right: 26px; }
+    .hint { color: var(--dim); font-size: 12.5px; line-height: 1.55; margin-bottom: 9px; }
+    textarea { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; padding: 11px 13px; font-family: inherit; line-height: 1.65; min-height: 60px; resize: vertical; }
+    textarea:focus { outline: none; border-color: rgba(131,184,255,0.6); }
+
+    .actionbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: rgba(9,11,16,0.95); backdrop-filter: blur(12px); border-top: 1px solid var(--border); padding: 12px 18px; }
+    .actionbar-inner { max-width: 760px; margin: 0 auto; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .btn { border: 1px solid var(--border); background: var(--surface2); color: var(--text); border-radius: 8px; padding: 11px 16px; font-size: 13.5px; font-weight: 850; cursor: pointer; font-family: inherit; }
+    .btn.primary { background: rgba(98,214,167,0.16); border-color: rgba(98,214,167,0.5); color: var(--green); }
+    .btn.ghost { color: var(--dim); }
+    .btn:hover { border-color: rgba(131,184,255,0.6); }
+    .prog { font-size: 12.5px; color: var(--muted); font-weight: 800; }
+    .prog .bar { display: inline-block; width: 90px; height: 7px; background: var(--surface3); border-radius: 999px; overflow: hidden; vertical-align: middle; margin-left: 6px; }
+    .prog .bar > div { height: 100%; background: var(--green); border-radius: 999px; }
+    .save-state { color: var(--dim); font-size: 11.5px; }
+
+    .footer-note { margin-top: 28px; border-top: 1px solid var(--border); padding-top: 18px; color: var(--dim); font-size: 12px; }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">자료 입력 · Evidence Intake</span>
+      <h1>찾은 자료를 칸에 채우고, 한 번에 내보내서 주세요</h1>
+      <p>
+        제가 분석을 ‘추정’에서 ‘실측’으로 바꾸려면 당신의 경력·포트폴리오·재정 자료가 필요합니다. 아래 칸을
+        <strong>찾는 대로 한 줄씩</strong> 채우면 자동 저장되고, 다 못 채워도 괜찮습니다. 끝나면 <strong>💾 내보내기</strong> →
+        그 .txt 하나를 저에게 주시면 됩니다.
+      </p>
+      <div class="meta">
+        <span class="pill">자동 저장 · 서버 전송 없음</span>
+        <a class="pill" href="decision-hub.html" style="color:var(--cyan);border-color:rgba(91,215,209,0.4);">← 도구 허브</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="howto">
+      <strong>쓰는 법:</strong> ① 형태는 자유 — 링크·캡처 설명·메모 아무거나, 한국어/영어 무관 · ② 모르면 “모름”, 아직이면 “아직”도 데이터 ·
+      ③ <strong>🔴 1·2·8번만 먼저</strong> 채워도 학위 적합성과 재정 게이트가 크게 닫힙니다.
+    </div>
+
+    <div id="intakeRoot"></div>
+
+    <p class="footer-note">
+      decision-evidence-intake.html · 자료 입력 폼 · 작성 2026-06-15 KST · 답은 이 브라우저 localStorage(evidence-intake-v1)에만 저장 ·
+      <a href="decision-hub.html">도구 허브</a> · <a href="decision-paralysis-mycase.html">내 맞춤판</a>
+    </p>
+  </main>
+
+  <div class="actionbar">
+    <div class="actionbar-inner">
+      <button type="button" class="btn primary" id="exportBtn">💾 내보내기 (클로드에게)</button>
+      <button type="button" class="btn ghost" id="resetBtn">초기화</button>
+      <span class="prog" id="prog">0/0<span class="bar"><div id="progBar" style="width:0%"></div></span></span>
+      <span class="save-state" id="saveState"></span>
+    </div>
+  </div>
+
+  <script id="intakeScript">
+  (function () {
+    var KEY = "evidence-intake-v1";
+    var ITEMS = [
+      { g: "🔴 최우선 — 학위 종류 적합성 & 포트폴리오", tag: "p1", id: "JD",
+        q: "1. 목표 직무 실제 채용공고 (5개까지)",
+        hint: "가고 싶은 회사·직무의 채용공고 링크나 ‘선호 배경’ 부분. MFA(작가·포트폴리오)가 많은지 MS-HCI/CS(연구·제품)가 많은지로 학위 종류 적합성을 판정합니다.",
+        ph: "예) Google Senior Product Designer — JD 링크 / 선호: BS/MS in HCI, design… \n(회사·직무·링크 또는 캡처 설명을 5개까지)" },
+      { g: "🔴 최우선 — 학위 종류 적합성 & 포트폴리오", tag: "p1", id: "P1",
+        q: "2-1. 대표 프로젝트 ① (삼성 AI UX 등)",
+        hint: "① 문제·내 역할·내 의사결정 ② 결과/임팩트(지표·출시·사용자 규모) ③ 공개 가능 여부(NDA·내부정보). 글 몇 줄이면 충분.",
+        ph: "프로젝트명: \n문제·내 역할·결정: \n결과·임팩트: \n공개 가능 여부: " },
+      { g: "🔴 최우선 — 학위 종류 적합성 & 포트폴리오", tag: "p1", id: "P2",
+        q: "2-2. 대표 프로젝트 ② (One UI Common 등)",
+        hint: "design system·governance·scale·cross-device 관점으로. 같은 3부 구조.",
+        ph: "프로젝트명: \n문제·내 역할·결정: \n결과·임팩트: \n공개 가능 여부: " },
+      { g: "🔴 최우선 — 학위 종류 적합성 & 포트폴리오", tag: "p1", id: "P3",
+        q: "2-3. 대표 프로젝트 ③ (UNIST UX Lab / MANIMO 등)",
+        hint: "리서치 질문·방법론·insight-to-design 연결 강조. 같은 3부 구조.",
+        ph: "프로젝트명: \n문제·내 역할·결정: \n결과·임팩트: \n공개 가능 여부: " },
+      { g: "🔴 최우선 — 학위 종류 적합성 & 포트폴리오", tag: "p1", id: "P4",
+        q: "2-4. 대표 프로젝트 ④ (더 있으면)",
+        hint: "추가 프로젝트가 있으면. 없으면 비워두세요.",
+        ph: "프로젝트명: \n문제·내 역할·결정: \n결과·임팩트: \n공개 가능 여부: " },
+      { g: "🔴 최우선 — 학위 종류 적합성 & 포트폴리오", tag: "p1", id: "PF",
+        q: "3. 현재 포트폴리오 상태",
+        hint: "있으면 링크, 없으면 ‘0%’. 외부 공개 가능한 케이스 스터디가 몇 개인지.",
+        ph: "예) 포트폴리오 사이트 없음(0%) / 또는 링크 + 공개 케이스 2개" },
+
+      { g: "🟠 경력 서사 차별화", tag: "p2", id: "C1",
+        q: "4. 직함·소속·연차",
+        hint: "정확한 조직명·직급·연차. 미국 시장에서 ‘레벨’ 해석에 쓰입니다.",
+        ph: "예) 삼성전자 Corporate Design Office / Interaction Designer / 8년차" },
+      { g: "🟠 경력 서사 차별화", tag: "p2", id: "C2",
+        q: "5. “세상에 없는 걸 만들고 싶다”의 구체 사례",
+        hint: "실제로 만들었거나 만들고 싶은 것 하나. 동기가 환상인지 진짜 끌림인지 가릅니다.",
+        ph: "예) AI 에이전트가 기기 간을 넘나드는 … 같은 구체적 장면" },
+      { g: "🟠 경력 서사 차별화", tag: "p2", id: "C3",
+        q: "6. 특허·수상·외부 발표·기고 목록",
+        hint: "이민(NIW/EB-1A)과 포트폴리오 신뢰도에 직결. 제목·연도·역할만이라도.",
+        ph: "예) 특허 OO건 / OO 어워드(2024) / 사내외 발표 …" },
+
+      { g: "🟡 재정 실측 (G1·G3)", tag: "p3", id: "F1",
+        q: "7. 출국 시점 손에 쥐는 총 현금",
+        hint: "보유 현금 + 퇴직금·정산금까지. 가능하면 ‘언제 얼마’ 월 단위.",
+        ph: "예) 현금 6,000만 + 퇴직금 ~1,000만, 9월 출국 시점 기준" },
+      { g: "🟡 재정 실측 (G1·G3)", tag: "p3", id: "F2",
+        q: "8. 국비 전형·지급 시점",
+        hint: "$80K/$100K 중 어느 쪽인지, 지급 시점이 SVA 등록금 마감(8/1)과 맞는지.",
+        ph: "예) $100K 확정 / 지급 시점 미확인 — 문의 예정" },
+      { g: "🟡 재정 실측 (G1·G3)", tag: "p3", id: "F3",
+        q: "9. 대출 한도조회 결과",
+        hint: "금리·만기·재직 조건. 아직이면 ‘아직’.",
+        ph: "예) 7,000만 한도 / 금리 5.x% / 만기 1년(연장 가능?) — 또는 ‘아직’" },
+
+      { g: "🟢 비자 · 가족 · 관계", tag: "p4", id: "V1",
+        q: "10. SVA 합격 / I-20 현재 상태",
+        hint: "합격 / 서류 대기 / 미지원 중 솔직하게.",
+        ph: "예) 합격, I-20 수령 / 또는 미지원" },
+      { g: "🟢 비자 · 가족 · 관계", tag: "p4", id: "V2",
+        q: "11. ★ 휴직 규정 확인 결과",
+        hint: "휴직 종류·기간·복직 조건. 가장 중요한 게이트 — 게이트 문구로 바로 문의 가능.",
+        ph: "예) 자기계발 휴직 최대 2년·복직 보장 / 또는 ‘아직 확인 안 함’" },
+      { g: "🟢 비자 · 가족 · 관계", tag: "p4", id: "R1",
+        q: "12. 가족과 나눈 말 / 파트너 상황",
+        hint: "가족과 실제로 나눈 말 한 마디, 파트너가 있다면 그 상황·입장(동행/장거리/미정).",
+        ph: "예) 부모님께 아직 구체적으로 말 안 함 / 파트너: 해당없음" }
+    ];
+
+    var state = {};
+    try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { state = {}; }
+    var saveEl = document.getElementById("saveState");
+    function persist() {
+      try { localStorage.setItem(KEY, JSON.stringify(state)); if (saveEl) { saveEl.textContent = "저장 " + new Date().toLocaleTimeString("ko-KR"); } }
+      catch (e) { if (saveEl) { saveEl.textContent = "저장 실패(브라우저 설정)"; } }
+    }
+    function filled(id) { return state[id] && state[id].trim(); }
+
+    var root = document.getElementById("intakeRoot");
+    var lastG = "";
+    ITEMS.forEach(function (it) {
+      if (it.g !== lastG) {
+        lastG = it.g;
+        var g = document.createElement("div");
+        g.className = "grp";
+        g.innerHTML = "<span class=\"gtag " + it.tag + "\">" + it.g.split(" ")[0] + "</span><h2>" + it.g.replace(/^\S+\s/, "") + "</h2>";
+        root.appendChild(g);
+      }
+      var card = document.createElement("div");
+      card.className = "item" + (filled(it.id) ? " done" : "");
+      var q = document.createElement("div"); q.className = "q"; q.textContent = it.q; card.appendChild(q);
+      var hint = document.createElement("div"); hint.className = "hint"; hint.textContent = it.hint; card.appendChild(hint);
+      var ta = document.createElement("textarea");
+      ta.placeholder = it.ph;
+      ta.value = state[it.id] || "";
+      ta.addEventListener("input", function () {
+        state[it.id] = ta.value;
+        card.classList.toggle("done", !!ta.value.trim());
+        persist(); updateProg();
+      });
+      card.appendChild(ta);
+      root.appendChild(card);
+    });
+
+    function updateProg() {
+      var n = 0; ITEMS.forEach(function (it) { if (filled(it.id)) { n++; } });
+      var p = document.getElementById("prog");
+      var bar = document.getElementById("progBar");
+      if (p) { p.childNodes[0].nodeValue = n + "/" + ITEMS.length; }
+      if (bar) { bar.style.width = Math.round(n / ITEMS.length * 100) + "%"; }
+    }
+    updateProg();
+
+    document.getElementById("exportBtn").addEventListener("click", function () {
+      var L = [];
+      var n = 0;
+      L.push("의사결정 자료 입력 — 클로드 전달용");
+      L.push("내보낸 시각: " + new Date().toLocaleString("ko-KR"));
+      L.push("용도: 이 자료로 decision-psychology-support-report의 §2 경력·§9 학위 적합성·재정 게이트를 실측으로 갱신해줘.");
+      L.push("");
+      var lg = "";
+      ITEMS.forEach(function (it) {
+        if (it.g !== lg) { lg = it.g; L.push("===== " + it.g + " ====="); }
+        var v = (state[it.id] || "").trim();
+        if (v) { n++; }
+        L.push(it.q);
+        L.push(v ? v.split("\n").map(function (x) { return "   " + x; }).join("\n") : "   (미입력)");
+        L.push("");
+      });
+      L.push("— 입력 " + n + " / " + ITEMS.length + " —");
+      var blob = new Blob([L.join("\n")], { type: "text/plain;charset=utf-8" });
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "evidence-intake-" + new Date().toISOString().slice(0, 10) + ".txt";
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      URL.revokeObjectURL(a.href);
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", function () {
+      if (!confirm("입력한 자료를 모두 지울까요? (내보낸 .txt는 남습니다)")) { return; }
+      state = {}; try { localStorage.removeItem(KEY); } catch (e) {}
+      root.innerHTML = ""; location.reload();
+    });
+  })();
+  </script>
+</body>
+</html>
