@@ -1,0 +1,868 @@
+# 피클(Pickle)·클로드 듀엣(Claude Duet) X / Threads 사례 캡처 모음
+
+수집일: 2026-11-18 (Asia/Seoul) · 총 **51건** (Threads 12건 / X 39건)
+
+각 이미지 파일은 `labels.json`·`labels.csv`의 같은 `image_file` 레코드와 1:1로 대응한다. 이미지는 게시물을 브라우저로 열어 화면 그대로 캡처한 GUI 스크린샷이고, `text`는 그 게시물(또는 캡처에 함께 보이는 인용·부모 게시물)의 본문이다. 파일명 앞 번호와 아래 표의 # 번호는 같다.
+
+영상이 포함된 게시물은 `has_video: true`로 표시했고, 캡처에 영상 프레임(재생 버튼·재생 시간)이 함께 보이도록 찍었다.
+
+## 요약
+
+| 서비스 | 건수 |
+|---|---|
+| Claude Duet | 32 |
+| Pickle | 11 |
+| 비교(Pickle·Claude Duet 등) | 8 |
+
+| 구분(카테고리) | 건수 |
+|---|---|
+| 사용사례 | 21 |
+| 비교 | 14 |
+| 한계·비판 | 10 |
+| UX·기능제안 | 3 |
+| 문제·오작동 | 3 |
+
+| 플랫폼 | 건수 |
+|---|---|
+| X | 39 |
+| Threads | 12 |
+
+영상 포함 게시물 5건: `th_duet_09`, `th_duet_10`, `th_duet_11`, `x_pickle_14`, `th_duet_12`
+
+## 전체 목록
+
+| # | id | 플랫폼 | 서비스 | 구분 | 작성자 | 영상 | 핵심 요약 | 이미지 파일 |
+|---|---|---|---|---|---|---|---|---|
+| 1 | `th_duet_01` | Threads | Claude Duet | 비교 | @super_happy_s | - | 클로드 듀엣 실사용자 평이 '멀티태스킹 최고' 호평과 '먼저 움직인다더니 다시는 안 부름' 혹평으로 갈린다는 특집 정리. 한국 미출시·승인 범위도 함께 언급. | `01_Threads_클로드듀엣_호평혹평_super_happy_s.png` |
+| 2 | `th_cmp_02` | Threads | 비교(Pickle·Claude Duet 등) | 비교 | @gugu.home.deco | - | Muse·피클·vooy·Cue·키링·Claude Duet 6종을 '무엇을 맡기면 좋은지' 기준으로 정리한 스레드. 직접 사용 후기가 아닌 공식 소개 기반이라고 명시. | `02_Threads_비교_AI비서앱정리_gugu.home.deco.png` |
+| 3 | `th_duet_03` | Threads | Claude Duet | 사용사례 | @yun_ja_dong | - | 클로드 듀엣의 아침 브리핑·클라우드 상시 실행·발송/결제 전 승인 구조를 한국어로 정리한 소개 글. 미국 Pro·Max 대기자 명단만 가능하다는 제약과 한국 사전 준비 3가지 포함. | `03_Threads_클로드듀엣_아침브리핑_클라우드실행_yun_ja_dong.png` |
+| 4 | `th_duet_04` | Threads | Claude Duet | 사용사례 | @ddalkakdiary | - | 미아 돌턴(통화 자료 준비·일정 변경 제안)과 제스(잘못 적은 날짜를 먼저 지적) 사례로 본 클로드 듀엣의 선제적 실무 지원. 바탕 모델은 클로드 오퍼스 5.5. | `04_Threads_클로드듀엣_실무사례_미아돌턴제스_ddalkakdiary.png` |
+| 5 | `x_duet_01` | X | Claude Duet | 한계·비판 | @itsjustmansour | - | 헤비유저 피드백: 클로드 코드가 깔린 Mac Studio를 연결했는데도 듀엣이 채팅에서 세션을 시작하지 못하고 '프롬프트를 직접 붙여넣으라'고만 함. 다른 에이전트는 기기에서 직접 실행되므로 '기기 1회 승인' 방식을 요구. | `05_X_클로드듀엣_한계_프롬프트복사_itsjustmansour.png` |
+| 6 | `x_duet_02` | X | Claude Duet | UX·기능제안 | @krika2810 | - | 장기 세션에서 지시를 잊고 같은 말을 반복하게 되는 문제와, 계획·스킬·가드레일이 있어도 루프에 빠지는 문제를 지적하며 '듀엣이 코딩 에이전트를 감시하다 루프 시 개입'하는 기능을 제안. | `06_X_클로드듀엣_기능제안_코딩에이전트모니터링_krika2810.png` |
+| 7 | `x_duet_03` | X | Claude Duet | 사용사례 | @noobnooc | - | 영어 회화 연습 용도로 Claude Duet·Muse·Grok·ChatGPT·Claude를 비교해 'Duet > Claude > Muse > ChatGPT > Grok' 순으로 평가. 다만 듀엣 자격이 있던 유일한 계정이 정지됐다고 아쉬움 표시. | `07_X_클로드듀엣_음성영어연습비교_계정정지_noobnooc.png` |
+| 8 | `x_duet_04` | X | Claude Duet | UX·기능제안 | @robin_liquidium | - | 다른 에이전트에 '클로드 듀엣처럼 초안을 편집 가능한 필드에 넣고 버튼으로 확정'하는 UI를 도입하라고 요청. 듀엣의 초안 편집·확인 UX가 타 제품의 벤치마크로 쓰이는 사례. | `08_X_클로드듀엣_UX제안_드래프트필드_robin_liquidium.png` |
+| 9 | `x_duet_05` | X | Claude Duet | 한계·비판 | @revolaition | - | 유럽 사용자로서 ChatGPT 닷츠와 클로드 듀엣 모두 아직 공식 접근이 안 된다는 불만. 출시 지역이 미국 중심으로 제한된 점을 비판. | `09_X_클로드듀엣_문제_유럽미지원_revolaition.png` |
+| 10 | `x_duet_06` | X | Claude Duet | 사용사례 | @sokcuri | - | 클로드 듀엣을 써보니 캡차를 '합법적(?)으로' 풀어낸다며 놀라는 짧은 실사용 후기. 브라우저 자동화 실행력에 대한 반응. | `10_X_클로드듀엣_사용사례_캡차해결_sokcuri.png` |
+| 11 | `x_pickle_01` | X | 비교(Pickle·Claude Duet 등) | 비교 | @hcchoi1223 | - | 그록봇·클로드 듀엣·지피티 닷·메타 뮤즈는 자체 모델이 있는데 피클은 호스팅에 한국화를 얹은 구조라 지속가능성과 생존 가능성에 의문을 제기. | `11_X_비교_피클지속가능성_hcchoi1223.png` |
+| 12 | `x_pickle_02` | X | 비교(Pickle·Claude Duet 등) | 비교 | @cosmosmason | - | 피클이 '남의 앱을 훔쳐보고 먼저 말 건다'는 지적은 억울하다는 반응. 뮤즈·키링·Cue·인스팅트·클로드 듀엣도 커넥터를 연결하면 똑같이 동작한다는 설명. | `12_X_비교_피클_커넥터_먼저말걸기_cosmosmason.png` |
+| 13 | `x_cmp_03` | X | 비교(Pickle·Claude Duet 등) | 비교 | @nick88886666 | - | AI 비서 6파전(구글 제미나이 Tasks·닷츠·클로드 듀엣·뮤즈·그록봇·피클) 분석: 듀엣은 6,000여 커넥터 기반 아침 브리핑·실무 자동화, 피클은 정부24·홈택스·국내 쇼핑·전화 예약 등 한국 로컬 실행력에 특화. 승부처는 결제·보안·위임 신뢰. | `13_X_비교_AI비서6파전_클로드듀엣피클_nick88886666.png` |
+| 14 | `x_pickle_04` | X | Pickle | 사용사례 | @smbluespace | - | 피클로 하루 만에 구축한 생활 자동화 목록: 8개 체험단 매일 오전 자동 응모(릴스 필수·추가비용 건 필터링), 쿠팡·스마트스토어 포토리뷰 대리 작성·자동 등록, 매일 포인트 적립 루틴 등. | `14_X_피클_사용사례_생활자동화_smbluespace.png` |
+| 15 | `x_pickle_05` | X | Pickle | 사용사례 | @cutekorea | - | 며칠 사용 후기: 노션의 밀린 일을 먼저 찾아 알려주고, 매일 아침 결제 실패·인증 만료만 골라 알림하며, 타 AI 서비스 초대 링크까지 찾아줌. '시키기 전에 챙겨주는 것'이 핵심이라는 평가. | `15_X_피클_사용사례_노션결제실패알림_cutekorea.png` |
+| 16 | `x_pickle_06` | X | Pickle | 비교 | @heavent0208 | - | 피클을 뮤즈와 비교: 거의 같아 보이지만 네이버 등 한국 사정에 맞춘 부분은 오히려 낫다는 평이 있다며, 뮤즈 사용을 줄이고 피클로 옮겨보겠다는 후기. 첨부 스크린샷에 피클 브리핑 화면 포함. | `16_X_피클_비교_뮤즈와비교_스크린샷첨부_heavent0208.png` |
+| 17 | `x_duet_07` | X | Claude Duet | 한계·비판 | @sortofadev | - | 월 200달러 구독 8개월차인데 아직 클로드 듀엣 접근권한이 없다며, 대기열이 왜 이렇게 오래 걸리는지 공개 질의. 유료 사용자 대상 순차 배포 속도에 대한 불만. | `17_X_클로드듀엣_비판_접근권한지연_sortofadev.png` |
+| 18 | `x_duet_08` | X | Claude Duet | 문제·오작동 | @thecsguy | - | 명백히 안전한 동작을 '자기 규칙' 때문에 거부하는 버그를 발견해 앱 내 피드백 폼으로 제보했더니 24시간 내에 앤트로픽이 수정. 오작동 사례와 함께 빠른 대응을 기록한 글. | `18_X_클로드듀엣_오작동버그_피드백신속수정_thecsguy.png` |
+| 19 | `x_duet_09` | X | Claude Duet | 한계·비판 | @VisiveAI | - | 더 버지(The Verge) 리뷰 인용: 사용하기 쉽고 아침 브리핑·일정 충돌 감지는 유용하지만 '잔소리하는 신경질적 비서'처럼 느껴질 수 있다는 평가. | `19_X_클로드듀엣_리뷰_잔소리형비서_VisiveAI.png` |
+| 20 | `x_duet_10` | X | Claude Duet | 한계·비판 | @techamericaofcl | - | TechAmerica 리뷰: 이메일·캘린더·마감 관리의 선제 지원은 유용하나, 알림 과다·우선순위 판단 부정확·프라이버시 우려가 신뢰성을 제한한다는 3가지 한계 지적. | `20_X_클로드듀엣_리뷰_알림과다우선순위부정확_techamericaofcl.png` |
+| 21 | `x_duet_11` | X | Claude Duet | 문제·오작동 | @gopal_amlekar | - | 어제까지 잘 쓰던 클로드 듀엣 접근권한이 갑자기 사라졌다며 앤트로픽 계정들을 태그. 베타 단계라 이해한다면서도 재현되는 권한 소실 문제를 보고. | `21_X_클로드듀엣_문제_접근권한소실_gopal_amlekar.png` |
+| 22 | `x_duet_12` | X | Claude Duet | UX·기능제안 | @paytonbilodeau | - | 듀엣이 별도 앱으로 나온 것이 ChatGPT 닷을 계속 쓰는 유일한 이유라며, Claude 앱에서 바로 듀엣으로 진입하게 해달라는 통합 요청. 별도 앱 구조가 전환 비용을 만든다는 지적. | `22_X_클로드듀엣_UX제안_별도앱불만_paytonbilodeau.png` |
+| 23 | `x_cmp_24` | X | 비교(Pickle·Claude Duet 등) | 비교 | @cosmosmason | - | AI 에이전트 티어리스트 이미지를 인용하며 평가: 그록봇 GOAT, 인스팅트·뮤즈 S, 피클·클로드 듀엣 A, 키링·닷츠·제미나이태스크·하크 C. 피클과 듀엣이 같은 A 티어에 묶인 비교 사례. | `23_X_비교_AI에이전트티어리스트_cosmosmason.png` |
+| 24 | `x_cmp_25` | X | 비교(Pickle·Claude Duet 등) | 비교 | @SujinBuilds | - | 4종 AI 비서 로고를 비교한 이미지에 '클로드 듀엣의 손그림 낙서가 사람 같고, 나머지는 마스코트 세트처럼 읽힌다'는 브랜딩 평가를 남긴 글. | `24_X_비교_로고디자인4종비교_SujinBuilds.png` |
+| 25 | `x_duet_16` | X | Claude Duet | 비교 | @Ko__Harada | - | 일본 사용자 두 명의 대화: '이번 달부터 클로드 듀엣도 써봤지만 아직 그록봇만큼 유용하진 않다'는 평가에 동의하며, 순위가 자주 바뀌어 갈아타기도 번거롭다는 반응. | `25_X_클로드듀엣_비교_일본사용자평가_Ko__Harada.png` |
+| 26 | `x_duet_17` | X | Claude Duet | 사용사례 | @GavinAIer | - | 클로드 듀엣 체험 자격을 막 얻었다며 함께 써볼 동료를 찾는 짧은 글. 첨부된 공식 브랜드 이미지로 제품 인지도 확산 양상 확인 가능. | `26_X_클로드듀엣_사용사례_체험권한획득_GavinAIer.png` |
+| 27 | `x_duet_18` | X | Claude Duet | 비교 | @builtbygomez | - | 클로드 듀엣에 접근하지 못해 뮤즈로 갈아탔다는 짧은 답글. 접근 제한이 실제 사용자 이탈로 이어진 사례로, 에이전트 실행력 자체는 선호한다고 밝힘. | `27_X_클로드듀엣_비교_미접근으로뮤즈전환_builtbygomez.png` |
+| 28 | `x_duet_19` | X | 비교(Pickle·Claude Duet 등) | 비교 | @UNICONTSLA | - | 구글의 AI 비서 진입 소식에 뮤즈·그록봇·피클·듀엣·닷츠 5종을 나열하며 시장 구도를 언급한 짧은 글. | `28_X_비교_AI비서5종목록_피클듀엣포함_UNICONTSLA.png` |
+| 29 | `x_cmp_20` | X | 비교(Pickle·Claude Duet 등) | 비교 | @lmc8710 | - | '대신 일해주는 AI 비서' 9종 목록에서 피클을 1번, 클로드 듀엣을 4번으로 배치. 질의응답에서 실행형 에이전트로의 전환을 강조한 저장형 콘텐츠. | `29_X_비교_AI에이전트9종목록_피클듀엣_lmc8710.png` |
+| 30 | `x_duet_21` | X | Claude Duet | 사용사례 | @yozm_it | - | 요즘IT의 클로드 듀엣 기능 정리: 아침 브리핑, 수 시간 간격 능동 점검, 클라우드 가상 컴퓨터 상시 실행, 기존 클로드 메모리·스킬·앱 연결 승계. 이용 조건은 미국 Pro/Max/Ultra 대기명단이며 한국 미지원. | `30_X_클로드듀엣_정리_기능과한계_요즘IT.png` |
+| 31 | `x_duet_22` | X | Claude Duet | 한계·비판 | @sexyguy | - | 클로드 듀엣 출시 분석: 연결한 지메일·슬랙을 지켜보다 할 일을 찾아 초안을 만들고 승인 후 발송까지 하되, 되돌릴 수 없는 결제·송금은 여전히 금지 목록으로 막혀 있다는 점을 핵심으로 지적. | `31_X_클로드듀엣_한계_금지목록승인구조_sexyguy.png` |
+| 32 | `x_duet_23` | X | Claude Duet | 사용사례 | @jongbeomi1 | - | 클로드 듀엣 출시 소식을 뮤즈·닷츠와 같은 계열로 소개. 클라우드에서 상시 작업, 메일·일정 선제 처리, 답장 초안·대시보드 제작, 발송/결제/서명은 승인 필요, 미국 Pro/Max 대기, 기존 구독 사용량 차감을 정리. | `32_X_클로드듀엣_소개_출시반응_jongbeomi1.png` |
+| 33 | `th_duet_05` | Threads | Claude Duet | 사용사례 | @cmoamara | - | 대기명단에서 막 해제된 사용자의 첫인상. 프롬프트 없이 먼저 '잊고 있던 일'을 알려주는 방식이 기존 에이전트와 다르고, 실제 비서를 써본 사람에게 특히 유용하다는 호평. | `33_Threads_클로드듀엣_긍정후기_비서경험_cmoamara.png` |
+| 34 | `th_duet_06` | Threads | Claude Duet | 사용사례 | @mcdonaldryn | - | 짧은 온보딩 뒤 채팅·메일에서 잊고 있던 일을 문맥이 붙은 태스크 카드로 띄워주고, 데이팅앱처럼 스와이프로 시작/숨김 처리하는 UX를 호평. 앱 화면 캐러셀 첨부. | `34_Threads_클로드듀엣_사용사례_태스크카드_mcdonaldryn.png` |
+| 35 | `th_duet_07` | Threads | Claude Duet | 한계·비판 | @eshumarneedi | - | "인스팅트·뮤즈만큼 쓸모없다"는 혹평 글에 '그 기준이 틀렸다, 범용 비서와 전문 에이전트를 같은 잣대로 본다'는 반박 댓글이 붙은 논쟁 스레드. | `35_Threads_클로드듀엣_부정후기_쓸모없다논쟁_eshumarneedi.png` |
+| 36 | `th_duet_08` | Threads | Claude Duet | 비교 | @chancenote | - | 닷츠를 쓰던 한국 사용자가 듀엣에 대기 신청하며 '앱 하나에서 시작하는 다중 에이전트 환경'으로 평가. 댓글에는 초대받아 써봤지만 "출발이 늦어 다른 에이전트보다 부족하다"는 반응도 달림. | `36_Threads_클로드듀엣_한국사용자_웨이팅리스트신청_chancenote.png` |
+| 37 | `th_duet_09` | Threads | Claude Duet | 사용사례 | @claudeai | O | 앤트로픽 공식 계정의 클로드 듀엣 발표 영상 포스트. '먼저 말 걸기·아침 브리핑·음성으로 일 맡기기·보내기/결제/서명 전 승인' 4원칙과 미국 Pro/Max 대기명단 안내. 리서치 프리뷰(베타)임을 명시. | `37_Threads_클로드듀엣_공식영상_소개_claudeai.png` |
+| 38 | `th_duet_10` | Threads | Claude Duet | 사용사례 | @mergisi | O | 듀엣 접근권한을 받은 첫날 영상 후기. 앱을 훑어 스타트업 미결 업무 5건을 스스로 찾고, 이메일 초안 카드와 '체크아웃 급감 원인 조사' 백그라운드 실행까지 한 화면에서 처리. 발송은 탭 전까지 보류. | `38_Threads_클로드듀엣_영상_첫사용후기_mergisi.png` |
+| 39 | `th_duet_11` | Threads | Claude Duet | 사용사례 | @somidotai | O | 앤트로픽 공식 데모 중 '시카고 매장 26일 후 오픈인데 헬스 퍼밋 미제출'을 먼저 짚고 서식을 초안해 승인만 기다리는 장면을 영상으로 공유. "잊은 것을 알아채는 비서가 빠른 답변 10개보다 낫다"는 평가. | `39_Threads_클로드듀엣_영상_아침브리핑데모_somidotai.png` |
+| 40 | `x_duet_13` | X | Claude Duet | 한계·비판 | @libinyaminAI | - | 하루 써본 중국 사용자 후기: 그록봇(X 연동)·뮤즈(인스타/스레드 연동)와 달리 듀엣은 생태계 접점이 없어 한계가 있고, 메일·할일·글쓰기는 경쟁 제품도 다 한다고 지적. 강점은 모델 성능(간단한 버그 수정)뿐이며 어려운 코딩은 로컬 클로드 코드가 필요. | `40_X_클로드듀엣_한계_생태계부재_중국사용자_libinyaminAI.png` |
+| 41 | `x_duet_14` | X | Claude Duet | 비교 | @MarkMyTech | - | Claire Vo의 4개 에이전트 9개 과제 벤치에서 클로드 듀엣이 승인 요청을 4회(다른 제품은 각 1회) 하고 최하위로 완주했다는 결과 공유. '발송·구매 전 확인은 기능, 파일 읽기 전 확인은 마찰'로 나눠 봐야 한다는 해석. Grok·Dot·Muse·Duet 비교 리포트 링크 포함. | `41_X_클로드듀엣_비교_승인요청4회최하위_MarkMyTech.png` |
+| 42 | `x_duet_15` | X | Claude Duet | 문제·오작동 | @sonyaseventhree | - | 듀엣에서 받아쓰기 중 '+'를 누르면 입력한 텍스트가 모두 사라지고, 받아쓰는 동안 수정도 불가능하다는 버그 제보. 앤트로픽 개발자(@maxleiter)가 답글을 단 스레드. | `42_X_클로드듀엣_오작동_받아쓰기버그_개발팀수정_sonyaseventhree.png` |
+| 43 | `x_pickle_07` | X | Pickle | 한계·비판 | @nick88886666 | - | 피클이 대신 거는 예약 전화가 반복 질문·대화 오류로 상담 시간을 두 배 이상 늘리고 일부 업체가 AI 비서 상담을 거부하기 시작했다는 비판. 해법으로 AI-AI 직접 통화를 제시. | `43_X_피클_비판_예약전화상담원부담증가_nick88886666.png` |
+| 44 | `x_pickle_08` | X | Pickle | 한계·비판 | @ho5h1_h1kar1 | - | 하루 써보고 '선을 넘는다'며 삭제했다가 이틀 만에 재설치했더니, 그동안 로그아웃되지 않은 채 혼자 문자를 보내고 나들이를 추천하는 등 계속 활동해 더 무서워졌다는 프라이버시 불만. | `44_X_피클_비판_과한개입_문자발송_ho5h1_h1kar1.png` |
+| 45 | `x_pickle_09` | X | Pickle | 사용사례 | @Jeadee6 | - | 칭다오 1박 2일 여행을 항공·숙소·티켓 합쳐 92만 원에 피클로 예약하고, 취소·캘린더 정리까지 맡긴 후기. 최저가 여부는 확인하지 못했다고 밝힘. 카카오톡 대화 스크린샷 첨부. | `45_X_피클_사용사례_칭다오여행예약_92만원_Jeadee6.png` |
+| 46 | `x_pickle_10` | X | Pickle | 사용사례 | @ginipigi | - | AI 도구 용도 분담 팁: 클로드·제미나이·GPT는 작업 실행형, 피클·그록봇·뮤즈는 '내 컴 없이 도는' 상시 실행형으로 필요한 곳에만 사용. 실제로는 피클의 100자 후기 자동화가 가장 편하다는 평가. | `46_X_피클_사용사례_후기자동화_활용팁_ginipigi.png` |
+| 47 | `x_pickle_11` | X | Pickle | 사용사례 | @Fred7948 | - | 사진 몇 장을 주자 밀린 후기 15개를 작성하고 쿠팡체험단 신청까지 해 바로 선정된 사례. 이어 카카오톡 선물하기 체험단 15개도 신청. 자동화 효과를 강조한 후기. | `47_X_피클_사용사례_체험단후기자동화_Fred7948.png` |
+| 48 | `x_pickle_12` | X | Pickle | 사용사례 | @dorying | - | 5편 후기: 구매 내역을 분석해 말하지 않은 아티스트 발매 일정까지 챙기는 점이 좋았고 뮤즈보다 손이 간다는 평가. 다만 하루 사용량이 금방 차고, 무료라 SNS 후기 작성·친구 초대를 해야 제한이 풀리는 구조에 불만. | `48_X_피클_후기_무료사용량제한불만_dorying.png` |
+| 49 | `x_pickle_13` | X | Pickle | 사용사례 | @Grok_Korea | - | 생활 잡무를 피클에 넘긴 이틀치 사례: 올리브영 리뷰 12개 작성과 1,200P 적립 확인, 아이허브 영양제 최저가 쿠폰·장바구니 담기, 체험단 신청 후 발표일 캘린더 자동 등록. | `49_X_피클_사용사례_생활잡무자동화_Grok_Korea.png` |
+| 50 | `x_pickle_14` | X | Pickle | 사용사례 | @verynormalll | O | 피클을 폰·PC를 넘어 거실 TV·스피커(미니PC 경유)까지 연결해 쓴 사례. 아침엔 날씨 반영 착장·실시간 교통 지도·일정 브리핑과 모닝 재즈를 TV/스피커로 내보내고, 'AI 거실 법정' 같은 실험도 공유. 27초·1분 6초짜리 사용자 제작 영상 첨부. | `50_X_피클_사용사례_거실TV연결_영상_verynormalll.png` |
+| 51 | `th_duet_12` | Threads | Claude Duet | 사용사례 | @tchung1970 | O | 클로드 듀엣 공개 영상을 'Claude 스킬로 전사 → Claude Code로 한국어 요약 → ElevenLabs 음성 낭독' 3단계로 한국어 콘텐츠로 재가공한 사례(결과물은 오디오·영상 페이지). | `51_Threads_클로드듀엣_한국어영상요약낭독_tchung1970.png` |
+
+## 레코드 상세 (이미지 ↔ 텍스트 라벨)
+
+### 1. `th_duet_01` — @super_happy_s (Threads)
+
+- 이미지: `01_Threads_클로드듀엣_호평혹평_super_happy_s.png`
+- 서비스: Claude Duet · 구분: 비교 · 영상 포함: 아니오
+- 태그: 특집기사, 호평혹평갈림, 멀티태스킹, 한국미출시, 대기명단
+- URL: https://www.threads.com/@super_happy_s/post/DeyQmfXCUvf/
+- 요약: 클로드 듀엣 실사용자 평이 '멀티태스킹 최고' 호평과 '먼저 움직인다더니 다시는 안 부름' 혹평으로 갈린다는 특집 정리. 한국 미출시·승인 범위도 함께 언급.
+- 본문:
+
+  > [특집] 3시간마다 먼저 말 거는 '클로드 듀엣', 정말 쓸 만할까
+  > 먼저 써 본 사람들의 평이 갈린다. "멀티태스킹은 이 분야 최고"라는 호평과 "먼저 움직인다더니 다시는 날 부르지 않았다"는 혹평이 함께 나왔다.
+  > · 시작하는 법: 대기 명단 → 초대 메일 → 클로드 계정 로그인
+  > · 읽기·초안은 혼자, 보내기·결제·삭제는 물어본다
+  > · 한국에선 아직 못 쓴다
+  > AI 뉴스 데일리 — 뉴스가 되기 전에, 타임라인에서 먼저
+  > https://ailetter.ai.kr/ko/e/2026-10-22/claude-duet-guide
+
+### 2. `th_cmp_02` — @gugu.home.deco (Threads)
+
+- 이미지: `02_Threads_비교_AI비서앱정리_gugu.home.deco.png`
+- 서비스: 비교(Pickle·Claude Duet 등) · 구분: 비교 · 영상 포함: 아니오
+- 태그: 앱정리, Muse, 피클, vooy, Cue, 키링, 공식소개기반
+- URL: https://www.threads.com/@gugu.home.deco/post/Dfv8GnDDjA5/
+- 요약: Muse·피클·vooy·Cue·키링·Claude Duet 6종을 '무엇을 맡기면 좋은지' 기준으로 정리한 스레드. 직접 사용 후기가 아닌 공식 소개 기반이라고 명시.
+- 본문:
+
+  > AI 비서 앱, 많아도 너무 많죠?
+  > Muse·피클·vooy·Cue·키링·Claude Duet.
+  > 각각 어떤 일을 맡기기 좋은지 쉽게 정리했습니다. 🧵
+  > 직접 사용한 비교 후기가 아닌 공식 소개 기반입니다. 실제 지원 범위는 국가·요금제·연결 서비스에 따라 달라질 수 있어요.
+  > 앱별로 하나씩 ↓
+
+### 3. `th_duet_03` — @yun_ja_dong (Threads)
+
+- 이미지: `03_Threads_클로드듀엣_아침브리핑_클라우드실행_yun_ja_dong.png`
+- 서비스: Claude Duet · 구분: 사용사례 · 영상 포함: 아니오
+- 태그: 아침브리핑, 클라우드실행, 승인게이트, 한국사용팁
+- URL: https://www.threads.com/@yun_ja_dong/post/DexzBKQk4GS/
+- 요약: 클로드 듀엣의 아침 브리핑·클라우드 상시 실행·발송/결제 전 승인 구조를 한국어로 정리한 소개 글. 미국 Pro·Max 대기자 명단만 가능하다는 제약과 한국 사전 준비 3가지 포함.
+- 본문:
+
+  > 이제는 제가 묻기 전에 AI가 먼저 챙겨 줍니다. 오늘 새벽 앤트로픽이 클로드 듀엣을 공개했습니다. 매일 아침 메일과 일정에서 중요한 것만 골라 먼저 알려 주고, 맡긴 일은 제 휴대폰이 꺼져 있어도 클라우드에서 계속합니다. 보내기, 결제, 서명 전에는 꼭 허락을 받고요. 다만 지금은 미국 계정의 Pro·Max 사용자만 대기자 명단으로 쓸 수 있습니다. 그래서 한국에서 지금 해 둘 일 세 가지까지 같이 정리했습니다. 공식 발표, 도움말, 먼저 써 본 사람들 후기까지 5분 영상 하나에 다 담았으니 한 번 보세요.
+
+### 4. `th_duet_04` — @ddalkakdiary (Threads)
+
+- 이미지: `04_Threads_클로드듀엣_실무사례_미아돌턴제스_ddalkakdiary.png`
+- 서비스: Claude Duet · 구분: 사용사례 · 영상 포함: 아니오
+- 태그: 실무사례, 미아돌턴, 일정변경제안, 오류지적, 클로드오퍼스5.5
+- URL: https://www.threads.com/@ddalkakdiary/post/Dex0kIukk_f/
+- 요약: 미아 돌턴(통화 자료 준비·일정 변경 제안)과 제스(잘못 적은 날짜를 먼저 지적) 사례로 본 클로드 듀엣의 선제적 실무 지원. 바탕 모델은 클로드 오퍼스 5.5.
+- 본문:
+
+  > 1/ 클로드 듀엣은 매일 아침 연결한 앱을 훑어 가장 중요한 일만 짧게 정리해 보냅니다. 낮에는 그 앱들을 계속 지켜보다가 사람이 봐야 할 일이 생길 때만 메시지를 보냅니다. 브랜드 전략가 미아 돌턴은 고객 통화가 비행기 출발 직전에 잡힌 줄 몰랐습니다. 클로드 듀엣이 통화 자료를 미리 준비하고 일정 변경까지 먼저 제안했습니다. 부동산 중개사무소 대표 제스는 날짜를 잘못 적은 매물 안내 일정을 묻지도 않았는데 지적받았습니다. 바탕 모델은 클로드 오퍼스 5.5입니다.
+
+### 5. `x_duet_01` — @itsjustmansour (X)
+
+- 이미지: `05_X_클로드듀엣_한계_프롬프트복사_itsjustmansour.png`
+- 서비스: Claude Duet · 구분: 한계·비판 · 영상 포함: 아니오
+- 태그: 기기연결한계, 프롬프트복사, 맥스튜디오, 클로드코드, 기기승인제안
+- URL: https://x.com/itsjustmansour/status/2123044632271409472
+- 요약: 헤비유저 피드백: 클로드 코드가 깔린 Mac Studio를 연결했는데도 듀엣이 채팅에서 세션을 시작하지 못하고 '프롬프트를 직접 붙여넣으라'고만 함. 다른 에이전트는 기기에서 직접 실행되므로 '기기 1회 승인' 방식을 요구.
+- 본문:
+
+  > feedback from a heavy Claude Duet user.
+  >
+  > My Mac Studio is connected to Claude Code, but Duet can't start a session on it from chat. Today it wrote the prompt and asked me to paste it myself. Other agents just run on my machines.
+  >
+  > Let me approve a device once, then let Claude work on it.
+
+### 6. `x_duet_02` — @krika2810 (X)
+
+- 이미지: `06_X_클로드듀엣_기능제안_코딩에이전트모니터링_krika2810.png`
+- 서비스: Claude Duet · 구분: UX·기능제안 · 영상 포함: 아니오
+- 태그: 기능요청, 장기세션, 지시준수, 루프감지, 코딩에이전트모니터링
+- URL: https://x.com/krika2810/status/2123040487460511870
+- 요약: 장기 세션에서 지시를 잊고 같은 말을 반복하게 되는 문제와, 계획·스킬·가드레일이 있어도 루프에 빠지는 문제를 지적하며 '듀엣이 코딩 에이전트를 감시하다 루프 시 개입'하는 기능을 제안.
+- 본문:
+
+  > What I want to see in Opus 5.6 and Claude Code:
+  >
+  > 1. Follow instructions better in long sessions. As the context fills up, I find myself repeating things I've already told Claude. Starting a new session shouldn't be the fix.
+  >
+  > 2. Know when it's stuck. Even with all my planning, skills and guardrails, Claude still goes in circles sometimes. I'd love to see Claude Duet monitoring my coding agent and stepping in when it loops.
+
+### 7. `x_duet_03` — @noobnooc (X)
+
+- 이미지: `07_X_클로드듀엣_음성영어연습비교_계정정지_noobnooc.png`
+- 서비스: Claude Duet · 구분: 사용사례 · 영상 포함: 아니오
+- 태그: 음성대화, 영어회화연습, 에이전트비교, 계정정지, 중국어사용자
+- URL: https://x.com/noobnooc/status/2123040424961192011
+- 요약: 영어 회화 연습 용도로 Claude Duet·Muse·Grok·ChatGPT·Claude를 비교해 'Duet > Claude > Muse > ChatGPT > Grok' 순으로 평가. 다만 듀엣 자격이 있던 유일한 계정이 정지됐다고 아쉬움 표시.
+- 본문:
+
+  > 我现在居然觉得最好用的语音聊天 AI 是 Claude ，我跛脚的英语和中文结合的情况下，它基本能完全理解我的意思，而且能很好地引导我继续对话。
+  >
+  > 这几天陆续试了用 Claude Duet、Muse、Grok、ChatGPT、Claide 来练习英语。体验下来 Duet > Claude > Muse > ChatGPT > Grok 。
+  >
+  > 可惜唯一有 Duet 资格的账号被封了 😭
+
+### 8. `x_duet_04` — @robin_liquidium (X)
+
+- 이미지: `08_X_클로드듀엣_UX제안_드래프트필드_robin_liquidium.png`
+- 서비스: Claude Duet · 구분: UX·기능제안 · 영상 포함: 아니오
+- 태그: 초안편집UI, 드래프트필드, 버튼확인, 타에이전트개선요청, UX벤치마크
+- URL: https://x.com/robin_liquidium/status/2123034288715386892
+- 요약: 다른 에이전트에 '클로드 듀엣처럼 초안을 편집 가능한 필드에 넣고 버튼으로 확정'하는 UI를 도입하라고 요청. 듀엣의 초안 편집·확인 UX가 타 제품의 벤치마크로 쓰이는 사례.
+- 본문:
+
+  > now please add draft fields. if agent suggests an email response or something it's super annoying to tell it what to change in the email. should be handled like claude duet or something where the draft is in a field where i can edit text directly and confirm via button. i bet this w…
+
+### 9. `x_duet_05` — @revolaition (X)
+
+- 이미지: `09_X_클로드듀엣_문제_유럽미지원_revolaition.png`
+- 서비스: Claude Duet · 구분: 한계·비판 · 영상 포함: 아니오
+- 태그: 지역제한, 유럽미지원, 접근성, 닷츠비교
+- URL: https://x.com/revolaition/status/2123044479267438910
+- 요약: 유럽 사용자로서 ChatGPT 닷츠와 클로드 듀엣 모두 아직 공식 접근이 안 된다는 불만. 출시 지역이 미국 중심으로 제한된 점을 비판.
+- 본문:
+
+  > European chiming in. Still no official access to chatgpt dots or claude duet. What gives?
+
+### 10. `x_duet_06` — @sokcuri (X)
+
+- 이미지: `10_X_클로드듀엣_사용사례_캡차해결_sokcuri.png`
+- 서비스: Claude Duet · 구분: 사용사례 · 영상 포함: 아니오
+- 태그: 캡차, 브라우저자동화, 실사용후기
+- URL: https://x.com/sokcuri/status/2119939639360540990
+- 요약: 클로드 듀엣을 써보니 캡차를 '합법적(?)으로' 풀어낸다며 놀라는 짧은 실사용 후기. 브라우저 자동화 실행력에 대한 반응.
+- 본문:
+
+  > 클로드 듀엣 써보고있는데 합법적(?)으로 캡차푸네 미친..
+
+### 11. `x_pickle_01` — @hcchoi1223 (X)
+
+- 이미지: `11_X_비교_피클지속가능성_hcchoi1223.png`
+- 서비스: 비교(Pickle·Claude Duet 등) · 구분: 비교 · 영상 포함: 아니오
+- 태그: 지속가능성, 자체모델부재, 호스팅, 한국화, 생존의문
+- URL: https://x.com/hcchoi1223/status/2120050777460977996
+- 요약: 그록봇·클로드 듀엣·지피티 닷·메타 뮤즈는 자체 모델이 있는데 피클은 호스팅에 한국화를 얹은 구조라 지속가능성과 생존 가능성에 의문을 제기.
+- 본문:
+
+  > @supernovajunn @danifesto 지금 그록봇, 클로드 듀엣, 지피티 닷, 메타 뮤즈 이 네가지들은 다들 본인들의 AI가 있는데 피클은 호스팅에 한국식으로 조금 더 맞춘거라 지속가능할지가 의문입니다… 그리고 과언 살아남을 수 있을지도 의문이구요
+
+### 12. `x_pickle_02` — @cosmosmason (X)
+
+- 이미지: `12_X_비교_피클_커넥터_먼저말걸기_cosmosmason.png`
+- 서비스: 비교(Pickle·Claude Duet 등) · 구분: 비교 · 영상 포함: 아니오
+- 태그: 커넥터, 먼저말걸기, 억울한평가, 뮤즈, 키링, Cue, 인스팅트
+- URL: https://x.com/cosmosmason/status/2122612189291004335
+- 요약: 피클이 '남의 앱을 훔쳐보고 먼저 말 건다'는 지적은 억울하다는 반응. 뮤즈·키링·Cue·인스팅트·클로드 듀엣도 커넥터를 연결하면 똑같이 동작한다는 설명.
+- 본문:
+
+  > 이거는 피클이 좀 억울할 수 있는게 
+  >
+  > 뮤즈, 키링, Cue, 인스팅트, 클로드 듀엣 다 훔쳐보고 먼저 말 걸음
+  >
+  > 커넥터 연결해 주면 어쩔 수 없는 일임
+
+### 13. `x_cmp_03` — @nick88886666 (X)
+
+- 이미지: `13_X_비교_AI비서6파전_클로드듀엣피클_nick88886666.png`
+- 서비스: 비교(Pickle·Claude Duet 등) · 구분: 비교 · 영상 포함: 아니오
+- 태그: 6파전, 구글제미나이, 로컬실행, 한국특화, 시장분석, 결제보안
+- URL: https://x.com/nick88886666/status/2122864053999821186
+- 요약: AI 비서 6파전(구글 제미나이 Tasks·닷츠·클로드 듀엣·뮤즈·그록봇·피클) 분석: 듀엣은 6,000여 커넥터 기반 아침 브리핑·실무 자동화, 피클은 정부24·홈택스·국내 쇼핑·전화 예약 등 한국 로컬 실행력에 특화. 승부처는 결제·보안·위임 신뢰.
+- 본문:
+
+  > [AI 비서 6파전 격돌: 구글·오픈AI·앤트로픽·메타·xAI·피클, 각자 다른 무기로 승부]
+  >
+  > 개인용 AI 비서 시장이 기존의 5파전(뮤즈·그록봇·피클·듀엣·닷츠)에 구글 제미나이(Tasks)까지 가세하면서 6개 진영의 본격적인 영토 경쟁으로 번지고 있다.
+  >
+  > 1. 빅테크·스타트업 6대 AI 비서 경쟁 현황
+  > 구글(제미나이 Tasks)은 기존 지메일·캘린더·지도·결제 생태계를 묶어 한국 포함 6개국에 무료로 풀며 범용 시장에 뛰어들었다.
+  > 오픈AI(닷츠)는 4,000여 개 앱 플러그인과 슬랙·팀즈 연동을 앞세운 읽기 중심 능동 리서치에 강점을 두고,
+  > 앤트로픽(클로드 듀엣)은 6,000여 개 커넥터 기반의 아침 브리핑·청구서·재무 실무 자동화에 초점을 맞췄다.
+  >
+  > 2. 소셜·분업·로컬 실행으로 갈리는 특화 노선
+  > 메타(뮤즈)는 인스타그램·왓츠앱과 연동한 쇼핑·가격 협상 등 일상 소비 영역을 파고들며 북미 앱스토어 상위권에 올랐고,
+  > xAI(그록봇)는 여러 봇을 한 채팅방에 모아 분업시키고 화면 시연으로 루틴을 학습시키는 개발·파워유저 지향 모델을 구축했다.
+  > 피클은 정부24·홈택스·국내 쇼핑·식당/병원 전화 예약 등 한국 로컬 서비스와 실생활 실행력에 특화해 한국 이용자 무료로 영역을 넓히고 있다.
+  >
+  > [투자 및 시장 함의]
+  > 1. '대화형 AI'에서 '24시간 상시 실행 에이전트'로 세대교체
+  > 2. 독식보다 뚜렷해지는 '용도·지역별 다극화'
+  > 3. 최종 승부처는 '결제·보안·위임 신뢰'
+  >
+  > #AI비서 #AI에이전트 #제미나이 #닷츠 #듀엣 #뮤즈 #그록봇 #피클
+
+### 14. `x_pickle_04` — @smbluespace (X)
+
+- 이미지: `14_X_피클_사용사례_생활자동화_smbluespace.png`
+- 서비스: Pickle · 구분: 사용사례 · 영상 포함: 아니오
+- 태그: 생활자동화, 8대체험단, 구매후기대리, 포인트적립, X팔로잉정리, 쇼츠제작
+- URL: https://x.com/smbluespace/status/2119647490719027453
+- 요약: 피클로 하루 만에 구축한 생활 자동화 목록: 8개 체험단 매일 오전 자동 응모(릴스 필수·추가비용 건 필터링), 쿠팡·스마트스토어 포토리뷰 대리 작성·자동 등록, 매일 포인트 적립 루틴 등.
+- 본문:
+
+  > 👀피클(AI 비서)이랑 하루 만에 세팅 끝낸 생활 자동화 목록ㄷㄷ 진짜 물건입니다.
+  >
+  > 1. 8대 체험단 매일 자동 신청 (오전 10:30)
+  > - 레뷰, 디너의여왕, 강남맛집, 리뷰노트, 리뷰플레이스, 미블, 카톡선물하기, 무신사
+  > - 생활권 맛집 식사권 & 배송 제품 매일 자동 탐색·응모 (릴스 필수·추가비용 발생 건 자동 필터링)
+  >
+  > 2. 쇼핑몰 구매후기 대리 작성
+  > - 실물 사진만 툭 던져주면 쿠팡·스마트스토어 포토리뷰 맞춤 작성 및 자동 등록
+  > - 미작성 리뷰 하루 2번 자동 감지
+  >
+  > 3. 매일 포인트 적립 루틴
+
+### 15. `x_pickle_05` — @cutekorea (X)
+
+- 이미지: `15_X_피클_사용사례_노션결제실패알림_cutekorea.png`
+- 서비스: Pickle · 구분: 사용사례 · 영상 포함: 아니오
+- 태그: 노션, 결제실패알림, 인증만료, 초대링크탐색, 선제알림
+- URL: https://x.com/cutekorea/status/2122162849355272333
+- 요약: 며칠 사용 후기: 노션의 밀린 일을 먼저 찾아 알려주고, 매일 아침 결제 실패·인증 만료만 골라 알림하며, 타 AI 서비스 초대 링크까지 찾아줌. '시키기 전에 챙겨주는 것'이 핵심이라는 평가.
+- 본문:
+
+  > 피클 AI 비서 며칠 써 보니
+  > - 노션 밀린 일 먼저 찾아 알려 줌
+  > - 매일 아침 결제 실패·인증 만료만 골라 알림
+  > - 다른 AI 서비스 초대 링크까지 찾아다 줌
+  >
+  > 시키기 전에 챙겨 주는 게 핵심. 무료 → https://t.co/PTKc7YL7HZ
+
+### 16. `x_pickle_06` — @heavent0208 (X)
+
+- 이미지: `16_X_피클_비교_뮤즈와비교_스크린샷첨부_heavent0208.png`
+- 서비스: Pickle · 구분: 비교 · 영상 포함: 아니오
+- 태그: 뮤즈비교, 한국특화, 네이버, 초대장, 브리핑스크린샷
+- URL: https://x.com/heavent0208/status/2119563360010404304
+- 요약: 피클을 뮤즈와 비교: 거의 같아 보이지만 네이버 등 한국 사정에 맞춘 부분은 오히려 낫다는 평이 있다며, 뮤즈 사용을 줄이고 피클로 옮겨보겠다는 후기. 첨부 스크린샷에 피클 브리핑 화면 포함.
+- 본문:
+
+  > 피클 AI 비서. 일단 실리콘밸리에서 출시한 앱인데 뮤즈와 거의 같아 보입니다. 오히려 한국 사정에 맞춰 네이버나 기타 면에선 더 좋다는 평도 있네요. 전 뮤즈에서 일을 좀 줄이고 여기에도 해보려 합니다. 일단 지금 제 초대장으로 써보세요💯 https://t.co/JcgLaMBLOV
+
+### 17. `x_duet_07` — @sortofadev (X)
+
+- 이미지: `17_X_클로드듀엣_비판_접근권한지연_sortofadev.png`
+- 서비스: Claude Duet · 구분: 한계·비판 · 영상 포함: 아니오
+- 태그: 접근권한, 대기지연, 구독불만, 200달러구독
+- URL: https://x.com/sortofadev/status/2123045752335392971
+- 요약: 월 200달러 구독 8개월차인데 아직 클로드 듀엣 접근권한이 없다며, 대기열이 왜 이렇게 오래 걸리는지 공개 질의. 유료 사용자 대상 순차 배포 속도에 대한 불만.
+- 본문:
+
+  > Am I the only person left on @x without claude duet access?
+  >
+  > @ClaudeDevs what's the hold up how is access taking so long?
+  >
+  > $200 sub for 8 months now...
+
+### 18. `x_duet_08` — @thecsguy (X)
+
+- 이미지: `18_X_클로드듀엣_오작동버그_피드백신속수정_thecsguy.png`
+- 서비스: Claude Duet · 구분: 문제·오작동 · 영상 포함: 아니오
+- 태그: 버그, 안전규칙과잉차단, 피드백폼, 익일수정, 개발팀대응
+- URL: https://x.com/thecsguy/status/2122575849639780798
+- 요약: 명백히 안전한 동작을 '자기 규칙' 때문에 거부하는 버그를 발견해 앱 내 피드백 폼으로 제보했더니 24시간 내에 앤트로픽이 수정. 오작동 사례와 함께 빠른 대응을 기록한 글.
+- 본문:
+
+  > i've been playing around with Claude Duet over the past few days.
+  >
+  > yesterday evening I noticed a bug: it wouldn't take an action that was clearly safe, noting it's own rules prevented it.
+  >
+  > duet popped up a feedback form that I filled out to send the information to anthropic for review. less than 24 hours later, they fixed it.
+
+### 19. `x_duet_09` — @VisiveAI (X)
+
+- 이미지: `19_X_클로드듀엣_리뷰_잔소리형비서_VisiveAI.png`
+- 서비스: Claude Duet · 구분: 한계·비판 · 영상 포함: 아니오
+- 태그: 더버지리뷰, 잔소리, 신경과민형비서, 아침브리핑, 일정충돌감지
+- URL: https://x.com/VisiveAI/status/2122076837140632015
+- 요약: 더 버지(The Verge) 리뷰 인용: 사용하기 쉽고 아침 브리핑·일정 충돌 감지는 유용하지만 '잔소리하는 신경질적 비서'처럼 느껴질 수 있다는 평가.
+- 본문:
+
+  > Claude Duet review: user-friendly, sends a helpful morning brief, and spots scheduling conflicts, but can feel like a neurotic personal assistant that nags. per The Verge, via @Techmeme. #AI
+
+### 20. `x_duet_10` — @techamericaofcl (X)
+
+- 이미지: `20_X_클로드듀엣_리뷰_알림과다우선순위부정확_techamericaofcl.png`
+- 서비스: Claude Duet · 구분: 한계·비판 · 영상 포함: 아니오
+- 태그: 제품리뷰, 알림과다, 우선순위부정확, 프라이버시우려, 앱스크린샷
+- URL: https://x.com/techamericaofcl/status/2122039052891562477
+- 요약: TechAmerica 리뷰: 이메일·캘린더·마감 관리의 선제 지원은 유용하나, 알림 과다·우선순위 판단 부정확·프라이버시 우려가 신뢰성을 제한한다는 3가지 한계 지적.
+- 본문:
+
+  > Anthropic's Claude Duet helps manage emails, calendars and workplace deadlines using AI. Our review finds it useful for proactive assistance, but excessive notifications, inaccurate priorities, and privacy concerns limit its reliability.
+  >
+  > Read more: https://techamerica.ai/reviews/claude-duet-r
+
+### 21. `x_duet_11` — @gopal_amlekar (X)
+
+- 이미지: `21_X_클로드듀엣_문제_접근권한소실_gopal_amlekar.png`
+- 서비스: Claude Duet · 구분: 문제·오작동 · 영상 포함: 아니오
+- 태그: 접근권한소실, 베타불안정, 재배포, 공식계정태그
+- URL: https://x.com/gopal_amlekar/status/2122924869058957686
+- 요약: 어제까지 잘 쓰던 클로드 듀엣 접근권한이 갑자기 사라졌다며 앤트로픽 계정들을 태그. 베타 단계라 이해한다면서도 재현되는 권한 소실 문제를 보고.
+- 본문:
+
+  > Suddenly lost Claude Duet access. Understand it is new, Beta etc. but it was there and I used it well yesterday and now it disappeared. Happy to wait though :) @claudeai @AnthropicAI @ClaudeDevs
+
+### 22. `x_duet_12` — @paytonbilodeau (X)
+
+- 이미지: `22_X_클로드듀엣_UX제안_별도앱불만_paytonbilodeau.png`
+- 서비스: Claude Duet · 구분: UX·기능제안 · 영상 포함: 아니오
+- 태그: 별도앱, 앱통합요청, 닷츠비교, 전환비용, UX불만
+- URL: https://x.com/paytonbilodeau/status/2122816971989270882
+- 요약: 듀엣이 별도 앱으로 나온 것이 ChatGPT 닷을 계속 쓰는 유일한 이유라며, Claude 앱에서 바로 듀엣으로 진입하게 해달라는 통합 요청. 별도 앱 구조가 전환 비용을 만든다는 지적.
+- 본문:
+
+  > Claude Duet being a separate app, rather than part of the main Claude app or desktop app, is the sole reason I'll keep using my ChatGPT dot over it.
+  >
+  > I don't see why it was made a separate app. Instead, let people:
+  > - open the Claude app directly to Claude Duet, as ChatGPT's app allows
+  > - g…
+
+### 23. `x_cmp_24` — @cosmosmason (X)
+
+- 이미지: `23_X_비교_AI에이전트티어리스트_cosmosmason.png`
+- 서비스: 비교(Pickle·Claude Duet 등) · 구분: 비교 · 영상 포함: 아니오
+- 태그: 티어리스트, 피클A, 클로드듀엣A, 그록봇GOAT, 이미지첨부
+- URL: https://x.com/cosmosmason/status/2123036346445169107
+- 요약: AI 에이전트 티어리스트 이미지를 인용하며 평가: 그록봇 GOAT, 인스팅트·뮤즈 S, 피클·클로드 듀엣 A, 키링·닷츠·제미나이태스크·하크 C. 피클과 듀엣이 같은 A 티어에 묶인 비교 사례.
+- 본문:
+
+  > Goat Grok Bot
+  > S Instinct, Muse
+  > A Pickle, Claude Duet
+  > C keyring, Dots, Gemini Task, Hark
+  > 병신 Vooy, Wabi, Poke
+  > 고아 Cue
+  > 병진이형 Kanana
+
+### 24. `x_cmp_25` — @SujinBuilds (X)
+
+- 이미지: `24_X_비교_로고디자인4종비교_SujinBuilds.png`
+- 서비스: 비교(Pickle·Claude Duet 등) · 구분: 비교 · 영상 포함: 아니오
+- 태그: 디자인비교, 로고, 브랜드아이덴티티, 이미지첨부
+- URL: https://x.com/SujinBuilds/status/2123044794654212168
+- 요약: 4종 AI 비서 로고를 비교한 이미지에 '클로드 듀엣의 손그림 낙서가 사람 같고, 나머지는 마스코트 세트처럼 읽힌다'는 브랜딩 평가를 남긴 글.
+- 본문:
+
+  > @guptankit27 claude duet, the hand drawn squiggle feels human, the others read like a mascot pack
+
+### 25. `x_duet_16` — @Ko__Harada (X)
+
+- 이미지: `25_X_클로드듀엣_비교_일본사용자평가_Ko__Harada.png`
+- 서비스: Claude Duet · 구분: 비교 · 영상 포함: 아니오
+- 태그: 일본사용자, 그록봇비교, 순위변동, 전환비용, 원문인용포함
+- URL: https://x.com/Ko__Harada/status/2123039071513813360
+- 요약: 일본 사용자 두 명의 대화: '이번 달부터 클로드 듀엣도 써봤지만 아직 그록봇만큼 유용하진 않다'는 평가에 동의하며, 순위가 자주 바뀌어 갈아타기도 번거롭다는 반응.
+- 본문:
+
+  > @nogimedi Claude duetもGrok botほどまでは、という感じなんですね！この序列はまた変わってきそうですが、その時に乗り換えるのも面倒くさそうですね😅
+  >
+  > (원문 @nogimedi: 今月からClaude duetも試してみたけど、まだGrokbotほど役に立つほどではない印象)
+
+### 26. `x_duet_17` — @GavinAIer (X)
+
+- 이미지: `26_X_클로드듀엣_사용사례_체험권한획득_GavinAIer.png`
+- 서비스: Claude Duet · 구분: 사용사례 · 영상 포함: 아니오
+- 태그: 중국사용자, 체험권한, 커뮤니티교류, 공식브랜드이미지
+- URL: https://x.com/GavinAIer/status/2123037745153269910
+- 요약: 클로드 듀엣 체험 자격을 막 얻었다며 함께 써볼 동료를 찾는 짧은 글. 첨부된 공식 브랜드 이미지로 제품 인지도 확산 양상 확인 가능.
+- 본문:
+
+  > 刚获得Claude duet的体验资格…有用的不错的伙伴一起交流下吗？
+
+### 27. `x_duet_18` — @builtbygomez (X)
+
+- 이미지: `27_X_클로드듀엣_비교_미접근으로뮤즈전환_builtbygomez.png`
+- 서비스: Claude Duet · 구분: 비교 · 영상 포함: 아니오
+- 태그: 미접근, 뮤즈전환, 에이전트성능, 이탈사례
+- URL: https://x.com/builtbygomez/status/2122819695791550728
+- 요약: 클로드 듀엣에 접근하지 못해 뮤즈로 갈아탔다는 짧은 답글. 접근 제한이 실제 사용자 이탈로 이어진 사례로, 에이전트 실행력 자체는 선호한다고 밝힘.
+- 본문:
+
+  > @hassansayed2002 I stopped using Claude and started using Muse. Only because I like the agentic capabilities and i don't have access to Claude Duet
+
+### 28. `x_duet_19` — @UNICONTSLA (X)
+
+- 이미지: `28_X_비교_AI비서5종목록_피클듀엣포함_UNICONTSLA.png`
+- 서비스: 비교(Pickle·Claude Duet 등) · 구분: 비교 · 영상 포함: 아니오
+- 태그: 목록형, 뮤즈, 그록봇, 피클, 듀엣, 닷츠, 구글진입
+- URL: https://x.com/UNICONTSLA/status/2122741236360757589
+- 요약: 구글의 AI 비서 진입 소식에 뮤즈·그록봇·피클·듀엣·닷츠 5종을 나열하며 시장 구도를 언급한 짧은 글.
+- 본문:
+
+  > 🌟 구글도 AI 비서 나온다니 완전 미쳤네요.
+  > 구글에서 나오면 완전 씹어먹는거 아닌가요?
+  > ✔️ 뮤즈
+  > ✔️ 그록봇
+  > ✔️ 피클
+  > ✔️ 듀엣
+  > ✔️ 닷츠
+
+### 29. `x_cmp_20` — @lmc8710 (X)
+
+- 이미지: `29_X_비교_AI에이전트9종목록_피클듀엣_lmc8710.png`
+- 서비스: 비교(Pickle·Claude Duet 등) · 구분: 비교 · 영상 포함: 아니오
+- 태그: 목록형, AI에이전트9종, 피클1번, 클로드듀엣4번, 업무위임
+- URL: https://x.com/lmc8710/status/2122994221606916559
+- 요약: '대신 일해주는 AI 비서' 9종 목록에서 피클을 1번, 클로드 듀엣을 4번으로 배치. 질의응답에서 실행형 에이전트로의 전환을 강조한 저장형 콘텐츠.
+- 본문:
+
+  > 요즘 주목받는 '대신 일해주는 AI 비서' 모음 🤖
+  >
+  > 이제 AI는 단순히 질문에 답하는 수준을 넘어 직접 검색하고, 자료를 정리하고, 업무를 실행하는 시대가 됐습니다.
+  >
+  > 알아두면 좋은 AI 에이전트 9가지.
+  >
+  > 1. 피클 (Pickle)
+  > 2. ChatGPT 닷츠 (Dots)
+  > 3. 마누스 (Manus)
+  > 4. 클로드 듀엣 (Claude Duet)
+  > 5. 메타 뮤즈 (Meta Muse)
+  > 6. 그록 봇 (Grok Bot)
+  > 7. 어사이드 (Aside)
+  > 8. 오픈클로 (OpenClaw)
+  > 9. 헤르메스 에이전트 (Hermes Agent)
+  >
+  > 이제 AI에게 질문만 하지 말고 반복 업무와 자료 조사까지 맡겨보세요.
+
+### 30. `x_duet_21` — @yozm_it (X)
+
+- 이미지: `30_X_클로드듀엣_정리_기능과한계_요즘IT.png`
+- 서비스: Claude Duet · 구분: 사용사례 · 영상 포함: 아니오
+- 태그: 기능정리, 아침브리핑, 가상컴퓨터, 한국미출시, 대기명단, 소개
+- URL: https://x.com/yozm_it/status/2113540607608316354
+- 요약: 요즘IT의 클로드 듀엣 기능 정리: 아침 브리핑, 수 시간 간격 능동 점검, 클라우드 가상 컴퓨터 상시 실행, 기존 클로드 메모리·스킬·앱 연결 승계. 이용 조건은 미국 Pro/Max/Ultra 대기명단이며 한국 미지원.
+- 본문:
+
+  > (정리) 앤트로픽도 개인 비서 AI 경쟁에 합류, 클로드 듀엣
+  >
+  > 메타 뮤즈, 그록 봇에 이어 앤트로픽도 개인 비서 AI 경쟁에 합류했습니다. 시키기 전에 챙길 일을 먼저 알려준다는 에이전트, 클로드 듀엣의 내용을 정리해봤습니다:
+  >
+  > ■ 뭐가 다르냐면
+  > - 매일 아침 연결된 앱에서 중요한 일만 추려 브리핑을 보내줌
+  > - 낮에는 몇 시간마다 앱을 살피다가 꼭 필요할 때만 말을 걸어줌
+  > - 자기만의 가상 컴퓨터에서 일해서, 내 노트북·폰이 꺼져 있어도 작업이 계속 진행됨
+  > - 기존 클로드 메모리·스킬·연결한 앱을 그대로 사용
+  >
+  > ■ 쓸 수 있는 곳
+  > - 미국 Pro·Max·Ultra 구독자 대상 리서치 프리뷰, 대기 명단 필요
+  > - 한국은 아직 지원 대상 아님
+
+### 31. `x_duet_22` — @sexyguy (X)
+
+- 이미지: `31_X_클로드듀엣_한계_금지목록승인구조_sexyguy.png`
+- 서비스: Claude Duet · 구분: 한계·비판 · 영상 포함: 아니오
+- 태그: 금지목록, 승인구조, 결제, 권한범위, 출시분석
+- URL: https://x.com/sexyguy/status/2113594973962846621
+- 요약: 클로드 듀엣 출시 분석: 연결한 지메일·슬랙을 지켜보다 할 일을 찾아 초안을 만들고 승인 후 발송까지 하되, 되돌릴 수 없는 결제·송금은 여전히 금지 목록으로 막혀 있다는 점을 핵심으로 지적.
+- 본문:
+
+  > 결제까지 되는 AI 비서, 막아둔 목록이 더 눈에 띔
+  >
+  > 결제까지 대신 해주는 AI 비서가 나왔는데, 내 눈엔 할 수 있는 것보다 못 하게 막아둔 목록이 먼저 들어왔다.
+  >
+  > 앤트로픽이 '클로드 듀엣'이라는 개인용 에이전트를 공개했다. 에이전트는 시키는 것만 답하는 챗봇과 달리, 알아서 일을 찾아 하는 AI라고 보면 된다. 메타의 뮤즈, 오픈AI의 닷츠 다음 주자다. 뮤즈는 출시 직후 추정치로 1천만 건 안팎의 다운로드를 기록했다고 한다.
+  >
+  > 뭘 하냐면, 연결해둔 지메일·슬랙 같은 앱을 스스로 지켜보다가 처리할 일을 찾아내고, 초안을 만들고, 사용자가 승인하면 실제로 발송까지 한다. 다만 결제·송금처럼 되돌릴 수 없는 행동은 여전히 막아뒀다.
+
+### 32. `x_duet_23` — @jongbeomi1 (X)
+
+- 이미지: `32_X_클로드듀엣_소개_출시반응_jongbeomi1.png`
+- 서비스: Claude Duet · 구분: 사용사례 · 영상 포함: 아니오
+- 태그: 출시소개, 클라우드컴퓨터, 승인게이트, 미국대기, 사용량차감
+- URL: https://x.com/jongbeomi1/status/2113135080390713565
+- 요약: 클로드 듀엣 출시 소식을 뮤즈·닷츠와 같은 계열로 소개. 클라우드에서 상시 작업, 메일·일정 선제 처리, 답장 초안·대시보드 제작, 발송/결제/서명은 승인 필요, 미국 Pro/Max 대기, 기존 구독 사용량 차감을 정리.
+- 본문:
+
+  > 뮤즈, 닷츠 쓰는 사람들… 클로드도 비서 데리고 나옴 ㄷㄷ
+  >
+  > 앤트로픽이 '클로드 듀엣' 공개함.
+  > 뮤즈나 닷츠처럼 일 맡겨두면 클라우드 컴퓨터에서 알아서 작업하는 방식. 내 컴퓨터 꺼도 계속 일함.
+  >
+  > 중요한 메일·일정을 먼저 챙겨주고 답장 초안부터 자료·대시보드 제작까지 해준다고. 발송·결제·서명은 내 승인 받고 진행함.
+  >
+  > 현재 미국 Pro·Max부터 대기 신청 중. 기존 구독에 포함되지만 사용량은 같이 차감됨.
+  >
+  > 뮤즈에 닷츠에 듀엣까지 이제 내 할 일보다 AI 비서가 더 많아짐 ㅋㅋ
+
+### 33. `th_duet_05` — @cmoamara (Threads)
+
+- 이미지: `33_Threads_클로드듀엣_긍정후기_비서경험_cmoamara.png`
+- 서비스: Claude Duet · 구분: 사용사례 · 영상 포함: 아니오
+- 태그: 긍정후기, 대기명단해제, 선제메시지, 세션예약
+- URL: https://www.threads.com/@cmoamara/post/DfLnfGQG1dv/
+- 요약: 대기명단에서 막 해제된 사용자의 첫인상. 프롬프트 없이 먼저 '잊고 있던 일'을 알려주는 방식이 기존 에이전트와 다르고, 실제 비서를 써본 사람에게 특히 유용하다는 호평.
+- 본문:
+
+  > @claudeai Duet is 🔥 I just got off the waitlist this week, opened it, and it was love at first prompt. Actually, I didn't even prompt it. It just started yelling at me and telling me what I'd forgotten to do. 👀 It's unlike any agent I've ever used, and it's super easy to set up. For those of you who have hired assistants (virtual, AI, or otherwise), Duet does things I didn't even know I wanted, without me having to tell it. I asked it to book a client session.
+
+### 34. `th_duet_06` — @mcdonaldryn (Threads)
+
+- 이미지: `34_Threads_클로드듀엣_사용사례_태스크카드_mcdonaldryn.png`
+- 서비스: Claude Duet · 구분: 사용사례 · 영상 포함: 아니오
+- 태그: 온보딩, 태스크카드, 스와이프UI, 앱스크린샷
+- URL: https://www.threads.com/@mcdonaldryn/post/DfES_nUmxea/
+- 요약: 짧은 온보딩 뒤 채팅·메일에서 잊고 있던 일을 문맥이 붙은 태스크 카드로 띄워주고, 데이팅앱처럼 스와이프로 시작/숨김 처리하는 UX를 호평. 앱 화면 캐러셀 첨부.
+- 본문:
+
+  > Claude Duet is a game changer.
+  >
+  > Completed the short onboarding, and Duet just surfaced tasks I forgot about from various chats and email in little task cards with context.
+  >
+  > Swipe like a dating app to start or hide a task. Smooth.
+  >
+  > Sorry Mr. Account Manager from @firecrawl_dev I forgot to reply. My assistant Duet will be right with you.
+
+### 35. `th_duet_07` — @eshumarneedi (Threads)
+
+- 이미지: `35_Threads_클로드듀엣_부정후기_쓸모없다논쟁_eshumarneedi.png`
+- 서비스: Claude Duet · 구분: 한계·비판 · 영상 포함: 아니오
+- 태그: 부정후기, 인스팅트비교, 뮤즈비교, 댓글논쟁, 토큰제한
+- URL: https://www.threads.com/@eshumarneedi/post/Dfl55BaFSPl/
+- 요약: "인스팅트·뮤즈만큼 쓸모없다"는 혹평 글에 '그 기준이 틀렸다, 범용 비서와 전문 에이전트를 같은 잣대로 본다'는 반박 댓글이 붙은 논쟁 스레드.
+- 본문:
+
+  > First impressions of Claude Duet: It's about as useful as Instinct and Muse, which is to say, not very useful at all.
+
+### 36. `th_duet_08` — @chancenote (Threads)
+
+- 이미지: `36_Threads_클로드듀엣_한국사용자_웨이팅리스트신청_chancenote.png`
+- 서비스: Claude Duet · 구분: 비교 · 영상 포함: 아니오
+- 태그: 한국사용자, 대기명단, 닷츠비교, 그록봇, 수석비서실, 사용부족평
+- URL: https://www.threads.com/@chancenote/post/DezaKPbH9lB/
+- 요약: 닷츠를 쓰던 한국 사용자가 듀엣에 대기 신청하며 '앱 하나에서 시작하는 다중 에이전트 환경'으로 평가. 댓글에는 초대받아 써봤지만 "출발이 늦어 다른 에이전트보다 부족하다"는 반응도 달림.
+- 본문:
+
+  > 클로드 듀엣 신청하신 분 있나요? 난 현재 Gpt dots을 에이전트 비서로 사용 중.. 그록봇이 호평이던데, 아직 써보진 못하고 클로드 duet을 신청. 한국 유저는 미국보단 느릴 것 같긴 한데 일단 접수. 지피티 닷이나 그록봇처럼 이제 클로드도 듀엣 출시를 통해, 수석비서실(!) 역할을 하는 단일 통로가 생기는 격. "앱 하나에서 시작하는 본격적인 다중 에이전트 환경의 개막". 댓글에, 클로드 듀엣 신청 메일 & 링크 첨부...
+
+### 37. `th_duet_09` — @claudeai (Threads)
+
+- 이미지: `37_Threads_클로드듀엣_공식영상_소개_claudeai.png`
+- 서비스: Claude Duet · 구분: 사용사례 · 영상 포함: 예
+- 태그: 공식계정, 영상포함, 데모영상, 아침브리핑, 승인게이트, 미국대기명단
+- URL: https://www.threads.com/@claudeai/video/De2T4TFEj7-/
+- 요약: 앤트로픽 공식 계정의 클로드 듀엣 발표 영상 포스트. '먼저 말 걸기·아침 브리핑·음성으로 일 맡기기·보내기/결제/서명 전 승인' 4원칙과 미국 Pro/Max 대기명단 안내. 리서치 프리뷰(베타)임을 명시.
+- 본문:
+
+  > Claude Duet is a new app where Claude messages you first, and only when something needs you.
+  >
+  > Each morning it sends a short brief on your top priorities. Hand it a bigger job by voice note, put your phone down, and it keeps working. Before it sends, pays, or signs anything, it waits for your okay.
+  >
+  > It's an early research preview and we're still learning. What do you want to know about how it works?
+  >
+  > Join the waitlist on Pro and Max plans in the US: claude.com/claude-duet
+
+### 38. `th_duet_10` — @mergisi (Threads)
+
+- 이미지: `38_Threads_클로드듀엣_영상_첫사용후기_mergisi.png`
+- 서비스: Claude Duet · 구분: 사용사례 · 영상 포함: 예
+- 태그: 영상포함, 첫사용, 태스크자동발견, 이메일카드, 백그라운드작업, 결제리서치
+- URL: https://www.threads.com/@mergisi/video/Dex1r-DCHEI/
+- 요약: 듀엣 접근권한을 받은 첫날 영상 후기. 앱을 훑어 스타트업 미결 업무 5건을 스스로 찾고, 이메일 초안 카드와 '체크아웃 급감 원인 조사' 백그라운드 실행까지 한 화면에서 처리. 발송은 탭 전까지 보류.
+- 본문:
+
+  > Here we go. Just got Claude Duet access.
+  >
+  > First hour with Claude Duet and it's REALLY good 🤯
+  >
+  > It went through my apps and found 5 open tasks for my startup on its own.
+  >
+  > I tapped two. One came back as a ready-to-send email card. The other started digging into why checkouts dropped, in the background, with a live plan 👀
+  >
+  > One chat, tasks run on their own, nothing goes out until you tap Send.
+
+### 39. `th_duet_11` — @somidotai (Threads)
+
+- 이미지: `39_Threads_클로드듀엣_영상_아침브리핑데모_somidotai.png`
+- 서비스: Claude Duet · 구분: 사용사례 · 영상 포함: 예
+- 태그: 영상포함, 공식데모, 헬스퍼밋, 선제알림, 초안후승인
+- URL: https://www.threads.com/@somidotai/video/DexSYz3Cn_0/
+- 요약: 앤트로픽 공식 데모 중 '시카고 매장 26일 후 오픈인데 헬스 퍼밋 미제출'을 먼저 짚고 서식을 초안해 승인만 기다리는 장면을 영상으로 공유. "잊은 것을 알아채는 비서가 빠른 답변 10개보다 낫다"는 평가.
+- 본문:
+
+  > One moment from Anthropic's new Claude Duet demo:
+  >
+  > "The Chicago location opens in 26 days. I noticed you haven't filed a health permit."
+  >
+  > It drafts the form, then waits for you to say send.
+  >
+  > An assistant that notices what you forgot beats ten that answer fast.
+
+### 40. `x_duet_13` — @libinyaminAI (X)
+
+- 이미지: `40_X_클로드듀엣_한계_생태계부재_중국사용자_libinyaminAI.png`
+- 서비스: Claude Duet · 구분: 한계·비판 · 영상 포함: 아니오
+- 태그: 생태계부재, 중국어후기, 코딩한계, 클로드코드의존, 모델품질강점
+- URL: https://x.com/libinyaminAI/status/2122722915888074825
+- 요약: 하루 써본 중국 사용자 후기: 그록봇(X 연동)·뮤즈(인스타/스레드 연동)와 달리 듀엣은 생태계 접점이 없어 한계가 있고, 메일·할일·글쓰기는 경쟁 제품도 다 한다고 지적. 강점은 모델 성능(간단한 버그 수정)뿐이며 어려운 코딩은 로컬 클로드 코드가 필요.
+- 본문:
+
+  > Duet的申请通过了，用了一天了。感觉个人助理这些事情，如果没有良好的生态支撑，感觉还是有很大局限性的。
+  > Grokbot能连接X，Muse能连接ins，threads，极大的丰富了使用体验。
+  > 但是dot duet这种个人助理就缺少这样的生态接入。dot duet能干的话，grokbot muse也都能干，处理邮件，待办事项，写文章也都能做。
+  > duet最大的优势就是模型水平高，能完成一些测试，简单的修bug的代码任务，艰难的代码任务还是得交给电脑上的claude code完成，这可能也是未来的改进方向。
+
+### 41. `x_duet_14` — @MarkMyTech (X)
+
+- 이미지: `41_X_클로드듀엣_비교_승인요청4회최하위_MarkMyTech.png`
+- 서비스: Claude Duet · 구분: 비교 · 영상 포함: 아니오
+- 태그: 4종벤치, 승인요청횟수, 최하위, 클레어보, 9개과제, 링크첨부
+- URL: https://x.com/MarkMyTech/status/2121090129540399567
+- 요약: Claire Vo의 4개 에이전트 9개 과제 벤치에서 클로드 듀엣이 승인 요청을 4회(다른 제품은 각 1회) 하고 최하위로 완주했다는 결과 공유. '발송·구매 전 확인은 기능, 파일 읽기 전 확인은 마찰'로 나눠 봐야 한다는 해석. Grok·Dot·Muse·Duet 비교 리포트 링크 포함.
+- 본문:
+
+  > Agent asking permission: bug or feature?
+  >
+  > In Claire Vo's 4-agent bench, Claude Duet asked 4 times (the others once each) and finished last.
+  >
+  > My take: split the count. Asking before a send or purchase is a feature. Asking before reading a file is friction. https://t.co/gzDnvjCIev
+
+### 42. `x_duet_15` — @sonyaseventhree (X)
+
+- 이미지: `42_X_클로드듀엣_오작동_받아쓰기버그_개발팀수정_sonyaseventhree.png`
+- 서비스: Claude Duet · 구분: 문제·오작동 · 영상 포함: 아니오
+- 태그: 받아쓰기버그, 텍스트소실, 모바일이슈, 개발팀답변, 수정중
+- URL: https://x.com/sonyaseventhree/status/2121047768575950859
+- 요약: 듀엣에서 받아쓰기 중 '+'를 누르면 입력한 텍스트가 모두 사라지고, 받아쓰는 동안 수정도 불가능하다는 버그 제보. 앤트로픽 개발자(@maxleiter)가 답글을 단 스레드.
+- 본문:
+
+  > @maxleiter another dictation related bug, this one on Duet
+  >
+  > When I hit the + while dictating all of the text just disappears
+  >
+  > I also can't modify the text as it's dictating, and I think this is a issue on mobile for the Claude app as well
+
+### 43. `x_pickle_07` — @nick88886666 (X)
+
+- 이미지: `43_X_피클_비판_예약전화상담원부담증가_nick88886666.png`
+- 서비스: Pickle · 구분: 한계·비판 · 영상 포함: 아니오
+- 태그: 예약전화, 상담원부담, 대화오류, 업체거부, AI끼리통화
+- URL: https://x.com/nick88886666/status/2123012995014140413
+- 요약: 피클이 대신 거는 예약 전화가 반복 질문·대화 오류로 상담 시간을 두 배 이상 늘리고 일부 업체가 AI 비서 상담을 거부하기 시작했다는 비판. 해법으로 AI-AI 직접 통화를 제시.
+- 본문:
+
+  > [AI 비서의 역설, 이용자는 편해졌지만 상담원 업무는 두 배로 늘었다]
+  >
+  > AI 에이전트가 식당 예약, 병원 상담, 상품 구매까지 대신하는 시대가 열렸다. 그러나 기존 인간 중심 서비스 시스템과 충돌하기 시작했다.
+  >
+  > 1. AI가 인간의 업무 부담을 다른 인간에게 이전
+  > AI 비서 '피클'은 이용자를 대신해 예약 전화를 걸지만, 반복적인 질문과 대화 오류로 상담 시간이 두 배 이상 늘어난 사례가 발생했다. 일부 업체는 AI 비서를 통한 상담을 거부하기 시작했다.
+  >
+  > 2. 해결책은 AI와 AI의 직접 통화
+
+### 44. `x_pickle_08` — @ho5h1_h1kar1 (X)
+
+- 이미지: `44_X_피클_비판_과한개입_문자발송_ho5h1_h1kar1.png`
+- 서비스: Pickle · 구분: 한계·비판 · 영상 포함: 아니오
+- 태그: 과한개입, 무단문자, 로그인유지, 프라이버시, 재설치후기
+- URL: https://x.com/ho5h1_h1kar1/status/2122969155301470272
+- 요약: 하루 써보고 '선을 넘는다'며 삭제했다가 이틀 만에 재설치했더니, 그동안 로그아웃되지 않은 채 혼자 문자를 보내고 나들이를 추천하는 등 계속 활동해 더 무서워졌다는 프라이버시 불만.
+- 본문:
+
+  > 피클 하루 써보고 피클이 약간 선넘는것 같아서 지움.
+  > 후기 좋은게 자꾸 올라오길래 오늘 이틀만에 다시 깔아봄.
+  > 그동안 로그아웃이 안되어있고 혼자 나한테 문자보내고 나들이 추천하고 북치고 장구치고 다하고있었더라.
+  >
+  > 더 무서워짐 ㅠ
+
+### 45. `x_pickle_09` — @Jeadee6 (X)
+
+- 이미지: `45_X_피클_사용사례_칭다오여행예약_92만원_Jeadee6.png`
+- 서비스: Pickle · 구분: 사용사례 · 영상 포함: 아니오
+- 태그: 여행예약, 칭다오, 항공숙소티켓, 예약취소, 캘린더정리, 카톡스크린샷
+- URL: https://x.com/Jeadee6/status/2122936565576114412
+- 요약: 칭다오 1박 2일 여행을 항공·숙소·티켓 합쳐 92만 원에 피클로 예약하고, 취소·캘린더 정리까지 맡긴 후기. 최저가 여부는 확인하지 못했다고 밝힘. 카카오톡 대화 스크린샷 첨부.
+- 본문:
+
+  > 자식들도 내 맘대로 안되고, 테슬라는 더더욱 안되고, 엔비디아도 꼬라박고 있는 우울한 상황의 연속. 집에 중고생이 있으니 해외여행도 맘대로 못간지 2년 ㅠ 다가오는 결기 핑계로 1박 2일이라도 다녀와야겠다 싶어 피클에게 몽땅 시켜본 후기.
+  >
+  > 국내 괜찮은 호텔에서 조식 포함 1박 하려면 40~50만 원은 깨지는데, 이번 주말 칭다오 1박 2일 여행을 항공·숙소·티켓 다 합쳐 92만 원에 끝냄. 최저가인건 모르겠고, 예약부터 취소, 캘린더 정리까지 피클시키니까 진정한 AI 에이전트의 시대가 되었음을 체감함.
+
+### 46. `x_pickle_10` — @ginipigi (X)
+
+- 이미지: `46_X_피클_사용사례_후기자동화_활용팁_ginipigi.png`
+- 서비스: Pickle · 구분: 사용사례 · 영상 포함: 아니오
+- 태그: 후기자동화, 활용팁, 클로드비교, 그록봇, 뮤즈, 네이버자동화제한
+- URL: https://x.com/ginipigi/status/2122911298426147208
+- 요약: AI 도구 용도 분담 팁: 클로드·제미나이·GPT는 작업 실행형, 피클·그록봇·뮤즈는 '내 컴 없이 도는' 상시 실행형으로 필요한 곳에만 사용. 실제로는 피클의 100자 후기 자동화가 가장 편하다는 평가.
+- 본문:
+
+  > AI 사용
+  >
+  > - 클로드, Gemini, GPT는 작업 실행형 에이전트로 씀. 작업의 질이 달라짐.
+  > - 피클, 그록봇, 뮤즈는 내 컴 없이 알아서 돌아간다는 게 강점이니 반드시 꼭 필요한 부분에만 사용. 특히 그록봇은 트위터 관련 알람 모음이나 스크리닝 같은 일만 시켜도 빠듯함.
+  > - 실제 써보니 피클이 개꿀임. 특히 나 대신 100자 내외의 후기를 알아서 자동화해주는 게 편함. 원래 네이버 쇼핑만 썼는데 네이버는 자동화 막힌대서 앞으로 쿠팡 쓸 예정임.
+
+### 47. `x_pickle_11` — @Fred7948 (X)
+
+- 이미지: `47_X_피클_사용사례_체험단후기자동화_Fred7948.png`
+- 서비스: Pickle · 구분: 사용사례 · 영상 포함: 아니오
+- 태그: 체험단, 쿠팡체험단, 후기15개, 카톡선물하기, 자동신청, 이미지첨부
+- URL: https://x.com/Fred7948/status/2122812022496829580
+- 요약: 사진 몇 장을 주자 밀린 후기 15개를 작성하고 쿠팡체험단 신청까지 해 바로 선정된 사례. 이어 카카오톡 선물하기 체험단 15개도 신청. 자동화 효과를 강조한 후기.
+- 본문:
+
+  > ✅ 피클 열일하네
+  >
+  > 사진 몇 장 던져주니 밀렸던 후기 15개 낋여오고
+  > 쿠팡체험단 신청 해달라니 바로 선정 됨
+  > 좋은 품목 놓쳤다고 다음엔 일빠로 신청 해보겠다고..
+  > 한 김에 카카오톡 선물하기 체험단 15개도 신청완료..
+  >
+  > 이거 꿀통이넹
+
+### 48. `x_pickle_12` — @dorying (X)
+
+- 이미지: `48_X_피클_후기_무료사용량제한불만_dorying.png`
+- 서비스: Pickle · 구분: 사용사례 · 영상 포함: 아니오
+- 태그: 후기시리즈5편, 무료사용량제한, SNS후기요구, 친구초대, 구매내역분석, 뮤즈비교
+- URL: https://x.com/dorying/status/2122599717502955901
+- 요약: 5편 후기: 구매 내역을 분석해 말하지 않은 아티스트 발매 일정까지 챙기는 점이 좋았고 뮤즈보다 손이 간다는 평가. 다만 하루 사용량이 금방 차고, 무료라 SNS 후기 작성·친구 초대를 해야 제한이 풀리는 구조에 불만.
+- 본문:
+
+  > 1/5 어제 초대받아 처음 써본 AI 에이전트 '피클'. 하루 만에 꽤 마음에 들어서 후기 남김. 첫 임무는 최애 굿즈 일정과 구매처 검색, 알람.
+  > 2/5 구매했던 사이트랑 자주 쓰는 사이트 몇 군데에 로그인해주고 구매 내역을 분석시켰는데, 내가 따로 말하지도 않은 아티스트의 발매 일정까지 가져오더라.
+  > 3/5 내가 누구를 좋아하는지 하나하나 설명하기 전에, 구매 내역에서 찾아서 챙겨주는 게 좋았음.
+  > 4/5 메타의 뮤즈도 잠깐 써봤지만, 이상하게 피클에 더 손이 감. 문제는 그러다 하루 사용량이 순식간에 차버린다는 것.
+  > 5/5 피클아 빨리 유료 모델 내놔… 아직 무료라 SNS 후기를 쓰거나 친구를 초대해야 사용량 제한을 풀 수 있다니 눈물남.
+
+### 49. `x_pickle_13` — @Grok_Korea (X)
+
+- 이미지: `49_X_피클_사용사례_생활잡무자동화_Grok_Korea.png`
+- 서비스: Pickle · 구분: 사용사례 · 영상 포함: 아니오
+- 태그: 올리브영리뷰, 포인트적립, 아이허브최저가, 체험단, 캘린더등록, 초대링크
+- URL: https://x.com/Grok_Korea/status/2122932672079233085
+- 요약: 생활 잡무를 피클에 넘긴 이틀치 사례: 올리브영 리뷰 12개 작성과 1,200P 적립 확인, 아이허브 영양제 최저가 쿠폰·장바구니 담기, 체험단 신청 후 발표일 캘린더 자동 등록.
+- 본문:
+
+  > 요즘 귀찮은 생활 잡무 AI 비서(피클)한테 다 넘기고 있는데 생각보다 훨씬 편함ㅋㅋ
+  >
+  > 어제오늘 시킨 것만 해도
+  > - 올리브영 밀린 리뷰 12개 써주고 오늘 1,200P 들어온 거 확인
+  > - 아이허브 영양제 최저가 쿠폰 찾아서 장바구니 담아두기
+  > - 체험단 신청하고 발표일 캘린더에 알아서 등록
+
+### 50. `x_pickle_14` — @verynormalll (X)
+
+- 이미지: `50_X_피클_사용사례_거실TV연결_영상_verynormalll.png`
+- 서비스: Pickle · 구분: 사용사례 · 영상 포함: 예
+- 태그: 영상포함, 거실TV, 미니PC, 출근브리핑, AI법정, 멀티디바이스, 사용자제작영상
+- URL: https://x.com/verynormalll/status/2122839171484258652
+- 요약: 피클을 폰·PC를 넘어 거실 TV·스피커(미니PC 경유)까지 연결해 쓴 사례. 아침엔 날씨 반영 착장·실시간 교통 지도·일정 브리핑과 모닝 재즈를 TV/스피커로 내보내고, 'AI 거실 법정' 같은 실험도 공유. 27초·1분 6초짜리 사용자 제작 영상 첨부.
+- 본문:
+
+  > 피클 거실 점령기 3줄 요약:
+  >
+  > 1. 폰 → PC → 이제 거실 TV·스피커까지 한 놈이 다 연결됨
+  > 2. 평소엔 감성 트리 액자, 아침엔 출근 비서, 싸움 나면 AI 법정
+  > 3. 오늘도 비서한테 거실까지 뺏기고 소파에 누워있는 중
+  >
+  > (원문 1) 피클 확장성이 이제 선을 넘었다. 폰 안에서 심부름만 하더니, 내 컴퓨터를 먹더니, 어젯밤엔 남는 미니PC 한 대 타고 거실 TV랑 스피커까지 점령해버렸다. 평소엔 4K 크리스마스 트리 액자인데, 비트코인 급변동 뜨면 1초 만에 작전실로 돌변한다.
+  > (원문 2) 아침 출근길엔 그냥 거실 지나가면서 TV만 스쳐도 끝. - 오늘 기온·비 반영한 귀여운 만화 착장 - 집 → 직장 어느 구간이 막히는지 실시간 지도 + 뉴스 1줄 + 오늘 일정 - TV 꺼놔도 스피커 혼자 모닝 재즈 볼륨 낮추고 브리핑 읊음 (모닝 DJ)
+
+### 51. `th_duet_12` — @tchung1970 (Threads)
+
+- 이미지: `51_Threads_클로드듀엣_한국어영상요약낭독_tchung1970.png`
+- 서비스: Claude Duet · 구분: 사용사례 · 영상 포함: 예
+- 태그: 한국어요약, 영상재가공, 클로드스킬, ElevenLabs, TTS, 발표영상
+- URL: https://www.threads.com/@tchung1970/post/Dex8OpnFCTS/
+- 요약: 클로드 듀엣 공개 영상을 'Claude 스킬로 전사 → Claude Code로 한국어 요약 → ElevenLabs 음성 낭독' 3단계로 한국어 콘텐츠로 재가공한 사례(결과물은 오디오·영상 페이지).
+- 본문:
+
+  > Claude Duet
+  >
+  > 오늘 Anthropic이 '클로드 듀엣(Claude Duet)'을 공개했습니다.
+  >
+  > 영어로 된 원본 영상을 보고, 한국어로도 소개하고 싶었습니다.
+  >
+  > 그래서 이 영상으로 작은 실험을 해 보았습니다.
+  > ① 7월에 직접 만든 Claude 스킬로 영상을 받아 적고
+  > ② Claude Code로 한국어 요약을 쓴 뒤
+  > ③ ElevenLabs로 직접 디자인한 남녀 목소리로 낭독까지 만들었습니다.
+  >
+  > 👉 https://ai.tchung.org/Claude_Duet/
